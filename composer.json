@@ -33,6 +33,7 @@
     },
     "autoload": {
         "psr-4": {
+            "Modules\\Admins\\": "modules/admins/src",
             "App\\": "app/"
         },
         "classmap": [
@@ -42,6 +43,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "Modules\\Admins\\Tests\\": "modules/admins/tests",
             "Tests\\": "tests/"
         }
     },
