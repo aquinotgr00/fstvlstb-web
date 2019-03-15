@@ -12,6 +12,7 @@ services:
         depends_on:
             - mysql
             - mysqltest
+            - mailhog
     mysql:
         image: mysql:5.7
         environment:
