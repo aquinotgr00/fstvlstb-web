@@ -29,13 +29,23 @@ class MemberLoginController extends Controller
      */
 
     protected $maxAttempts = 4;
-    protected $decayMinutes = 1
-    ;
+    protected $decayMinutes = 1;
+
     public function __construct()
     {
            $this->middleware('guest:account')->except('logout');
     }
- 
+    /**
+     * Check either username or email.
+     * @return string
+     */
+    public function username()
+    {
+        $identity  = request()->get('identity');
+        $fieldName = filter_var($identity, FILTER_VALIDATE_EMAIL) ? 'email' : 'id';
+        request()->merge([$fieldName => $identity]);
+        return $fieldName;
+    }
     public function loginMember(Request $request)
     {
       // Validate the form data
@@ -55,9 +65,12 @@ class MemberLoginController extends Controller
         }
 
         return $this->sendLockoutResponse($request);
-    }
+    } 
+    $field = filter_var($request->email, FILTER_VALIDATE_EMAIL) ? 'email' : 'id';
+    $request->merge([$field => $request->email]);
+    
       // Attempt to log the user in
-      if (Auth::guard('account')->attempt(['email' => $request->email, 'password' => $request->password])) {
+      if (Auth::guard('account')->attempt($request->only($field, 'password'))) {
         // if successful, then redirect to their intended location
 		   if ($request->ajax()) {
 		        return response()->json([

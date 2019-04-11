@@ -10,6 +10,7 @@
                 <li><a href="#" data-toggle="modal" data-target="#modal-masuk">Masuk</a></li>
                 @endguest
                 @auth('account')
+                    <li><a href="#" data-toggle="modal" data-target="#modal-sukses">NIF</a></li>
                     <li><a href="{{ Route('member.logout') }}">Keluar</a></li>
                 @endauth
             </ul>

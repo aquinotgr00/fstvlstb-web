@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('frontend-page.index');
-})->name('home');
+Route::get('/', 'HomeMemberController@index')->name('home');
 
 Route::get('/boxset', 'BoxsetController@index');
+Route::get('/filestream/{id}','FileStreamController@fileStream')->name('stream.audio');
+Route::get('/filestream','FileStreamController@fileStream')->name('stream.audio.single');
 Route::get('file/download',[
     'as' => 'files.download', 'uses' => 'FileDownloadController@downloadFile']);
 Route::get('image/download',[

@@ -34,6 +34,6 @@ class FileDownloadController extends Controller
 
 		$path = public_path(). '/'. Auth::guard('account')->user()->images;
 	   	
-	   	return response()->download($path, sprintf("%06d", Auth::guard('account')->user()->id)'.jpg', ['Content-Type' => 'jpg']);
+	   	return response()->download($path, sprintf("%06d", Auth::guard('account')->user()->id).'.jpg', ['Content-Type' => 'jpg']);
 	}
 }

@@ -12,6 +12,7 @@
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('dist/css/plyr.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/app.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/custom.css')}}">
 
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -41,69 +42,23 @@
                         <div class="col-md-12">
                             <h2>TREKLIST</h2>
                             <ul class="treklist">
-                                <li class="treklist-stream active" data-song="GAS!" data-src="{{asset('GAS!-FSTVLST-II-2018.mp3')}}"> 
+                                @foreach($tracklist as $i => $row)
+                                <li class="treklist-stream @if($row->id == 0) active @endif {{$row->status}}-stream" data-song="GAS!" data-src="{{route('stream.audio',$row->id)}}"> 
                                     <div class="icon"><i class="fa fa-play"></i></div>
-                                    <div class="number">01</div>
-                                    <div class="title">GAS!</div>
-                                    <div class="date">09/09/2018</div>
+                                    <div class="number">{!! sprintf("%02d",$i+1) !!}</div>
+                                    <div class="title">{{$row->name}}</div>
+                                    <div class="date">{{$row->release_date}}</div>
                                 </li>
+                                @if(in_array($i, array(0,3,5)))
                                 <li class="divider"></li>
-                                <li class="disabled-stream treklist-stream" data-song=""  data-src="">
-                                    <div class="icon"><i class="fa fa-play"></i></div>
-                                    <div class="number">02</div>
-                                    <div class="title">Rupa</div>
-                                    <div class="date">17/04/2019</div>
-                                </li>
-                                <li class="disabled-stream treklist-stream" data-song=""  data-src="">
-                                    <div class="icon"><i class="fa fa-play"></i></div>
-                                    <div class="number">03</div>
-                                    <div class="title">Vegas</div>
-                                    <div class="date">25/04/2019</div>
-                                </li>
-                                <li class="disabled-stream treklist-stream" data-song="" data-src="">
-                                    <div class="icon"><i class="fa fa-play"></i></div>
-                                    <div class="number">04</div>
-                                    <div class="title">Sunkan</div>
-                                    <div class="date">01/05/2019</div>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="disabled-stream treklist-stream" data-song="" data-src="">
-                                    <div class="icon"><i class="fa fa-play"></i></div>
-                                    <div class="number">05</div>
-                                    <div class="title">Agama</div>
-                                    <div class="date">&nbsp;&nbsp;/&nbsp;&nbsp;/2019</div>
-                                </li>
-                                <li class="disabled-stream treklist-stream" data-song=""  data-src="">
-                                    <div class="icon"><i class="fa fa-play"></i></div>
-                                    <div class="number">06</div>
-                                    <div class="title">Syarat</div>
-                                    <div class="date">&nbsp;&nbsp;/&nbsp;&nbsp;/2019</div>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="disabled-stream treklist-stream" data-song="" data-src="">
-                                    <div class="icon"><i class="fa fa-play"></i></div>
-                                    <div class="number">07</div>
-                                    <div class="title">Telan</div>
-                                    <div class="date">&nbsp;&nbsp;/&nbsp;&nbsp;/2019</div>
-                                </li>
-                                <li class="disabled-stream treklist-stream" data-song="" data-src="">
-                                    <div class="icon"><i class="fa fa-play"></i></div>
-                                    <div class="number">08</div>
-                                    <div class="title">Opus</div>
-                                    <div class="date">&nbsp;&nbsp;/&nbsp;&nbsp;/2019</div>
-                                </li>
-                                <li class="disabled-stream treklist-stream" data-song="" data-src="">
-                                    <div class="icon"><i class="fa fa-play"></i></div>
-                                    <div class="number">09</div>
-                                    <div class="title">Kamis</div>
-                                    <div class="date">&nbsp;&nbsp;/&nbsp;&nbsp;/2019</div>
-                                </li>
+                                @endif
+                                @endforeach
                             </ul>  
                         </div>
                     </div>
                     <div class="media-player">
                         <audio id="player" controls>
-                            <source id="player-stream" src="{{asset('GAS!-FSTVLST-II-2018.mp3')}}" type="audio/mp3" />
+                            <source id="player-stream" src="" type="audio/mp3" />
                         </audio>
                         <div class="info">
                             <div class="row">
@@ -221,7 +176,28 @@
     const player = new Plyr('#player',{
         controls :['play', 'progress']
     });
+
     $(function(){
+        $(".plyr__control").on( "click", function() {
+            var streamsource =$('#player-stream').attr("src");
+            if(streamsource == ""){
+                player.stop()
+                $('#song-title').html('GAS!')  
+                $("#player").attr("src","{!!route('stream.audio.single')!!}");
+                player.source = {
+                        type: 'audio',
+                        title: 'Example title',
+                        sources: [
+                            {
+                                src: "{!!route('stream.audio.single')!!}",
+                                type: 'audio/mp3',
+                            }
+                        ],
+                    };
+                player.play()
+            }
+        });
+
         $( ".treklist-stream" ).on( "click", function() {
             var source = $( this ).data('src');
             var song = $( this ).data('song');
@@ -230,7 +206,18 @@
                 $(this).addClass("active")
                 player.stop()
                 $('#song-title').html(song)  
-                $("#player").attr("src", source);
+                $("#player-stream").attr("src", source);
+                $("#player").attr("src","{!!route('stream.audio.single')!!}");
+                player.source = {
+                        type: 'audio',
+                        title: song,
+                        sources: [
+                            {
+                                src: source,
+                                type: 'audio/mp3',
+                            }
+                        ],
+                    };
                 player.play()
             }
             
