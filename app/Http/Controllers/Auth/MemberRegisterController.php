@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\UserRegisteredNotification;
 use Image;
 use App\Account;
 use Auth;
@@ -29,12 +30,10 @@ class MemberRegisterController extends Controller
             $user = $this->create($request->all());
             Auth::guard('account')->login($user);
             if (Auth::guard('account')->user()){
+                 $user->notify(new UserRegisteredNotification($user));
                 return response()->json(['status'=>'Success','intended'=>URL::previous(),'user'=>Auth::guard('account')->user()]);
             }
         
-    }
-    public function testRender(){
-    	Image::make('public/uploads/arin.jpg')->greyscale()->mask('images/sample_watermark.png')->resize(1080, 1080)->save($destinationPath.'/'.$file->getClientOriginalName());
     }
 
     /**
@@ -64,7 +63,7 @@ class MemberRegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    {   
         return Account::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -76,4 +75,8 @@ class MemberRegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+    protected function registered(Request $request,$user) {
+        $user->notify(new UserRegisteredNotification($user));
+    }
+
 }

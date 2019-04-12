@@ -1,28 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;" />
-    <title>FSTVLST</title>
-
-    <!-- CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('dist/css/plyr.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/app.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/custom.css')}}">
-
-    <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="{{asset('dist/js/plyr.js')}}"></script>
-
-</head>
-<body>
-      @include('frontend-page.navbar')
+@extends('frontend-page.main')
+@section('content')     
     <section id="home">
         <div class="container">
             <div class="row row-layout">
@@ -32,15 +9,10 @@
                         <div class="col-xs-6 visible-xs">
                             <div class="thumbnail"><img src="{{asset('frontend/images/main-image.png')}}" alt=""></div>
                         </div>
-                        <div class="col-md-12 col-xs-6">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et voluptate nam eaque debitis nobis repellat illo corrupti magni ratione asperiores excepturi quasi vero cumque maxime obcaecati, quia recusandae cupiditate expedita dolore totam veniam voluptatibus quis! Repellat nihil, laudantium ducimus officiis.
-                            </p>  
-                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>TREKLIST</h2>
+                            <h2>@lang('index.left.tracklist')</h2>
                             <ul class="treklist">
                                 @foreach($tracklist as $i => $row)
                                 <li class="treklist-stream @if($row->id == 0) active @endif {{$row->status}}-stream" data-song="GAS!" data-src="{{route('stream.audio',$row->id)}}"> 
@@ -63,22 +35,22 @@
                         <div class="info">
                             <div class="row">
                                 <div class="col-sm-6 col-xs-8">
-                                    <div class="title">Memainkan : <strong id="song-title" >GAS!</strong></div>
+                                    <div class="title">@lang('index.left.playing') : <strong id="song-title" >GAS!</strong></div>
                                 </div>
                                 <div class="col-sm-6 col-xs-4 text-right">
-                                    <a href="#" class="btn btn-danger btn-intip btn-xs">Unduh</a>
+                                    <a href="#" class="btn btn-danger btn-intip btn-xs">@lang('index.left.download')</a>
                                 </div>
                             </div>        
                         </div>
                     </div>
                     <br/><br/><br/>
                     <div class="hidden-xs desktop-footer">
-                        <h2 class="text-white">ALMOST ROCK</h2>
+                        <h2 class="text-white">@lang('footer.left.title')</h2>
                         <div class="hidden-xs">
                         <br/>
                         </div>
                         <small>
-                            Terima kasih telah mengambil keputusan untuk mendukung FSTVLST.
+                            @lang('footer.left.detail')
                         </small>
                     </div>
                 </div>
@@ -88,23 +60,23 @@
                 <div class="col-md-3">
                     <div class="row">
                         <div class="col-md-12 col-xs-6">
-                            <h2>BOKSET</h2>
+                            <h2>@lang('index.right.boxset')</h2>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et voluptate nam eaque debitis nobis repellat illo corrupti magni ratione asperiores excepturi quasi vero cumque maxime obcaecati, quia recusandae cupiditate expedita dolore totam veniam voluptatibus quis! Repellat nihil, laudantium ducimus officiis.
+                               @lang('index.right.description')
                             </p>
                             <br/>        
                         </div>
                         <div class="col-md-12 col-xs-6">
                             <h2 class="nomargin">EDISI 01</h2>
                             <div class="pull-left">
-                                <h2 class="nomargin">PRE-ORDER</h2>
+                                <h2 class="nomargin">@lang('index.right.pre-order')</h2>
                             </div>
                             <div class="pull-right hidden-xs">
                                 @guest('account') 
-                                <a href="/boxset" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">Intip</a>
+                                <a href="/boxset" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.right.peek')</a>
                                 @endguest
                                 @auth('account')
-                                        <a href="/boxset" class="btn btn-danger btn-intip btn-xs">Intip</a>
+                                        <a href="/boxset" class="btn btn-danger btn-intip btn-xs">@lang('index.right.peek')</a>
                                 @endauth 
                                 
                             </div>
@@ -136,12 +108,12 @@
                             <div class="row">
                                 <div class="col-md-12 col-xs-6">
                                     <p>
-                                        PRE-ORDER DIBUKA : 01/05/2019
+                                        @lang('index.right.pre-order') @lang('index.right.opened') : 01/05/2019
                                     </p>  
                                 </div>
                                 <div class="col-md-12 col-xs-6 visible-xs">
                                            
-                                    <a href="/boxst" class="btn btn-danger btn-intip btn-xs">Intip</a>
+                                    <a href="/boxst" class="btn btn-danger btn-intip btn-xs">@lang('index.right.peek')</a>
                                 </div>
                             </div>
                         </div>
@@ -159,13 +131,13 @@
                         <br/>
                         <br/>
                     </div>
-                    <div class="hidden-xs">
-                        <h2 class="text-white">BARELY ART</h2>
+                    <div class="hidden-xs desktop-footer">
+                        <h2 class="text-white">@lang('footer.right.title')</h2>
                     </div>
                     <div class="visible-xs text-center mobilefooter">
-                        <h2 class="text-white nomargin">ALMOST ROCK BARELY ART</h2>
+                        <h2 class="text-white nomargin">@lang('footer.left.title') @lang('footer.right.title')</h2>
                         <small>
-                            Terima kasih telah mengambil keputusan untuk mendukung FSTVLST.
+                            @lang('footer.left.detail')
                         </small>
                     </div>
                 </div>
@@ -224,6 +196,4 @@
         });
     });
 </script>
-    @include('frontend-page.modal')
-</body>
-</html>
+@endsection

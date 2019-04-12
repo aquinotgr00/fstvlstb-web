@@ -14,15 +14,25 @@
 Route::get('/', 'HomeMemberController@index')->name('home');
 
 Route::get('/boxset', 'BoxsetController@index');
+
+Route::get('/change-language/{locale}','ChangeLanguageController@changeLanguage')->name('change.language');
+
 Route::get('/filestream/{id}','FileStreamController@fileStream')->name('stream.audio');
 Route::get('/filestream','FileStreamController@fileStream')->name('stream.audio.single');
+
 Route::get('file/download',[
     'as' => 'files.download', 'uses' => 'FileDownloadController@downloadFile']);
 Route::get('image/download',[
     'as' => 'images.download', 'uses' => 'FileDownloadController@imageDownload']);
-Route::post('/member/login', 'Auth\MemberLoginController@loginMember')->name('member.login');
-Route::post('/member/register', 'Auth\MemberRegisterController@register')->name('member.register');
-Route::get('/member/logout', 'Auth\MemberLoginController@logout')->name('member.logout');
+
+
+Route::prefix('member')->group(function(){
+	Route::post('/login', 'Auth\MemberLoginController@loginMember')->name('member.login');
+	Route::post('/register', 'Auth\MemberRegisterController@register')->name('member.register');
+	Route::get('/logout', 'Auth\MemberLoginController@logout')->name('member.logout');
+	Route::get('/password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('member.password.reset');
+	Route::get('/nif','NifController@index')->name('member.nif');
+});
 
 Route::prefix('admin')->group(function () {
 	Auth::routes();

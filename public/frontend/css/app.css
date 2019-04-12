@@ -40,6 +40,9 @@ a{
 	left:0;
 	right:0;
 }
+.navbar-btn{
+	margin-top: 5px;
+}
 .home-btn{
 	background: none;
 	border:none;
@@ -76,6 +79,39 @@ a{
 	background: #fff;
 	color:#000;
 	padding:50px 0 0;
+}
+#NIF{
+	background: #fff;
+	color:#000;
+	padding:50px 0 0;
+}
+.nifhead{
+	margin-top: 47px !important;
+}
+.thumbnail-nif {
+	margin-bottom: 0;
+}
+.detail{
+	font-size: 14px;
+}
+.isian{
+	font-family: HelveticaNeue;
+	margin-bottom: 15px;
+}
+.head {
+	margin-bottom: 4%;
+}
+.grs{
+	border-right: 1px solid #ccc;
+    height: auto;
+    margin-right: 15px;
+}
+#footer h2{
+	font-family: 'HelveticaNeueBold', sans-serif;
+    font-size: 25px;
+}
+#footer p{
+    margin-top: 3%;
 }
 .row.row-layout{
 	display: flex;
@@ -381,6 +417,9 @@ section h2{
 	background: none;
 	outline: none;
 }
+.laguage{
+	margin-left: 43px;
+}
 @media (max-width: 768px){
 	#home{
 		height: auto;
@@ -404,13 +443,19 @@ section h2{
 		position: absolute;
 	}
 	#navbar .navbar-left{
-		float: left;
+		float: left !important;
 	}
 	#navbar .nav.navbar-nav{
 		float: right;
 	}
 	#navbar .nav.navbar-nav li{
 		float: left;
+	}
+	.grs{
+		border-right: none;
+	}
+	.mrgn{
+		margin-top: 57px;
 	}
 	.modalbox .modal-dialog.modal-lg .modal-content{
 		padding:80px 60px 150px;

@@ -189,7 +189,31 @@
                     <input type="password" name="password" class="form-control">
                 </div>
                 <div class="form-group text-right">
-                    <a href="#">Lupa</a> Kata Sandi
+                    <a href="#" data-toggle="modal" data-target="#modal-reset" data-dismiss="modal">Lupa</a> Kata Sandi
+                </div>
+                <br/>
+                <div class="hidden-xs">
+                    <br/><br/><br/><br/>
+                </div>
+                <div class="form-group">
+                    <img src="{{asset('images/fstvlst.gif')}}"  class="center-block loading" style="display: none;" width="50px" >
+                    <button type="submit" class="btn btn-danger btn-block btn-submit gas" >GAS!</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade modalbox" id="modal-reset">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button class="close" type="button" data-dismiss="modal">&times;</button>
+                <h3 class="text-bold">RESET</h3>
+                <form id="form-reset" action="{{ route('password.email') }}" method="post">
+                    @csrf
+                <div class="form-group">
+                    <label for="">E-mail</label>
+                    <input type="text" id="reset-email" name="email" class="form-control">
+                    <a id="error-reset"></a>
                 </div>
                 <br/>
                 <div class="hidden-xs">
@@ -255,6 +279,23 @@
             </div>
         </div>
     </div>
+    <div class="modal fade modal-error" id="modal-success">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="info">
+                    <h2>SIX SEEK SICK!!</h2>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            Silahkan Cek Email untuk reset password
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <a href="#" class="btn btn-danger" data-dismiss="modal">Baiklah</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
  @if( Request::get('openmodal'))
         <script>
                  $(function(){
@@ -289,6 +330,7 @@ $( "#form-login" ).validate({
   rules: {
     email: {
       required: true
+
     },
     password: {
       required: true
@@ -317,6 +359,49 @@ $( "#form-login" ).validate({
                 console.log(data)
                 break;
                case "Success":
+                $(location).attr("href",data.intended);
+                break;
+              default:
+                console.log(data)
+               
+            }
+           }
+         });
+  }
+});
+
+$( "#form-reset" ).validate({
+  rules: {
+    email: {
+      required: true
+    }
+  },
+  submitHandler: function(form,event) {
+    event.preventDefault(); // avoid to execute the actual submit of the form.
+    $(".loading").show();
+    $(".gas").hide();
+    var form = $("#form-reset");
+    var url = form.attr('action');
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: form.serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+            $(".loading").hide();
+            $(".gas").show();
+            console.log(data)
+            switch(data.status) 
+            {
+              case "Failed":
+                $('#error-reset').html(data.email)
+                break;
+              case "Limit":
+                console.log(data)
+                break;
+               case "Success":
+               $('#modal-reset').modal('hide');
+               $('#modal-success').modal('show');
                 $(location).attr("href",data.intended);
                 break;
               default:
