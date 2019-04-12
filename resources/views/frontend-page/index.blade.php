@@ -38,7 +38,7 @@
                                     <div class="title">@lang('index.left.playing') : <strong id="song-title" >GAS!</strong></div>
                                 </div>
                                 <div class="col-sm-6 col-xs-4 text-right">
-                                    <a href="#" class="btn btn-danger btn-intip btn-xs">@lang('index.left.download')</a>
+                                    <a href="{{route('files.download')}}" class="btn btn-danger btn-intip btn-xs">@lang('index.left.download')</a>
                                 </div>
                             </div>        
                         </div>

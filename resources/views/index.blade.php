@@ -53,7 +53,10 @@
                             <a href="/admin/members">
                                 <i class="fas  fa-users"></i>Members</a>
                         </li>
-                        
+                        <li {{ request()->route()->getName() === 'admin.tracklist.page' ? ' class=active' : '' }}>
+                            <a href="/admin/tracklist">
+                                <i class="fas  fa-users"></i>Tracklist</a>
+                        </li>
                         <li>
                             <a href="map.html">
                                 <i class="fas fa-bar-chart-o"></i>Order</a>

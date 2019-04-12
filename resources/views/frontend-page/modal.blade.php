@@ -59,8 +59,8 @@
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="form-group">
-                            <label for="">Tanggal Lahir</label>
-                            <select id="" name="date" class="form-control">
+                            <label >Tanggal Lahir</label>
+                            <select  name="date" class="form-control">
                                 <option value="01">1</option>
                                 <option value="02">2</option>
                                 <option value="03">3</option>
@@ -97,8 +97,8 @@
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="form-group">
-                            <label for="">Bulan</label>
-                            <select  id="" name="month" class="form-control">
+                            <label >Bulan</label>
+                            <select  name="month" class="form-control">
                                 <option value="01">Januari</option>
                                 <option value="02">Februari</option>
                                 <option value="03">Maret</option>
@@ -116,31 +116,11 @@
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="form-group">
-                            <label for="">Tahun</label>
-                            <select id="" name="year" class="form-control">
-                                <option value="2002">2002</option>]
-                                <option value="2001">2001</option>]
-                                <option value="2000">2000</option>]
-                                <option value="1999">1999</option>]
-                                <option value="1998">1998</option>]
-                                <option value="1997">1997</option>]
-                                <option value="1996">1996</option>]
-                                <option value="1995">1995</option>]
-                                <option value="1994">1994</option>]
-                                <option value="1993">1993</option>]
-                                <option value="1992">1992</option>]
-                                <option value="1991">1991</option>]
-                                <option value="1990">1990</option>]
-                                <option value="1989">1989</option>]
-                                <option value="1988">1988</option>]
-                                <option value="1987">1987</option>]
-                                <option value="1986">1986</option>]
-                                <option value="1985">1985</option>]
-                                <option value="1984">1984</option>]
-                                <option value="1983">1983</option>]
-                                <option value="1982">1982</option>]
-                                <option value="1981">1981</option>]
-                                <option value="1980">1980</option>]
+                            <label >Tahun</label>
+                            <select  name="year" class="form-control">
+                                @for($i = date("Y"); $i >= date( 'Y' ,strtotime ( '-60 year' , date("Y") )) ; $i--)
+                                <option value="{{$i}}">{{$i}}</option>
+                                @endfor
                             </select>
                         </div>
                     </div>

@@ -39,6 +39,8 @@ Route::prefix('admin')->group(function () {
    	Route::get('/', 'HomeController@index')->name('admin.dashboard');
    	Route::get('/members', 'AdminMemberController@index')->name('admin.member.page');
    	Route::get('/members/list', 'AdminMemberController@listData')->name('admin.member.list');
+   	Route::get('/tracklist', 'AdminTracklistController@index')->name('admin.tracklist.page');
+   	Route::get('/tracklist/list', 'AdminTracklistController@listData')->name('admin.tracklist.list');
 
 });
 
