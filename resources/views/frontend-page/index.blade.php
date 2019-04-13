@@ -38,7 +38,14 @@
                                     <div class="title">@lang('index.left.playing') : <strong id="song-title" >GAS!</strong></div>
                                 </div>
                                 <div class="col-sm-6 col-xs-4 text-right">
-                                    <a href="{{route('files.download')}}" class="btn btn-danger btn-intip btn-xs">@lang('index.left.download')</a>
+                                
+                                @guest('account') 
+                                    <a href="#" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.left.download')</a>
+                                @endguest
+                                @auth('account')
+                                        <a href="{{route('files.download')}}" class="btn btn-danger btn-intip btn-xs">@lang('index.left.download')</a>
+                                @endauth
+                                    
                                 </div>
                             </div>        
                         </div>
