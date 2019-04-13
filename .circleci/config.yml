@@ -1,0 +1,21 @@
+version: 2
+
+jobs:
+  deploy:
+    docker:
+      - image: circleci/php:7.1-node-browsers
+    working_directory: ~/laravel 
+    steps:
+      - run:
+          name: SSH and deploy
+          command: ssh -oStrictHostKeyChecking=no ops@3.0.215.64 "cd /home/ops/docker-build/fstvlst-web && sh deploy.sh master"
+
+      
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: master
