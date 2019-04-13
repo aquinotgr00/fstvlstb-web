@@ -40,6 +40,7 @@
                                 <div class="col-sm-6 col-xs-4 text-right">
                                 
                                 @guest('account') 
+                                
                                     <a href="#" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.left.download')</a>
                                 @endguest
                                 @auth('account')
