@@ -9,6 +9,7 @@ class AdminMemberController extends Controller
 {
 
 	protected $members;
+    
     /**
      * Create a new controller instance.
      *
