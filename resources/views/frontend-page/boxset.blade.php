@@ -12,24 +12,24 @@
                     <br/><br/>
                     <ul class="treklist nomargin">
                         <li>
-                            <div class="number">01</div>
-                            <div class="title">Kaos</div>
+                            <div class="number">@lang('index.01')</div>
+                            <div class="title">@lang('index.right.kaos')</div>
                         </li>
                         <li>
-                            <div class="number">02</div>
-                            <div class="title">Buku Karya Seni, Lirik & Kord</div>
+                            <div class="number">@lang('index.02')</div>
+                            <div class="title">@lang('index.right.buku')</div>
                         </li>
                         <li>
-                            <div class="number">03</div>
-                            <div class="title">Kalung Dog Tag Dengan NIF</div>
+                            <div class="number">@lang('index.03')</div>
+                            <div class="title">@lang('index.right.kalung')</div>
                         </li>
                         <li>
-                            <div class="number">04</div>
-                            <div class="title">Emblem & Peniti</div>
+                            <div class="number">@lang('index.04')</div>
+                            <div class="title">@lang('index.right.emblem')</div>
                         </li>
                         <li>
-                            <div class="number">05</div>
-                            <div class="title">Lakban FSTVLST</div>
+                            <div class="number">@lang('index.05')</div>
+                            <div class="title">@lang('index.right.lakban')</div>
                         </li>
                     </ul>
                     <br/>
