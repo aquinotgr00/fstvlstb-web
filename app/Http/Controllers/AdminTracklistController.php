@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tracklist;
 use App\File;
-use Datatables;
+use DataTables;
 
 class AdminTracklistController extends Controller
 {
@@ -38,7 +38,7 @@ class AdminTracklistController extends Controller
 	public function listData(Request $request)
 	{
 	    	$data = $this->tracklist->query();
-	    	return Datatables::eloquent($data)
+	    	return DataTables::eloquent($data)
 					->order(function ($query) {
                         $query->orderBy('id', 'asc');
                 	})

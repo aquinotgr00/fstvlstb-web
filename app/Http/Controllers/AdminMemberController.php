@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Account;
-use Datatables;
+use DataTables;
 class AdminMemberController extends Controller
 {
 
@@ -39,7 +39,7 @@ class AdminMemberController extends Controller
     public function listData(Request $request)
     {
     	$data = $this->members->get();
-    	return Datatables::of($data)
+    	return DataTables::of($data)
     	->editColumn('id', '{!! sprintf("%06d", $id)!!}')
     	->editColumn('created_at', '{!! date("d-m-Y", strtotime($created_at))!!}')
     	->make(true);
