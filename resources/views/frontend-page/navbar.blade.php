@@ -1,7 +1,7 @@
 <div id="navbar">
         <div class="container">
             <ul class="nav navbar-nav hidden-xs">
-                <li>
+                <li class="mr-3">
                     <a class="home-btn navbar-btn" href="/">
                     <i class="span-bar"></i>
                     <i class="span-bar"></i>
@@ -27,23 +27,23 @@
                     <i class="span-bar"></i>
                     <i class="span-bar"></i>
                   </button>
-                  <a class="navbar-brand" href="#">FSTVLST II</a>
+                  <a class="navbar-brand" href="/">FSTVLST II</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="visible-xs">
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bahasa <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@lang('index.local') <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">English</a></li>
-                            <li><a href="#">Arabic</a></li>
-                            <li><a href="#">java</a></li>
+                            <li><a href="{!!Route('change.language','id')!!}">@lang('header.lang.bahasa')</a></li>
+                            <li><a href="{!!Route('change.language','en')!!}">@lang('header.lang.english')</a></li>
+                            <li><a href="{!!Route('change.language','ar')!!}">@lang('header.lang.arab')</a></li>
                         </ul>
                     </li>
                         @guest('account')
-                            <li><a href="#" data-toggle="modal" data-target="#modal-daftar">Pendaftaran</a></li>
-                            <li><a href="#" data-toggle="modal" data-target="#modal-masuk">Masuk</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#modal-daftar">@lang('header.register')</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#modal-masuk">@lang('header.login')</a></li>
                         @endguest
                         @auth('account')
                             <li><a href="{{ Route('member.nif') }}">@lang('header.nif')</a></li>

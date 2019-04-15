@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'local' => 'English',
     'left'=>[
         'heading' => 'FSTVLST II',
         'tracklist' => 'TRACK LIST',
@@ -27,7 +28,17 @@ return [
         'peek' =>'Preview',
         'opened' =>'OPEN',
         'date' => '01/05/2019',
+        'kaos' => 'T-Shirt',
+        'buku' => 'Artwork, Lyric &amp; Chord Book',
+        'kalung' => 'Dog Tag Necklace With NIF',
+        'emblem' => 'Patch &amp; Savety Pin',
+        'lakban' => 'FSTVLST Duct Tape'
     ],
+    '01' => '01',
+    '02' => '02',
+    '03' => '03',
+    '04' => '04',
+    '05' => '05',
     
 
 ];

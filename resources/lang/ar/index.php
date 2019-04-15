@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'local' => 'عراب',
     'left'=>[
         'heading' => 'ف . س . ت . ف . ل . س . ت  ٢',
         'tracklist' => 'دفتار لاڬو:',
@@ -25,7 +26,17 @@ return [
         'peek' =>'إنتيف',
         'opened' =>'دىبوكا',
         'date' => '٢٠١٩/٠٥/٠١',
-    ]
+        'kaos' => 'كاؤس',
+        'buku' => 'بؤكؤ كريا سني دن كاؤس',
+        'kalung' => 'كلؤع دغ تغ دنعان ن.ا .ف',
+        'emblem' => 'عمبلم دن فنىتى',
+        'lakban' => 'لقبن ف.س.ت.ف.ل.س.ت'
+    ],
+    '01' => '٠١',
+    '02' => '٠٢',
+    '03' => '٠٣',
+    '04' => '٠٤',
+    '05' => '٠٥',
     
 
 ];
