@@ -1,15 +1,15 @@
 <div class="modal fade modalbox" id="modal-daftar">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <button class="close" type="button" data-dismiss="modal">&times;</button>
-                <h3 class="text-bold">@lang('modal.register.heading')</h3>
-                <p>
-                    @lang('modal.register.have_account')
-                </p>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <button class="close" type="button" data-dismiss="modal">&times;</button>
+            <h3 class="text-bold">@lang('modal.register.heading')</h3>
+            <p>
+                @lang('modal.register.have_account')
+            </p>
+            <form id="form-register" action="{{Route('member.register')}}" enctype="multipart/form-data" method="post">
+                @csrf
                 <div class="row">
                     <div class="col-xs-8">
-                    <form id="form-register" action="{{Route('member.register')}}" enctype="multipart/form-data" method="post">
-                    @csrf
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.name')</label>
                             <input type="text" name="name" class="form-control">
@@ -32,11 +32,13 @@
                             <label for="">@lang('modal.register.columns.photo')</label>
                             <div class="thumbnail thumbnail-photo">
                                 <img id="thumbnail-upload" src="{{ asset('frontend/images/photo.png')}}" alt="">
-                                <button class="btn btn-plus" type="button" onclick="chooseFile();"><i class="fa fa-plus"></i></button>
+                                <button class="btn btn-plus" type="button" onclick="chooseFile();"><i
+                                        class="fa fa-plus"></i></button>
                                 <div style="height:0px;overflow:hidden">
-                                   <input type="file" id="fileInput" name="image" />
+                                    <input type="file" id="fileInput" name="image" />
                                 </div>
                             </div>
+                            <p id="error-image-required"></p>
                         </div>
                     </div>
                 </div>
@@ -56,12 +58,12 @@
                                 </label>
                             </div>
                         </div>
-                        <p id="error-image-required"></p>
+
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="form-group">
-                            <label >@lang('modal.register.columns.born_date')</label>
-                            <select  name="date" class="form-control">
+                            <label>@lang('modal.register.columns.born_date')</label>
+                            <select name="date" class="form-control">
                                 <option value="01">1</option>
                                 <option value="02">2</option>
                                 <option value="03">3</option>
@@ -98,8 +100,8 @@
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="form-group">
-                            <label >@lang('modal.register.columns.month')</label>
-                            <select  name="month" class="form-control">
+                            <label>@lang('modal.register.columns.month')</label>
+                            <select name="month" class="form-control">
                                 <option value="01">Januari</option>
                                 <option value="02">Februari</option>
                                 <option value="03">Maret</option>
@@ -117,8 +119,8 @@
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="form-group">
-                            <label >@lang('modal.register.columns.year')</label>
-                            <select  name="year" class="form-control">
+                            <label>@lang('modal.register.columns.year')</label>
+                            <select name="year" class="form-control">
                                 @for($i = date("Y"); $i >= date( 'Y' ,strtotime ( '-60 year' , date("Y") )) ; $i--)
                                 <option value="{{$i}}">{{$i}}</option>
                                 @endfor
@@ -130,7 +132,7 @@
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.password')</label>
-                            <input type="password" name="password"  class="form-control">
+                            <input type="password" name="password" class="form-control">
                         </div>
                     </div>
                     <div class="col-xs-6">
@@ -140,27 +142,29 @@
                         </div>
                     </div>
                 </div>
-                <br/>
+                <br />
                 <div class="form-group">
-                    <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;" width="50px" >
-                    <button  type="submit" class="btn btn-danger btn-block btn-submit gas">@lang('modal.register.columns.gas')</button>
+                    <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;"
+                        width="50px">
+                    <button type="submit"
+                        class="btn btn-danger btn-block btn-submit gas">@lang('modal.register.columns.gas')</button>
                 </div>
-            </div>
-            </form>
         </div>
+        </form>
     </div>
 </div>
+</div>
 
-    <div class="modal fade modalbox" id="modal-masuk">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <button class="close" type="button" data-dismiss="modal">&times;</button>
-                <h3 class="text-bold">@lang('modal.login.heading')</h3>
-                <p>
-                    @lang('modal.login.need_account')
-                </p>
-                <form id="form-login" action="{{Route('member.login')}}" method="post">
-                    @csrf
+<div class="modal fade modalbox" id="modal-masuk">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button class="close" type="button" data-dismiss="modal">&times;</button>
+            <h3 class="text-bold">@lang('modal.login.heading')</h3>
+            <p>
+                @lang('modal.login.need_account')
+            </p>
+            <form id="form-login" action="{{Route('member.login')}}" method="post">
+                @csrf
                 <div class="form-group">
                     <label for="">@lang('modal.login.columns.email')</label>
                     <input type="text" id="login-email" name="email" class="form-control">
@@ -178,8 +182,10 @@
                     <br /><br /><br /><br />
                 </div>
                 <div class="form-group">
-                    <img src="{{asset('images/fstvlst.gif')}}"  class="center-block loading" style="display: none;" width="50px" >
-                    <button type="submit" class="btn btn-danger btn-block btn-submit gas" >@lang('modal.login.columns.gas')</button>
+                    <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;"
+                        width="50px">
+                    <button type="submit"
+                        class="btn btn-danger btn-block btn-submit gas">@lang('modal.login.columns.gas')</button>
                 </div>
             </form>
         </div>
@@ -191,24 +197,26 @@
                 <h3 class="text-bold">@lang('modal.reset.heading')</h3>
                 <form id="form-reset" action="{{ route('password.email') }}" method="post">
                     @csrf
-                <div class="form-group">
-                    <label for="">@lang('modal.reset.columns.email')</label>
-                    <input type="text" id="reset-email" name="email" class="form-control">
-                    <a id="error-reset"></a>
-                </div>
-                <br />
-                <div class="hidden-xs">
-                    <br /><br /><br /><br />
-                </div>
-                <div class="form-group">
-                    <img src="{{asset('images/fstvlst.gif')}}"  class="center-block loading" style="display: none;" width="50px" >
-                    <button type="submit" class="btn btn-danger btn-block btn-submit gas" >@lang('modal.reset.columns.gas')</button>
-                </div>
-            </form>
+                    <div class="form-group">
+                        <label for="">@lang('modal.reset.columns.email')</label>
+                        <input type="text" id="reset-email" name="email" class="form-control">
+                        <a id="error-reset"></a>
+                    </div>
+                    <br />
+                    <div class="hidden-xs">
+                        <br /><br /><br /><br />
+                    </div>
+                    <div class="form-group">
+                        <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;"
+                            width="50px">
+                        <button type="submit"
+                            class="btn btn-danger btn-block btn-submit gas">@lang('modal.reset.columns.gas')</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-@auth('account')
+    @auth('account')
     <div class="modal fade modalbox" id="modal-sukses">
         <div class="modal-dialog">
             <div class="modal-content text-center">
@@ -217,7 +225,8 @@
                 <p>
                     @lang('modal.succeed.top_detail')
                 </p>
-                <h1 class="text-danger nomargin text-bold">{!! sprintf("%06d", Auth::guard('account')->user()->id)!!}</h1>
+                <h1 class="text-danger nomargin text-bold">{!! sprintf("%06d", Auth::guard('account')->user()->id)!!}
+                </h1>
                 <p>
                     @lang('modal.succeed.bot_detail')
                 </p>
@@ -332,7 +341,7 @@
             }
         },
         errorPlacement: function (error, element) {
-            $(element).attr('id','input-required');
+            $(element).attr('id', 'input-required');
         },
         submitHandler: function (form, event) {
             event.preventDefault(); // avoid to execute the actual submit of the form.
@@ -378,7 +387,7 @@
             }
         },
         errorPlacement: function (error, element) {
-            $(element).attr('id','input-required');
+            $(element).attr('id', 'input-required');
         },
         submitHandler: function (form, event) {
             event.preventDefault(); // avoid to execute the actual submit of the form.
@@ -470,11 +479,11 @@
             }
         },
         errorPlacement: function (error, element) {
-            
-            if( element.attr("name") == 'image'){
+
+            if (element.attr("name") == 'image') {
                 $('#error-image-required').text('Foto Wajib diisi (*.jpeg / *.jpg / *.png)');
-            }else{
-                $(element).attr('id','input-required');
+            } else {
+                $(element).attr('id', 'input-required');
             }
         },
         submitHandler: function (form, event) {
