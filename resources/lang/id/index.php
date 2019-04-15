@@ -18,9 +18,9 @@ return [
         'download' => 'Unduh',
     ],
     'right'=>[
-        'boxset'=>'KOTAK SEPAKET',
-        'description'=>'Album ini dipasarkan dalam beberapa edisi KOTAK SEPAKET berisi serba aneka cenderamata yang
-                        dapat kamu miliki sepaket atau pilih eceran. Memiliki KOTAK SEPAKET album FSTVLST II bukan hanya
+        'boxset'=>'BOKSET',
+        'description'=>'Album ini dipasarkan dalam beberapa edisi BOKSET berisi serba aneka cenderamata yang
+                        dapat kamu miliki sepaket atau pilih eceran. Memiliki BOKSET album FSTVLST II bukan hanya
                         berarti kamu telah mendukung kami, tapi juga mempercayakan sepotong kecil dari cita-cita besarmu
                         pada kami.',
         'pre-order'=>'PRA PESAN',
