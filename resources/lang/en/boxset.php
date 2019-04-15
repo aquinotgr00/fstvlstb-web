@@ -13,11 +13,11 @@ return [
     |
     */
     'peek'=>'INTIP',
-    'boxset'=>'BOKSET',
+    'boxset'=>'KOTAK SEPAKET',
     'pre-order'=>'PRA PESAN',
     'opened'=>'DIBUKA',
-    'description'=>'Album ini dipasarkan dalam beberapa edisi BOKSET berisi serba aneka cendera mata yang
-                    dapat kamu miliki sepaket atau pilih eceran. Memiliki BOKSET album FSTVLST II bukan hanya
+    'description'=>'Album ini dipasarkan dalam beberapa edisi KOTAK SEPAKET berisi serba aneka cendera mata yang
+                    dapat kamu miliki sepaket atau pilih eceran. Memiliki KOTAK SEPAKET album FSTVLST II bukan hanya
                     berarti kamu telah mendukung kami, tapi juga mempercayakan sepotong kecil dari cita-cita besarmu
                     pada kami.',
     'edition'=>'EDISI'

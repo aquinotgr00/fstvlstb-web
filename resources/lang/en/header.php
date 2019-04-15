@@ -12,13 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'left'=>[
-        'title' => 'HAMPIR ROCK',
-        'detail'=>'Terimakasih telah mengambil keputusan untuk mendukung FSTVLST'
-    ],
-    'right'=>[
-        'title'=>'NYARIS SENI'
-    ]
-    
+
+    'nif' => 'NIF',
+    'register' => 'Sign Up',
+    'login' => 'Sign In',
+    'logout' => 'Sign Out',
 
 ];
