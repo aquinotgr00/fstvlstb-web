@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row row-layout">
                 <div class="col-md-3">
-                    <h2>FSTVLST II</h2>
+                    <h2>@lang('index.left.heading')</h2>
                     <div class="row">
                         <div class="col-xs-6 visible-xs">
                             <div class="thumbnail"><img src="{{asset('frontend/images/main-image.png')}}" alt=""></div>
@@ -15,13 +15,13 @@
                             <h2>@lang('index.left.tracklist')</h2>
                             <ul class="treklist">
                                 @foreach($tracklist as $i => $row)
-                                <li class="treklist-stream @if($row->id == 0) active @endif {{$row->status}}-stream" data-song="GAS!" data-src="{{route('stream.audio',$row->id)}}"> 
+                                <li class="treklist-stream @if(in_array($i, array(4,5,6,7,8))) inactive-stream @endif @if($row->id == 0) active @endif {{$row->status}}-stream" data-song="GAS!" data-src="{{route('stream.audio',$row->id)}}"> 
                                     <div class="icon"><i class="fa fa-play"></i></div>
                                     <div class="number">{!! sprintf("%02d",$i+1) !!}</div>
                                     <div class="title">{{$row->name}}</div>
                                     <div class="date">{{$row->release_date}}</div>
                                 </li>
-                                @if(in_array($i, array(0,3,5)))
+                                @if(in_array($i, array(0,3,6)))
                                 <li class="divider"></li>
                                 @endif
                                 @endforeach
@@ -39,12 +39,11 @@
                                 </div>
                                 <div class="col-sm-6 col-xs-4 text-right">
                                 
-                                @guest('account') 
-                                
+                                @guest('account')
                                     <a href="#" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.left.download')</a>
                                 @endguest
                                 @auth('account')
-                                        <a href="{{route('files.download')}}" class="btn btn-danger btn-intip btn-xs">@lang('index.left.download')</a>
+                                    <a href="{{route('files.download')}}" class="btn btn-danger btn-intip btn-xs">@lang('index.left.download')</a>
                                 @endauth
                                     
                                 </div>
@@ -75,16 +74,16 @@
                             <br/>        
                         </div>
                         <div class="col-md-12 col-xs-6">
-                            <h2 class="nomargin">EDISI 01</h2>
-                            <div class="pull-left">
-                                <h2 class="nomargin">@lang('index.right.pre-order')</h2>
-                            </div>
+                            <h2 class="nomargin">@lang('index.right.pre-order')</h2>
+                            <h2 class="nomargin">@lang('boxset.boxset')</h2>
+                            <h2 class="nomargin">@lang('index.left.heading')</h2>
+                            <h2 class="nomargin">{{__('messages.index.right.edition', ['number' => '01'])}}</h2>
                             <div class="pull-right hidden-xs">
                                 @guest('account') 
-                                <a href="/boxset" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.right.peek')</a>
+                                    <a href="/boxset" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.right.peek')</a>
                                 @endguest
                                 @auth('account')
-                                        <a href="/boxset" class="btn btn-danger btn-intip btn-xs">@lang('index.right.peek')</a>
+                                    <a href="/boxset" class="btn btn-danger btn-intip btn-xs">@lang('index.right.peek')</a>
                                 @endauth 
                                 
                             </div>
@@ -93,7 +92,7 @@
                             <ul class="treklist nomargin">
                                 <li>
                                     <div class="number">01</div>
-                                    <div class="title">CD FSTVLST II</div>
+                                    <div class="title">Kaos</div>
                                 </li>
                                 <li>
                                     <div class="number">02</div>
@@ -101,22 +100,22 @@
                                 </li>
                                 <li>
                                     <div class="number">03</div>
-                                    <div class="title">Kaos</div>
+                                    <div class="title">Kalung Dog Tag Dengan NIF</div>
                                 </li>
                                 <li>
                                     <div class="number">04</div>
-                                    <div class="title">Dog Tag dengan NIF</div>
+                                    <div class="title">Emblem & Peniti</div>
                                 </li>
                                 <li>
                                     <div class="number">05</div>
-                                    <div class="title">Stiker/ Emblem</div>
+                                    <div class="title">Lakban FSTVLST</div>
                                 </li>
                             </ul>
                             <br/>
                             <div class="row">
                                 <div class="col-md-12 col-xs-6">
                                     <p>
-                                        @lang('index.right.pre-order') @lang('index.right.opened') : 01/05/2019
+                                        @lang('index.right.pre-order') BOKSET <br /> @lang('index.right.opened') : 01/05/2019
                                     </p>  
                                 </div>
                                 <div class="col-md-12 col-xs-6 visible-xs">

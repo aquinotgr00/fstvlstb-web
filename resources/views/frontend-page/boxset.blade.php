@@ -7,12 +7,13 @@
                     <h2 class="text-warning">@lang('boxset.peek')</h2>
                     <br/>
                     <h2 class="nomargin">@lang('boxset.boxset')</h2>
-                    <h2 class="nomargin">@lang('boxset.edition') 01</h2>
+                    <h2 class="nomargin">@lang('index.left.heading')</h2>
+                    <h2 class="nomargin">{{__('messages.index.right.edition', ['number' => '01'])}}</h2>
                     <br/><br/>
                     <ul class="treklist nomargin">
                         <li>
                             <div class="number">01</div>
-                            <div class="title">CD FSTVLST II</div>
+                            <div class="title">Kaos</div>
                         </li>
                         <li>
                             <div class="number">02</div>
@@ -20,21 +21,21 @@
                         </li>
                         <li>
                             <div class="number">03</div>
-                            <div class="title">Kaos</div>
+                            <div class="title">Kalung Dog Tag Dengan NIF</div>
                         </li>
                         <li>
                             <div class="number">04</div>
-                            <div class="title">Dog Tag dengan NIF</div>
+                            <div class="title">Emblem & Peniti</div>
                         </li>
                         <li>
                             <div class="number">05</div>
-                            <div class="title">Stiker/ Emblem</div>
+                            <div class="title">Lakban FSTVLST</div>
                         </li>
                     </ul>
                     <br/>
                     <div class="hidden-xs">
                         <h2>
-                            @lang('boxset.pre-order') @lang('boxset.opened') 01/05/2019
+                            @lang('boxset.open_pre_order') 01/05/2019
                         </h2>
                         <br/><br/>
                         <br/><br/>

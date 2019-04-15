@@ -32,6 +32,7 @@ Route::prefix('member')->group(function(){
 	Route::get('/logout', 'Auth\MemberLoginController@logout')->name('member.logout');
 	Route::get('/password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('member.password.reset');
 	Route::get('/nif','NifController@index')->name('member.nif');
+	Route::post('/ganti-password','NifController@gantiPassword')->name('member.ganti-password');
 });
 
 Route::prefix('admin')->group(function () {

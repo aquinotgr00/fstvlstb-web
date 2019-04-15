@@ -13,6 +13,7 @@ return [
     |
     */
     'left'=>[
+        'heading' => 'FSTVLST II',
         'tracklist' => 'DAFTAR LAGU',
         'playing' => 'Memainkan',
         'download' => 'Unduh',
@@ -23,7 +24,7 @@ return [
                         dapat kamu miliki sepaket atau pilih eceran. Memiliki BOKSET album FSTVLST II bukan hanya
                         berarti kamu telah mendukung kami, tapi juga mempercayakan sepotong kecil dari cita-cita besarmu
                         pada kami.',
-        'pre-order'=>'PRA PESAN',
+        'pre-order'=>'PRA-PESAN',
         'peek' =>'Intip',
         'opened' =>'DIBUKA'
     ]
