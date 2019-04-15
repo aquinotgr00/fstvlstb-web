@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row row-layout">
                 <div class="col-md-3">
-                    <h2>FSTVLST II</h2>
+                    <h2 class="hidden-xs">FSTVLST II</h2>
                     <div class="row">
                         <div class="col-xs-6 visible-xs">
                             <div class="thumbnail"><img src="{{asset('frontend/images/main-image.png')}}" alt=""></div>

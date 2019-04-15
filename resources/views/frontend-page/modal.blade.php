@@ -12,19 +12,19 @@
                     @csrf
                         <div class="form-group">
                             <label for="">Nama Lengkap</label>
-                            <input type="text" name="name" class="form-control">
+                            <input type="text" name="name" class="form-control" placeholder="Roby Arifin">
                         </div>
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input type="email" name="email" class="form-control">
+                            <input type="email" name="email" class="form-control" placeholder="robyyoibanget@email.com">
                         </div>
                         <div class="form-group">
                             <label for="">No Telp</label>
-                            <input type="text" name="phone" class="form-control">
+                            <input type="text" name="phone" class="form-control" placeholder="081377788899">
                         </div>
                         <div class="form-group">
                             <label for="">Alamat Lengkap Banget</label>
-                            <input type="text" name="address" class="form-control">
+                            <input type="text" name="address" class="form-control" placeholder="Jl. Manuk No. 65, Playen, GK, Yogyakarta, 55861">
                         </div>
                     </div>
                     <div class="col-xs-4">
@@ -129,13 +129,13 @@
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label for="">Kata Sandi</label>
-                            <input type="password" name="password"  class="form-control">
+                            <input type="password" name="password"  class="form-control" placeholder="Danish1234">
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label for="">Pastikan Lagi Kata Sandi</label>
-                            <input type="password" name="password_confirmation" class="form-control">
+                            <input type="password" name="password_confirmation" class="form-control" placeholder="Danish1234">
                         </div>
                     </div>
                 </div>
@@ -161,12 +161,12 @@
                     @csrf
                 <div class="form-group">
                     <label for="">NIF/ E-mail</label>
-                    <input type="text" id="login-email" name="email" class="form-control">
+                    <input type="text" id="login-email" name="email" class="form-control" placeholder="004565">
                     <a id="error-login"></a>
                 </div>
                 <div class="form-group">
                     <label for="">Kata Sandi</label>
-                    <input type="password" name="password" class="form-control">
+                    <input type="password" name="password" class="form-control" placeholder="*********">
                 </div>
                 <div class="form-group text-right">
                     <a href="#" data-toggle="modal" data-target="#modal-reset" data-dismiss="modal">Lupa</a> Kata Sandi
