@@ -16,7 +16,7 @@ return [
             'year' => 'تهون',
             'password' => 'كاتا ساندي',
             're_password' => 'فاستيكان لاكي كاتا ساندي',
-            'gas' => 'GAS!'
+            'gas' => ' ڬاس!'
         ],
     ],
     'login' => [
@@ -26,14 +26,14 @@ return [
             'email' => 'NIF/E-mail',
             'password' => 'Kata Sandi',
             'forgot_password' => '<a href="#" data-toggle="modal" data-target="#modal-reset" data-dismiss="modal">Lupa</a> Kata Sandi',
-            'gas' => 'GAS!'
+            'gas' => ' ڬاس!'
         ],
     ],
     'reset' => [
         'heading' => 'RESET',
         'columns' => [
             'email' => 'Email',
-            'gas' => 'GAS!',
+            'gas' => 'ڬاس!',
         ],
     ],
     'succeed' => [
