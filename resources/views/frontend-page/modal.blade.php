@@ -190,6 +190,7 @@
             </form>
         </div>
     </div>
+    </div>
     <div class="modal fade modalbox" id="modal-reset">
         <div class="modal-dialog">
             <div class="modal-content">
