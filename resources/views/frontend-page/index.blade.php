@@ -15,7 +15,7 @@
                             <h2>@lang('index.left.tracklist')</h2>
                             <ul class="treklist">
                                 @foreach($tracklist as $i => $row)
-                                <li class="treklist-stream @if(in_array($i, array(4,5,6,7,8))) inactive-stream @endif @if($row->id == 0) active @endif {{$row->status}}-stream" data-song="GAS!" data-src="{{route('stream.audio',$row->id)}}"> 
+                                <li class="treklist-stream @if(in_array($i, array(4,5,6,7,8))) inactive-stream @endif @if($row->id == 0) active @endif {{$row->status}}-stream" data-song="GAS!" data-file="{!!route('files.download',$row->id)!!}" data-src="{{route('stream.audio',$row->id)}}"> 
                                     <div class="icon"><i class="fa fa-play"></i></div>
                                     <div class="number">{!! sprintf("%02d",$i+1) !!}</div>
                                     <div class="title">{{$row->name}}</div>
@@ -43,7 +43,7 @@
                                     <a href="#" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.left.download')</a>
                                 @endguest
                                 @auth('account')
-                                    <a href="{{route('files.download')}}" class="btn btn-danger btn-intip btn-xs">@lang('index.left.download')</a>
+                                    <a href="{{route('files.download')}}" id="file-download"class="btn btn-danger btn-intip btn-xs">@lang('index.left.download')</a>
                                 @endauth
                                     
                                 </div>
@@ -184,11 +184,13 @@
         $( ".treklist-stream" ).on( "click", function() {
             var source = $( this ).data('src');
             var song = $( this ).data('song');
+            var file = $( this ).data('file');
             if(song !=='' || source !=''){
                 $( ".treklist-stream" ).removeClass( "active" )
                 $(this).addClass("active")
                 player.stop()
                 $('#song-title').html(song)  
+                $('#file-download').attr("href", file);
                 $("#player-stream").attr("src", source);
                 $("#player").attr("src","{!!route('stream.audio.single')!!}");
                 player.source = {

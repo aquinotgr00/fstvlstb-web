@@ -15,8 +15,13 @@ class FileDownloadController extends Controller
     	$this->file = $files;
     }
 
-    public function downloadFile(){
-	   $file = $this->file->find(1);
+    public function downloadFile(Request $request){
+	   
+	   if(empty($request->id)){
+	   	$file = $this->file->first();
+	   }else{
+	   	$file = $this->file->where('tracklist_id',$request->id)->first();
+	   }
 	   $this->counterDownload($file);
 	   
 	   $path = \Storage::disk('s3')->get($file->contents);
