@@ -15,7 +15,7 @@
                             <h2>@lang('index.left.tracklist')</h2>
                             <ul class="treklist">
                                 @foreach($tracklist as $i => $row)
-                                <li class="treklist-stream @if($row->id == 0) active @endif {{$row->status}}-stream" data-song="GAS!" data-src="{{route('stream.audio',$row->id)}}"> 
+                                <li class="treklist-stream @if(in_array($i, array(4,5,6,7,8))) inactive-stream @endif @if($row->id == 0) active @endif {{$row->status}}-stream" data-song="GAS!" data-src="{{route('stream.audio',$row->id)}}"> 
                                     <div class="icon"><i class="fa fa-play"></i></div>
                                     <div class="number">{!! sprintf("%02d",$i+1) !!}</div>
                                     <div class="title">{{$row->name}}</div>
@@ -74,10 +74,10 @@
                             <br/>        
                         </div>
                         <div class="col-md-12 col-xs-6">
+                            <h2 class="nomargin">@lang('index.right.pre-order')</h2>
+                            <h2 class="nomargin">@lang('boxset.boxset')</h2>
+                            <h2 class="nomargin">@lang('index.left.heading')</h2>
                             <h2 class="nomargin">{{__('messages.index.right.edition', ['number' => '01'])}}</h2>
-                            <div class="pull-left">
-                                <h2 class="nomargin">@lang('index.right.pre-order')</h2>
-                            </div>
                             <div class="pull-right hidden-xs">
                                 @guest('account') 
                                     <a href="/boxset" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.right.peek')</a>
@@ -92,7 +92,7 @@
                             <ul class="treklist nomargin">
                                 <li>
                                     <div class="number">01</div>
-                                    <div class="title">CD FSTVLST II</div>
+                                    <div class="title">Kaos</div>
                                 </li>
                                 <li>
                                     <div class="number">02</div>
@@ -100,22 +100,22 @@
                                 </li>
                                 <li>
                                     <div class="number">03</div>
-                                    <div class="title">Kaos</div>
+                                    <div class="title">Kalung Dog Tag Dengan NIF</div>
                                 </li>
                                 <li>
                                     <div class="number">04</div>
-                                    <div class="title">Dog Tag dengan NIF</div>
+                                    <div class="title">Emblem & Peniti</div>
                                 </li>
                                 <li>
                                     <div class="number">05</div>
-                                    <div class="title">Stiker/ Emblem</div>
+                                    <div class="title">Lakban FSTVLST</div>
                                 </li>
                             </ul>
                             <br/>
                             <div class="row">
                                 <div class="col-md-12 col-xs-6">
                                     <p>
-                                        @lang('index.right.pre-order') @lang('index.right.opened') : 01/05/2019
+                                        @lang('index.right.pre-order') BOKSET <br /> @lang('index.right.opened') : 01/05/2019
                                     </p>  
                                 </div>
                                 <div class="col-md-12 col-xs-6 visible-xs">
