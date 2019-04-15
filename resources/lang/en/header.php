@@ -18,4 +18,10 @@ return [
     'login' => 'Sign In',
     'logout' => 'Sign Out',
 
+    'lang' => [
+        'bahasa' => 'Bahasa',
+        'english' => 'English',
+        'arab' => 'Arab',
+    ],
+
 ];

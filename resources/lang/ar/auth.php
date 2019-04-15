@@ -13,15 +13,7 @@ return [
     |
     */
 
-    'nif' => 'NIF',
-    'register' => 'Pendaftaran',
-    'login' => 'Masuk',
-    'logout' => 'Keluar',
-
-    'lang' => [
-        'bahasa' => 'Bahasa',
-        'english' => 'English',
-        'arab' => 'Arab',
-    ],
+    'failed' => 'These credentials do not match our records.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

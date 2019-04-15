@@ -190,6 +190,7 @@
             </form>
         </div>
     </div>
+    </div>
     <div class="modal fade modalbox" id="modal-reset">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -497,7 +498,6 @@
             var form = $("#form-register");
             var url = form.attr('action');
             var fd = new FormData(form[0]);
-
             $.ajax({
                 type: "POST",
                 url: url,

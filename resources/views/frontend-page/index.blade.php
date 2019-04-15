@@ -77,7 +77,7 @@
                             <h2 class="nomargin">@lang('index.right.pre-order')</h2>
                             <h2 class="nomargin">@lang('boxset.boxset')</h2>
                             <h2 class="nomargin">@lang('index.left.heading')</h2>
-                            <h2 class="nomargin">{{__('messages.index.right.edition', ['number' => '01'])}}</h2>
+                            <h2 class="nomargin">@lang('boxset.edition')</h2>
                             <div class="pull-right hidden-xs">
                                 @guest('account') 
                                     <a href="/boxset" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.right.peek')</a>
@@ -115,7 +115,7 @@
                             <div class="row">
                                 <div class="col-md-12 col-xs-6">
                                     <p>
-                                        @lang('index.right.pre-order') BOKSET <br /> @lang('index.right.opened') : 01/05/2019
+                                        @lang('index.right.pre-order') @lang('boxset.boxset') <br /> @lang('index.right.opened') : @lang('index.right.date')
                                     </p>  
                                 </div>
                                 <div class="col-md-12 col-xs-6 visible-xs">

@@ -8,7 +8,7 @@
                     <br/>
                     <h2 class="nomargin">@lang('boxset.boxset')</h2>
                     <h2 class="nomargin">@lang('index.left.heading')</h2>
-                    <h2 class="nomargin">{{__('messages.index.right.edition', ['number' => '01'])}}</h2>
+                    <h2 class="nomargin">@lang('boxset.edition')</h2>
                     <br/><br/>
                     <ul class="treklist nomargin">
                         <li>
@@ -35,7 +35,7 @@
                     <br/>
                     <div class="hidden-xs">
                         <h2>
-                            @lang('boxset.open_pre_order') 01/05/2019
+                            @lang('boxset.open_pre_order') @lang('index.right.date')
                         </h2>
                         <br/><br/>
                         <br/><br/>

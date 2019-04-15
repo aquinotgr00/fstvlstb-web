@@ -13,15 +13,15 @@ return [
     |
     */
 
-    'nif' => 'NIF',
-    'register' => 'Pendaftaran',
-    'login' => 'Masuk',
-    'logout' => 'Keluar',
+    'nif' => 'ن . إ . ف',
+    'register' => 'فندافتاران',
+    'login' => 'ماسوك',
+    'logout' => 'كلوار',
 
     'lang' => [
-        'bahasa' => 'Bahasa',
-        'english' => 'English',
-        'arab' => 'Arab',
+        'bahasa' => 'باهاسا',
+        'english' => 'إڠڬريس',
+        'arab' => 'عراب',
     ],
 
 ];
