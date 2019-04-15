@@ -10,7 +10,8 @@
     <!-- CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}"> -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/reset-pass.css') }}">
 
 
     <!-- JS -->
@@ -25,23 +26,50 @@
                     <h2>ATUR ULANG</h2>
                     <h2 class="nomargin">KATA SANDI</h2>
                 </div>
-                <div class="form-group">
-                    <label for="">E-mail</label>
-                    <input type="text" class="form-control" placeholder="robyyoibanget@email.com">
-                </div>
-                <div class="form-group">
-                    <label for="">Kata Sandi Baru</label>
-                    <input type="text" class="form-control" placeholder="******">
-                </div>
-                <div class="form-group">
-                    <label for="">Ketik Ulang Kata Sandi Baru</label>
-                    <input type="text" class="form-control" placeholder="******">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-danger btn-block btn-submit" data-toggle="modal" data-target="#modal-sukses" data-dismiss="modal">UBAH KATA SANDI!</button>
-                    
-                </div>
                 
+                <form method="POST" action="{{ route('password.update') }}">
+                    @csrf
+
+                    <input type="hidden" name="token" value="{{ $token }}">
+
+                    <div class="form-group">
+                        <label for="email" class="col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <input placeholder="robyyoibanget@email.com" id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" required autofocus>
+
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
+
+                        
+                            <input placeholder="******" id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                            @if ($errors->has('password'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password-confirm" class="col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                        
+                            <input placeholder="******" id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                    </div>
+
+                    <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-danger">
+                                {{ __('Reset Password') }}
+                            </button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </section>

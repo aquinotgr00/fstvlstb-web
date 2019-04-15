@@ -1,7 +1,7 @@
 <div id="navbar">
         <div class="container">
             <ul class="nav navbar-nav hidden-xs">
-                <li>
+                <li class="mr-3">
                     <a class="home-btn navbar-btn" href="/">
                     <i class="span-bar"></i>
                     <i class="span-bar"></i>

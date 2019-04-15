@@ -17,7 +17,7 @@
                         </li>
                         <li>
                             <div class="number">02</div>
-                            <div class="title">Buku Lirik & Kord</div>
+                            <div class="title">Buku Karya Seni, Lirik & Kord</div>
                         </li>
                         <li>
                             <div class="number">03</div>
