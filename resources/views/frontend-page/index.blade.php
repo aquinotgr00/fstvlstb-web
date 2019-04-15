@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row row-layout">
                 <div class="col-md-3">
-                    <h2 class="hidden-xs">FSTVLST II</h2>
+                    <h2>@lang('index.left.heading')</h2>
                     <div class="row">
                         <div class="col-xs-6 visible-xs">
                             <div class="thumbnail"><img src="{{asset('frontend/images/main-image.png')}}" alt=""></div>
@@ -21,7 +21,7 @@
                                     <div class="title">{{$row->name}}</div>
                                     <div class="date">{{$row->release_date}}</div>
                                 </li>
-                                @if(in_array($i, array(0,3,5)))
+                                @if(in_array($i, array(0,3,6)))
                                 <li class="divider"></li>
                                 @endif
                                 @endforeach
@@ -39,12 +39,11 @@
                                 </div>
                                 <div class="col-sm-6 col-xs-4 text-right">
                                 
-                                @guest('account') 
-                                
+                                @guest('account')
                                     <a href="#" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.left.download')</a>
                                 @endguest
                                 @auth('account')
-                                        <a href="{{route('files.download')}}" class="btn btn-danger btn-intip btn-xs">@lang('index.left.download')</a>
+                                    <a href="{{route('files.download')}}" class="btn btn-danger btn-intip btn-xs">@lang('index.left.download')</a>
                                 @endauth
                                     
                                 </div>
@@ -75,16 +74,16 @@
                             <br/>        
                         </div>
                         <div class="col-md-12 col-xs-6">
-                            <h2 class="nomargin">EDISI 01</h2>
+                            <h2 class="nomargin">{{__('messages.index.right.edition', ['number' => '01'])}}</h2>
                             <div class="pull-left">
                                 <h2 class="nomargin">@lang('index.right.pre-order')</h2>
                             </div>
                             <div class="pull-right hidden-xs">
                                 @guest('account') 
-                                <a href="/boxset" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.right.peek')</a>
+                                    <a href="/boxset" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.right.peek')</a>
                                 @endguest
                                 @auth('account')
-                                        <a href="/boxset" class="btn btn-danger btn-intip btn-xs">@lang('index.right.peek')</a>
+                                    <a href="/boxset" class="btn btn-danger btn-intip btn-xs">@lang('index.right.peek')</a>
                                 @endauth 
                                 
                             </div>

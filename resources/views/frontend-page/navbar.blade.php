@@ -2,7 +2,7 @@
         <div class="container">
             <ul class="nav navbar-nav hidden-xs">
                 <li>
-                    <a class="home-btn navbar-btn" href="index.html">
+                    <a class="home-btn navbar-btn" href="/">
                     <i class="span-bar"></i>
                     <i class="span-bar"></i>
                     </a>
@@ -13,12 +13,12 @@
             </ul> 
             <ul class="nav navbar-nav navbar-right hidden-xs">
                 @guest('account')
-                <li><a href="#" data-toggle="modal" data-target="#modal-daftar">Pendaftaran</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#modal-masuk">Masuk</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#modal-daftar">@lang('header.register')</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#modal-masuk">@lang('header.login')</a></li>
                 @endguest
                 @auth('account')
                     <li><a href="{{ Route('member.nif') }}">NIF</a></li>
-                    <li><a href="{{ Route('member.logout') }}">Keluar</a></li>
+                    <li><a href="{{ Route('member.logout') }}">@lang('header.logout')</a></li>
                 @endauth
             </ul>
                 <div class="navbar-header visible-xs">

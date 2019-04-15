@@ -1,49 +1,51 @@
 <div class="modal fade modalbox" id="modal-daftar">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <button class="close" type="button" data-dismiss="modal">&times;</button>
-                <h3 class="text-bold">PENDAFTARAN</h3>
-                <p>
-                    Jika sudah punya NIF, silahkan <a href="#" data-toggle="modal" data-target="#modal-masuk" data-dismiss="modal">Masuk</a>
-                </p>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <button class="close" type="button" data-dismiss="modal">&times;</button>
+            <h3 class="text-bold">@lang('modal.register.heading')</h3>
+            <p>
+                @lang('modal.register.have_account')
+            </p>
+            <form id="form-register" action="{{Route('member.register')}}" enctype="multipart/form-data" method="post">
+                @csrf
                 <div class="row">
                     <div class="col-xs-8">
-                    <form id="form-register" action="{{Route('member.register')}}" enctype="multipart/form-data" method="post">
-                    @csrf
                         <div class="form-group">
-                            <label for="">Nama Lengkap</label>
+                            <label for="">@lang('modal.register.columns.name')</label>
                             <input type="text" name="name" class="form-control" placeholder="Roby Arifin">
                         </div>
                         <div class="form-group">
-                            <label for="">Email</label>
+                            <label for="">@lang('modal.register.columns.email')</label>
                             <input type="email" name="email" class="form-control" placeholder="robyyoibanget@email.com">
                         </div>
                         <div class="form-group">
-                            <label for="">No Telp</label>
+                            <label for="">@lang('modal.register.columns.phone')</label>
                             <input type="text" name="phone" class="form-control" placeholder="081377788899">
                         </div>
                         <div class="form-group">
-                            <label for="">Alamat Lengkap Banget</label>
+                            <label for="">@lang('modal.register.columns.address')</label>
                             <input type="text" name="address" class="form-control" placeholder="Jl. Manuk No. 65, Playen, GK, Yogyakarta, 55861">
                         </div>
                     </div>
                     <div class="col-xs-4">
                         <div class="form-group">
-                            <label for="">Foto Wajah</label>
+                            <label for="">@lang('modal.register.columns.photo')</label>
                             <div class="thumbnail thumbnail-photo">
                                 <img id="thumbnail-upload" src="{{ asset('frontend/images/photo.png')}}" alt="">
-                                <button class="btn btn-plus" type="button" onclick="chooseFile();"><i class="fa fa-plus"></i></button>
+                                <button class="btn btn-plus" type="button" onclick="chooseFile();"><i
+                                        class="fa fa-plus"></i></button>
                                 <div style="height:0px;overflow:hidden">
-                                   <input type="file" id="fileInput" name="image" />
+                                    <input type="file" id="fileInput" name="image" />
                                 </div>
                             </div>
+                            <p id="error-image-required"></p>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="">Kelamin</label>
+                            <label for="">@lang('modal.register.columns.gender')</label>
                             <div class="btn-group" data-toggle="buttons">
                                 <label class="btn btn-warning active">
                                     <input type="radio" name="gender" id="option1" value="L" checked> L
@@ -56,11 +58,12 @@
                                 </label>
                             </div>
                         </div>
+
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="form-group">
-                            <label >Tanggal Lahir</label>
-                            <select  name="date" class="form-control">
+                            <label>@lang('modal.register.columns.born_date')</label>
+                            <select name="date" class="form-control">
                                 <option value="01">1</option>
                                 <option value="02">2</option>
                                 <option value="03">3</option>
@@ -97,8 +100,8 @@
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="form-group">
-                            <label >Bulan</label>
-                            <select  name="month" class="form-control">
+                            <label>@lang('modal.register.columns.month')</label>
+                            <select name="month" class="form-control">
                                 <option value="01">Januari</option>
                                 <option value="02">Februari</option>
                                 <option value="03">Maret</option>
@@ -116,8 +119,8 @@
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="form-group">
-                            <label >Tahun</label>
-                            <select  name="year" class="form-control">
+                            <label>@lang('modal.register.columns.year')</label>
+                            <select name="year" class="form-control">
                                 @for($i = date("Y"); $i >= date( 'Y' ,strtotime ( '-60 year' , date("Y") )) ; $i--)
                                 <option value="{{$i}}">{{$i}}</option>
                                 @endfor
@@ -128,102 +131,107 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label for="">Kata Sandi</label>
-                            <input type="password" name="password"  class="form-control" placeholder="Danish1234">
+                            <label for="">@lang('modal.register.columns.password')</label>
+                            <input type="password" name="password" class="form-control" placeholder="Danish1234">
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label for="">Pastikan Lagi Kata Sandi</label>
+                            <label for="">@lang('modal.register.columns.re_password')</label>
                             <input type="password" name="password_confirmation" class="form-control" placeholder="Danish1234">
                         </div>
                     </div>
                 </div>
-                <br/>
+                <br />
                 <div class="form-group">
-                    <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;" width="50px" >
-                    <button  type="submit" class="btn btn-danger btn-block btn-submit gas">GAS!</button>
+                    <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;"
+                        width="50px">
+                    <button type="submit"
+                        class="btn btn-danger btn-block btn-submit gas">@lang('modal.register.columns.gas')</button>
                 </div>
-            </form>
-            </div>
         </div>
+        </form>
     </div>
+</div>
+</div>
 
-    <div class="modal fade modalbox" id="modal-masuk">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <button class="close" type="button" data-dismiss="modal">&times;</button>
-                <h3 class="text-bold">MASUK</h3>
-                <p>
-                    Jika belum punya NIF, silahkan ke bagian <a href="#" data-toggle="modal" data-target="#modal-daftar" data-dismiss="modal">Pendaftaran</a>
-                </p>
-                <form id="form-login" action="{{Route('member.login')}}" method="post">
-                    @csrf
+<div class="modal fade modalbox" id="modal-masuk">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button class="close" type="button" data-dismiss="modal">&times;</button>
+            <h3 class="text-bold">@lang('modal.login.heading')</h3>
+            <p>
+                @lang('modal.login.need_account')
+            </p>
+            <form id="form-login" action="{{Route('member.login')}}" method="post">
+                @csrf
                 <div class="form-group">
-                    <label for="">NIF/ E-mail</label>
+                    <label for="">@lang('modal.login.columns.email')</label>
                     <input type="text" id="login-email" name="email" class="form-control" placeholder="004565">
                     <a id="error-login"></a>
                 </div>
                 <div class="form-group">
-                    <label for="">Kata Sandi</label>
+                    <label for="">@lang('modal.login.columns.password')</label>
                     <input type="password" name="password" class="form-control" placeholder="*********">
                 </div>
                 <div class="form-group text-right">
-                    <a href="#" data-toggle="modal" data-target="#modal-reset" data-dismiss="modal">Lupa</a> Kata Sandi
+                    @lang('modal.login.columns.forgot_password')
                 </div>
-                <br/>
+                <br />
                 <div class="hidden-xs">
-                    <br/><br/><br/><br/>
+                    <br /><br /><br /><br />
                 </div>
                 <div class="form-group">
-                    <img src="{{asset('images/fstvlst.gif')}}"  class="center-block loading" style="display: none;" width="50px" >
-                    <button type="submit" class="btn btn-danger btn-block btn-submit gas" >GAS!</button>
+                    <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;"
+                        width="50px">
+                    <button type="submit"
+                        class="btn btn-danger btn-block btn-submit gas">@lang('modal.login.columns.gas')</button>
                 </div>
             </form>
-            </div>
         </div>
     </div>
     <div class="modal fade modalbox" id="modal-reset">
         <div class="modal-dialog">
             <div class="modal-content">
                 <button class="close" type="button" data-dismiss="modal">&times;</button>
-                <h3 class="text-bold">RESET</h3>
+                <h3 class="text-bold">@lang('modal.reset.heading')</h3>
                 <form id="form-reset" action="{{ route('password.email') }}" method="post">
                     @csrf
-                <div class="form-group">
-                    <label for="">E-mail</label>
-                    <input type="text" id="reset-email" name="email" class="form-control">
-                    <a id="error-reset"></a>
-                </div>
-                <br/>
-                <div class="hidden-xs">
-                    <br/><br/><br/><br/>
-                </div>
-                <div class="form-group">
-                    <img src="{{asset('images/fstvlst.gif')}}"  class="center-block loading" style="display: none;" width="50px" >
-                    <button type="submit" class="btn btn-danger btn-block btn-submit gas" >GAS!</button>
-                </div>
-            </form>
+                    <div class="form-group">
+                        <label for="">@lang('modal.reset.columns.email')</label>
+                        <input type="text" id="reset-email" name="email" class="form-control">
+                        <a id="error-reset"></a>
+                    </div>
+                    <br />
+                    <div class="hidden-xs">
+                        <br /><br /><br /><br />
+                    </div>
+                    <div class="form-group">
+                        <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;"
+                            width="50px">
+                        <button type="submit"
+                            class="btn btn-danger btn-block btn-submit gas">@lang('modal.reset.columns.gas')</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-@auth('account')
+    @auth('account')
     <div class="modal fade modalbox" id="modal-sukses">
         <div class="modal-dialog">
             <div class="modal-content text-center">
                 <button class="close" type="button" data-dismiss="modal">&times;</button>
-                <h3 class="text-bold">SELAMAAT</h3>
+                <h3 class="text-bold">@lang('modal.succeed.heading')</h3>
                 <p>
-                    Kamu sudah terdaftar di FSTVLST, <br/>
-                    NIF (Nomor Induk Festival)-mu adalah:
+                    @lang('modal.succeed.top_detail')
                 </p>
-                <h1 class="text-danger nomargin text-bold">{!! sprintf("%06d", Auth::guard('account')->user()->id)!!}</h1>
+                <h1 class="text-danger nomargin text-bold">{!! sprintf("%06d", Auth::guard('account')->user()->id)!!}
+                </h1>
                 <p>
-                    Ini adalah nomor saktimu,<br/>
-                    untuk segala urusan administratif dengan FSTVLST
+                    @lang('modal.succeed.bot_detail')
                 </p>
                 <p>
-                    <strong class="text-bold">Simpan, jangan lupakan.</strong>
+                    <strong class="text-bold">@lang('modal.succeed.dont_forget')</strong>
                 </p>
                 <div class="thumbnail thumbnail-photo">
                     <img src="{{ asset(Auth::guard('account')->user()->images)}}" alt="">
@@ -238,243 +246,298 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
+            <div class="pull-left">
+                <a href="{{ route('images.download') }}" class="btn"><i class="fa fa-download"></i></a>
+            </div>
+            <div class="pull-right">
+                <a href="#" class="btn"><i class="fa fa-instagram"></i></a>
+                <a href="#" class="btn"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="btn"><i class="fa fa-twitter"></i></a>
+            </div>
+            <div class="clearfix"></div>
         </div>
     </div>
+</div>
 @endauth
 
-    <div class="modal fade modal-error" id="modal-error">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="info">
-                    <h2>SIX SEEK SICK!!</h2>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            Kamu sudah 3 kali salah memasukkan kata sandi
-                        </div>
-                        <div class="col-sm-6 text-right">
-                            <a href="#" class="btn btn-danger" data-dismiss="modal">Baiklah</a>
-                        </div>
+<div class="modal fade modal-error" id="modal-error">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="info">
+                <h2>@lang('modal.error.hold_on')</h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        @lang('modal.error.too_many_attempt')
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <a href="#" class="btn btn-danger" data-dismiss="modal">@lang('modal.error.button')</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade modal-error" id="modal-success">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="info">
-                    <h2>SIX SEEK SICK!!</h2>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            Silahkan Cek Email untuk reset password
-                        </div>
-                        <div class="col-sm-6 text-right">
-                            <a href="#" class="btn btn-danger" data-dismiss="modal">Baiklah</a>
-                        </div>
+</div>
+<div class="modal fade modal-error" id="modal-success">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="info">
+                <h2>@lang('modal.succeed.success')</h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        @lang('modal.success.check_email')
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <a href="#" class="btn btn-danger" data-dismiss="modal">@lang('modal.error.button')</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
- @if( Request::get('openmodal'))
-        <script>
-                 $(function(){
-                     $('#modal-sukses').modal('show');
-                     removeParam('openmodal');
-                 });
-                 function removeParam(parameter)
-                    {
-                      var url=document.location.href;
-                      var urlparts= url.split('?');
+</div>
+@if( Request::get('openmodal'))
+<script>
+    $(function () {
+        $('#modal-sukses').modal('show');
+        removeParam('openmodal');
+    });
+    function removeParam(parameter) {
+        var url = document.location.href;
+        var urlparts = url.split('?');
 
-                     if (urlparts.length>=2)
-                     {
-                      var urlBase=urlparts.shift(); 
-                      var queryString=urlparts.join("?"); 
+        if (urlparts.length >= 2) {
+            var urlBase = urlparts.shift();
+            var queryString = urlparts.join("?");
 
-                      var prefix = encodeURIComponent(parameter)+'=';
-                      var pars = queryString.split(/[&;]/g);
-                      for (var i= pars.length; i-->0;)               
-                          if (pars[i].lastIndexOf(prefix, 0)!==-1)   
-                              pars.splice(i, 1);
-                      url = urlBase;
-                      window.history.pushState('',document.title,url); // added this line to push the new url directly to url bar .
+            var prefix = encodeURIComponent(parameter) + '=';
+            var pars = queryString.split(/[&;]/g);
+            for (var i = pars.length; i-- > 0;)
+                if (pars[i].lastIndexOf(prefix, 0) !== -1)
+                    pars.splice(i, 1);
+            url = urlBase;
+            window.history.pushState('', document.title, url); // added this line to push the new url directly to url bar .
 
-                    }
-                    return url;
-                    }
-        </script>
+        }
+        return url;
+    }
+</script>
 @endif
 <script>
-$( "#form-login" ).validate({
-  rules: {
-    email: {
-      required: true
+    $("#form-login").validate({
+        rules: {
+            email: {
+                required: true
 
-    },
-    password: {
-      required: true
-    }
-  },
-  submitHandler: function(form,event) {
-    event.preventDefault(); // avoid to execute the actual submit of the form.
-    $(".loading").show();
-    $(".gas").hide();
-    var form = $("#form-login");
-    var url = form.attr('action');
-    $.ajax({
-           type: "POST",
-           url: url,
-           data: form.serialize(), // serializes the form's elements.
-           success: function(data)
-           {
-            $(".loading").hide();
-            $(".gas").show();
-            switch(data.status) 
-            {
-              case "Failed":
-                $('#error-login').html(data.message)
-                break;
-              case "Limit":
-                console.log(data)
-                break;
-               case "Success":
-                $(location).attr("href",data.intended);
-                break;
-              default:
-                console.log(data)
-               
+            },
+            password: {
+                required: true
             }
-           }
-         });
-  }
-});
-
-$( "#form-reset" ).validate({
-  rules: {
-    email: {
-      required: true
-    }
-  },
-  submitHandler: function(form,event) {
-    event.preventDefault(); // avoid to execute the actual submit of the form.
-    $(".loading").show();
-    $(".gas").hide();
-    var form = $("#form-reset");
-    var url = form.attr('action');
-    $.ajax({
-           type: "POST",
-           url: url,
-           data: form.serialize(), // serializes the form's elements.
-           success: function(data)
-           {
-            $(".loading").hide();
-            $(".gas").show();
-            console.log(data)
-            switch(data.status) 
-            {
-              case "Failed":
-                $('#error-reset').html(data.email)
-                break;
-              case "Limit":
-                console.log(data)
-                break;
-               case "Success":
-               $('#modal-reset').modal('hide');
-               $('#modal-success').modal('show');
-                $(location).attr("href",data.intended);
-                break;
-              default:
-                console.log(data)
-               
+        },
+        messages: {
+            email: {
+                required: ''
+            },
+            password: {
+                required: ''
             }
-           }
-         });
-  }
-});
+        },
+        errorPlacement: function (error, element) {
+            $(element).attr('id', 'input-required');
+        },
+        submitHandler: function (form, event) {
+            event.preventDefault(); // avoid to execute the actual submit of the form.
+            $(".loading").show();
+            $(".gas").hide();
+            var form = $("#form-login");
+            var url = form.attr('action');
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: form.serialize(), // serializes the form's elements.
+                success: function (data) {
+                    $(".loading").hide();
+                    $(".gas").show();
+                    switch (data.status) {
+                        case "Failed":
+                            $('#error-login').html(data.message)
+                            break;
+                        case "Limit":
+                            console.log(data)
+                            break;
+                        case "Success":
+                            $(location).attr("href", data.intended);
+                            break;
+                        default:
+                            console.log(data)
 
-$( "#form-register" ).validate({
-  rules: {
-    email: {
-      required: true
-    },
-    name:{
-        required: true
-    },
-    phone:{
-        required: true
-    },
-    address:{
-        required: true
-    },
-    gender:{
-        required: true
-    },
-    password: {
-      required: true,
-      minlength: 6,
-    },
-    password_confirmation: {
-      required: true,
-      minlength: 6,
-      equalTo: "#password"
-    }
-  },
-  submitHandler: function(form,event) {
-    event.preventDefault(); // avoid to execute the actual submit of the form.
-    $(".loading").show();
-    $(".gas").hide();
-    var form = $("#form-register");
-    var url = form.attr('action');
-    var fd = new FormData(form[0]);
-    console.log($('#fileInput').val)
-    $.ajax({
-           type: "POST",
-           url: url,
-           data: fd,
-           enctype: 'multipart/form-data',
-           processData: false,
-           contentType: false,
-           success: function(data)
-           {
-            $(".loading").hide();
-            $(".gas").show();
-            switch(data.status) 
-            {
-              case "Failed":
-                $('#error-login').html(data.message)
-                break;
-              case "Limit":
-                console.log(data)
-                break;
-              case "Success":
-                $(location).attr("href",data.intended+'?openmodal=1');
-                break;
-              default:
-                 console.log(data)
-           }
-         }
-        });
-    }
-});
-function chooseFile() {
-      document.getElementById("fileInput").click();
-   }
-$(function(){
-  $('#fileInput').change(function(){
-    var input = this;
-    var url = $(this).val();
-    var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
-    if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) 
-     {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-           $('#thumbnail-upload').attr('src', e.target.result);
+                    }
+                }
+            });
         }
-       reader.readAsDataURL(input.files[0]);
-    }
-  });
+    });
 
-});
+    $("#form-reset").validate({
+        rules: {
+            email: {
+                required: ''
+            }
+        },
+        messages: {
+            email: {
+                required: ''
+            }
+        },
+        errorPlacement: function (error, element) {
+            $(element).attr('id', 'input-required');
+        },
+        submitHandler: function (form, event) {
+            event.preventDefault(); // avoid to execute the actual submit of the form.
+            $(".loading").show();
+            $(".gas").hide();
+            var form = $("#form-reset");
+            var url = form.attr('action');
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: form.serialize(), // serializes the form's elements.
+                success: function (data) {
+                    $(".loading").hide();
+                    $(".gas").show();
+                    console.log(data)
+                    switch (data.status) {
+                        case "Failed":
+                            $('#error-reset').html(data.email)
+                            break;
+                        case "Limit":
+                            console.log(data)
+                            break;
+                        case "Success":
+                            $('#modal-reset').modal('hide');
+                            $('#modal-success').modal('show');
+                            $(location).attr("href", data.intended);
+                            break;
+                        default:
+                            console.log(data)
+
+                    }
+                }
+            });
+        }
+    });
+
+    $("#form-register").validate({
+        rules: {
+            email: {
+                required: true
+            },
+            name: {
+                required: true
+            },
+            phone: {
+                required: true
+            },
+            address: {
+                required: true
+            },
+            gender: {
+                required: true
+            },
+            password: {
+                required: true,
+                minlength: 6,
+            },
+            password_confirmation: {
+                required: true,
+                minlength: 6,
+                equalTo: "#password"
+            },
+            image: {
+                required: true,
+                extension: "jpeg|jpg|png"
+            }
+        },
+        messages: {
+            email: {
+                required: ''
+            },
+            name: {
+                required: ''
+            },
+            phone: {
+                required: ''
+            },
+            address: {
+                required: ''
+            },
+            gender: {
+                required: ''
+            },
+            password: {
+                required: ''
+            },
+            password_confirmation: {
+                required: ''
+            }
+        },
+        errorPlacement: function (error, element) {
+
+            if (element.attr("name") == 'image') {
+                $('#error-image-required').text('Foto Wajib diisi (*.jpeg / *.jpg / *.png)');
+            } else {
+                $(element).attr('id', 'input-required');
+            }
+        },
+        submitHandler: function (form, event) {
+            event.preventDefault(); // avoid to execute the actual submit of the form.
+            $(".loading").show();
+            $(".gas").hide();
+            var form = $("#form-register");
+            var url = form.attr('action');
+            var fd = new FormData(form[0]);
+            console.log($('#fileInput').val)
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: fd,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $(".loading").hide();
+                    $(".gas").show();
+                    switch (data.status) {
+                        case "Failed":
+                            $('#error-login').html(data.message)
+                            break;
+                        case "Limit":
+                            console.log(data)
+                            break;
+                        case "Success":
+                            $(location).attr("href", data.intended + '?openmodal=1');
+                            break;
+                        default:
+                            console.log(data)
+                    }
+                }
+            });
+        }
+    });
+    function chooseFile() {
+        document.getElementById("fileInput").click();
+    }
+    $(function () {
+        $('#fileInput').change(function () {
+            var input = this;
+            var url = $(this).val();
+            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#thumbnail-upload').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        });
+
+    });
 </script>
