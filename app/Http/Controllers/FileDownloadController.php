@@ -15,8 +15,13 @@ class FileDownloadController extends Controller
     	$this->file = $files;
     }
 
-    public function downloadFile(){
-	   $file = $this->file->find(1);
+    public function downloadFile(Request $request){
+	   
+	   if(empty($request->id)){
+	   	$file = $this->file->first();
+	   }else{
+	   	$file = $this->file->where('tracklist_id',$request->id)->first();
+	   }
 	   $this->counterDownload($file);
 	   
 	   $path = \Storage::disk('s3')->get($file->contents);
@@ -32,8 +37,9 @@ class FileDownloadController extends Controller
 
 	public function imageDownload(){
 
-		$path = public_path(). '/'. Auth::guard('account')->user()->images;
-	   	
-	   	return response()->download($path, sprintf("%06d", Auth::guard('account')->user()->id).'.jpg', ['Content-Type' => 'jpg']);
+		// $path = public_path(). '/'. Auth::guard('account')->user()->images;
+	   	$path = \Storage::disk('s3')->get(Auth::guard('account')->user()->images);
+	   	// return response($path,200,['Content-Type' => 'image/jpg','filename'=> sprintf("%06d", Auth::guard('account')->user()->id).'.jpg']);
+	   	return response()->make($path, 200, ['Content-Type' => 'image/jpg','Content-Disposition' => 'attachment;filename= '.sprintf("%06d", Auth::guard('account')->user()->id).'.jpg']);
 	}
 }
