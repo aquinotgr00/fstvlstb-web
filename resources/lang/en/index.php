@@ -13,6 +13,7 @@ return [
     |
     */
     'left'=>[
+        'heading' => 'FSTVLST II',
         'tracklist' => 'TRACK LIST',
         'playing' => 'Now Playing:',
         'download' => 'Download',
