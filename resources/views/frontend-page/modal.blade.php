@@ -132,7 +132,7 @@
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.password')</label>
-                            <input type="password" name="password" class="form-control" placeholder="Danish1234">
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Danish1234">
                         </div>
                     </div>
                     <div class="col-xs-6">
@@ -476,10 +476,14 @@
             },
             password_confirmation: {
                 required: ''
+            },
+            image: {
+                required: true,
+                extension: ''
             }
         },
         errorPlacement: function (error, element) {
-
+            console.log(error)
             if (element.attr("name") == 'image') {
                 $('#error-image-required').text('Foto Wajib diisi (*.jpeg / *.jpg / *.png)');
             } else {
@@ -493,7 +497,7 @@
             var form = $("#form-register");
             var url = form.attr('action');
             var fd = new FormData(form[0]);
-            console.log($('#fileInput').val)
+
             $.ajax({
                 type: "POST",
                 url: url,
