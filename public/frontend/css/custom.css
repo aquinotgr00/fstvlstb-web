@@ -10,3 +10,13 @@
 .resethead{
 	margin-top: 47px !important;
 }
+
+#input-required {
+	background: #ffc300 url(/images/icon/error-validation-01.svg) right no-repeat;
+	padding-right: 17px;
+}
+#error-image-required{
+	color: #ff0000;
+	font-size: 10px;
+	margin-top: -35px;
+}

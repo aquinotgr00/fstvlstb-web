@@ -56,6 +56,7 @@
                                 </label>
                             </div>
                         </div>
+                        <p id="error-image-required"></p>
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="form-group">
@@ -144,10 +145,11 @@
                     <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;" width="50px" >
                     <button  type="submit" class="btn btn-danger btn-block btn-submit gas">@lang('modal.register.columns.gas')</button>
                 </div>
-            </form>
             </div>
+            </form>
         </div>
     </div>
+</div>
 
     <div class="modal fade modalbox" id="modal-masuk">
         <div class="modal-dialog">
@@ -171,16 +173,15 @@
                 <div class="form-group text-right">
                     @lang('modal.login.columns.forgot_password')
                 </div>
-                <br/>
+                <br />
                 <div class="hidden-xs">
-                    <br/><br/><br/><br/>
+                    <br /><br /><br /><br />
                 </div>
                 <div class="form-group">
                     <img src="{{asset('images/fstvlst.gif')}}"  class="center-block loading" style="display: none;" width="50px" >
                     <button type="submit" class="btn btn-danger btn-block btn-submit gas" >@lang('modal.login.columns.gas')</button>
                 </div>
             </form>
-            </div>
         </div>
     </div>
     <div class="modal fade modalbox" id="modal-reset">
@@ -195,18 +196,18 @@
                     <input type="text" id="reset-email" name="email" class="form-control">
                     <a id="error-reset"></a>
                 </div>
-                <br/>
+                <br />
                 <div class="hidden-xs">
-                    <br/><br/><br/><br/>
+                    <br /><br /><br /><br />
                 </div>
                 <div class="form-group">
                     <img src="{{asset('images/fstvlst.gif')}}"  class="center-block loading" style="display: none;" width="50px" >
                     <button type="submit" class="btn btn-danger btn-block btn-submit gas" >@lang('modal.reset.columns.gas')</button>
                 </div>
             </form>
-            </div>
         </div>
     </div>
+</div>
 @auth('account')
     <div class="modal fade modalbox" id="modal-sukses">
         <div class="modal-dialog">
@@ -236,243 +237,298 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
+            <div class="pull-left">
+                <a href="{{ route('images.download') }}" class="btn"><i class="fa fa-download"></i></a>
+            </div>
+            <div class="pull-right">
+                <a href="#" class="btn"><i class="fa fa-instagram"></i></a>
+                <a href="#" class="btn"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="btn"><i class="fa fa-twitter"></i></a>
+            </div>
+            <div class="clearfix"></div>
         </div>
     </div>
+</div>
 @endauth
 
-    <div class="modal fade modal-error" id="modal-error">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="info">
-                    <h2>SIX SEEK SICK!!</h2>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            Kamu sudah 3 kali salah memasukkan kata sandi
-                        </div>
-                        <div class="col-sm-6 text-right">
-                            <a href="#" class="btn btn-danger" data-dismiss="modal">Baiklah</a>
-                        </div>
+<div class="modal fade modal-error" id="modal-error">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="info">
+                <h2>SIX SEEK SICK!!</h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        Kamu sudah 3 kali salah memasukkan kata sandi
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <a href="#" class="btn btn-danger" data-dismiss="modal">Baiklah</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade modal-error" id="modal-success">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="info">
-                    <h2>SIX SEEK SICK!!</h2>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            Silahkan Cek Email untuk reset password
-                        </div>
-                        <div class="col-sm-6 text-right">
-                            <a href="#" class="btn btn-danger" data-dismiss="modal">Baiklah</a>
-                        </div>
+</div>
+<div class="modal fade modal-error" id="modal-success">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="info">
+                <h2>SIX SEEK SICK!!</h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        Silahkan Cek Email untuk reset password
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <a href="#" class="btn btn-danger" data-dismiss="modal">Baiklah</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
- @if( Request::get('openmodal'))
-        <script>
-                 $(function(){
-                     $('#modal-sukses').modal('show');
-                     removeParam('openmodal');
-                 });
-                 function removeParam(parameter)
-                    {
-                      var url=document.location.href;
-                      var urlparts= url.split('?');
+</div>
+@if( Request::get('openmodal'))
+<script>
+    $(function () {
+        $('#modal-sukses').modal('show');
+        removeParam('openmodal');
+    });
+    function removeParam(parameter) {
+        var url = document.location.href;
+        var urlparts = url.split('?');
 
-                     if (urlparts.length>=2)
-                     {
-                      var urlBase=urlparts.shift(); 
-                      var queryString=urlparts.join("?"); 
+        if (urlparts.length >= 2) {
+            var urlBase = urlparts.shift();
+            var queryString = urlparts.join("?");
 
-                      var prefix = encodeURIComponent(parameter)+'=';
-                      var pars = queryString.split(/[&;]/g);
-                      for (var i= pars.length; i-->0;)               
-                          if (pars[i].lastIndexOf(prefix, 0)!==-1)   
-                              pars.splice(i, 1);
-                      url = urlBase;
-                      window.history.pushState('',document.title,url); // added this line to push the new url directly to url bar .
+            var prefix = encodeURIComponent(parameter) + '=';
+            var pars = queryString.split(/[&;]/g);
+            for (var i = pars.length; i-- > 0;)
+                if (pars[i].lastIndexOf(prefix, 0) !== -1)
+                    pars.splice(i, 1);
+            url = urlBase;
+            window.history.pushState('', document.title, url); // added this line to push the new url directly to url bar .
 
-                    }
-                    return url;
-                    }
-        </script>
+        }
+        return url;
+    }
+</script>
 @endif
 <script>
-$( "#form-login" ).validate({
-  rules: {
-    email: {
-      required: true
+    $("#form-login").validate({
+        rules: {
+            email: {
+                required: true
 
-    },
-    password: {
-      required: true
-    }
-  },
-  submitHandler: function(form,event) {
-    event.preventDefault(); // avoid to execute the actual submit of the form.
-    $(".loading").show();
-    $(".gas").hide();
-    var form = $("#form-login");
-    var url = form.attr('action');
-    $.ajax({
-           type: "POST",
-           url: url,
-           data: form.serialize(), // serializes the form's elements.
-           success: function(data)
-           {
-            $(".loading").hide();
-            $(".gas").show();
-            switch(data.status) 
-            {
-              case "Failed":
-                $('#error-login').html(data.message)
-                break;
-              case "Limit":
-                console.log(data)
-                break;
-               case "Success":
-                $(location).attr("href",data.intended);
-                break;
-              default:
-                console.log(data)
-               
+            },
+            password: {
+                required: true
             }
-           }
-         });
-  }
-});
-
-$( "#form-reset" ).validate({
-  rules: {
-    email: {
-      required: true
-    }
-  },
-  submitHandler: function(form,event) {
-    event.preventDefault(); // avoid to execute the actual submit of the form.
-    $(".loading").show();
-    $(".gas").hide();
-    var form = $("#form-reset");
-    var url = form.attr('action');
-    $.ajax({
-           type: "POST",
-           url: url,
-           data: form.serialize(), // serializes the form's elements.
-           success: function(data)
-           {
-            $(".loading").hide();
-            $(".gas").show();
-            console.log(data)
-            switch(data.status) 
-            {
-              case "Failed":
-                $('#error-reset').html(data.email)
-                break;
-              case "Limit":
-                console.log(data)
-                break;
-               case "Success":
-               $('#modal-reset').modal('hide');
-               $('#modal-success').modal('show');
-                $(location).attr("href",data.intended);
-                break;
-              default:
-                console.log(data)
-               
+        },
+        messages: {
+            email: {
+                required: ''
+            },
+            password: {
+                required: ''
             }
-           }
-         });
-  }
-});
+        },
+        errorPlacement: function (error, element) {
+            $(element).attr('id','input-required');
+        },
+        submitHandler: function (form, event) {
+            event.preventDefault(); // avoid to execute the actual submit of the form.
+            $(".loading").show();
+            $(".gas").hide();
+            var form = $("#form-login");
+            var url = form.attr('action');
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: form.serialize(), // serializes the form's elements.
+                success: function (data) {
+                    $(".loading").hide();
+                    $(".gas").show();
+                    switch (data.status) {
+                        case "Failed":
+                            $('#error-login').html(data.message)
+                            break;
+                        case "Limit":
+                            console.log(data)
+                            break;
+                        case "Success":
+                            $(location).attr("href", data.intended);
+                            break;
+                        default:
+                            console.log(data)
 
-$( "#form-register" ).validate({
-  rules: {
-    email: {
-      required: true
-    },
-    name:{
-        required: true
-    },
-    phone:{
-        required: true
-    },
-    address:{
-        required: true
-    },
-    gender:{
-        required: true
-    },
-    password: {
-      required: true,
-      minlength: 6,
-    },
-    password_confirmation: {
-      required: true,
-      minlength: 6,
-      equalTo: "#password"
-    }
-  },
-  submitHandler: function(form,event) {
-    event.preventDefault(); // avoid to execute the actual submit of the form.
-    $(".loading").show();
-    $(".gas").hide();
-    var form = $("#form-register");
-    var url = form.attr('action');
-    var fd = new FormData(form[0]);
-    console.log($('#fileInput').val)
-    $.ajax({
-           type: "POST",
-           url: url,
-           data: fd,
-           enctype: 'multipart/form-data',
-           processData: false,
-           contentType: false,
-           success: function(data)
-           {
-            $(".loading").hide();
-            $(".gas").show();
-            switch(data.status) 
-            {
-              case "Failed":
-                $('#error-login').html(data.message)
-                break;
-              case "Limit":
-                console.log(data)
-                break;
-              case "Success":
-                $(location).attr("href",data.intended+'?openmodal=1');
-                break;
-              default:
-                 console.log(data)
-           }
-         }
-        });
-    }
-});
-function chooseFile() {
-      document.getElementById("fileInput").click();
-   }
-$(function(){
-  $('#fileInput').change(function(){
-    var input = this;
-    var url = $(this).val();
-    var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
-    if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) 
-     {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-           $('#thumbnail-upload').attr('src', e.target.result);
+                    }
+                }
+            });
         }
-       reader.readAsDataURL(input.files[0]);
-    }
-  });
+    });
 
-});
+    $("#form-reset").validate({
+        rules: {
+            email: {
+                required: ''
+            }
+        },
+        messages: {
+            email: {
+                required: ''
+            }
+        },
+        errorPlacement: function (error, element) {
+            $(element).attr('id','input-required');
+        },
+        submitHandler: function (form, event) {
+            event.preventDefault(); // avoid to execute the actual submit of the form.
+            $(".loading").show();
+            $(".gas").hide();
+            var form = $("#form-reset");
+            var url = form.attr('action');
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: form.serialize(), // serializes the form's elements.
+                success: function (data) {
+                    $(".loading").hide();
+                    $(".gas").show();
+                    console.log(data)
+                    switch (data.status) {
+                        case "Failed":
+                            $('#error-reset').html(data.email)
+                            break;
+                        case "Limit":
+                            console.log(data)
+                            break;
+                        case "Success":
+                            $('#modal-reset').modal('hide');
+                            $('#modal-success').modal('show');
+                            $(location).attr("href", data.intended);
+                            break;
+                        default:
+                            console.log(data)
+
+                    }
+                }
+            });
+        }
+    });
+
+    $("#form-register").validate({
+        rules: {
+            email: {
+                required: true
+            },
+            name: {
+                required: true
+            },
+            phone: {
+                required: true
+            },
+            address: {
+                required: true
+            },
+            gender: {
+                required: true
+            },
+            password: {
+                required: true,
+                minlength: 6,
+            },
+            password_confirmation: {
+                required: true,
+                minlength: 6,
+                equalTo: "#password"
+            },
+            image: {
+                required: true,
+                extension: "jpeg|jpg|png"
+            }
+        },
+        messages: {
+            email: {
+                required: ''
+            },
+            name: {
+                required: ''
+            },
+            phone: {
+                required: ''
+            },
+            address: {
+                required: ''
+            },
+            gender: {
+                required: ''
+            },
+            password: {
+                required: ''
+            },
+            password_confirmation: {
+                required: ''
+            }
+        },
+        errorPlacement: function (error, element) {
+            
+            if( element.attr("name") == 'image'){
+                $('#error-image-required').text('Foto Wajib diisi (*.jpeg / *.jpg / *.png)');
+            }else{
+                $(element).attr('id','input-required');
+            }
+        },
+        submitHandler: function (form, event) {
+            event.preventDefault(); // avoid to execute the actual submit of the form.
+            $(".loading").show();
+            $(".gas").hide();
+            var form = $("#form-register");
+            var url = form.attr('action');
+            var fd = new FormData(form[0]);
+            console.log($('#fileInput').val)
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: fd,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $(".loading").hide();
+                    $(".gas").show();
+                    switch (data.status) {
+                        case "Failed":
+                            $('#error-login').html(data.message)
+                            break;
+                        case "Limit":
+                            console.log(data)
+                            break;
+                        case "Success":
+                            $(location).attr("href", data.intended + '?openmodal=1');
+                            break;
+                        default:
+                            console.log(data)
+                    }
+                }
+            });
+        }
+    });
+    function chooseFile() {
+        document.getElementById("fileInput").click();
+    }
+    $(function () {
+        $('#fileInput').change(function () {
+            var input = this;
+            var url = $(this).val();
+            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#thumbnail-upload').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        });
+
+    });
 </script>
