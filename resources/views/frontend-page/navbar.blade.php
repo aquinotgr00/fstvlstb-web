@@ -1,12 +1,28 @@
 <div id="navbar">
         <div class="container">
-            <a class="home-btn navbar-btn navbar-left" href="/">
-                <i class="span-bar"></i>
-                <i class="span-bar"></i>
-            </a>
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="{!!Route('change.language','id')!!}" >Bahasa</a></li>
-                <li><a href="{!!Route('change.language','en')!!}" >English</a></li>
+                <li>
+                    <a class="home-btn navbar-btn" href="index.html">
+                    <i class="span-bar"></i>
+                    <i class="span-bar"></i>
+                    </a>
+                </li>
+                <li class="hidden-xs"><a href="{!!Route('change.language','id')!!}">Bahasa</a></li>
+                <li class="hidden-xs"><a href="{!!Route('change.language','en')!!}">English</a></li>
+                <li class="hidden-xs"><a href="#">Arabic</a></li>
+                <li class="visible-xs dropdown drop-bhs">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">ID<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{!!Route('change.language','en')!!}">EN</a></li>
+                            <li><a href="#">AR</a></li>
+                            <li><a href="#">JV</a></li>
+                        </ul>
+                </li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" data-toggle="modal" data-target="#modal-daftar">NIF</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#modal-masuk">Keluar</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @guest('account')

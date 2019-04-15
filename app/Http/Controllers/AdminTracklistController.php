@@ -41,4 +41,13 @@ class AdminTracklistController extends Controller
                 	})
                 ->toJson();
 	}
+
+	public function uploadTracklist(){
+		$file = $request->file('image');
+   		
+   		$destinationPath = 'tracklist';
+   		$filePath = $destinationPath.'/'.$file->getClientOriginalName();
+    
+       \Storage::disk('s3')->put($filePath, $imageFile->__toString(), 'public');
+	}
 }
