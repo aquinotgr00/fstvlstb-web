@@ -56,10 +56,10 @@
             <div class="col-md-4 mrgn">
                 <section id="reset-pass">
                     @if(Session::has('success'))
-                        <div class="alert alert-success">{{ Session::get('success') }}</div>
+                    <div class="alert alert-success">{{ Session::get('success') }}</div>
                     @endif
                     @if(Session::has('error'))
-                        <div class="alert alert-danger">{{ Session::get('error') }}</div>
+                    <div class="alert alert-danger">{{ Session::get('error') }}</div>
                     @endif
                     <form action="{{ route('member.ganti-password') }}" method="post">
                         @csrf
@@ -112,12 +112,12 @@
 
 <div id="footer">
     <div class="visible-xs text-center mobilefooter">
-        <h2>FSTVLST II. HAMPIR ROCK, NYARIS SENI</h2>
-        <p>Terima kasih telah mengambil keputusan untuk mendukung FSTVLST.</p>
+        <h2>@lang('index.left.heading'). @lang('footer.left.title') @lang('footer.right.title')</h2>
+        <p>@lang('footer.left.detail')</p>
     </div>
     <div class="hidden-xs container">
-        <h2 class="navbar-left">FSTVLST II. HAMPIR ROCK, NYARIS SENI</h2>
-        <p class="navbar-right">Terimakasih telah mengambil keputusan untuk mendukung FSTVLST.</p>
+        <h2 class="navbar-left">@lang('index.left.heading'). @lang('footer.left.title') @lang('footer.right.title')</h2>
+        <p class="navbar-right">@lang('footer.left.detail')</p>
     </div>
 </div>
 @endsection

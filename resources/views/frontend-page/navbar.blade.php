@@ -22,12 +22,12 @@
             
             <ul class="nav navbar-nav navbar-right">
                 @guest('account')
-                <li><a href="#" data-toggle="modal" data-target="#modal-daftar">Pendaftaran</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#modal-masuk">Masuk</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#modal-daftar">@lang('header.register')</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#modal-masuk">@lang('header.login')</a></li>
                 @endguest
                 @auth('account')
                     <li><a href="{{ Route('member.nif') }}">NIF</a></li>
-                    <li><a href="{{ Route('member.logout') }}">Keluar</a></li>
+                    <li><a href="{{ Route('member.logout') }}">@lang('header.logout')</a></li>
                 @endauth
             </ul>
 

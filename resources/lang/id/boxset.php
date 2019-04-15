@@ -1,4 +1,4 @@
-<?php
+<?php       
 
 return [
 
@@ -13,14 +13,13 @@ return [
     |
     */
     'peek'=>'INTIP',
-    'boxset'=>'BOKSET',
-    'pre-order'=>'PRA PESAN',
-    'opened'=>'DIBUKA',
+    'boxset'=>'KOTAK SEPAKET',
+    'open_pre_order'=>'PRA-PESAN DIBUKA',
+    'closed_pre_order' => 'PRA-PESAN DITUTUP',
     'description'=>'Album ini dipasarkan dalam beberapa edisi BOKSET berisi serba aneka cendera mata yang
                     dapat kamu miliki sepaket atau pilih eceran. Memiliki BOKSET album FSTVLST II bukan hanya
                     berarti kamu telah mendukung kami, tapi juga mempercayakan sepotong kecil dari cita-cita besarmu
                     pada kami.',
-    'edition'=>'EDISI'
-    
+    'edition'=>'EDISI',
 
 ];

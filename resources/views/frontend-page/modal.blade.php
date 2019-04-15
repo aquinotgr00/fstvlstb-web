@@ -2,181 +2,180 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <button class="close" type="button" data-dismiss="modal">&times;</button>
-            <h3 class="text-bold">PENDAFTARAN</h3>
+            <h3 class="text-bold">@lang('modal.register.heading')</h3>
             <p>
-                Jika sudah punya NIF, silahkan <a href="#" data-toggle="modal" data-target="#modal-masuk"
-                    data-dismiss="modal">Masuk</a>
+                @lang('modal.register.have_account')
             </p>
-            <form id="form-register" action="{{Route('member.register')}}" enctype="multipart/form-data"
-                        method="post">
-            <div class="row">
-                <div class="col-xs-8">
-                        @csrf
+            <form id="form-register" action="{{Route('member.register')}}" enctype="multipart/form-data" method="post">
+                @csrf
+                <div class="row">
+                    <div class="col-xs-8">
                         <div class="form-group">
-                            <label for="">Nama Lengkap</label>
+                            <label for="">@lang('modal.register.columns.name')</label>
                             <input type="text" name="name" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="">Email</label>
+                            <label for="">@lang('modal.register.columns.email')</label>
                             <input type="email" name="email" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="">No Telp</label>
+                            <label for="">@lang('modal.register.columns.phone')</label>
                             <input type="text" name="phone" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="">Alamat Lengkap Banget</label>
+                            <label for="">@lang('modal.register.columns.address')</label>
                             <input type="text" name="address" class="form-control">
                         </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label for="">@lang('modal.register.columns.photo')</label>
+                            <div class="thumbnail thumbnail-photo">
+                                <img id="thumbnail-upload" src="{{ asset('frontend/images/photo.png')}}" alt="">
+                                <button class="btn btn-plus" type="button" onclick="chooseFile();"><i
+                                        class="fa fa-plus"></i></button>
+                                <div style="height:0px;overflow:hidden">
+                                    <input type="file" id="fileInput" name="image" />
+                                </div>
+                            </div>
+                            <p id="error-image-required"></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xs-4">
-                    <div class="form-group">
-                        <label for="">Foto Wajah</label>
-                        <div class="thumbnail thumbnail-photo">
-                            <img id="thumbnail-upload" src="{{ asset('frontend/images/photo.png')}}" alt="">
-                            <button class="btn btn-plus" type="button" onclick="chooseFile();"><i
-                                    class="fa fa-plus"></i></button>
-                            <div style="height:0px;overflow:hidden">
-                                <input type="file" id="fileInput" name="image" />
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">@lang('modal.register.columns.gender')</label>
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-warning active">
+                                    <input type="radio" name="gender" id="option1" value="L" checked> L
+                                </label>
+                                <label class="btn btn-warning">
+                                    <input type="radio" name="gender" id="option2" value="P"> P
+                                </label>
+                                <label class="btn btn-warning">
+                                    <input type="radio" name="gender" id="option3" value="X"> X
+                                </label>
                             </div>
                         </div>
-                        <p id="error-image-required"></p>
+
                     </div>
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="">Kelamin</label>
-                        <div class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-warning active">
-                                <input type="radio" name="gender" id="option1" value="L" checked> L
-                            </label>
-                            <label class="btn btn-warning">
-                                <input type="radio" name="gender" id="option2" value="P"> P
-                            </label>
-                            <label class="btn btn-warning">
-                                <input type="radio" name="gender" id="option3" value="X"> X
-                            </label>
+                    <div class="col-md-3 col-xs-4">
+                        <div class="form-group">
+                            <label>@lang('modal.register.columns.born_date')</label>
+                            <select name="date" class="form-control">
+                                <option value="01">1</option>
+                                <option value="02">2</option>
+                                <option value="03">3</option>
+                                <option value="04">4</option>
+                                <option value="05">5</option>
+                                <option value="06">6</option>
+                                <option value="07">7</option>
+                                <option value="08">8</option>
+                                <option value="09">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-4">
+                        <div class="form-group">
+                            <label>@lang('modal.register.columns.month')</label>
+                            <select name="month" class="form-control">
+                                <option value="01">Januari</option>
+                                <option value="02">Februari</option>
+                                <option value="03">Maret</option>
+                                <option value="04">April</option>
+                                <option value="05">Mei</option>
+                                <option value="06">Juni</option>
+                                <option value="07">Juli</option>
+                                <option value="08">Agustus</option>
+                                <option value="09">September</option>
+                                <option value="10">Oktober</option>
+                                <option value="11">November</option>
+                                <option value="12">Desember</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-4">
+                        <div class="form-group">
+                            <label>@lang('modal.register.columns.year')</label>
+                            <select name="year" class="form-control">
+                                @for($i = date("Y"); $i >= date( 'Y' ,strtotime ( '-60 year' , date("Y") )) ; $i--)
+                                <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+                            </select>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-xs-4">
-                    <div class="form-group">
-                        <label>Tanggal Lahir</label>
-                        <select name="date" class="form-control">
-                            <option value="01">1</option>
-                            <option value="02">2</option>
-                            <option value="03">3</option>
-                            <option value="04">4</option>
-                            <option value="05">5</option>
-                            <option value="06">6</option>
-                            <option value="07">7</option>
-                            <option value="08">8</option>
-                            <option value="09">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="26">26</option>
-                            <option value="27">27</option>
-                            <option value="28">28</option>
-                            <option value="29">29</option>
-                            <option value="30">30</option>
-                            <option value="31">31</option>
-                        </select>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="">@lang('modal.register.columns.password')</label>
+                            <input type="password" name="password" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="">@lang('modal.register.columns.re_password')</label>
+                            <input type="password" name="password_confirmation" class="form-control">
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-xs-4">
-                    <div class="form-group">
-                        <label>Bulan</label>
-                        <select name="month" class="form-control">
-                            <option value="01">Januari</option>
-                            <option value="02">Februari</option>
-                            <option value="03">Maret</option>
-                            <option value="04">April</option>
-                            <option value="05">Mei</option>
-                            <option value="06">Juni</option>
-                            <option value="07">Juli</option>
-                            <option value="08">Agustus</option>
-                            <option value="09">September</option>
-                            <option value="10">Oktober</option>
-                            <option value="11">November</option>
-                            <option value="12">Desember</option>
-                        </select>
-                    </div>
+                <br />
+                <div class="form-group">
+                    <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;"
+                        width="50px">
+                    <button type="submit"
+                        class="btn btn-danger btn-block btn-submit gas">@lang('modal.register.columns.gas')</button>
                 </div>
-                <div class="col-md-3 col-xs-4">
-                    <div class="form-group">
-                        <label>Tahun</label>
-                        <select name="year" class="form-control">
-                            @for($i = date("Y"); $i >= date( 'Y' ,strtotime ( '-60 year' , date("Y") )) ; $i--)
-                            <option value="{{$i}}">{{$i}}</option>
-                            @endfor
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="form-group">
-                        <label for="">Kata Sandi</label>
-                        <input type="password" name="password" class="form-control">
-                    </div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="form-group">
-                        <label for="">Pastikan Lagi Kata Sandi</label>
-                        <input type="password" name="password_confirmation" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <br />
-            <div class="form-group">
-                <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;"
-                    width="50px">
-                <button type="submit" class="btn btn-danger btn-block btn-submit gas">GAS!</button>
-            </div>
-            </form>
         </div>
+        </form>
     </div>
+</div>
 </div>
 
 <div class="modal fade modalbox" id="modal-masuk">
     <div class="modal-dialog">
         <div class="modal-content">
             <button class="close" type="button" data-dismiss="modal">&times;</button>
-            <h3 class="text-bold">MASUK</h3>
+            <h3 class="text-bold">@lang('modal.login.heading')</h3>
             <p>
-                Jika belum punya NIF, silahkan ke bagian <a href="#" data-toggle="modal" data-target="#modal-daftar"
-                    data-dismiss="modal">Pendaftaran</a>
+                @lang('modal.login.need_account')
             </p>
             <form id="form-login" action="{{Route('member.login')}}" method="post">
                 @csrf
                 <div class="form-group">
-                    <label for="">NIF/ E-mail</label>
+                    <label for="">@lang('modal.login.columns.email')</label>
                     <input type="text" id="login-email" name="email" class="form-control">
                     <a id="error-login"></a>
                 </div>
                 <div class="form-group">
-                    <label for="">Kata Sandi</label>
+                    <label for="">@lang('modal.login.columns.password')</label>
                     <input type="password" name="password" class="form-control">
                 </div>
                 <div class="form-group text-right">
-                    <a href="#" data-toggle="modal" data-target="#modal-reset" data-dismiss="modal">Lupa</a> Kata Sandi
+                    @lang('modal.login.columns.forgot_password')
                 </div>
                 <br />
                 <div class="hidden-xs">
@@ -185,57 +184,67 @@
                 <div class="form-group">
                     <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;"
                         width="50px">
-                    <button type="submit" class="btn btn-danger btn-block btn-submit gas">GAS!</button>
+                    <button type="submit"
+                        class="btn btn-danger btn-block btn-submit gas">@lang('modal.login.columns.gas')</button>
                 </div>
             </form>
         </div>
     </div>
-</div>
-<div class="modal fade modalbox" id="modal-reset">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <button class="close" type="button" data-dismiss="modal">&times;</button>
-            <h3 class="text-bold">RESET</h3>
-            <form id="form-reset" action="{{ route('password.email') }}" method="post">
-                @csrf
-                <div class="form-group">
-                    <label for="">E-mail</label>
-                    <input type="text" id="reset-email" name="email" class="form-control">
-                    <a id="error-reset"></a>
-                </div>
-                <br />
-                <div class="hidden-xs">
-                    <br /><br /><br /><br />
-                </div>
-                <div class="form-group">
-                    <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;"
-                        width="50px">
-                    <button type="submit" class="btn btn-danger btn-block btn-submit gas">GAS!</button>
-                </div>
-            </form>
+    <div class="modal fade modalbox" id="modal-reset">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button class="close" type="button" data-dismiss="modal">&times;</button>
+                <h3 class="text-bold">@lang('modal.reset.heading')</h3>
+                <form id="form-reset" action="{{ route('password.email') }}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="">@lang('modal.reset.columns.email')</label>
+                        <input type="text" id="reset-email" name="email" class="form-control">
+                        <a id="error-reset"></a>
+                    </div>
+                    <br />
+                    <div class="hidden-xs">
+                        <br /><br /><br /><br />
+                    </div>
+                    <div class="form-group">
+                        <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;"
+                            width="50px">
+                        <button type="submit"
+                            class="btn btn-danger btn-block btn-submit gas">@lang('modal.reset.columns.gas')</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-@auth('account')
-<div class="modal fade modalbox" id="modal-sukses">
-    <div class="modal-dialog">
-        <div class="modal-content text-center">
-            <button class="close" type="button" data-dismiss="modal">&times;</button>
-            <h3 class="text-bold">SELAMAAT</h3>
-            <p>
-                Kamu sudah terdaftar di FSTVLST, <br />
-                NIF (Nomor Induk Festival)-mu adalah:
-            </p>
-            <h1 class="text-danger nomargin text-bold">{!! sprintf("%06d", Auth::guard('account')->user()->id)!!}</h1>
-            <p>
-                Ini adalah nomor saktimu,<br />
-                untuk segala urusan administratif dengan FSTVLST
-            </p>
-            <p>
-                <strong class="text-bold">Simpan, jangan lupakan.</strong>
-            </p>
-            <div class="thumbnail thumbnail-photo">
-                <img src="{{ asset(Auth::guard('account')->user()->images)}}" alt="">
+    @auth('account')
+    <div class="modal fade modalbox" id="modal-sukses">
+        <div class="modal-dialog">
+            <div class="modal-content text-center">
+                <button class="close" type="button" data-dismiss="modal">&times;</button>
+                <h3 class="text-bold">@lang('modal.succeed.heading')</h3>
+                <p>
+                    @lang('modal.succeed.top_detail')
+                </p>
+                <h1 class="text-danger nomargin text-bold">{!! sprintf("%06d", Auth::guard('account')->user()->id)!!}
+                </h1>
+                <p>
+                    @lang('modal.succeed.bot_detail')
+                </p>
+                <p>
+                    <strong class="text-bold">@lang('modal.succeed.dont_forget')</strong>
+                </p>
+                <div class="thumbnail thumbnail-photo">
+                    <img src="{{ asset(Auth::guard('account')->user()->images)}}" alt="">
+                </div>
+                <div class="pull-left">
+                    <a href="{{ route('images.download') }}" class="btn"><i class="fa fa-download"></i></a>
+                </div>
+                <div class="pull-right">
+                    <a href="#" class="btn"><i class="fa fa-instagram"></i></a>
+                    <a href="#" class="btn"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="btn"><i class="fa fa-twitter"></i></a>
+                </div>
+                <div class="clearfix"></div>
             </div>
             <div class="pull-left">
                 <a href="{{ route('images.download') }}" class="btn"><i class="fa fa-download"></i></a>
@@ -332,7 +341,7 @@
             }
         },
         errorPlacement: function (error, element) {
-            $(element).attr('id','input-required');
+            $(element).attr('id', 'input-required');
         },
         submitHandler: function (form, event) {
             event.preventDefault(); // avoid to execute the actual submit of the form.
@@ -378,7 +387,7 @@
             }
         },
         errorPlacement: function (error, element) {
-            $(element).attr('id','input-required');
+            $(element).attr('id', 'input-required');
         },
         submitHandler: function (form, event) {
             event.preventDefault(); // avoid to execute the actual submit of the form.
@@ -470,11 +479,11 @@
             }
         },
         errorPlacement: function (error, element) {
-            
-            if( element.attr("name") == 'image'){
+
+            if (element.attr("name") == 'image') {
                 $('#error-image-required').text('Foto Wajib diisi (*.jpeg / *.jpg / *.png)');
-            }else{
-                $(element).attr('id','input-required');
+            } else {
+                $(element).attr('id', 'input-required');
             }
         },
         submitHandler: function (form, event) {
