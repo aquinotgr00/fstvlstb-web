@@ -2,7 +2,7 @@
         <div class="container">
             <ul class="nav navbar-nav navbar-left">
                 <li>
-                    <a class="home-btn navbar-btn" href="index.html">
+                    <a class="home-btn navbar-btn" href="/">
                     <i class="span-bar"></i>
                     <i class="span-bar"></i>
                     </a>
