@@ -19,12 +19,10 @@ class MemberRegisterController extends Controller
    		
    		$destinationPath = 'uploads';
    		$filePath = $destinationPath.'/'.$file->getClientOriginalName();
-    	
-        $imageFile=Image::make($file)->greyscale()->resize(1080, 1080)->insert('images/mask-strip.png','center')->stream();
-
-       \Storage::disk('s3')->put($filePath, $imageFile->__toString(), 'public');
-    	
-        $request->request->add(['images' =>$destinationPath.'/'.$file->getClientOriginalName() ]);
+    	$fileimage = Image::make($file)->greyscale()->resize(1080, 1080)->insert('images/mask-strip.png','center')->save($destinationPath.'/'.$file->getClientOriginalName());
+	   $s3 = \Storage::disk('s3');
+       $s3->put($filePath, $fileimage,'public');
+    	$request->request->add(['images' =>$filePath ]);
     	$request->request->add(['dob' => $request->date."/".$request->month.'/'.$request->year]);
         $validation = $this->validator($request->all());
         if ($validation->fails())  {  

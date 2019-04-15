@@ -13,11 +13,11 @@ return [
     |
     */
     'left'=>[
-        'title' => 'HAMPIR ROCK',
-        'detail'=>'Terimakasih telah mengambil keputusan untuk mendukung FSTVLST'
+        'title' => 'ALMOST ROCK',
+        'detail'=>'Thankyou very much for making the decision to support FSTVLST'
     ],
     'right'=>[
-        'title'=>'NYARIS SENI'
+        'title'=>'BARELY ART'
     ]
     
 

@@ -21,10 +21,6 @@
             </ul>
             
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" data-toggle="modal" data-target="#modal-daftar">NIF</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#modal-masuk">Keluar</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
                 @guest('account')
                 <li><a href="#" data-toggle="modal" data-target="#modal-daftar">Pendaftaran</a></li>
                 <li><a href="#" data-toggle="modal" data-target="#modal-masuk">Masuk</a></li>
