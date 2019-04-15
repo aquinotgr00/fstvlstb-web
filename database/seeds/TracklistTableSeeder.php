@@ -11,8 +11,7 @@ class TracklistTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('accounts')->truncate();
-        $accounts = factory(\App\Account::class, 5)->create();
+        //DB::table('tracklists')->truncate();
         DB::table('tracklists')->insert([
 
             [

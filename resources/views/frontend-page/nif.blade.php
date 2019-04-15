@@ -61,7 +61,7 @@
                     @if(Session::has('error'))
                     <div class="alert alert-danger">{{ Session::get('error') }}</div>
                     @endif
-                    <form action="{{ route('member.ganti-password') }}" method="post">
+                    <form action="{{ route('member.ganti-password') }}" method="post" id="change-password">
                         @csrf
                         <div class="wrapper resetbox">
                             <div class="form-group row detail">
@@ -69,31 +69,16 @@
                                 <label for="#" class="col-sm-6 col-form-label">@lang('nif.old_password')</label>
                                 <div class="col-sm-6" style="margin-bottom:8px;">
                                     <input type="password" name="password" class="form-control" placeholder="******" />
-                                    @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <i>{{ $errors->first('password') }}</i>
-                                    </span>
-                                    @endif
                                 </div>
                                 <label for="#" class="col-sm-6 col-form-label">@lang('nif.new_password')</label>
                                 <div class="col-sm-6" style="margin-bottom:8px;">
                                     <input type="password" name="new_password" class="form-control"
-                                        placeholder="******" />
-                                    @if ($errors->has('new_password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <i>{{ $errors->first('new_password') }}</i>
-                                    </span>
-                                    @endif
+                                        placeholder="******" id="new_password"/>
                                 </div>
                                 <label for="#" class="col-sm-6 col-form-label">@lang('nif.re_password')</label>
                                 <div class="col-sm-6">
                                     <input type="password" name="new_password_confirmation" class="form-control"
                                         placeholder="******" />
-                                    @if ($errors->has('new_password_confirmation'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <i>{{ $errors->first('new_password_confirmation') }}</i>
-                                    </span>
-                                    @endif
                                 </div>
                             </div>
                             <div class="form-group">
@@ -120,4 +105,34 @@
         <p class="navbar-right">@lang('footer.left.detail')</p>
     </div>
 </div>
+<script>
+    $("#change-password").validate({
+        rules: {
+            password: {
+                required: true
+            },
+            new_password: {
+                required: true
+            },
+            new_password_confirmation: {
+                required: true,
+                equalTo: "#new_password"
+            }
+        },
+        messages: {
+            password: {
+                required: ''
+            },
+            new_password: {
+                required: ''
+            },
+            new_password_confirmation: {
+                required: ''
+            }
+        },
+        errorPlacement: function (error, element) {
+            $(element).attr('id', 'input-required');
+        }
+    });
+</script>
 @endsection
