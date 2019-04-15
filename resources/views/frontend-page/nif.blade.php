@@ -21,31 +21,31 @@
                 </div>
                     <div class="col-md-5 mrgn">
                         <div class="form-group row detail grs">
-                            <label for="#" class="col-sm-4 col-form-label">Nama</label>
+                            <label for="#" class="col-sm-4 col-form-label">@lang('nif.columns.name')</label>
                                 <div class="col-sm-8">
                                     <p class="isian">: {{ Auth::guard('account')->user()->name }}</p>
                                 </div>
-                            <label for="#" class="col-sm-4 col-form-label">NIF</label>
+                            <label for="#" class="col-sm-4 col-form-label">@lang('nif.columns.nif')</label>
                                 <div class="col-sm-8">
                                     <p class="isian">: {!! sprintf("%06d", Auth::guard('account')->user()->id)!!}</p>
                                 </div>
-                            <label for="#" class="col-sm-4 col-form-label">Email</label>
+                            <label for="#" class="col-sm-4 col-form-label">@lang('nif.columns.email')</label>
                                 <div class="col-sm-8">
                                     <p class="isian">: {{ Auth::guard('account')->user()->email }}</p>
                                 </div>
-                            <label for="#" class="col-sm-4 col-form-label">Nomer Telepon</label>
+                            <label for="#" class="col-sm-4 col-form-label">@lang('nif.columns.phone')</label>
                                 <div class="col-sm-8">
                                     <p class="isian">: {{ Auth::guard('account')->user()->phone }}</p>
                                 </div>
-                            <label for="#" class="col-sm-4 col-form-label">Alamat</label>
+                            <label for="#" class="col-sm-4 col-form-label">@lang('nif.columns.address')</label>
                                 <div class="col-sm-8">
                                     <p class="isian">: {{ Auth::guard('account')->user()->address }}</p>
                                 </div>
-                            <label for="#" class="col-sm-4 col-form-label">Kelamin</label>
+                            <label for="#" class="col-sm-4 col-form-label">@lang('nif.columns.gender')</label>
                                 <div class="col-sm-8">
                                     <p class="isian">: {{ Auth::guard('account')->user()->gender }}</p>
                                 </div>
-                            <label for="#" class="col-sm-4 col-form-label">Tanggal Lahir</label>
+                            <label for="#" class="col-sm-4 col-form-label">@lang('nif.columns.born_date')</label>
                                 <div class="col-sm-8">
                                     <p class="isian">: {{ Auth::guard('account')->user()->dob }}</p>
                                 </div>
@@ -54,16 +54,16 @@
                     </div>
                     <div class="col-md-4 mrgn">
                         <div class="form-group row detail">
-                            <label for="#" class="col-sm-12 col-form-label head">GANTI KATA SANDI</label>
-                            <label for="#" class="col-sm-6 col-form-label">Kata Sandi Lama</label>
+                            <label for="#" class="col-sm-12 col-form-label head">@lang('nif.change_password')</label>
+                            <label for="#" class="col-sm-6 col-form-label">@lang('nif.old_password')</label>
                                 <div class="col-sm-6">
                                     <p class="isian">: ******</p>
                                 </div>
-                            <label for="#" class="col-sm-6 col-form-label">Kata Sandi Baru</label>
+                            <label for="#" class="col-sm-6 col-form-label">@lang('nif.new_password')</label>
                                 <div class="col-sm-6">
                                     <p class="isian">: ******</p>
                                 </div>
-                            <label for="#" class="col-sm-6 col-form-label">Konfirmasi Kata Sandi Baru</label>
+                            <label for="#" class="col-sm-6 col-form-label">@lang('nif.re_password')</label>
                                 <div class="col-sm-6">
                                     <p class="isian">: ******</p>
                                 </div>
@@ -76,12 +76,12 @@
 
     <div id="footer">
         <div class="visible-xs text-center mobilefooter">
-            <h2>FSTVLST II. HAMPIR ROCK, NYARIS SENI</h2>
-            <p>Terima kasih telah mengambil keputusan untuk mendukung FSTVLST.</p>
+            <h2>@lang('index.left.heading'). @lang('footer.left.title') @lang('footer.right.title')</h2>
+            <p>@lang('footer.left.detail')</p>
         </div>
         <div class="hidden-xs container">
-            <h2 class="navbar-left">FSTVLST II. HAMPIR ROCK, NYARIS SENI</h2>
-            <p class="navbar-right">Terimakasih telah mengambil keputusan untuk mendukung FSTVLST.</p>
+            <h2 class="navbar-left">@lang('index.left.heading'). @lang('footer.left.title') @lang('footer.right.title')</h2>
+            <p class="navbar-right">@lang('footer.left.detail')</p>
         </div>
     </div>
 @endsection

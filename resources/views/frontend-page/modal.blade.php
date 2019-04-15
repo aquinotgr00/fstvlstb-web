@@ -2,34 +2,34 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <button class="close" type="button" data-dismiss="modal">&times;</button>
-                <h3 class="text-bold">PENDAFTARAN</h3>
+                <h3 class="text-bold">@lang('modal.register.heading')</h3>
                 <p>
-                    Jika sudah punya NIF, silahkan <a href="#" data-toggle="modal" data-target="#modal-masuk" data-dismiss="modal">Masuk</a>
+                    @lang('modal.register.have_account')
                 </p>
                 <div class="row">
                     <div class="col-xs-8">
                     <form id="form-register" action="{{Route('member.register')}}" enctype="multipart/form-data" method="post">
                     @csrf
                         <div class="form-group">
-                            <label for="">Nama Lengkap</label>
+                            <label for="">@lang('modal.register.columns.name')</label>
                             <input type="text" name="name" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="">Email</label>
+                            <label for="">@lang('modal.register.columns.email')</label>
                             <input type="email" name="email" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="">No Telp</label>
+                            <label for="">@lang('modal.register.columns.phone')</label>
                             <input type="text" name="phone" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="">Alamat Lengkap Banget</label>
+                            <label for="">@lang('modal.register.columns.address')</label>
                             <input type="text" name="address" class="form-control">
                         </div>
                     </div>
                     <div class="col-xs-4">
                         <div class="form-group">
-                            <label for="">Foto Wajah</label>
+                            <label for="">@lang('modal.register.columns.photo')</label>
                             <div class="thumbnail thumbnail-photo">
                                 <img id="thumbnail-upload" src="{{ asset('frontend/images/photo.png')}}" alt="">
                                 <button class="btn btn-plus" type="button" onclick="chooseFile();"><i class="fa fa-plus"></i></button>
@@ -43,7 +43,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="">Kelamin</label>
+                            <label for="">@lang('modal.register.columns.gender')</label>
                             <div class="btn-group" data-toggle="buttons">
                                 <label class="btn btn-warning active">
                                     <input type="radio" name="gender" id="option1" value="L" checked> L
@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="form-group">
-                            <label >Tanggal Lahir</label>
+                            <label >@lang('modal.register.columns.born_date')</label>
                             <select  name="date" class="form-control">
                                 <option value="01">1</option>
                                 <option value="02">2</option>
@@ -97,7 +97,7 @@
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="form-group">
-                            <label >Bulan</label>
+                            <label >@lang('modal.register.columns.month')</label>
                             <select  name="month" class="form-control">
                                 <option value="01">Januari</option>
                                 <option value="02">Februari</option>
@@ -116,7 +116,7 @@
                     </div>
                     <div class="col-md-3 col-xs-4">
                         <div class="form-group">
-                            <label >Tahun</label>
+                            <label >@lang('modal.register.columns.year')</label>
                             <select  name="year" class="form-control">
                                 @for($i = date("Y"); $i >= date( 'Y' ,strtotime ( '-60 year' , date("Y") )) ; $i--)
                                 <option value="{{$i}}">{{$i}}</option>
@@ -128,13 +128,13 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label for="">Kata Sandi</label>
+                            <label for="">@lang('modal.register.columns.password')</label>
                             <input type="password" name="password"  class="form-control">
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label for="">Pastikan Lagi Kata Sandi</label>
+                            <label for="">@lang('modal.register.columns.re_password')</label>
                             <input type="password" name="password_confirmation" class="form-control">
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                 <br/>
                 <div class="form-group">
                     <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;" width="50px" >
-                    <button  type="submit" class="btn btn-danger btn-block btn-submit gas">GAS!</button>
+                    <button  type="submit" class="btn btn-danger btn-block btn-submit gas">@lang('modal.register.columns.gas')</button>
                 </div>
             </form>
             </div>
@@ -153,23 +153,23 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <button class="close" type="button" data-dismiss="modal">&times;</button>
-                <h3 class="text-bold">MASUK</h3>
+                <h3 class="text-bold">@lang('modal.login.heading')</h3>
                 <p>
-                    Jika belum punya NIF, silahkan ke bagian <a href="#" data-toggle="modal" data-target="#modal-daftar" data-dismiss="modal">Pendaftaran</a>
+                    @lang('modal.login.need_account')
                 </p>
                 <form id="form-login" action="{{Route('member.login')}}" method="post">
                     @csrf
                 <div class="form-group">
-                    <label for="">NIF/ E-mail</label>
+                    <label for="">@lang('modal.login.columns.email')</label>
                     <input type="text" id="login-email" name="email" class="form-control">
                     <a id="error-login"></a>
                 </div>
                 <div class="form-group">
-                    <label for="">Kata Sandi</label>
+                    <label for="">@lang('modal.login.columns.password')</label>
                     <input type="password" name="password" class="form-control">
                 </div>
                 <div class="form-group text-right">
-                    <a href="#" data-toggle="modal" data-target="#modal-reset" data-dismiss="modal">Lupa</a> Kata Sandi
+                    @lang('modal.login.columns.forgot_password')
                 </div>
                 <br/>
                 <div class="hidden-xs">
@@ -177,7 +177,7 @@
                 </div>
                 <div class="form-group">
                     <img src="{{asset('images/fstvlst.gif')}}"  class="center-block loading" style="display: none;" width="50px" >
-                    <button type="submit" class="btn btn-danger btn-block btn-submit gas" >GAS!</button>
+                    <button type="submit" class="btn btn-danger btn-block btn-submit gas" >@lang('modal.login.columns.gas')</button>
                 </div>
             </form>
             </div>
@@ -187,11 +187,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <button class="close" type="button" data-dismiss="modal">&times;</button>
-                <h3 class="text-bold">RESET</h3>
+                <h3 class="text-bold">@lang('modal.reset.heading')</h3>
                 <form id="form-reset" action="{{ route('password.email') }}" method="post">
                     @csrf
                 <div class="form-group">
-                    <label for="">E-mail</label>
+                    <label for="">@lang('modal.reset.columns.email')</label>
                     <input type="text" id="reset-email" name="email" class="form-control">
                     <a id="error-reset"></a>
                 </div>
@@ -201,7 +201,7 @@
                 </div>
                 <div class="form-group">
                     <img src="{{asset('images/fstvlst.gif')}}"  class="center-block loading" style="display: none;" width="50px" >
-                    <button type="submit" class="btn btn-danger btn-block btn-submit gas" >GAS!</button>
+                    <button type="submit" class="btn btn-danger btn-block btn-submit gas" >@lang('modal.reset.columns.gas')</button>
                 </div>
             </form>
             </div>
@@ -212,18 +212,16 @@
         <div class="modal-dialog">
             <div class="modal-content text-center">
                 <button class="close" type="button" data-dismiss="modal">&times;</button>
-                <h3 class="text-bold">SELAMAAT</h3>
+                <h3 class="text-bold">@lang('modal.succeed.heading')</h3>
                 <p>
-                    Kamu sudah terdaftar di FSTVLST, <br/>
-                    NIF (Nomor Induk Festival)-mu adalah:
+                    @lang('modal.succeed.top_detail')
                 </p>
                 <h1 class="text-danger nomargin text-bold">{!! sprintf("%06d", Auth::guard('account')->user()->id)!!}</h1>
                 <p>
-                    Ini adalah nomor saktimu,<br/>
-                    untuk segala urusan administratif dengan FSTVLST
+                    @lang('modal.succeed.bot_detail')
                 </p>
                 <p>
-                    <strong class="text-bold">Simpan, jangan lupakan.</strong>
+                    <strong class="text-bold">@lang('modal.succeed.dont_forget')</strong>
                 </p>
                 <div class="thumbnail thumbnail-photo">
                     <img src="{{ asset(Auth::guard('account')->user()->images)}}" alt="">
