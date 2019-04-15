@@ -80,7 +80,7 @@
 					<td align="center" st-image="banner-image">
 						<table cellpadding="0" cellspacing="0" border="0"> 
   							<tr> 
-							<a target="_blank" href="#"><img width="600" border="0" height="600" alt="" border="0" style="display:block; border:none; outline:none; text-decoration:none;" src="{{ asset(Auth::guard('account')->user()->images)}}" class="banner"></a>
+							<a target="_blank" href="#"><img width="600" border="0" height="600" alt="" border="0" style="display:block; border:none; outline:none; text-decoration:none;" src="{!!Storage::disk('s3')->url(Auth::guard('account')->user()->images)!!}" class="banner"></a>
                           	</tr>
                       </table>
 					</td>

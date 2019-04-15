@@ -86,7 +86,7 @@ class AdminTracklistController extends Controller
 
    		$destinationPath = 'zip';
    		$filePath = $destinationPath.'/'.$file->getClientOriginalName();
-       \Storage::disk('s3')->put($filePath, fopen($file->getRealPath().'/'.$file->getClientOriginalName(), 'r+'), [ 'visibility' => 'public','ContentType' => 'audio/mpeg'],'public');
+       \Storage::disk('s3')->put($filePath, file_get_contents($file), [ 'visibility' => 'public','ContentType' => 'application/zip'],'public');
 	       $zipfile= $this->file->where('tracklist_id',$request->id)->first();
 	       if(empty($zipfile)){
 	       	$this->file->insert([
