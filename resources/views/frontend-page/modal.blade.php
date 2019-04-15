@@ -493,7 +493,7 @@
             var form = $("#form-register");
             var url = form.attr('action');
             var fd = new FormData(form[0]);
-            console.log($('#fileInput').val)
+            // console.log($('#fileInput').val)
             $.ajax({
                 type: "POST",
                 url: url,

@@ -25,8 +25,9 @@ return [
                         your idelaism to us.',
         'pre-order'=>'PRE-ORDER',
         'peek' =>'Preview',
-        'opened' =>'OPEN'
-    ]
+        'opened' =>'OPEN',
+        'date' => '01/05/2019',
+    ],
     
 
 ];

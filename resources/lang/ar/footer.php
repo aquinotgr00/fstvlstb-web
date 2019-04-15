@@ -12,16 +12,13 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
-    'nif' => 'NIF',
-    'register' => 'Pendaftaran',
-    'login' => 'Masuk',
-    'logout' => 'Keluar',
-
-    'lang' => [
-        'bahasa' => 'Bahasa',
-        'english' => 'English',
-        'arab' => 'Arab',
+    'left'=>[
+        'title' => 'هامفير راق',
+        'detail'=>'تآريما كاسيه تلاه مڠامبيل كافوتوسن أنتوك مندوكوڠ ف. س. ت. ف. ل. س. ت'
     ],
+    'right'=>[
+        'title'=>'پاريس سآني'
+    ]
+    
 
 ];

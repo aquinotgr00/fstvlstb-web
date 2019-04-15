@@ -7,9 +7,9 @@
                     <i class="span-bar"></i>
                     </a>
                 </li>
-                <li><a href="{!!Route('change.language','id')!!}">Bahasa</a></li>
-                <li><a href="{!!Route('change.language','en')!!}">English</a></li>
-                <li><a href="#">Arabic</a></li>
+                <li><a href="{!!Route('change.language','id')!!}">@lang('header.lang.bahasa')</a></li>
+                <li><a href="{!!Route('change.language','en')!!}">@lang('header.lang.english')</a></li>
+                <li><a href="{!!Route('change.language','ar')!!}">@lang('header.lang.arab')</a></li>
             </ul> 
             <ul class="nav navbar-nav navbar-right hidden-xs">
                 @guest('account')
@@ -17,7 +17,7 @@
                 <li><a href="#" data-toggle="modal" data-target="#modal-masuk">@lang('header.login')</a></li>
                 @endguest
                 @auth('account')
-                    <li><a href="{{ Route('member.nif') }}">NIF</a></li>
+                    <li><a href="{{ Route('member.nif') }}">@lang('header.nif')</a></li>
                     <li><a href="{{ Route('member.logout') }}">@lang('header.logout')</a></li>
                 @endauth
             </ul>
@@ -46,8 +46,8 @@
                             <li><a href="#" data-toggle="modal" data-target="#modal-masuk">Masuk</a></li>
                         @endguest
                         @auth('account')
-                            <li><a href="{{ Route('member.nif') }}">NIF</a></li>
-                            <li><a href="{{ Route('member.logout') }}">Keluar</a></li>
+                            <li><a href="{{ Route('member.nif') }}">@lang('header.nif')</a></li>
+                            <li><a href="{{ Route('member.logout') }}">@lang('header.logout')</a></li>
                         @endauth
                         
                     </ul>

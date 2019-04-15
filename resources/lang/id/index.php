@@ -26,8 +26,9 @@ return [
                         pada kami.',
         'pre-order'=>'PRA-PESAN',
         'peek' =>'Intip',
-        'opened' =>'DIBUKA'
-    ]
+        'opened' =>'DIBUKA',
+        'date' => '01/05/2019',
+    ],
     
 
 ];
