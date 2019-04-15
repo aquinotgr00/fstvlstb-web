@@ -119,8 +119,12 @@
                                     </p>  
                                 </div>
                                 <div class="col-md-12 col-xs-6 visible-xs">
-                                           
-                                    <a href="/boxst" class="btn btn-danger btn-intip btn-xs">@lang('index.right.peek')</a>
+                                    @guest('account')      
+                                        <a href="#" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar" >@lang('index.right.peek')</a>
+                                    @endguest
+                                    @auth('account')
+                                        <a href="/boxset" class="btn btn-danger btn-intip btn-xs">@lang('index.right.peek')</a>
+                                    @endauth
                                 </div>
                             </div>
                         </div>

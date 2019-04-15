@@ -41,7 +41,11 @@ Route::prefix('admin')->group(function () {
    	Route::get('/members', 'AdminMemberController@index')->name('admin.member.page');
    	Route::get('/members/list', 'AdminMemberController@listData')->name('admin.member.list');
    	Route::get('/tracklist', 'AdminTracklistController@index')->name('admin.tracklist.page');
-    Route::get('/tracklist/edit/{id}', 'AdminTracklistController@index')->name('admin.tracklist.edit');
+    Route::get('/tracklist/edit/{id}', 'AdminTracklistController@editForm')->name('admin.tracklist.edit');
+    Route::post('/tracklist/update', 'AdminTracklistController@updateTracklist')->name('admin.tracklist.update');
+    Route::post('/tracklist/upload/stream', 'AdminTracklistController@uploadTracklist')->name('admin.tracklist.upload.stream');
+    Route::post('/tracklist/upload/preview', 'AdminTracklistController@uploadTracklistPreview')->name('admin.tracklist.upload.preview');
+    Route::post('/tracklist/upload/zip', 'AdminTracklistController@uploadTracklistZip')->name('admin.tracklist.upload.zip');
    	Route::get('/tracklist/list', 'AdminTracklistController@listData')->name('admin.tracklist.list');
 
 });

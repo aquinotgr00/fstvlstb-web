@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="thumbnail thumbnail-photo thumbnail-nif">
-                    <img src="{{ asset(Auth::guard('account')->user()->images)}}" alt="">
+                    <img src="{!!Storage::disk('s3')->url(Auth::guard('account')->user()->images)!!}" alt="">
                 </div>
                 <div class="pull-left">
                     <a href="{{ route('images.download') }}" class="btn"><i class="fa fa-download"></i></a>

@@ -18,9 +18,9 @@ class FileDownloadController extends Controller
     public function downloadFile(){
 	   $file = $this->file->find(1);
 	   $this->counterDownload($file);
-	   $path = public_path(). '/'. $file->contents;
-	   return response()->download($path, $file
-	            ->contents, ['Content-Type' => 'zip']);
+	   
+	   $path = \Storage::disk('s3')->get($file->contents);
+	   return response($path,200,['Content-Type' => 'application/zip']);
 	}
 
 	public function counterDownload($file): void
