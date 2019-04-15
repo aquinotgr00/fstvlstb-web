@@ -247,15 +247,6 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <div class="pull-left">
-                <a href="{{ route('images.download') }}" class="btn"><i class="fa fa-download"></i></a>
-            </div>
-            <div class="pull-right">
-                <a href="#" class="btn"><i class="fa fa-instagram"></i></a>
-                <a href="#" class="btn"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="btn"><i class="fa fa-twitter"></i></a>
-            </div>
-            <div class="clearfix"></div>
         </div>
     </div>
 </div>
@@ -285,7 +276,7 @@
                 <h2>@lang('modal.succeed.success')</h2>
                 <div class="row">
                     <div class="col-sm-6">
-                        @lang('modal.success.check_email')
+                        @lang('modal.succeed.check_email')
                     </div>
                     <div class="col-sm-6 text-right">
                         <a href="#" class="btn btn-danger" data-dismiss="modal">@lang('modal.error.button')</a>

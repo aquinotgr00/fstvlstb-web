@@ -115,7 +115,7 @@
 				<!-- Spacing -->
 				<tr>
 					<td>
-						<table width="100" align="left" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
+						<!-- <table width="100" align="left" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
 						<tbody>
 						<tr>
 							<td width="35" height="33" align="left">
@@ -152,7 +152,7 @@
  									<tr>
 									<a target="_blank" href="#"><img src="{{asset('email/img/twitter.png')}}" alt="" border="0" width="37" height="32" style="display:block; border:none; outline:none; text-decoration:none;"></a>
 									</tr>
-                              	</table>
+                              	</table> -->
 							</td>
 						</tr>
 						</tbody>
