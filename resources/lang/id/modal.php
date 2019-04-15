@@ -42,5 +42,12 @@ return [
         'bot_detail' => 'Ini adalah nomor saktimu, <br /> Untuk segala urusan administratif dengan FSTVLST.',
         'dont_forget' => 'Simpan, jangan lupakan.',
         'share' => 'Bagikan dan ceritakan dengan bertanggungtanya.',
+        'success' => 'SUKSES',
+        'check_email' => 'Silahkan Cek Email untuk reset password.',
+    ],
+    'error' => [
+        'hold_on' => 'SEBENTAR SEBENTAR',
+        'too_many_attempt' => 'Kamu sudah 3 kali salah memasukkan kata sandi.',
+        'button' => 'BAIKLAH',
     ],
 ];

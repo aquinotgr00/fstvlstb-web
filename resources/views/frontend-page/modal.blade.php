@@ -255,13 +255,13 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="info">
-                <h2>SIX SEEK SICK!!</h2>
+                <h2>@lang('modal.error.hold_on')</h2>
                 <div class="row">
                     <div class="col-sm-6">
-                        Kamu sudah 3 kali salah memasukkan kata sandi
+                        @lang('modal.error.too_many_attempt')
                     </div>
                     <div class="col-sm-6 text-right">
-                        <a href="#" class="btn btn-danger" data-dismiss="modal">Baiklah</a>
+                        <a href="#" class="btn btn-danger" data-dismiss="modal">@lang('modal.error.button')</a>
                     </div>
                 </div>
             </div>
@@ -272,13 +272,13 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="info">
-                <h2>SIX SEEK SICK!!</h2>
+                <h2>@lang('modal.succeed.success')</h2>
                 <div class="row">
                     <div class="col-sm-6">
-                        Silahkan Cek Email untuk reset password
+                        @lang('modal.success.check_email')
                     </div>
                     <div class="col-sm-6 text-right">
-                        <a href="#" class="btn btn-danger" data-dismiss="modal">Baiklah</a>
+                        <a href="#" class="btn btn-danger" data-dismiss="modal">@lang('modal.error.button')</a>
                     </div>
                 </div>
             </div>
