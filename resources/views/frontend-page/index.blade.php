@@ -21,7 +21,7 @@
                                     <div class="title">{{$row->name}}</div>
                                     <div class="date">{{$row->release_date}}</div>
                                 </li>
-                                @if(in_array($i, array(0,3,5)))
+                                @if(in_array($i, array(0,3,6)))
                                 <li class="divider"></li>
                                 @endif
                                 @endforeach

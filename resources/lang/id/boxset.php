@@ -13,7 +13,7 @@ return [
     |
     */
     'peek'=>'INTIP',
-    'boxset'=>'KOTAK SEPAKET',
+    'boxset'=>'BOKSET',
     'open_pre_order'=>'PRA-PESAN DIBUKA',
     'closed_pre_order' => 'PRA-PESAN DITUTUP',
     'description'=>'Album ini dipasarkan dalam beberapa edisi BOKSET berisi serba aneka cendera mata yang

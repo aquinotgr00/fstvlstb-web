@@ -13,5 +13,6 @@ return [
     'change_password' => 'CHANGE PASSWORD',
     'old_password' => 'Old Password',
     'new_password' => 'New Password',
-    're_password' => 'New Password Confirmation'
+    're_password' => 'New Password Confirmation',
+    'button' => 'CHANGE PASSWORD!',
 ];
