@@ -46,10 +46,12 @@ a{
 .home-btn{
 	background: none;
 	border:none;
-	padding:10px 0;
 	transition: .3s ease;
 	outline: none;
 	text-decoration: none;
+	padding-left: 0!important;
+	padding-right: 0! important;
+
 }
 .home-btn .span-bar{
 	width: 20px;
@@ -419,6 +421,11 @@ section h2{
 .laguage{
 	margin-left: 43px;
 }
+.form-group ::placeholder {
+	color: #ff7200;
+	font-family: arial;
+	font-size: 12px;
+}
 @media (max-width: 768px){
 	#home{
 		height: auto;
@@ -433,22 +440,52 @@ section h2{
 	.hidden-xs{
 		display: none;
 	}
+	.container-fluid{
+		padding-right: 0;
+		padding-left: 0;
+	}
+	.navbar-default{
+		background-color: #f8f8f800;
+		border: none;
+	}
+	.navbar-brand{
+		font-size: 16px;
+		color: #000000 !important;
+		font-weight: 600;
+	}
 	.mobilefooter{
 		margin-top: 8%;
 	}
 }
 @media (max-width: 767px){
 	#navbar{
-		position: absolute;
+		position: initial;
+	}
+	.navbar-header{
+		background-color: #ffc300;
+	}
+	.navbar-default .navbar-collapse {
+		border: none;
+	}
+	.navbar-default .navbar-toggle{
+		border: none;
+	}
+	.span-bar {
+		width: 20px;
+    	height: 5px;
+    	background: #ff0000;
+    	display: block;
+    	margin: 0 0 2px;
 	}
 	#navbar .navbar-left{
 		float: left !important;
 	}
 	#navbar .nav.navbar-nav{
-		float: right;
+		float: left;
+		margin: 0;
 	}
 	#navbar .nav.navbar-nav li{
-		float: left;
+		float: none;
 	}
 	.grs{
 		border-right: none;
