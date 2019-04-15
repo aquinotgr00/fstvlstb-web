@@ -24,7 +24,7 @@ return [
                         your idelaism to us.',
         'pre-order'=>'PRA-ORDER',
         'peek' =>'Preview',
-        'opened' =>'OPEN:'
+        'opened' =>'OPEN'
     ]
     
 

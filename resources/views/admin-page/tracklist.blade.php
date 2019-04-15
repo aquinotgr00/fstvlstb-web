@@ -11,9 +11,10 @@
                                                 <tr>
                                                     <th>Name</th>
                                                     <th>Content</th>
-                                                    <th>Preview</th>
                                                     <th>Status</th>
                                                     <th>Release Date</th>
+                                                    <th>Counter</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                         </table>
@@ -33,9 +34,10 @@
                columns: [
                         { data: 'name', name: 'name' },
                         { data: 'content', name: 'content' },
-                        { data: 'preview', name: 'preview' },
                         { data: 'status', name: 'status' },
-                        { data: 'release_date', name: 'release_date' }
+                        { data: 'release_date', name: 'release_date' },
+                        { data: 'counter',name:'counter'},
+                         { data: 'action', name: 'action' }
                      ]
             });
          });

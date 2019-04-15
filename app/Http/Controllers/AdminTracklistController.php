@@ -39,11 +39,15 @@ class AdminTracklistController extends Controller
 					->order(function ($query) {
                         $query->orderBy('id', 'asc');
                 	})
+                	->setRowId('id')
+                	->addColumn('action', function ($data) {
+		                return '<a href="/tracklist/edit/'.$data->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+		            })
                 ->toJson();
 	}
 
 	public function uploadTracklist(){
-		$file = $request->file('image');
+		$file = $request->file('audio');
    		
    		$destinationPath = 'tracklist';
    		$filePath = $destinationPath.'/'.$file->getClientOriginalName();
