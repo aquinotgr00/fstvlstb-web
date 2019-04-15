@@ -22,3 +22,32 @@
 	font-size: 10px;
 	margin-top: -35px;
 }
+
+#reset-pass{
+	background: #ffc300;
+    position: relative;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+}
+#reset-pass ::placeholder{
+	color: #ff7200;
+}
+.first{
+	margin-bottom: 35px;
+}
+.resetbox .form-group{
+	min-width: 300px;
+}
+.resetbox .form-group:last-child{
+	margin-top: 25%;
+}
+.resetbox .form-control{
+	background: #ffffff;
+    color: #ff0000;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    height: 30px;
+}

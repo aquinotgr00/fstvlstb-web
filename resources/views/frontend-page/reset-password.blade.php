@@ -1,76 +1,49 @@
-@extends('frontend-page.main')
-@section('content')
-    <section id="reset">
-      <div class="container">
-        <div class="row justify-content-center resethead modalbox">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;" />
+    <title>Reset Password</title>
 
-                        <input type="hidden" name="token" value="{{ $token }}">
+    <!-- CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-2 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-danger">
-                                    {{ __('Reset Password') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <section id="reset-pass">
+        <div class="wrapper resetbox">
+            <div id="formContent">
+                <div class="first">
+                    <h2>ATUR ULANG</h2>
+                    <h2 class="nomargin">KATA SANDI</h2>
                 </div>
+                <div class="form-group">
+                    <label for="">E-mail</label>
+                    <input type="text" class="form-control" placeholder="robyyoibanget@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="">Kata Sandi Baru</label>
+                    <input type="text" class="form-control" placeholder="******">
+                </div>
+                <div class="form-group">
+                    <label for="">Ketik Ulang Kata Sandi Baru</label>
+                    <input type="text" class="form-control" placeholder="******">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-danger btn-block btn-submit" data-toggle="modal" data-target="#modal-sukses" data-dismiss="modal">UBAH KATA SANDI!</button>
+                    
+                </div>
+                
             </div>
         </div>
-    </div>
-</div>
     </section>
-    <br/><br/><br/><br/>
-
-    <div id="footer">
-        <div class="visible-xs text-center mobilefooter">
-            <h2>FSTVLST II. HAMPIR ROCK, NYARIS SENI</h2>
-            <p>Terima kasih telah mengambil keputusan untuk mendukung FSTVLST.</p>
-        </div>
-        <div class="hidden-xs container">
-            <h2 class="navbar-left">FSTVLST II. HAMPIR ROCK, NYARIS SENI</h2>
-            <p class="navbar-right">Terimakasih telah mengambil keputusan untuk mendukung FSTVLST.</p>
-        </div>
-    </div>
-@endsection
+</body>
+</html>

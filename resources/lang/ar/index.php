@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'local' => 'عراب',
     'left'=>[
         'heading' => 'ف . س . ت . ف . ل . س . ت  ٢',
         'tracklist' => 'دفتار لاڬو:',

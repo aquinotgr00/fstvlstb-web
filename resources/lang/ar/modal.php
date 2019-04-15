@@ -20,12 +20,12 @@ return [
         ],
     ],
     'login' => [
-        'heading' => 'MASUK',
-        'need_account' => 'Jika belum punya NIF, silakan ke bagian <a href="#" data-toggle="modal" data-target="#modal-daftar" data-dismiss="modal">Pendaftaran</a>',
+        'heading' => 'ماسوك',
+        'need_account' => 'جيكا بلوم فوپا ن إ ف، سيلاكان كا باڬيان <a href="#" data-toggle="modal" data-target="#modal-daftar" data-dismiss="modal"> فندفتارن</a>',
         'columns' => [
-            'email' => 'NIF/E-mail',
-            'password' => 'Kata Sandi',
-            'forgot_password' => '<a href="#" data-toggle="modal" data-target="#modal-reset" data-dismiss="modal">Lupa</a> Kata Sandi',
+            'email' => 'ن إ ف / إيميل',
+            'password' => 'كاتا ساندي',
+            'forgot_password' => '<a href="#" data-toggle="modal" data-target="#modal-reset" data-dismiss="modal">لوفا</a> كاتا ساندي',
             'gas' => ' ڬاس!'
         ],
     ],
@@ -37,17 +37,18 @@ return [
         ],
     ],
     'succeed' => [
-        'heading' => 'SELAMAT',
-        'top_detail' => 'Kamu sudah terdaftar di FSTVLST, <br /> NIF (Nomor Induk Festivalist)-mu adalah:',
-        'bot_detail' => 'Ini adalah nomor saktimu, <br /> Untuk segala urusan administratif dengan FSTVLST.',
-        'dont_forget' => 'Simpan, jangan lupakan.',
-        'share' => 'Bagikan dan ceritakan dengan bertanggungtanya.',
-        'success' => 'SUKSES',
+        'heading' => 'سلامة',
+        'top_detail' => 'كامو سوداه تردفتار دي ف.س.ت.ف.ل.س.ت  ٢ <br /> ن إ ف (نومور إندوك فستيفال)- مو أدالة:',
+        'bot_detail' => 'إيني أداله نومور ساكتي مو, <br /> أنتوك سآكلا أوروسان أدمنيسترا سي دڠن  ف.س.ت.ف.ل.س.ت  ٢.',
+        'dont_forget' => 'سيمفان، جاڠن لوفاكن.',
+        'share' => 'باكي كن دان چآريتاكان دڠن برتڠكوڠ تاپا',
+        'success' => 'سؤكصس',
         'check_email' => 'Silahkan Cek Email untuk reset password.',
     ],
     'error' => [
-        'hold_on' => 'SEBENTAR SEBENTAR',
-        'too_many_attempt' => 'Kamu sudah 3 kali salah memasukkan kata sandi.',
-        'button' => 'BAIKLAH',
+        'hold_on' => 'سآ بنتار سآ بنتار',
+        'too_many_attempt' => 'كامو سوده 3 كالي
+                        سله مماسوؤكان كاتا ساندي',
+        'button' => 'بائيك له',
     ],
 ];

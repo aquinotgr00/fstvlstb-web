@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'local' => 'English',
     'left'=>[
         'heading' => 'FSTVLST II',
         'tracklist' => 'TRACK LIST',
