@@ -112,7 +112,7 @@ a{
 #footer h2{
 	font-family: 'Helvetica Neue', sans-serif;
     font-size: 25px;
-    font-weight: 600;
+    font-weight: 800;
 }
 #footer p{
     margin-top: 3%;
@@ -154,7 +154,7 @@ a{
 section h2{
 	font-family: 'Helvetica Neue', sans-serif;
 	font-size: 25px;
-	font-weight: 600;
+	font-weight: 800;
 }
 .treklist{
 	list-style: none;
@@ -167,7 +167,7 @@ section h2{
 	cursor: pointer;
 	font-family: 'Helvetica Neue ', sans-serif;
 	font-size: 12px;
-	font-weight: 600;
+	font-weight: 800;
 }
 .treklist li > div{
 	display: table-cell;
@@ -258,7 +258,7 @@ section h2{
 .playbar a{
 	color:#fff;
 	font-family: 'Helvetica Neue', sans-serif;
-	font-weight: 600;
+	font-weight: 800;
 }
 .text-white{
 	color:#fff;
@@ -272,7 +272,7 @@ section h2{
 }
 .text-bold{
 	font-family: 'Helvetica Neue', sans-serif;
-	font-weight: 600;
+	font-weight: 800;
 }
 .btn-intip{
 	padding-left: 15px;

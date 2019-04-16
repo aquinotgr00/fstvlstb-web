@@ -77,8 +77,8 @@
                             <h2 class="nomargin">@lang('index.right.pre-order')</h2>
                             <h2 class="nomargin">@lang('boxset.boxset')</h2>
                             <h2 class="nomargin">@lang('index.left.heading')</h2>
-                            <h2 class="nomargin">@lang('boxset.edition')</h2>
-                            <div class="pull-right hidden-xs">
+                            <h2 class="nomargin boks">@lang('boxset.edition')</h2>
+                            <div class="pull-right hidden-xs inceng">
                                 @guest('account') 
                                     <a href="/boxset" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.right.peek')</a>
                                 @endguest
@@ -145,7 +145,7 @@
                     <div class="hidden-xs desktop-footer">
                         <h2 class="text-white">@lang('footer.right.title')</h2>
                     </div>
-                    <div class="visible-xs text-center mobilefooter">
+                    <div class="visible-xs mobilefooter">
                         <h2 class="text-white nomargin">@lang('footer.left.title') @lang('footer.right.title')</h2>
                         <small>
                             @lang('footer.left.detail')
