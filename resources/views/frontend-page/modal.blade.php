@@ -169,7 +169,6 @@
                 @lang('modal.login.need_account')
             </p>
             <form id="form-login" action="{{Route('member.login')}}" method="post">
-                @csrf
                 <div class="form-group">
                     <label for="">@lang('modal.login.columns.email')</label>
                     <input type="text" id="login-email" name="email" class="form-control" placeholder="000645">
@@ -202,7 +201,6 @@
             <button class="close" type="button" data-dismiss="modal">&times;</button>
             <h3 class="text-bold">@lang('modal.reset.heading')</h3>
             <form id="form-reset" action="{{ route('password.email') }}" method="post">
-                @csrf
                 <div class="form-group">
                     <label for="">@lang('modal.reset.columns.email')</label>
                     <input type="text" id="reset-email" name="email" class="form-control"
@@ -493,10 +491,6 @@
             var fd = new FormData(form[0]);
             $.ajax({
                 type: "POST",
-                headers: {
-                    'X-Requested-With':'XMLHttpRequest',
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
                 url: url,
                 data: fd,
                 enctype: 'multipart/form-data',
