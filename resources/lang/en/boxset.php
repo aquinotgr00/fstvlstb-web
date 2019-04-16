@@ -18,7 +18,7 @@ return [
     'closed_pre_order' => 'CLOSED PRE-ORDER',
     'description'=>'This album is marketed in some sets of BOXSET containing souvenirs that you can get either as a pack
                     or separately. Taking BOXSET of FSTVLST II album, not only you share your support but also a piece of
-                    your idelaism to us.',
+                    your idealism to us.',
     'edition'=>'EDITION 01'
 
 ];
