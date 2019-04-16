@@ -25,7 +25,7 @@ class FileDownloadController extends Controller
 	   $this->counterDownload($file);
 	   
 	   $path = \Storage::disk('s3')->get($file->contents);
-	   return response($path,200,['Content-Type' => 'application/zip']);
+	   return response($path,200,['Content-Type' => 'application/zip','Content-Disposition' => 'attachment;filename='.$file->contents]);
 	}
 
 	public function counterDownload($file): void
