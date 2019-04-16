@@ -27,7 +27,7 @@
                     <i class="span-bar"></i>
                     <i class="span-bar"></i>
                   </button>
-                  <a class="navbar-brand" href="/">FSTVLST II</a>
+                  <a class="navbar-brand" href="/">@lang('index.left.heading')</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="visible-xs">

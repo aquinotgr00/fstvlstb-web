@@ -12,19 +12,19 @@
                     <div class="col-xs-8">
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.name')</label>
-                            <input type="text" name="name" class="form-control" placeholder="Roby Arifin">
+                            <input type="text" name="name" class="form-control" placeholder="Roby Arifin Wisnusirin">
                         </div>
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.email')</label>
-                            <input type="email" name="email"  id="register-email" class="form-control" placeholder="robyyoibanget@email.com">
+                            <input type="email" name="email"  id="register-email" class="form-control" placeholder="robysirin@email.com">
                         </div>
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.phone')</label>
-                            <input type="text" name="phone" id="register-phone" class="form-control" placeholder="081377788899">
+                            <input type="text" name="phone" id="register-phone" class="form-control" placeholder="081010519945">
                         </div>
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.address')</label>
-                            <input type="text" name="address" class="form-control" placeholder="Jl. Manuk No. 65, Playen, GK, Yogyakarta, 55861">
+                            <input type="text" name="address" class="form-control" placeholder="Jl. Budi Daya Permai, Blok S No. 5, Tamalanrea, Makassar 90245">
                         </div>
                     </div>
                     <div class="col-xs-4">
@@ -132,13 +132,13 @@
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.password')</label>
-                            <input type="password" id="password" name="password" class="form-control" placeholder="Danish1234">
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Opus1234">
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.re_password')</label>
-                            <input type="password" name="password_confirmation" class="form-control" placeholder="Danish1234">
+                            <input type="password" name="password_confirmation" class="form-control" placeholder="Opus1234">
                         </div>
                     </div>
                 </div>
@@ -167,12 +167,12 @@
                 @csrf
                 <div class="form-group">
                     <label for="">@lang('modal.login.columns.email')</label>
-                    <input type="text" id="login-email" name="email" class="form-control" placeholder="004565">
+                    <input type="text" id="login-email" name="email" class="form-control" placeholder="000645">
                     <a id="error-login"></a>
                 </div>
                 <div class="form-group">
                     <label for="">@lang('modal.login.columns.password')</label>
-                    <input type="password" name="password" class="form-control" placeholder="*********">
+                    <input type="password" name="password" class="form-control" placeholder="********">
                 </div>
                 <div class="form-group text-right">
                     @lang('modal.login.columns.forgot_password')
@@ -200,7 +200,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="">@lang('modal.reset.columns.email')</label>
-                        <input type="text" id="reset-email" name="email" class="form-control">
+                        <input type="text" id="reset-email" name="email" class="form-control" placeholder="robysirin@email.com">
                         <a id="error-reset"></a>
                     </div>
                     <br />
