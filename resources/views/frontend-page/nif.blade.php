@@ -96,7 +96,7 @@
 <br /><br /><br /><br />
 
 <div id="footer">
-    <div class="visible-xs text-center mobilefooter">
+    <div class="visible-xs container mobilefooter">
         <h2>@lang('index.left.heading'). @lang('footer.left.title') @lang('footer.right.title')</h2>
         <p>@lang('footer.left.detail')</p>
     </div>

@@ -29,3 +29,10 @@
 .custom-header-font{
 	font-size: 11px !important;
 }
+.boks{
+	display: inline-block;
+}
+.inceng{
+	margin-top: 6px;
+    margin-left: 56px;
+}
