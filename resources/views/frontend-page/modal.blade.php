@@ -8,7 +8,6 @@
             </p>
             <div id="alert-response"></div>
             <form id="form-register" action="{{Route('member.register')}}" enctype="multipart/form-data" method="post">
-                @csrf
                 <div class="row">
                     <div class="col-xs-8">
                         <div class="form-group">
