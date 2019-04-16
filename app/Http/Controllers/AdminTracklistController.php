@@ -62,10 +62,14 @@ class AdminTracklistController extends Controller
 
    		$destinationPath = 'tracklist';
    		$filePath = $destinationPath.'/'.$file->getClientOriginalName();
-       \Storage::disk('s3')->put($filePath, fopen($file->getRealPath().'/'.$file->getClientOriginalName(), 'r+'), [ 'visibility' => 'public','ContentType' => 'audio/mpeg'],'public');
+   		$destinationPathLocal = public_path(). '/tmp/full';
+		$filename = $file->getClientOriginalName();
+		$file->move($destinationPathLocal, $filename);
+       \Storage::disk('s3')->put($filePath,fopen($destinationPathLocal.'/'.$file->getClientOriginalName(), 'r+') , [ 'visibility' => 'public','ContentType' => 'audio/mpeg'],'public');
        $this->tracklist->where('id',$request->id)->update([
        		'content'=>$filePath
        	]);
+       unlink($destinationPathLocal.'/'.$filename);
        return Redirect()->back();
 	}
 
@@ -74,10 +78,14 @@ class AdminTracklistController extends Controller
 
    		$destinationPath = 'preview';
    		$filePath = $destinationPath.'/'.$file->getClientOriginalName();
-       \Storage::disk('s3')->put($filePath, fopen($file->getRealPath().'/'.$file->getClientOriginalName(), 'r+'), [ 'visibility' => 'public','ContentType' => 'audio/mpeg'],'public');
+   		$destinationPathLocal = public_path(). '/tmp/preview';
+		$filename = $file->getClientOriginalName();
+		$file->move($destinationPathLocal, $filename);
+       \Storage::disk('s3')->put($filePath, fopen($destinationPathLocal.'/'.$file->getClientOriginalName(), 'r+'), [ 'visibility' => 'public','ContentType' => 'audio/mpeg'],'public');
        $this->tracklist->where('id',$request->id)->update([
        		'preview'=>$filePath
        	]);
+       unlink($destinationPathLocal.'/'.$filename);
        return Redirect()->back();
 	}
 
@@ -86,7 +94,10 @@ class AdminTracklistController extends Controller
 
    		$destinationPath = 'zip';
    		$filePath = $destinationPath.'/'.$file->getClientOriginalName();
-       \Storage::disk('s3')->put($filePath, file_get_contents($file), [ 'visibility' => 'public','ContentType' => 'application/zip'],'public');
+   		$destinationPathLocal = public_path(). '/tmp/zip';
+		$filename = $file->getClientOriginalName();
+		$file->move($destinationPathLocal, $filename);
+       \Storage::disk('s3')->put($filePath, fopen($destinationPathLocal.'/'.$file->getClientOriginalName(), 'r+'), [ 'visibility' => 'public','ContentType' => 'application/zip'],'public');
 	       $zipfile= $this->file->where('tracklist_id',$request->id)->first();
 	       if(empty($zipfile)){
 	       	$this->file->insert([
@@ -99,6 +110,7 @@ class AdminTracklistController extends Controller
 	       $this->file->where('tracklist_id',$request->id)->update([
 	       		'contents'=>$filePath
 	       	]);
+	       unlink($destinationPathLocal.'/'.$filename);
        return Redirect()->back();
 	}
 
