@@ -6,6 +6,7 @@
             <p>
                 @lang('modal.register.have_account')
             </p>
+            <div id="alert-response"></div>
             <form id="form-register" action="{{Route('member.register')}}" enctype="multipart/form-data" method="post">
                 @csrf
                 <div class="row">
@@ -16,15 +17,18 @@
                         </div>
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.email')</label>
-                            <input type="email" name="email"  id="register-email" class="form-control" placeholder="robysirin@email.com">
+                            <input type="email" name="email" id="register-email" class="form-control"
+                                placeholder="robysirin@email.com">
                         </div>
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.phone')</label>
-                            <input type="text" name="phone" id="register-phone" class="form-control" placeholder="081010519945">
+                            <input type="text" name="phone" id="register-phone" class="form-control"
+                                placeholder="081010519945">
                         </div>
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.address')</label>
-                            <input type="text" name="address" class="form-control" placeholder="Jl. Budi Daya Permai, Blok S No. 5, Tamalanrea, Makassar 90245">
+                            <input type="text" name="address" class="form-control"
+                                placeholder="Jl. Budi Daya Permai, Blok S No. 5, Tamalanrea, Makassar 90245">
                         </div>
                     </div>
                     <div class="col-xs-4">
@@ -132,13 +136,15 @@
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.password')</label>
-                            <input type="password" id="password" name="password" class="form-control" placeholder="Opus1234">
+                            <input type="password" id="password" name="password" class="form-control"
+                                placeholder="Opus1234">
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.re_password')</label>
-                            <input type="password" name="password_confirmation" class="form-control" placeholder="Opus1234">
+                            <input type="password" name="password_confirmation" class="form-control"
+                                placeholder="Opus1234">
                         </div>
                     </div>
                 </div>
@@ -190,65 +196,66 @@
             </form>
         </div>
     </div>
-    </div>
-    <div class="modal fade modalbox" id="modal-reset">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <button class="close" type="button" data-dismiss="modal">&times;</button>
-                <h3 class="text-bold">@lang('modal.reset.heading')</h3>
-                <form id="form-reset" action="{{ route('password.email') }}" method="post">
-                    @csrf
-                    <div class="form-group">
-                        <label for="">@lang('modal.reset.columns.email')</label>
-                        <input type="text" id="reset-email" name="email" class="form-control" placeholder="robysirin@email.com">
-                        <a id="error-reset"></a>
-                    </div>
-                    <br />
-                    <div class="hidden-xs">
-                        <br /><br /><br /><br />
-                    </div>
-                    <div class="form-group">
-                        <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;"
-                            width="50px">
-                        <button type="submit"
-                            class="btn btn-danger btn-block btn-submit gas">@lang('modal.reset.columns.gas')</button>
-                    </div>
-                </form>
-            </div>
+</div>
+<div class="modal fade modalbox" id="modal-reset">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button class="close" type="button" data-dismiss="modal">&times;</button>
+            <h3 class="text-bold">@lang('modal.reset.heading')</h3>
+            <form id="form-reset" action="{{ route('password.email') }}" method="post">
+                @csrf
+                <div class="form-group">
+                    <label for="">@lang('modal.reset.columns.email')</label>
+                    <input type="text" id="reset-email" name="email" class="form-control"
+                        placeholder="robysirin@email.com">
+                    <a id="error-reset"></a>
+                </div>
+                <br />
+                <div class="hidden-xs">
+                    <br /><br /><br /><br />
+                </div>
+                <div class="form-group">
+                    <img src="{{asset('images/fstvlst.gif')}}" class="center-block loading" style="display: none;"
+                        width="50px">
+                    <button type="submit"
+                        class="btn btn-danger btn-block btn-submit gas">@lang('modal.reset.columns.gas')</button>
+                </div>
+            </form>
         </div>
     </div>
-    @auth('account')
-    <div class="modal fade modalbox" id="modal-sukses">
-        <div class="modal-dialog">
-            <div class="modal-content text-center">
-                <button class="close" type="button" data-dismiss="modal">&times;</button>
-                <h3 class="text-bold">@lang('modal.succeed.heading')</h3>
-                <p>
-                    @lang('modal.succeed.top_detail')
-                </p>
-                <h1 class="text-danger nomargin text-bold">{!! sprintf("%06d", Auth::guard('account')->user()->id)!!}
-                </h1>
-                <p>
-                    @lang('modal.succeed.bot_detail')
-                </p>
-                <p>
-                    <strong class="text-bold">@lang('modal.succeed.dont_forget')</strong>
-                </p>
-                <div class="thumbnail thumbnail-photo">
-                    <img src="{!!Storage::disk('s3')->url(Auth::guard('account')->user()->images)!!}" alt="">
-                </div>
-                <div class="pull-left">
-                    <a href="{{ route('images.download') }}" class="btn"><i class="fa fa-download"></i></a>
-                </div>
-               <!--  <div class="pull-right">
+</div>
+@auth('account')
+<div class="modal fade modalbox" id="modal-sukses">
+    <div class="modal-dialog">
+        <div class="modal-content text-center">
+            <button class="close" type="button" data-dismiss="modal">&times;</button>
+            <h3 class="text-bold">@lang('modal.succeed.heading')</h3>
+            <p>
+                @lang('modal.succeed.top_detail')
+            </p>
+            <h1 class="text-danger nomargin text-bold">{!! sprintf("%06d", Auth::guard('account')->user()->id)!!}
+            </h1>
+            <p>
+                @lang('modal.succeed.bot_detail')
+            </p>
+            <p>
+                <strong class="text-bold">@lang('modal.succeed.dont_forget')</strong>
+            </p>
+            <div class="thumbnail thumbnail-photo">
+                <img src="{!!Storage::disk('s3')->url(Auth::guard('account')->user()->images)!!}" alt="">
+            </div>
+            <div class="pull-left">
+                <a href="{{ route('images.download') }}" class="btn"><i class="fa fa-download"></i></a>
+            </div>
+            <!--  <div class="pull-right">
                     <a href="#" class="btn"><i class="fa fa-instagram"></i></a>
                     <a href="#" class="btn"><i class="fa fa-facebook"></i></a>
                     <a href="#" class="btn"><i class="fa fa-twitter"></i></a>
                 </div> -->
-                <div class="clearfix"></div>
-            </div>
+            <div class="clearfix"></div>
         </div>
     </div>
+</div>
 </div>
 @endauth
 
@@ -434,12 +441,8 @@
             gender: {
                 required: true
             },
-            password: {
-                required: true,
-                minlength: 6,
-            },
             password_confirmation: {
-                required: true,
+                required: '',
                 minlength: 6,
                 equalTo: "#password"
             },
@@ -464,11 +467,10 @@
             gender: {
                 required: ''
             },
-            password: {
-                required: ''
-            },
             password_confirmation: {
-                required: ''
+                required: '',
+                minlength: '',
+                equalTo: ''
             },
             image: {
                 required: true,
@@ -476,6 +478,7 @@
             }
         },
         errorPlacement: function (error, element) {
+            console.log(element.attr("name"));
             if (element.attr("name") == 'image') {
                 $('#error-image-required').text('Foto Wajib diisi (*.jpeg / *.jpg / *.png)');
             } else {
@@ -483,6 +486,7 @@
             }
         },
         submitHandler: function (form, event) {
+            $("#form-register").validate().resetForm();
             event.preventDefault(); // avoid to execute the actual submit of the form.
             $(".loading").show();
             $(".gas").hide();
@@ -497,12 +501,19 @@
                 processData: false,
                 contentType: false,
                 success: function (data) {
+                    if (typeof data.errors !== "undefined") {
+                        var alert = "";
+                        $.each(data.errors, function (index, value) {
+                            alert +="<div class='alert alert-danger'>"+index+" "+value[0]+"</div>";
+                        });
+                        $('div#alert-response').html(alert);
+                    }
                     $(".loading").hide();
                     $(".gas").show();
                     switch (data.status) {
                         case "Failed":
-                            Object.keys(data.errors).forEach(function(key) {
-                                $('#register-'+key).attr('id', 'input-required');
+                            Object.keys(data.errors).forEach(function (key) {
+                                $('#register-' + key).attr('id', 'input-required');
                             });
                             $('#error-login').html(data.message)
                             break;
@@ -512,12 +523,15 @@
                             $(location).attr("href", data.intended + '?openmodal=1');
                             break;
                         default:
-                            console.log(data)
+                            console.log(data);
+                            break;
                     }
                 }
             });
+
         }
     });
+
 
     function chooseFile() {
         document.getElementById("fileInput").click();
