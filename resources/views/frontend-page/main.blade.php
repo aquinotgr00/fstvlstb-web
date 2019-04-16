@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{asset('dist/css/plyr.css')}}" />
   <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/app.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/custom.css')}}">
+  <link rel="shortcut icon" type="image/png" href="{{asset('images/favicon.png')}}">
 
   <!-- JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
