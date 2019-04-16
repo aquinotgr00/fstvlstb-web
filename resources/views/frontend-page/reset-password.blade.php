@@ -34,7 +34,7 @@
 
                     <div class="form-group">
                         <label for="email" class="col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-                            <input placeholder="robyyoibanget@email.com" id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" required autofocus>
+                            <input placeholder="robysirin@email.com" id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" required autofocus>
 
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
@@ -47,7 +47,7 @@
                         <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
 
                         
-                            <input placeholder="******" id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                            <input placeholder="********" id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                             @if ($errors->has('password'))
                                 <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
                         <label for="password-confirm" class="col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                         
-                            <input placeholder="******" id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            <input placeholder="********" id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                     </div>
 
                     <div class="form-group">

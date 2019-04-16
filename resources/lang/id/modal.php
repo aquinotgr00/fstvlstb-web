@@ -7,7 +7,7 @@ return [
         'columns' => [
             'name' => 'Nama Lengkap',
             'photo' => 'Foto Wajah',
-            'email' => 'Email',
+            'email' => 'E-mail',
             'phone' => 'Nomor Telepon',
             'address' => 'Alamat Lengkap Untuk Pengiriman',
             'gender' => 'Kelamin',
@@ -32,7 +32,7 @@ return [
     'reset' => [
         'heading' => 'RESET',
         'columns' => [
-            'email' => 'Email',
+            'email' => 'E-mail',
             'gas' => 'GAS!',
         ],
     ],
