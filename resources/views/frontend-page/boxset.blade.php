@@ -51,11 +51,11 @@
                     <div class="main-image">
                         <img src="{{ asset('frontend/images/boxset-image.png')}}" alt="">
                         <div class="marker-container">
-                            <a href="#" class="marker" style="top:19%;left:48%"><span class="number">01</span></a>
-                            <a href="#" class="marker" style="top:25%;left:12%"><span class="number">02</span></a>
+                            <a href="#" class="marker" style="top:19%;left:48%"><span class="number">05</span></a>
+                            <a href="#" class="marker" style="top:25%;left:12%"><span class="number">01</span></a>
                             <a href="#" class="marker" style="top:55%;left:48%"><span class="number">03</span></a>
-                            <a href="#" class="marker" style="top:45%;left:88%"><span class="number">04</span></a>
-                            <a href="#" class="marker" style="top:60%;left:7%"><span class="number">05</span></a>
+                            <a href="#" class="marker" style="top:45%;left:88%"><span class="number">02</span></a>
+                            <a href="#" class="marker" style="top:60%;left:7%"><span class="number">04</span></a>
                         </div>
                     </div>
                     <div class="visible-xs">
