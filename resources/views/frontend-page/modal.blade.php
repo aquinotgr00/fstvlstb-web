@@ -478,7 +478,6 @@
             }
         },
         errorPlacement: function (error, element) {
-            console.log(element.attr("name"));
             if (element.attr("name") == 'image') {
                 $('#error-image-required').text('Foto Wajib diisi (*.jpeg / *.jpg / *.png)');
             } else {
@@ -495,6 +494,10 @@
             var fd = new FormData(form[0]);
             $.ajax({
                 type: "POST",
+                headers: {
+                    'X-Requested-With':'XMLHttpRequest',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 url: url,
                 data: fd,
                 enctype: 'multipart/form-data',
@@ -504,7 +507,7 @@
                     if (typeof data.errors !== "undefined") {
                         var alert = "";
                         $.each(data.errors, function (index, value) {
-                            alert +="<div class='alert alert-danger'>"+index+" "+value[0]+"</div>";
+                            alert += "<div class='alert alert-danger'>" + index + " " + value[0] + "</div>";
                         });
                         $('div#alert-response').html(alert);
                     }
