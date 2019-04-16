@@ -15,7 +15,7 @@
                             <h2>@lang('index.left.tracklist')</h2>
                             <ul class="treklist">
                                 @foreach($tracklist as $i => $row)
-                                <li class="treklist-stream @if(in_array($i, array(4,5,6,7,8))) inactive-stream @endif @if($row->id == 0) active @endif {{$row->status}}-stream" data-song="GAS!" data-file="{!!route('files.download',$row->id)!!}" data-src="{{route('stream.audio',$row->id)}}"> 
+                                <li class="treklist-stream @if(in_array($i, array(4,5,6,7,8))) inactive-stream @endif @if($row->id == 0) active @endif {{$row->status}}-stream" data-song="{{$row->name}}" data-file="{!!route('files.download',$row->id)!!}" data-src="{{route('stream.audio',$row->id)}}"> 
                                     <div class="icon"><i class="fa fa-play"></i></div>
                                     <div class="number">{!! sprintf("%02d",$i+1) !!}</div>
                                     <div class="title">{{$row->name}}</div>
@@ -189,6 +189,7 @@
                 $( ".treklist-stream" ).removeClass( "active" )
                 $(this).addClass("active")
                 player.stop()
+                console.log(song)
                 $('#song-title').html(song)  
                 $('#file-download').attr("href", file);
                 $("#player-stream").attr("src", source);
