@@ -10,10 +10,11 @@
 }
 body{
 	background: #fff;
-    font-family: 'HelveticaNeueMedium', sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
     color:#000;
     overflow-x: hidden;
     font-size:10px;
+    font-weight: 500;
 }
 a{
 	color:#ff0000;
@@ -97,7 +98,7 @@ a{
 	font-size: 14px;
 }
 .isian{
-	font-family: HelveticaNeue;
+	font-family: Helvetica Neue;
 	margin-bottom: 15px;
 }
 .head {
@@ -109,8 +110,9 @@ a{
     margin-right: 15px;
 }
 #footer h2{
-	font-family: 'HelveticaNeueBold', sans-serif;
+	font-family: 'Helvetica Neue', sans-serif;
     font-size: 25px;
+    font-weight: 600;
 }
 #footer p{
     margin-top: 3%;
@@ -150,8 +152,9 @@ a{
 	display: block;
 }
 section h2{
-	font-family: 'HelveticaNeueBold', sans-serif;
+	font-family: 'Helvetica Neue', sans-serif;
 	font-size: 25px;
+	font-weight: 600;
 }
 .treklist{
 	list-style: none;
@@ -162,8 +165,9 @@ section h2{
 .treklist li{
 	display: table-row;
 	cursor: pointer;
-	font-family: 'HelveticaNeueBold', sans-serif;
+	font-family: 'Helvetica Neue ', sans-serif;
 	font-size: 12px;
+	font-weight: 600;
 }
 .treklist li > div{
 	display: table-cell;
@@ -253,7 +257,8 @@ section h2{
 }
 .playbar a{
 	color:#fff;
-	font-family: 'HelveticaNeueBold', sans-serif;
+	font-family: 'Helvetica Neue', sans-serif;
+	font-weight: 600;
 }
 .text-white{
 	color:#fff;
@@ -266,7 +271,8 @@ section h2{
 	margin-bottom: 25px !important;
 }
 .text-bold{
-	font-family: 'HelveticaNeueBold', sans-serif;	
+	font-family: 'Helvetica Neue', sans-serif;
+	font-weight: 600;
 }
 .btn-intip{
 	padding-left: 15px;
