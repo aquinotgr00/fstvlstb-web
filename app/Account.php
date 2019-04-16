@@ -19,7 +19,7 @@ class Account extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','address','phone','images','dob','gender'
+        'id','name', 'email', 'password','address','phone','images','dob','gender'
     ];
     /**
      * The attributes that should be hidden for arrays.

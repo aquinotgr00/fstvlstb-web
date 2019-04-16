@@ -66,6 +66,24 @@ class MemberRegisterController extends Controller
      */
     protected function create(array $data)
     {   
+        
+        $acc = new Account();
+        $reserve = [25,64,644,887,6564,656564,855976];
+        $last_id = $acc->latest('id')->first();
+        if (in_array($last_id->id, $reserve)) 
+        { 
+            return Account::create([
+            'id'=>$last_id->id +2,
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'phone' =>$data['phone'],
+            'address'=> $data['address'],
+            'gender'=>$data['gender'],
+            'dob'=>$data['dob'],
+            'images'=>$data['images'],
+            'password' => Hash::make($data['password']),
+            ]);
+         } 
         return Account::create([
             'name' => $data['name'],
             'email' => $data['email'],
