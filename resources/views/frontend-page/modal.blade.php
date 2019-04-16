@@ -16,11 +16,11 @@
                         </div>
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.email')</label>
-                            <input type="email" name="email" class="form-control" placeholder="robyyoibanget@email.com">
+                            <input type="email" name="email"  id="register-email" class="form-control" placeholder="robyyoibanget@email.com">
                         </div>
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.phone')</label>
-                            <input type="text" name="phone" class="form-control" placeholder="081377788899">
+                            <input type="text" name="phone" id="register-phone" class="form-control" placeholder="081377788899">
                         </div>
                         <div class="form-group">
                             <label for="">@lang('modal.register.columns.address')</label>
@@ -353,7 +353,8 @@
                             $('#error-login').html(data.message)
                             break;
                         case "Limit":
-                            console.log(data)
+                            $('#modal-masuk').modal('hide')
+                            $('#modal-error').modal('show')
                             break;
                         case "Success":
                             $(location).attr("href", data.intended);
@@ -475,7 +476,6 @@
             }
         },
         errorPlacement: function (error, element) {
-            console.log(error)
             if (element.attr("name") == 'image') {
                 $('#error-image-required').text('Foto Wajib diisi (*.jpeg / *.jpg / *.png)');
             } else {
@@ -501,10 +501,12 @@
                     $(".gas").show();
                     switch (data.status) {
                         case "Failed":
+                            Object.keys(data.errors).forEach(function(key) {
+                                $('#register-'+key).attr('id', 'input-required');
+                            });
                             $('#error-login').html(data.message)
                             break;
                         case "Limit":
-                            console.log(data)
                             break;
                         case "Success":
                             $(location).attr("href", data.intended + '?openmodal=1');
@@ -516,6 +518,7 @@
             });
         }
     });
+
     function chooseFile() {
         document.getElementById("fileInput").click();
     }

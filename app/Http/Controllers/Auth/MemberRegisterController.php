@@ -16,10 +16,11 @@ class MemberRegisterController extends Controller
     
     public function register(Request $request)  {   
     	$file = $request->file('image');
-   		
+   		$mask = array("red","yellow");
    		$destinationPath = 'uploads';
    		$filePath = $destinationPath.'/'.$file->getClientOriginalName();
-    	$fileimage = Image::make($file)->greyscale()->resize(1080, 1080)->insert('images/mask-strip.png','center')->save($destinationPath.'/'.$file->getClientOriginalName());
+        $masking= array_rand($mask,1);
+    	$fileimage = Image::make($file)->greyscale()->resize(1080, 1080)->insert('images/image-masking-'.$mask[$masking].'.png','center')->save($destinationPath.'/'.$file->getClientOriginalName());
 	   $s3 = \Storage::disk('s3');
        $s3->put($filePath, $fileimage,'public');
     	$request->request->add(['images' =>$filePath ]);

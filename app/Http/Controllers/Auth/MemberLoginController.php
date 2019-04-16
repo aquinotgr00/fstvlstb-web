@@ -28,8 +28,9 @@ class MemberLoginController extends Controller
      * @var string
      */
 
-    protected $maxAttempts = 4;
+    protected $maxAttempts = 3;
     protected $decayMinutes = 1;
+
 
     public function __construct()
     {
@@ -46,6 +47,22 @@ class MemberLoginController extends Controller
         request()->merge([$fieldName => $identity]);
         return $fieldName;
     }
+
+        /**
+     * Determine if the user has too many failed login attempts.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    protected function hasTooManyLoginAttempts(Request $request)
+    {
+      $attempts = 2;
+      $lockoutMinites = 1;
+      return $this->limiter()->tooManyAttempts(
+          $this->throttleKey($request), $attempts, $lockoutMinites
+      );
+    }
+
     public function loginMember(Request $request)
     {
       // Validate the form data
@@ -66,12 +83,14 @@ class MemberLoginController extends Controller
 
         return $this->sendLockoutResponse($request);
     } 
+
     $field = filter_var($request->email, FILTER_VALIDATE_EMAIL) ? 'email' : 'id';
     $request->merge([$field => $request->email]);
     
       // Attempt to log the user in
       if (Auth::guard('account')->attempt($request->only($field, 'password'))) {
         // if successful, then redirect to their intended location
+         $this->clearLoginAttempts($request);
 		   if ($request->ajax()) {
 		        return response()->json([
 		        	'status'=>'Success',
@@ -80,6 +99,7 @@ class MemberLoginController extends Controller
 		    } 
 		        return redirect()->intended(URL::route('home'));
       }
+      $this->incrementLoginAttempts($request);
       // if unsuccessful, then redirect back to the login with the form data
       if ($request->ajax()) {
             return response()->json([

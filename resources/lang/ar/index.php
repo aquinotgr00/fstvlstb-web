@@ -14,7 +14,7 @@ return [
     */
     'local' => 'عراب',
     'left'=>[
-        'heading' => 'ف . س . ت . ف . ل . س . ت  ٢',
+        'heading' => 'ف  س  ت  ف  ل  س  ت  ٢',
         'tracklist' => 'دفتار لاڬو:',
         'playing' => ':مآماهينكان',
         'download' => 'أوندوه',

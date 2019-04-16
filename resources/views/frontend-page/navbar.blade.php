@@ -7,18 +7,18 @@
                     <i class="span-bar"></i>
                     </a>
                 </li>
-                <li><a href="{!!Route('change.language','id')!!}">@lang('header.lang.bahasa')</a></li>
-                <li><a href="{!!Route('change.language','en')!!}">@lang('header.lang.english')</a></li>
-                <li><a href="{!!Route('change.language','ar')!!}">@lang('header.lang.arab')</a></li>
+                <li><a class="custom-header-font"  href="{!!Route('change.language','id')!!}">@lang('header.lang.bahasa')</a></li>
+                <li><a class="custom-header-font"  href="{!!Route('change.language','en')!!}">@lang('header.lang.english')</a></li>
+                <li><a class="custom-header-font"  href="{!!Route('change.language','ar')!!}">@lang('header.lang.arab')</a></li>
             </ul> 
             <ul class="nav navbar-nav navbar-right hidden-xs">
                 @guest('account')
-                <li><a href="#" data-toggle="modal" data-target="#modal-daftar">@lang('header.register')</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#modal-masuk">@lang('header.login')</a></li>
+                <li><a class="custom-header-font"  href="#" data-toggle="modal" data-target="#modal-daftar">@lang('header.register')</a></li>
+                <li><a class="custom-header-font"  href="#" data-toggle="modal" data-target="#modal-masuk">@lang('header.login')</a></li>
                 @endguest
                 @auth('account')
-                    <li><a href="{{ Route('member.nif') }}">@lang('header.nif')</a></li>
-                    <li><a href="{{ Route('member.logout') }}">@lang('header.logout')</a></li>
+                    <li><a class="custom-header-font"  href="{{ Route('member.nif') }}">@lang('header.nif')</a></li>
+                    <li><a class="custom-header-font"  href="{{ Route('member.logout') }}">@lang('header.logout')</a></li>
                 @endauth
             </ul>
                 <div class="navbar-header visible-xs">
