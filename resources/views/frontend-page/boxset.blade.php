@@ -63,7 +63,7 @@
                         <div class="row">
                             <div class="col-xs-8">
                                 <h2 style="font-size: 30px;">
-                                    @lanng('boxset.pre-order') @lang('boxset.opened') <br/> 01/05/2019
+                                    @lang('boxset.pre-order') @lang('boxset.opened') <br/> 01/05/2019
                                 </h2>  
                             </div>
 

@@ -4,9 +4,9 @@
         <div class="container">
             <div class="row row-layout">
                 <div class="col-md-3">
-                    <h2>@lang('index.left.heading')</h2>
+                    <h2 class="hidden-xs">@lang('index.left.heading')</h2>
                     <div class="row">
-                        <div class="col-xs-6 visible-xs">
+                        <div class="col-12 visible-xs">
                             <div class="thumbnail"><img src="{{asset('frontend/images/main-image.png')}}" alt=""></div>
                         </div>
                     </div>
@@ -66,14 +66,14 @@
                 </div>
                 <div class="col-md-3">
                     <div class="row">
-                        <div class="col-md-12 col-xs-6">
+                        <div class="col-md-12">
                             <h2>@lang('index.right.boxset')</h2>
                             <p>
                                @lang('index.right.description')
                             </p>
                             <br/>        
                         </div>
-                        <div class="col-md-12 col-xs-6">
+                        <div class="col-md-12">
                             <h2 class="nomargin">@lang('index.right.pre-order')</h2>
                             <h2 class="nomargin">@lang('boxset.boxset')</h2>
                             <h2 class="nomargin">@lang('index.left.heading')</h2>
