@@ -15,4 +15,7 @@ return [
     'new_password' => 'New Password',
     're_password' => 'New Password Confirmation',
     'button' => 'CHANGE PASSWORD!',
+    'edit'=>[
+            'button' =>'EDIT',
+        ],
 ];

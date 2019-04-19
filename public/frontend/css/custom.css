@@ -36,3 +36,13 @@
 	margin-top: 6px;
     margin-left: 56px;
 }
+.no-border{
+	border: 0;
+	color: black;
+    padding: 0px;
+    height: inherit;
+    box-shadow: none;
+}
+.no-border[readonly]{
+	background: none;
+}

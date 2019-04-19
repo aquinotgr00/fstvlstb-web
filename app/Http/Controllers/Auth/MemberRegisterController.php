@@ -14,15 +14,16 @@ use Hash;
 class MemberRegisterController extends Controller
 {
     
-    public function register(Request $request)  {   
+    public function register(Request $request)  { 
+        $unique = uniqid();  
     	$file = $request->file('image');
    		$mask = array("red","yellow");
    		$destinationPath = 'uploads';
-   		$filePath = $destinationPath.'/'.$file->getClientOriginalName();
+   		$filePath = $destinationPath.'/'.$unique.'-'.$file->getClientOriginalName();
         $masking= array_rand($mask,1);
     	$fileimage = Image::make($file)->greyscale()->resize(1080, 1080)->insert('images/image-masking-'.$mask[$masking].'.png','center')->save($destinationPath.'/'.$file->getClientOriginalName());
-	   $s3 = \Storage::disk('s3');
-       $s3->put($filePath, $fileimage,'public');
+        $s3 = \Storage::disk('s3');
+        $s3->put($filePath, $fileimage,'public');
     	$request->request->add(['images' =>$filePath ]);
     	$request->request->add(['dob' => $request->date."/".$request->month.'/'.$request->year]);
         $validation = $this->validator($request->all());

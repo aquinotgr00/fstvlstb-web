@@ -18,5 +18,6 @@ class users extends Seeder
                     'email' => 'admin@admin.com',
                     'password' => '$2y$10$N5s1Mc28.XIdLres3ibT.ek8QEb0wTvJUVlJnApBB0MSWVmNCa0Wq'
                 ],
+        ]);
     }
 }
