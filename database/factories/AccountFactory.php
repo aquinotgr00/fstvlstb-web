@@ -21,7 +21,7 @@ $factory->define(App\Account::class, function (Faker $faker) {
         'address' =>$faker->address,
         'gender'=>'L',
         'dob'=>'01/01/1970',
-        'images'=>'uploads/default-fstvlst.jpg',
+        'images'=>'uploads/5cb9a27d42d77-arin.jpg',
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'remember_token' => str_random(10),
     ];
