@@ -20,53 +20,6 @@ class RajaOngkirController extends Controller
         $this->key      = 'd985e449666dc41df8683c05e10d3289';
     }
 
-    public function getProvinces()
-    {
-        $req = $this->client->request('GET', 'province', [
-            'headers' => [
-                'Accept'   => 'application/json',
-                'key'      => $this->key
-            ]
-        ]);
-        $response   = $req->getBody()->getContents();
-        $collection = json_decode($response);
-        return new RajaOngkirResource($collection->rajaongkir);
-    }
-
-    public function getCityByProvinceID(Request $request)
-    {
-        $request->validate([
-            'province' => 'required'
-        ]);
-        $req = $this->client->request('GET', 'city', [
-            'headers' => [
-                'Accept'   => 'application/json',
-                'key'      => $this->key
-            ],
-            'query' => $request->all()
-        ]);
-        $response   = $req->getBody()->getContents();
-        $collection = json_decode($response);
-        return new RajaOngkirResource($collection->rajaongkir);
-    }
-
-    public function getSubdistrict(Request $request)
-    {
-        $request->validate([
-            'city' => 'required'
-        ]);
-        $req = $this->client->request('GET', 'subdistrict', [
-            'headers' => [
-                'Accept'   => 'application/json',
-                'key'      => $this->key
-            ],
-            'query' => $request->all()
-        ]);
-        $response   = $req->getBody()->getContents();
-        $collection = json_decode($response);
-        return new RajaOngkirResource($collection->rajaongkir);
-    }
-
     public function getShippingCost(Request $request)
     {
         $request->validate([

@@ -12,7 +12,6 @@ class ProductionBatch extends Model
      * @var array
      */
     protected $fillable = [
-        'pre_order_id',
         'batch_qty',
         'start_production_date',
         'end_production_date',
