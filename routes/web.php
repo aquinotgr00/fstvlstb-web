@@ -37,6 +37,11 @@ Route::prefix('member')->group(function(){
 	Route::post('/ganti-password','NifController@gantiPassword')->name('member.ganti-password');
 });
 
+Route::post('/midtrans-finish', function(){
+    return redirect()->route('welcome');
+})->name('midtrans.finish');
+Route::post('/midtrans-notification/handler', 'DonationController@notificationHandler')->name('midtrans.notification.handler');
+
 Route::prefix('admin')->group(function () {
 	  Auth::routes();
    	Route::get('/', 'HomeController@index')->name('admin.dashboard');
