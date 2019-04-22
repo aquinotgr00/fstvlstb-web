@@ -80,7 +80,7 @@
                             <h2 class="nomargin boks">@lang('boxset.edition')</h2>
                             <div class="pull-right hidden-xs inceng">
                                 @guest('account') 
-                                    <a href="/boxset" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.right.peek')</a>
+                                    <a href="#" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar">@lang('index.right.peek')</a>
                                 @endguest
                                 @auth('account')
                                     <a href="/boxset" class="btn btn-danger btn-intip btn-xs">@lang('index.right.peek')</a>

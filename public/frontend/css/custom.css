@@ -37,7 +37,7 @@
     margin-left: 56px;
 }
 .no-border{
-	border: 0;
+	border: 1px;
 	color: black;
     padding: 0px;
     height: inherit;
