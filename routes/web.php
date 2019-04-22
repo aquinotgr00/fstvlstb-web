@@ -48,7 +48,12 @@ Route::prefix('admin')->group(function () {
     Route::post('/tracklist/upload/stream', 'AdminTracklistController@uploadTracklist')->name('admin.tracklist.upload.stream');
     Route::post('/tracklist/upload/preview', 'AdminTracklistController@uploadTracklistPreview')->name('admin.tracklist.upload.preview');
     Route::post('/tracklist/upload/zip', 'AdminTracklistController@uploadTracklistZip')->name('admin.tracklist.upload.zip');
-   	Route::get('/tracklist/list', 'AdminTracklistController@listData')->name('admin.tracklist.list');
+	Route::get('/tracklist/list', 'AdminTracklistController@listData')->name('admin.tracklist.list');
+	   
+	// TRANSACTION ROUTES
+   	Route::get('/transactions', 'TransactionController@index')->name('admin.transaction.page');
+   	Route::get('/transactions/list', 'TransactionController@listData')->name('admin.transaction.list');
+   	Route::get('/transactions/paidList', 'TransactionController@listPaidTransactions')->name('admin.paid-transaction.list');
 
 });
 
