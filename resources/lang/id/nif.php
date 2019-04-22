@@ -15,4 +15,7 @@ return [
     'new_password' => 'Kata Sandi Baru',
     're_password' => 'Konfirmasi Kata Sandi Baru',
     'button' => 'UBAH KATA SANDI!',
+    'edit'=>[
+            'button' =>'UBAH',
+        ],
 ];

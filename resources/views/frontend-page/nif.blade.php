@@ -9,7 +9,11 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="thumbnail thumbnail-photo thumbnail-nif">
-                    <img src="{!!Storage::disk('s3')->url(Auth::guard('account')->user()->images)!!}" alt="">
+                    <img id='nif-image' class='pointer' src="{!!Storage::disk('s3')->url(Auth::guard('account')->user()->images)!!}" alt="">
+                    <form action="{{Route('member.change.image')}}" enctype="multipart/form-data" id='form-image' method="post">
+                        @csrf
+                        <input type="file" name="image" id="image_nif" style="display: none;" />
+                    </form>
                 </div>
                 <div class="pull-left">
                     <a href="{{ route('images.download') }}" class="btn"><i class="fa fa-download"></i></a>
@@ -21,38 +25,50 @@
                 </div> -->
             </div>
             <div class="col-md-5 mrgn">
+                <form action="{{ route('member.change.nif') }}" method="post" id="change-password">
+                    @csrf
                 <div class="form-group row detail grs">
-                    <label for="#" class="col-sm-4 col-form-label">@lang('nif.columns.name')</label>
-                    <div class="col-sm-8">
-                        <p class="isian">: {{ Auth::guard('account')->user()->name }}</p>
+                    <label for="#" class="col-sm-5 col-form-label">@lang('nif.columns.name') <trobe class="pull-right">:</trobe></label>
+                    <div class="col-sm-7">
+                         <input type="text" name="name" class="form-control isian no-border"  value="{{ Auth::guard('account')->user()->name }}">
                     </div>
-                    <label for="#" class="col-sm-4 col-form-label">@lang('nif.columns.nif')</label>
-                    <div class="col-sm-8">
-                        <p class="isian">: {!! sprintf("%06d", Auth::guard('account')->user()->id)!!}</p>
+                    <label for="#" class="col-sm-5 col-form-label">@lang('nif.columns.nif') <trobe class="pull-right">:</trobe></label>
+                    <div class="col-sm-7">
+                        <p class="isian">{!! sprintf("%06d", Auth::guard('account')->user()->id)!!}</p>
                     </div>
-                    <label for="#" class="col-sm-4 col-form-label">@lang('nif.columns.email')</label>
-                    <div class="col-sm-8">
-                        <p class="isian">: {{ Auth::guard('account')->user()->email }}</p>
+                    <label for="#" class="col-sm-5 col-form-label">@lang('nif.columns.email') <trobe class="pull-right">:</trobe></label>
+                    <div class="col-sm-7">
+                         <p class="isian">{{ Auth::guard('account')->user()->email }}</p>
                     </div>
-                    <label for="#" class="col-sm-4 col-form-label">@lang('nif.columns.phone')</label>
-                    <div class="col-sm-8">
-                        <p class="isian">: {{ Auth::guard('account')->user()->phone }}</p>
+                    <label for="#" class="col-sm-5 col-form-label">@lang('nif.columns.phone') <trobe class="pull-right">:</trobe></label>
+                    <div class="col-sm-7">
+                        <input type="text" name="phone" class="form-control isian no-border" value="{{ Auth::guard('account')->user()->phone }}">
                     </div>
-                    <label for="#" class="col-sm-4 col-form-label">@lang('nif.columns.address')</label>
-                    <div class="col-sm-8">
-                        <p class="isian">: {{ Auth::guard('account')->user()->address }}</p>
+                    <label for="#" class="col-sm-5 col-form-label">@lang('nif.columns.address') <trobe class="pull-right">:</trobe></label>
+                    <div class="col-sm-7">
+                        <textarea name="address" class="form-control isian no-border">{{ Auth::guard('account')->user()->address }}</textarea>
                     </div>
-                    <label for="#" class="col-sm-4 col-form-label">@lang('nif.columns.gender')</label>
-                    <div class="col-sm-8">
-                        <p class="isian">: {{ Auth::guard('account')->user()->gender }}</p>
+                    <label for="#" class="col-sm-5 col-form-label">@lang('nif.columns.gender') <trobe class="pull-right">:</trobe></label>
+                    <div class="col-sm-7">
+                        <select name="gender" class="form-control isian no-border">
+                            <option value="L" @if(Auth::guard('account')->user()->gender == "L") selected @endif >L</option>
+                            <option value="P" @if(Auth::guard('account')->user()->gender == "P") selected @endif >P</option>
+                            <option value="X" @if(Auth::guard('account')->user()->gender == "X") selected @endif >X</option>
+                        </select>
                     </div>
-                    <label for="#" class="col-sm-4 col-form-label">@lang('nif.columns.born_date')</label>
-                    <div class="col-sm-8">
-                        <p class="isian">: {{ Auth::guard('account')->user()->dob }}</p>
+                    <label for="#" class="col-sm-5 col-form-label">@lang('nif.columns.born_date') <trobe class="pull-right">:</trobe></label>
+                    <div class="col-sm-7">
+                        <input type="text" name="dob" class="form-control isian no-border" value="{{ Auth::guard('account')->user()->dob }}" readonly>
                     </div>
                 </div>
-
+                <div class="form-group col-sm-3">
+                        <button class="btn btn-danger btn-block btn-submit" type="submit">
+                            @lang('nif.edit.button')
+                        </button>
+                </div>
+                </form>
             </div>
+
             <div class="col-md-4 mrgn">
                 <section id="reset-pass">
                     @if(Session::has('success'))
@@ -105,7 +121,24 @@
         <p class="navbar-right">@lang('footer.left.detail')</p>
     </div>
 </div>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
+    $(function () {
+        $('input[name="dob"]').datepicker({
+          changeMonth: true,
+          changeYear: true,
+          dateFormat: 'dd/mm/yy'
+        });
+    });
+    $("#nif-image").click(function() {
+        $("input[id='image_nif']").click();
+    });
+    $("input[id='image_nif']").change(function() {
+      $('#form-image').submit()
+    });
+
+
     $("#change-password").validate({
         rules: {
             password: {
