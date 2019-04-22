@@ -46,7 +46,7 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li {{ request()->route()->getName() === 'admin.dashboard' ? ' class=active' : '' }}>
-                            <a class="js-arrow" href="/admin">
+                            <a href="/admin">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li {{ request()->route()->getName() === 'admin.member.page' ? ' class=active' : '' }}>
@@ -57,9 +57,9 @@
                             <a href="/admin/tracklist">
                                 <i class="fas  fa-users"></i>Tracklist</a>
                         </li>
-                        <li>
-                            <a href="map.html">
-                                <i class="fas fa-bar-chart-o"></i>Order</a>
+                        <li {{ request()->route()->getName() === 'admin.transaction.page' ? ' class=active' : '' }}>
+                            <a href="/admin/transactions">
+                                <i class="fas fa-bar-chart-o"></i>Transaction</a>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
