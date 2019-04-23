@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProductionBatch extends Model
+class Production extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,9 +12,8 @@ class ProductionBatch extends Model
      * @var array
      */
     protected $fillable = [
-        'batch_qty', 'product_id',
-        'start_production_date',
-        'end_production_date',
-        'notes'
+        'transaction_id', 'production_batch_id',
+        'status', 'delivery_date', 'tracking_number',
+        'received_confirmation'
     ];
 }

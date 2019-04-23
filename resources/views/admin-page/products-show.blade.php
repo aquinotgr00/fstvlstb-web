@@ -58,11 +58,8 @@
                     </ul>
                 </div>
                 <div class="col-lg-6 text-right ">
-                    <button type="button" class="btn btn-warning white-text" data-toggle="modal" data-target="#myModal">
+                    <button type="button" class="btn btn-warning white-text" data-toggle="modal" data-target="#mediumModal">
                         Create a batch
-                    </button>
-                    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#largeModal">
-                        Large
                     </button>
                 </div>
             </div>
@@ -122,27 +119,41 @@
 @endsection
 @section('modal')
     {{-- CREATE BATCH FORM MODAL --}}
-    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="largeModalLabel">Large Modal</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        There are three species of zebras: the plains zebra, the mountain zebra and the Grévy's zebra. The plains zebra and the mountain
-                        zebra belong to the subgenus Hippotigris, but Grévy's zebra is the sole species of subgenus Dolichohippus. The latter
-                        resembles an ass, to which it is closely related, while the former two are more horse-like. All three belong to the
-                        genus Equus, along with other living equids.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Confirm</button>
-                </div>
+                <form action="/admin/production-batch" method="POST" id="create_batch_form">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="mediumModalLabel">Create a batch</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="start_production_date" class="control-label mb-1">Start Production Date</label>
+                                        <input id="start_production_date" name="start_production_date" type="date" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label for="end_production_date" class="control-label mb-1">End Production Date</label>
+                                    <input id="end_production_date" name="end_production_date" type="date" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="notes" class="control-label mb-1">Notes</label>
+                                <textarea name="notes" id="notes" class="form-control" cols="30" rows="10"></textarea>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-info">Confirm</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -151,12 +162,27 @@
     <script>
         $(document).ready( function () {
 
-            // TODO: Continue simplified data table loading
+            $('#create_batch_form').submit(function (evt) {
+                evt.preventDefault();
+                var form = $(this);
+                var url = form.attr('action');
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: form.serialize(), // serializes the form's elements.
+                    success: function(data)
+                    {
+                        console.log(data); // show response from the php script.
+                    }
+                });
+            });
+
+            // TODO: Continue simplified data table loadingitem
             // function loadDataTable(status) {
             //     $('#datatables-resource').DataTable({
             //         processing: true,
             //         serverSide: true,
-            //         ajax: `{!! route('admin.transaction.list-by-id', ['id' => $product->id, 'status' => 'paid']) !!}`,
+            //         ajax: `{!! route('admin.transaction.item', ['id' => $product->id, 'status' => 'paid']) !!}`,
             //         columns: [
             //             { data: 'id', name: 'id' },
             //             { data: 'name', name: 'name' },
@@ -211,6 +237,7 @@
                 ]
             });
 
+            // TODO: production batch list won't show anything
             $('#datatables-batch').DataTable({
                 processing: true,
                 serverSide: true,

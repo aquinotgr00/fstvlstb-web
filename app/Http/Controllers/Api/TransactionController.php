@@ -61,14 +61,14 @@ class TransactionController extends Controller
 
         // store the order item
         
-        // if (!is_null($request->items)) {
+        if (!is_null($request->items)) {
         //     foreach ($request->items as $key => $item) {
                 // if (!isset($item['model'])) {
                 //     $item['model']=' ';
                 // }
-        \App\Order::create(array_merge($request->item, ['transaction_id' => $transaction->id]));
+            \App\Order::create(array_merge($request->item, ['transaction_id' => $transaction->id]));
         //     }
-        // }
+        }
 
         return $invoice;
         // SendPaymentReminder::dispatch($transaction)

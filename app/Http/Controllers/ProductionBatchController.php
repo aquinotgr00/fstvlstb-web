@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\ProductionBatch;
 use App\Transaction;
+use App\Production;
 use DataTables;
 
 class ProductionBatchController extends Controller
@@ -27,6 +28,7 @@ class ProductionBatchController extends Controller
 
     public function store(Request $request)
     {
+        // return $request->all();
         $transactions       = $this->transaction->where('status', 'paid')
             ->where('product_id', $request->product_id)
             ->orderBy('created_at', 'ASC')
@@ -34,6 +36,7 @@ class ProductionBatchController extends Controller
 
         if ($transactions->count() > 0) {
             $productionBatch    = new ProductionBatch;
+            $productionBatch->product_id            = $request->product_id;
             $productionBatch->batch_qty             = $transactions->count();
             $productionBatch->start_production_date = $request->start_production_date;
             $productionBatch->end_production_date   = $request->end_production_date;
@@ -45,10 +48,12 @@ class ProductionBatchController extends Controller
                 $new_production->production_batch_id = $productionBatch->id;
                 $new_production->save();
             }
-            $productionBatch->getProductions;
-            return new ProductionBatchResource($productionBatch);
+            // $productionBatch->getProductions;
+            // return new ProductionBatchResource($productionBatch);
+            return $productionBatch->toArray();
         } elseif ($transactions->count() == 0) {
-            return TransactionResource::collection($transactions);
+            // return TransactionResource::collection($transactions);
+            return $transaction->toArray();
         }
     }
 
