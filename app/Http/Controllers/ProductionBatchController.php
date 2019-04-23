@@ -5,12 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\ProductionBatch;
+use App\Transaction;
+use DataTables;
 
 class ProductionBatchController extends Controller
 {
+    protected $productionBatch;
+    protected $transaction;
+    
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(ProductionBatch $productionBatch, Transaction $transaction)
+    {
+        $this->middleware('auth');
+        $this->productionBatch = $productionBatch;
+        $this->transaction = $transaction;
+    }
+
     public function store(Request $request)
     {
         $transactions       = $this->transaction->where('status', 'paid')
+            ->where('product_id', $request->product_id)
             ->orderBy('created_at', 'ASC')
             ->get();
 
@@ -32,5 +50,13 @@ class ProductionBatchController extends Controller
         } elseif ($transactions->count() == 0) {
             return TransactionResource::collection($transactions);
         }
+    }
+
+    public function listDataById(Request $request)
+    {
+        $data = $this->productionBatch->where('product_id', $request->id)->get();
+    	return DataTables::of($data)
+            ->editColumn('created_at', '{!! date("d-m-Y", strtotime($created_at))!!}')
+            ->make(true);
     }
 }

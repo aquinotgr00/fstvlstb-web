@@ -61,4 +61,14 @@ class TransactionController extends Controller
             ->editColumn('created_at', '{!! date("d-m-Y", strtotime($created_at))!!}')
             ->make(true);
     }
+
+    public function listDataById(Request $request)
+    {
+        $data = $this->transactions->where('status', $request->status)
+                    ->where('product_id', $request->id)
+                    ->get();
+    	return DataTables::of($data)
+            ->editColumn('created_at', '{!! date("d-m-Y", strtotime($created_at))!!}')
+            ->make(true);
+    }
 }

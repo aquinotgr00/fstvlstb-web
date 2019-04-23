@@ -57,11 +57,11 @@
                             <a href="/admin/tracklist">
                                 <i class="fas  fa-users"></i>Tracklist</a>
                         </li>
-                        <li {{ request()->route()->getName() === 'admin.transaction.page' ? ' class=active' : '' }}>
-                            <a href="/admin/transactions">
-                                <i class="fas fa-bar-chart-o"></i>Transaction</a>
+                        <li {{ request()->route()->getName() === 'admin.product.page' ? ' class=active' : '' }}>
+                            <a href="/admin/products">
+                                <i class="fas fa-bar-chart-o"></i>Product</a>
                         </li>
-                        <li class="has-sub">
+                        {{-- <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-copy"></i>Pages</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -75,7 +75,7 @@
                                     <a href="forget-pass.html">Forget Password</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                     </ul>
                 </nav>
             </div>
