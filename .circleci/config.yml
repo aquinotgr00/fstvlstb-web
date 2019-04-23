@@ -30,8 +30,6 @@ workflows:
     jobs:
       - hold:
           type: approval
-          requires:
-           - build
           filters:
             tags:
               only: /^v.*/
