@@ -1,21 +1,43 @@
 version: 2
 
 jobs:
-  deploy:
+  deploy-prod:
     docker:
       - image: circleci/php:7.1-node-browsers
     working_directory: ~/laravel 
     steps:
       - run:
           name: SSH and deploy
-          command: ssh -oStrictHostKeyChecking=no ops@3.0.215.64 "cd /home/ops/docker-build/fstvlst-web && sh deploy.sh master"
-
+          command: ssh -oStrictHostKeyChecking=no ops@3.0.215.64 "cd /home/ops/docker-build/fstvlst-web && sh deploy.sh ${CIRCLE_TAG}"
+  deploy-staging:
+    docker:
+      - image: circleci/php:7.1-node-browsers
+    working_directory: ~/laravel 
+    steps:
+      - run:
+          name: SSH and deploy
+          command: ssh -oStrictHostKeyChecking=no ops@3.0.215.64 "cd /home/ops/docker-build/fstvlst-web-staging && sh deploy.sh master"
       
 workflows:
   version: 2
-  build_and_deploy:
+  build_and_deploy_staging:
     jobs:
-      - deploy:
+      - deploy-staging:
           filters:
             branches:
               only: master
+  build_and_deploy_prod:
+    jobs:
+      - hold:
+          type: approval
+          requires:
+           - build
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy-prod:
+          requires:
+            - hold
+          filters:
+            tags:
+              only: /^v.*/
