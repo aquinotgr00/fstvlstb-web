@@ -14,9 +14,7 @@ class Transaction extends Model
     protected $fillable = [
         'subdistrict_id',
         'product_id',
-        'name',
-        'email',
-        'phone',
+        'account_id',
         'address',
         'postal_code',
         'note',
@@ -29,4 +27,9 @@ class Transaction extends Model
         'payment_duedate',
         'payment_reminder',
     ];
+
+    public function account()
+    {
+        return $this->belongsTo('App\Account');
+    }
 }

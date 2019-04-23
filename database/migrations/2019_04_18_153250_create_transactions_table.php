@@ -17,9 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('subdistrict_id');
             $table->unsignedInteger('product_id');
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
+            $table->unsignedInteger('account_id');
             $table->text('address');
             $table->integer('postal_code');
             $table->integer('quantity');

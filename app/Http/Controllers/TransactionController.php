@@ -68,6 +68,10 @@ class TransactionController extends Controller
                     ->where('product_id', $request->id)
                     ->get();
     	return DataTables::of($data)
+            ->editColumn('id', '{!! date("Y-m-d", strtotime($created_at))!!}-{!! sprintf("%06d", $id)!!}')
+            ->editColumn('name', function ($data) {
+                return $data->account->name;
+            })
             ->editColumn('created_at', '{!! date("d-m-Y", strtotime($created_at))!!}')
             ->make(true);
     }

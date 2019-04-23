@@ -58,7 +58,12 @@
                     </ul>
                 </div>
                 <div class="col-lg-6 text-right ">
-                    <a href="#" class="btn btn-warning">Create a batch</a>
+                    <button type="button" class="btn btn-warning white-text" data-toggle="modal" data-target="#myModal">
+                        Create a batch
+                    </button>
+                    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#largeModal">
+                        Large
+                    </button>
                 </div>
             </div>
 
@@ -70,8 +75,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
+                                    {{-- <th>Email</th>
+                                    <th>Phone</th> --}}
                                     <th>Amount</th>
                                     <th>Created at</th>
                                 </tr>
@@ -86,8 +91,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
+                                    {{-- <th>Email</th>
+                                    <th>Phone</th> --}}
                                     <th>Amount</th>
                                     <th>Created at</th>
                                 </tr>
@@ -114,6 +119,33 @@
         </div>
     </div>
     <!-- END MAIN CONTENT-->
+@endsection
+@section('modal')
+    {{-- CREATE BATCH FORM MODAL --}}
+    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="largeModalLabel">Large Modal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        There are three species of zebras: the plains zebra, the mountain zebra and the Grévy's zebra. The plains zebra and the mountain
+                        zebra belong to the subgenus Hippotigris, but Grévy's zebra is the sole species of subgenus Dolichohippus. The latter
+                        resembles an ass, to which it is closely related, while the former two are more horse-like. All three belong to the
+                        genus Equus, along with other living equids.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>
@@ -150,8 +182,8 @@
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'name', name: 'name' },
-                    { data: 'email', name: 'email' },
-                    { data: 'phone', name: 'phone' },
+                    // { data: 'email', name: 'email' },
+                    // { data: 'phone', name: 'phone' },
                     { data: 'amount', name: 'amount' },
                     { data: 'created_at', name: 'created_at' }
                 ]
@@ -172,8 +204,8 @@
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'name', name: 'name' },
-                    { data: 'email', name: 'email' },
-                    { data: 'phone', name: 'phone' },
+                    // { data: 'email', name: 'email' },
+                    // { data: 'phone', name: 'phone' },
                     { data: 'amount', name: 'amount' },
                     { data: 'created_at', name: 'created_at' }
                 ]

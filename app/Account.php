@@ -39,4 +39,9 @@ class Account extends Authenticatable
     {
         $this->notify(new ResetPasswordNotification($token));
     }
+
+    public function transactions()
+    {
+        return $this->hasMany('App\Transaction');
+    }
 }

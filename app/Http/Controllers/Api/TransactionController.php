@@ -45,7 +45,7 @@ class TransactionController extends Controller
 
         $invoice = [
             "transaction_details" =>[
-                "order_id"=>$transaction->id,
+                "order_id"=> date("Y-m-d", strtotime($transaction->created_at)) .'-'. sprintf("%06d", $transaction->id),
                 "gross_amount"=>$request->amount
             ],
             "customer_details"=>[

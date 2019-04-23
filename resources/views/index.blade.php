@@ -279,6 +279,8 @@
 
     </div>
 
+    @yield('modal')
+
     <!-- Jquery JS-->
     <script src="{{ asset('vendor/jquery-3.2.1.min.js') }}"></script>
     <!-- Bootstrap JS-->
