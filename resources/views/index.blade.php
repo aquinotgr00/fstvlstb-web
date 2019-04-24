@@ -31,6 +31,9 @@
     <!-- Main CSS-->
     <link href="{{ asset('css/theme.css') }}" rel="stylesheet" media="all">
 
+    <!-- additional CSS -->
+    @yield('css')
+
 </head>
 
 <body class="animsition">

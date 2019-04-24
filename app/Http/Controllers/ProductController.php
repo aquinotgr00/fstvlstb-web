@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Product;
+use App\ProductImage;
 use DataTables;
+use Image;
 
 class ProductController extends Controller
 {
@@ -39,7 +41,34 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
+        $unique = uniqid();
+        $files = $request->images;
+        $destinationPath = 'uploads';
+
+        foreach ($files as $key => $file) {
+            $filePath = $destinationPath.'/'.$unique.'-'.$file->getClientOriginalName();
+            $fileimage = Image::make($file)->save($destinationPath.'/'.$file->getClientOriginalName());
+            $s3 = \Storage::disk('s3');
+            $s3->put($filePath, $fileimage, 'public');
+            $files[$key] = $filePath;
+            if ($key == 0) {
+                $request->request->add(['thumbnail' => $filePath]);
+            }
+        }
+
+        $product = $this->products->create($request->except('images'));
+
+        foreach ($files as $value) {
+            ProductImage::create([
+                'product_id' => $product->id,
+                'image' => $value
+            ]);
+        }
+
+        return redirect('/admin/products');
+
+        // dd( array_merge($request->except('images'), ['images' => $files]) );
         // TODO: handle upload images
         // TODO: store new product
     }

@@ -8,8 +8,21 @@ use App\Http\Controllers\Controller;
 
 use App\Transaction;
 
+use Veritrans_Config;
+use Veritrans_Snap;
+use Veritrans_Notification;
+
 class TransactionController extends Controller
 {
+    public function __construct()
+    {
+        // Set midtrans configuration
+        Veritrans_Config::$serverKey = config('services.midtrans.serverKey');
+        Veritrans_Config::$isProduction = config('services.midtrans.isProduction');
+        Veritrans_Config::$isSanitized = config('services.midtrans.isSanitized');
+        Veritrans_Config::$is3ds = config('services.midtrans.is3ds');
+    }
+
     public function store(Request $request)
     {
         // return $request;
@@ -70,7 +83,12 @@ class TransactionController extends Controller
         //     }
         }
 
-        return $invoice;
+        $snapToken = Veritrans_Snap::getSnapToken($invoice);
+
+        // Beri response snap token
+        $this->response['snap_token'] = $snapToken;
+        
+        // return $invoice;
         // SendPaymentReminder::dispatch($transaction)
         // ->delay(now()->addMinutes(10));
         // return new TransactionResource($transaction);

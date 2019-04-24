@@ -25,9 +25,9 @@ Route::prefix('member')->group(function(){
 
 // MIDTRANS ROUTES
 Route::post('/midtrans-finish', function(){
-    return redirect()->route('welcome');
+    return redirect()->route('home');
 })->name('midtrans.finish');
-Route::post('/midtrans-notification/handler', 'DonationController@notificationHandler')->name('midtrans.notification.handler');
+Route::post('/midtrans-notification/handler', 'Api\\TransactionController@notificationHandler')->name('midtrans.notification.handler');
 
 Route::prefix('admin')->group(function () {
 	  Auth::routes();

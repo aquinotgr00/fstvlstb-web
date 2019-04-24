@@ -5,6 +5,9 @@
         <div class="col-lg-8">
             <h2 class="title-1 m-b-25">Production List </h2>
         </div>
+        <div class="col-lg-4 text-right">
+            <button class="btn btn-primary">Input Tracking Number</button>
+        </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
