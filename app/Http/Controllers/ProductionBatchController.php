@@ -64,4 +64,10 @@ class ProductionBatchController extends Controller
             ->editColumn('created_at', '{!! date("d-m-Y", strtotime($created_at))!!}')
             ->make(true);
     }
+
+    public function list($id)
+    {
+        $productionBatch = $this->productionBatch->findOrFail($id);
+        return view('admin-page.production-batches', compact('productionBatch'));
+    }
 }

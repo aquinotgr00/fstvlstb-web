@@ -16,4 +16,9 @@ class Production extends Model
         'status', 'delivery_date', 'tracking_number',
         'received_confirmation'
     ];
+
+    public function transaction()
+    {
+        return $this->belongsTo('App\Transaction');
+    }
 }

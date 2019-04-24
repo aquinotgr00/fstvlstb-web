@@ -32,4 +32,9 @@ class Transaction extends Model
     {
         return $this->belongsTo('App\Account');
     }
+
+    public function production()
+    {
+        return $this->hasOne('App\Production');
+    }
 }

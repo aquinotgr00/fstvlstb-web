@@ -50,7 +50,11 @@ Route::prefix('admin')->group(function () {
 
 	// PRODUCTION BATCH ROUTES
 	Route::post('/production-batch', 'ProductionBatchController@store')->name('admin.production-batch.store');
-	Route::get('/production-batch/listById', 'ProductionBatchController@listDataById')->name('admin.production-batch.list-by-id');
+	Route::get('/production-batch/{id}', 'ProductionBatchController@list')->name('admin.production-batch.list');
+	Route::get('/production-batch/listById/{id}', 'ProductionBatchController@listDataById')->name('admin.production-batch.list-by-id');
+
+	// PRODUCTION LIST
+	Route::get('/productions/list/{batchId}', 'ProductionController@listData')->name('admin.production.list');
 	   
 	// PRODUCT ROUTES
 	Route::get('/products', 'ProductController@index')->name('admin.product.page');

@@ -65,6 +65,7 @@ class TransactionController extends Controller
     public function listDataById(Request $request)
     {
         $data = $this->transactions->where('status', $request->status)
+                    ->doesntHave('production')
                     ->where('product_id', $request->id)
                     ->get();
     	return DataTables::of($data)

@@ -172,7 +172,8 @@
                     data: form.serialize(), // serializes the form's elements.
                     success: function(data)
                     {
-                        console.log(data); // show response from the php script.
+                        // console.log(data); // show response from the php script.
+                        location.reload();
                     }
                 });
             });
@@ -182,7 +183,7 @@
             //     $('#datatables-resource').DataTable({
             //         processing: true,
             //         serverSide: true,
-            //         ajax: `{!! route('admin.transaction.item', ['id' => $product->id, 'status' => 'paid']) !!}`,
+            //         ajax: `{!! route('admin.transaction.list-by-id', ['id' => $product->id, 'status' => 'paid']) !!}`,
             //         columns: [
             //             { data: 'id', name: 'id' },
             //             { data: 'name', name: 'name' },
@@ -219,14 +220,6 @@
                 processing: true,
                 serverSide: true,
                 ajax: "{!! route('admin.transaction.list-by-id', ['id' => $product->id, 'status' => 'paid']) !!}",
-                buttons: [
-                    {
-                        text: 'My button',
-                        action: function ( e, dt, node, config ) {
-                            alert( 'Button activated' );
-                        }
-                    }
-                ],
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'name', name: 'name' },
@@ -237,26 +230,23 @@
                 ]
             });
 
-            // TODO: production batch list won't show anything
-            $('#datatables-batch').DataTable({
+            var batchTable = $('#datatables-batch').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: "{!! route('admin.production-batch.list-by-id', $product->id) !!}",
-                buttons: [
-                    {
-                        text: 'My button',
-                        action: function ( e, dt, node, config ) {
-                            alert( 'Button activated' );
-                        }
-                    }
-                ],
+                rowId: 'id',    
                 columns: [
                     { data: 'id', name: 'id' },
-                    { data: 'quantity', name: 'quantity' },
+                    { data: 'batch_qty', name: 'quantity' },
                     { data: 'start_production_date', name: 'start_production_date' },
                     { data: 'end_production_date', name: 'end_production_date' },
                     { data: 'created_at', name: 'created_at' }
                 ]
+            });
+            
+            $('#datatables-batch tbody').on('click', 'tr', function () {
+                var id = batchTable.row( this ).id();
+                window.location = `/admin/production-batch/${id}`;
             });
         });
     </script>
