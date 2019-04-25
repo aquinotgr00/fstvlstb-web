@@ -17,6 +17,11 @@
                 <li><a class="custom-header-font"  href="#" data-toggle="modal" data-target="#modal-masuk">@lang('header.login')</a></li>
                 @endguest
                 @auth('account')
+                    <li>
+                        <a class="custom-header-font"  href="{{ Route('store.index') }}">
+                            <i class="fa fa-shopping-cart"></i>
+                        </a>
+                    </li>
                     <li><a class="custom-header-font"  href="{{ Route('member.nif') }}">@lang('header.nif')</a></li>
                     <li><a class="custom-header-font"  href="{{ Route('member.logout') }}">@lang('header.logout')</a></li>
                 @endauth
@@ -46,6 +51,11 @@
                             <li><a href="#" data-toggle="modal" data-target="#modal-masuk">@lang('header.login')</a></li>
                         @endguest
                         @auth('account')
+                            <li>
+                                <a class="custom-header-font"  href="{{ Route('store.index') }}">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </a>
+                            </li>
                             <li><a href="{{ Route('member.nif') }}">@lang('header.nif')</a></li>
                             <li><a href="{{ Route('member.logout') }}">@lang('header.logout')</a></li>
                         @endauth

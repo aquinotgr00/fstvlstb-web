@@ -23,6 +23,9 @@ Route::prefix('member')->group(function(){
 	Route::post('/ganti-password','NifController@gantiPassword')->name('member.ganti-password');
 });
 
+// E-COMMERCE ROUTES
+Route::get('/store', 'StoreController@index')->name('store.index');
+
 // MIDTRANS ROUTES
 Route::post('/midtrans-finish', function(){
     return redirect()->route('home');
