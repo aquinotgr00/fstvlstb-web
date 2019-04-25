@@ -25,6 +25,8 @@ Route::prefix('member')->group(function(){
 
 // E-COMMERCE ROUTES
 Route::get('/store', 'StoreController@index')->name('store.index');
+Route::post('/checkout', 'StoreController@checkout')->name('checkout.view');
+Route::post('/checkout-finish', 'Api\\TransactionController@store')->name('checkout.store');
 
 // MIDTRANS ROUTES
 Route::post('/midtrans-finish', function(){

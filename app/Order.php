@@ -20,4 +20,14 @@ class Order extends Model
         'subtotal',
         'price'
     ];
+
+    public function transaction()
+    {
+        return $this->belongsTo('App\Transaction');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo('App\Product');
+    }
 }

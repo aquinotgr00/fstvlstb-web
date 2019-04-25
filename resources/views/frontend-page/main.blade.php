@@ -17,6 +17,7 @@
   <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/app.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/custom.css')}}">
   <link rel="shortcut icon" type="image/png" href="{{asset('images/favicon.png')}}">
+  <link rel="stylesheet" href="{{ asset('frontend/css/smart_cart.css') }}">
 
   <!-- JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -24,6 +25,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
   <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
   <script src="{{asset('dist/js/plyr.js')}}"></script>
+  <script src="{{asset('frontend/js/jquery.smartCart.js')}}"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138417080-1"></script>
   <script>

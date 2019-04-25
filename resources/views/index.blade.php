@@ -54,11 +54,15 @@
                         </li>
                         <li {{ request()->route()->getName() === 'admin.member.page' ? ' class=active' : '' }}>
                             <a href="/admin/members">
-                                <i class="fas  fa-users"></i>Members</a>
+                                <i class="fas fa-users"></i>Members</a>
                         </li>
                         <li {{ request()->route()->getName() === 'admin.tracklist.page' ? ' class=active' : '' }}>
                             <a href="/admin/tracklist">
-                                <i class="fas  fa-users"></i>Tracklist</a>
+                                <i class="fas fa-users"></i>Tracklist</a>
+                        </li>
+                        <li {{ request()->route()->getName() === 'admin.transaction.page' ? ' class=active' : '' }}>
+                            <a href="/admin/transactions">
+                                <i class="fas fa-users"></i>Orders</a>
                         </li>
                         <li {{ request()->route()->getName() === 'admin.product.page' ? ' class=active' : '' }}>
                             <a href="/admin/products">

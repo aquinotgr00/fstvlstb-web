@@ -15,4 +15,9 @@ class Product extends Model
         'name', 'price', 'description', 
         'thumbnail', 'has_size', 'weight',
     ];
+
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
 }

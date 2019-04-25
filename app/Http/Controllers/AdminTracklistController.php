@@ -70,7 +70,7 @@ class AdminTracklistController extends Controller
        		'content'=>$filePath
        	]);
        unlink($destinationPathLocal.'/'.$filename);
-       return Redirect()->back(); 
+       return Redirect()->back();
 	}
 
 	public function uploadTracklistPreview(Request $request){

@@ -25,7 +25,7 @@ class TransactionController extends Controller
 
     public function store(Request $request)
     {
-        // return $request;
+        // return $request->items;
         // $request->validate([
         //     'subdistrict_id' => 'required',
         //     'email' => 'required|email',
@@ -38,55 +38,62 @@ class TransactionController extends Controller
         // $pre_order_id = '';
         
         // if (!is_null($request->items)) {
-        $customer_name = explode(" ", $request->name);
-        //     foreach ($request->items as $item) {
+        // $customer_name = explode(" ", $request->name);
+        //      foreach ($request->items as $item) {
         //         $quantity += $item['quantity'];
         //         $amount += $item['subtotal'];
         //     }
         // }
 
-        $transaction = Transaction::create(
-            array_merge(
-                $request->except(['item']),
-                [
-                    // 'quantity' => $request->item->quantity,
-                    // 'amount' => $request->item->subtotal,
-                    // 'pre_order_id' => $request->pre_order_id
-                ]
-            )
-        );
+        // $transaction = Transaction::create(
+        //     array_merge(
+        //         $request->except(['items']),
+        //         [
+        //             // 'quantity' => $request->item->quantity,
+        //             // 'amount' => $request->item->subtotal,
+        //             // 'pre_order_id' => $request->pre_order_id
+        //         ]
+        //     )
+        // );
+        
+        $transaction = Transaction::create($request->except(['items']));
 
-        $invoice = [
-            "transaction_details" =>[
-                "order_id"=> date("Y-m-d", strtotime($transaction->created_at)) .'-'. sprintf("%06d", $transaction->id),
-                "gross_amount"=>$request->amount
-            ],
-            "customer_details"=>[
-                "first_name"=>$customer_name[0],
-                "last_name"=>$customer_name[1]??'',
-                "email"=>$request->email,
-                "phone"=>$request->phone,
-                "billing_address"=>$request->address,
-                "shipping_address"=>$request->address
-            ],
-            "item_details"=>$request->item
-        ];
+        // $invoice = [
+        //     "transaction_details" =>[
+        //         "order_id"=> date("Y-m-d", strtotime($transaction->created_at)) .'-'. sprintf("%06d", $transaction->id),
+        //         "gross_amount"=>$request->amount
+        //     ],
+        //     "customer_details"=>[
+        //         "first_name"=>$customer_name[0],
+        //         "last_name"=>$customer_name[1]??'',
+        //         "email"=>$request->email,
+        //         "phone"=>$request->phone,
+        //         "billing_address"=>$request->address,
+        //         "shipping_address"=>$request->address
+        //     ],
+        //     "item_details"=>$request->item
+        // ];
 
         // store the order item
         
+        // dd( $request->items );
         if (!is_null($request->items)) {
-        //     foreach ($request->items as $key => $item) {
+            foreach ($request->items as $key => $item) {
+                $item['transaction_id'] = $transaction->id;
+                // dd($item['product_id']);
+                \App\Order::create($item);
                 // if (!isset($item['model'])) {
                 //     $item['model']=' ';
                 // }
-            \App\Order::create(array_merge($request->item, ['transaction_id' => $transaction->id]));
-        //     }
+            }
         }
 
-        $snapToken = Veritrans_Snap::getSnapToken($invoice);
+        return 'success';
+
+        // $snapToken = Veritrans_Snap::getSnapToken($invoice);
 
         // Beri response snap token
-        $this->response['snap_token'] = $snapToken;
+        // $this->response['snap_token'] = $snapToken;
         
         // return $invoice;
         // SendPaymentReminder::dispatch($transaction)

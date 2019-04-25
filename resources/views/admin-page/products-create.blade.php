@@ -56,7 +56,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            {{-- TODO: add product form --}}
+            {{-- TODO: make sure the images uploaded --}}
             <div class="card">
                 {{-- <div class="card-header">Credit Card</div> --}}
                 <div class="card-body">

@@ -9,6 +9,7 @@
     <div class="row">
         <div class="col-lg-4">
             <div class="card">
+                {{-- TODO: show the true image --}}
                 <img src="https://media.karousell.com/media/photos/products/2017/01/27/kaos_gap_polos_round_neck_hitam__black_1485501396_3b8c4a3a.png" alt="{{ $product->name   }}">
             </div>
         </div>

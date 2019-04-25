@@ -16,7 +16,6 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('subdistrict_id');
-            $table->unsignedInteger('product_id');
             $table->unsignedInteger('account_id');
             $table->text('address');
             $table->integer('postal_code');

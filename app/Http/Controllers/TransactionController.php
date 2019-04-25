@@ -41,9 +41,23 @@ class TransactionController extends Controller
      */
     public function listData(Request $request)
     {
-    	$data = $this->transactions->where('status', 'unpaid')->get();
+    	$data = $this->transactions->get();
     	return DataTables::of($data)
             ->editColumn('id', '{!! sprintf("%06d", $id)!!}')
+            ->editColumn('name', function ($data) {
+                return $data->account->name;
+            })
+            ->editColumn('product', function ($data) {
+                $orders = [];
+                foreach ($data->orders as $value) {
+                    $name = $value->product->name;
+                    if ($value->size !== null) {
+                        $name = $value->product->name.' ('.$value->size.')';
+                    }
+                    $orders[] = $name;
+                }
+                return $orders;
+            })
             ->editColumn('created_at', '{!! date("d-m-Y", strtotime($created_at))!!}')
             ->make(true);
     }

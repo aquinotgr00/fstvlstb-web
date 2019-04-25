@@ -255,7 +255,7 @@
 </div>
 </div>
 
-{{-- checkout form modal --}}
+{{-- DEPRECATED!! checkout form modal --}}
 <div id="modal-checkout" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
