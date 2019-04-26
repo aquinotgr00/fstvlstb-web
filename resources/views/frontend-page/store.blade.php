@@ -57,31 +57,6 @@
                         <!-- SmartCart element -->
                         <div id="smartcart"></div>
                     </form>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            CART
-                        </div>
-                        <div class="panel-body">
-                            <div class="media">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <a href="#">
-                                            <img style="width: 100%;" src="http://placehold.it/250x150/2aabd2/ffffff?text=Product+2" alt="product">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h4 class="media-heading">Product 2</h4>
-                                        ...
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-footer">
-                            <div class="text-right">
-                                <button class="btn btn-info">Checkout</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -91,13 +66,8 @@
 @section('script')
 <script>
     $(document).ready(function() {
-        // Initialize the leaveStep event
-        // $("#smartcart").on("cartSubmitted", function(evt) {
-        //     evt.preventDefault();
-        //     alert("Cart is submitted");
-        // });
-
         $('#smartcart').smartCart({
+            cartItemTemplate: '<img class="img-responsive pull-left" src="{product_image}" /><h4 class="list-group-item-heading">{product_name} ({product_size})</h4><p class="list-group-item-text">{product_desc}</p>',
             currencySettings: {
                 locales: 'id-ID', // A string with a BCP 47 language tag, or an array of such strings
                 currencyOptions:  {
@@ -107,11 +77,6 @@
                 }
             }
         });
-        // $('.sc-add-to-cart').click(function (evt) {
-        //     evt.preventDefault()
-        //     var productId = $(this).data('id')
-        //     console.log(productId)
-        // })
     })
 </script>
 @endsection

@@ -22,12 +22,23 @@ class CreateTransactionsTable extends Migration
             $table->integer('quantity');
             $table->integer('amount');
             $table->text('note')->nullable();
-            $table->enum('status',['unpaid','paid'])->default('unpaid');
+            $table->enum('status',['unpaid','paid', 'bank confirmation'])->default('unpaid');
             $table->string('courier_name')->nullable();
             $table->string('courier_type')->nullable();
             $table->string('courier_fee')->nullable();
             $table->dateTime('payment_duedate')->nullable();
             $table->integer('payment_reminder')->default(0);
+            $table->enum('payment_method', ['direct_bank_transfer', 'others'])->default('direct_bank_transfer');
+            $table->enum('payment_bank', ['BCA', 'BNI', 'Mandiri'])->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('payment_proofs', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('transaction_id');
+            $table->unsignedInteger('account_id');
+            $table->string('token')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -40,5 +51,6 @@ class CreateTransactionsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('transactions');
+        Schema::dropIfExists('payment_proofs');
     }
 }

@@ -9,6 +9,18 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="table-responsive table--no-card m-b-40">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control" name="status" id="status">
+                                <option>Filter dari Status</option>
+                                <option value="unpaid">Unpaid</option>
+                                <option value="paid">Paid</option>
+                                <option value="bank confirmation">Bank Confirmation</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <table class="table table-borderless table-striped table-earning" id="datatables-resource">
                     <thead>
                         <tr>
@@ -16,6 +28,7 @@
                             <th>Created at</th>
                             <th>Name</th>
                             <th>Products</th>
+                            <th>Status</th>
                             <th>amount</th>
                         </tr>
                     </thead>
@@ -38,6 +51,7 @@
                     { data: 'created_at', name: 'created_at' },
                     { data: 'name', name: 'name' },
                     { data: 'product', name: 'product' },
+                    { data: 'status', name: 'status' },
                     { data: 'amount', name: 'amount' },
                 ]
             });
@@ -46,6 +60,13 @@
             //     var id = table.row( this ).id();
             //     window.location = `/admin/products/item/${id}`
             // });
+
+            $('#status').change(function () {
+                console.log('changed');
+                table.ajax({
+                    url: 
+                })
+            });
         });
     </script>
 @endsection

@@ -27,6 +27,8 @@ Route::prefix('member')->group(function(){
 Route::get('/store', 'StoreController@index')->name('store.index');
 Route::post('/checkout', 'StoreController@checkout')->name('checkout.view');
 Route::post('/checkout-finish', 'Api\\TransactionController@store')->name('checkout.store');
+Route::get('/confirm-payment/{token}', 'TransactionController@confirmPayment')->name('confirm.payment');
+Route::post('/confirm-payment', 'TransactionController@storeProof')->name('store.payment.proof');
 
 // MIDTRANS ROUTES
 Route::post('/midtrans-finish', function(){

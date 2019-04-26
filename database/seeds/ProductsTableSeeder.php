@@ -12,6 +12,7 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
+        // TODO: upload image to S3 and adjust the name below.
         DB::table('products')->insert([
             [
                 'name' => 'kaos',

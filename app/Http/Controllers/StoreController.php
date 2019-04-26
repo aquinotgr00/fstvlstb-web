@@ -8,6 +8,11 @@ use App\Product;
 
 class StoreController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:account');
+    }
+
     public function index()
     {
         $products = Product::get();

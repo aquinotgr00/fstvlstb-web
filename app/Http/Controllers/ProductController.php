@@ -45,7 +45,7 @@ class ProductController extends Controller
         // dd($request->all());
         $unique = uniqid();
         $files = $request->images;
-        $destinationPath = 'products';
+        $destinationPath = 'uploads';
 
         foreach ($files as $key => $file) {
             $filePath = $destinationPath.'/'.$unique.'-'.$file->getClientOriginalName();

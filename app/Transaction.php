@@ -26,6 +26,8 @@ class Transaction extends Model
         'status',
         'payment_duedate',
         'payment_reminder',
+        'payment_method',
+        'payment_bank',
     ];
 
     public function account()
@@ -41,5 +43,10 @@ class Transaction extends Model
     public function production()
     {
         return $this->hasOne('App\Production');
+    }
+
+    public function paymentProof()
+    {
+        return $this->hasOne('App\PaymentProof');
     }
 }

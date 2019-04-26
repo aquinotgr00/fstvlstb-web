@@ -25,7 +25,7 @@ class TransactionController extends Controller
 
     public function store(Request $request)
     {
-        // return $request->items;
+        // return $request->all();
         // $request->validate([
         //     'subdistrict_id' => 'required',
         //     'email' => 'required|email',
@@ -57,6 +57,13 @@ class TransactionController extends Controller
         // );
         
         $transaction = Transaction::create($request->except(['items']));
+        
+        // create payment proof token
+        \App\PaymentProof::create([
+            'transaction_id' => $transaction->id,
+            'account_id' => $transaction->account_id,
+            'token' => str_random(16)
+        ]);
 
         // $invoice = [
         //     "transaction_details" =>[
@@ -88,7 +95,7 @@ class TransactionController extends Controller
             }
         }
 
-        return 'success';
+        return redirect('/');
 
         // $snapToken = Veritrans_Snap::getSnapToken($invoice);
 

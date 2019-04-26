@@ -28,6 +28,9 @@
   <script src="{{asset('frontend/js/jquery.smartCart.js')}}"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138417080-1"></script>
+
+  {{-- another additional css --}}
+  @yield('css')
   <script>
     $.ajaxSetup({
       headers: {

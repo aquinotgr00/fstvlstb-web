@@ -8,6 +8,7 @@ use App\Transaction;
 use App\ProductionBatch;
 
 use DataTables;
+use Image;
 
 class TransactionController extends Controller
 {
@@ -58,10 +59,47 @@ class TransactionController extends Controller
                 }
                 return $orders;
             })
+            ->editColumn('amount', function ($data) {
+                return $data->amount+$data->courier_fee;
+            })
             ->editColumn('created_at', '{!! date("d-m-Y", strtotime($created_at))!!}')
             ->make(true);
     }
 
+    public function confirmPayment($token)
+    {
+        $record = \App\PaymentProof::where('token', $token)->first();
+        $account = \Auth::guard('account')->user();
+        if ($record == null || $record->account_id !== $account->id) {
+            return abort(404);
+        }
+        return view('frontend-page.confirm-payment', compact('record'));
+    }
+
+    public function storeProof(Request $request)
+    {
+        $request->request->add(['email' => \Auth::guard('account')->user()->email]);
+        // dd($request->all());
+        // $accountEmail = Auth::guard('account')->user()->email;
+        if ( \Auth::guard('account')->attempt($request->only('email', 'password')) ) {
+            // handle the image
+            $unique = uniqid();
+            $file = $request->image;
+            $destinationPath = 'uploads';
+            $filePath = $destinationPath.'/'.$unique.'-'.$file->getClientOriginalName();
+            $fileimage = Image::make($file)->save($destinationPath.'/'.$file->getClientOriginalName());
+            $s3 = \Storage::disk('s3');
+            $s3->put($filePath, $fileimage, 'public');
+
+            // update the payment proof image and transaction status
+            \App\PaymentProof::findOrFail($request->id)->update([ 'image' => $filePath, 'token' => null ]);
+            $this->transactions->findOrFail($request->transaction_id)->update([ 'status' => 'bank confirmation' ]);
+            return redirect('/');
+        }
+        return redirect()->back();
+    }
+
+    // DEPRECATED!!
     /**
      * get list data from transactions
      *
