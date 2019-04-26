@@ -32,15 +32,6 @@ class CreateTransactionsTable extends Migration
             $table->enum('payment_bank', ['BCA', 'BNI', 'Mandiri'])->nullable();
             $table->timestamps();
         });
-
-        Schema::create('payment_proofs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('transaction_id');
-            $table->unsignedInteger('account_id');
-            $table->string('token')->nullable();
-            $table->string('image')->nullable();
-            $table->timestamps();
-        });
     }
 
     /**
@@ -51,6 +42,5 @@ class CreateTransactionsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('transactions');
-        Schema::dropIfExists('payment_proofs');
     }
 }

@@ -54,6 +54,7 @@ Route::prefix('admin')->group(function () {
    	Route::get('/transactions/list', 'TransactionController@listData')->name('admin.transaction.list');
 	// Route::get('/transactions/paidList', 'TransactionController@listPaidTransactions')->name('admin.paid-transaction.list');
 	Route::get('/transactions/listById', 'TransactionController@listDataById')->name('admin.transaction.list-by-id');
+	Route::get('/transactions/item/{id}', 'TransactionController@show')->name('admin.transaction.show');
 
 	// PRODUCTION BATCH ROUTES
 	Route::post('/production-batch', 'ProductionBatchController@store')->name('admin.production-batch.store');

@@ -14,11 +14,12 @@
                             <div class="row">
                                 <!-- BEGIN PRODUCTS -->
                                 @foreach ($products as $item)
-                                    <div class="col-md-4 col-sm-6" style="margin-bottom:1rem; min-height:350px;">
+                                    {{-- TODO: add to custom css --}}
+                                    <div class="col-md-4 col-sm-6" style="margin-bottom:1rem;">
                                         <!-- PRODUCT CONTAINER, identified by the class "sc-product-item"  -->
-                                        <div class="sc-product-item">
+                                        <div class="sc-product-item" style="min-height:420px;">
                                             <!-- PRODUCT IMAGE, identified by data-name="product_image"  -->
-                                            <img style="width: 100%;" data-name="product_image" src="http://placehold.it/250x150/2aabd2/ffffff?text=Product+1" alt="...">
+                                            <img style="width: 100%;" data-name="product_image" src="{!!Storage::disk('s3')->url($item->thumbnail)!!}" alt="...">
                                             <!-- PRODUCT NAME, identified by data-name="product_name" or can be an element with name="product_name"  -->
                                             <h4 data-name="product_name">{{ $item->name }}</h4>
                                             <!-- PRODUCT DESCRIPTION, identified by data-name="product_desc" or can be an element with name="product_desc"  -->
@@ -41,7 +42,7 @@
                                             <input name="product_id" value="{{ $item->id }}" type="hidden" />
                                             <input type="hidden" name="product_weight" value="{{ $item->weight }}">
                                             <!-- ADD TO CART BUTTON, identified by class="sc-add-to-cart"  -->
-                                            <button class="sc-add-to-cart btn btn-success">Add to cart</button>
+                                            <button style="position:absolute;bottom:0;" class="sc-add-to-cart btn btn-success">Add to cart</button>
                                         </div>
                                     </div>
                                 @endforeach

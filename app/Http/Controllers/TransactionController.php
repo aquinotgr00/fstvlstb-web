@@ -99,6 +99,14 @@ class TransactionController extends Controller
         return redirect()->back();
     }
 
+    public function show($id)
+    {
+        $transaction = $this->transactions->findOrFail($id);
+        return view('admin-page.transactions-show', compact('transaction'));
+    }
+
+
+
     // DEPRECATED!!
     /**
      * get list data from transactions

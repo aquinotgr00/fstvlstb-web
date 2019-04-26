@@ -17,6 +17,10 @@ class UpdateTracklists extends Migration
             $table->integer('album')->nullable();
             $table->softDeletes();
         });
+
+        Artisan::call('db:seed', [
+            '--class' => TracklistTableSeeder::class
+        ]);
     }
 
     /**

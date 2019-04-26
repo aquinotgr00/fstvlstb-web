@@ -56,16 +56,14 @@
                 ]
             });
 
-            // $('#datatables-resource tbody').on('click', 'tr', function () {
-            //     var id = table.row( this ).id();
-            //     window.location = `/admin/products/item/${id}`
-            // });
+            $('#datatables-resource tbody').on('click', 'tr', function () {
+                var id = table.row( this ).id();
+                window.location = `/admin/transactions/item/${id}`
+            });
 
             $('#status').change(function () {
                 console.log('changed');
-                // table.ajax({
-                //     url: 
-                // })
+                $('#datatables-resource').html = '';
             });
         });
     </script>

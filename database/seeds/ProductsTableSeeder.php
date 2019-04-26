@@ -20,7 +20,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'ini kaos putih ada kuningnya.',
                 'weight' => '150',
                 'has_size' => '1',
-                'thumbnail' => 'kaos.jpg',
+                'thumbnail' => 'products/5cc2e69854d75-30593266_333152860422490_8510087658158948352_n.jpg',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
@@ -29,7 +29,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'ini buku yg nyaris seni.',
                 'weight' => '250',
                 'has_size' => 0,
-                'thumbnail' => 'buku.jpg',
+                'thumbnail' => 'products/5cc2e69854d75-30593266_333152860422490_8510087658158948352_n.jpg',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
@@ -38,7 +38,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'ini kalung anjing, jangan di pake di kamu.',
                 'weight' => '100',
                 'has_size' => 0,
-                'thumbnail' => 'kalung.jpg',
+                'thumbnail' => 'products/5cc2e69854d75-30593266_333152860422490_8510087658158948352_n.jpg',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
@@ -47,7 +47,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'ini emblem nya dipake, peniti nya...',
                 'weight' => '50',
                 'has_size' => 0,
-                'thumbnail' => 'emblem.jpg',
+                'thumbnail' => 'products/5cc2e69854d75-30593266_333152860422490_8510087658158948352_n.jpg',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
@@ -56,7 +56,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'ini lakban perekat hubungan.',
                 'weight' => '50',
                 'has_size' => 0,
-                'thumbnail' => 'lakban.jpg',
+                'thumbnail' => 'products/5cc2e69854d75-30593266_333152860422490_8510087658158948352_n.jpg',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
@@ -65,7 +65,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'ini bokset misterius, jangan dibuka sendiri.',
                 'weight' => '350',
                 'has_size' => 1,
-                'thumbnail' => 'bokset.jpg',
+                'thumbnail' => 'products/5cc2e69854d75-30593266_333152860422490_8510087658158948352_n.jpg',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
         ]);

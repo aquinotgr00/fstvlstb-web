@@ -43,11 +43,11 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $unique = uniqid();
         $files = $request->images;
         $destinationPath = 'products';
 
         foreach ($files as $key => $file) {
+            $unique = uniqid();
             $filePath = $destinationPath.'/'.$unique.'-'.$file->getClientOriginalName();
             $fileimage = Image::make($file)->save($destinationPath.'/'.$file->getClientOriginalName());
             $s3 = \Storage::disk('s3');
