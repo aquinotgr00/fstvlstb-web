@@ -63,9 +63,9 @@
 
             $('#status').change(function () {
                 console.log('changed');
-                table.ajax({
-                    url: 
-                })
+                // table.ajax({
+                //     url: 
+                // })
             });
         });
     </script>
