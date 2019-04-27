@@ -255,6 +255,7 @@
 </div>
 </div>
 
+{{-- modal for product detail in /boxset --}}
 <div class="modal fade modalbox" id="modal-product">
     <div class="modal-dialog modal-lg">
         <div class="modal-content modal-order">
@@ -282,8 +283,8 @@
                     </div>
                 </div>
                 <div class="col-xs-8 m-3">
-                    <h2>KAOS FSVTVLST II</h2>
-                    <p class="harga">Rp. 123.456,-</p>
+                    <h2 id="product-name"></h2>
+                    <p class="harga" id="product-price">Rp. 0</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et voluptate nam eaque debitis nobis repellat illo corrupti magni ratione asperiores excepturi quasi vero cumque maxime obcaecati, quia recusandae cupiditate expedita dolore totam veniam voluptatibus quis! Repellat nihil, laudantium ducimus officiis.
                     </p>
                     <div class="section row">

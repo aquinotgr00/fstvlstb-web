@@ -91,7 +91,9 @@
                 // alert($(this).data('id'));
                 var id = $(this).data('id');
                 $.get(`/api/product/${id}`, function (response) {
-                    alert(response);
+                    console.log(response);
+                    $('#product-name').html(response.name);
+                    $('#product-price').html(response.price);
                 });
             });
 
