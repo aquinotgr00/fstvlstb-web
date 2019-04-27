@@ -23,15 +23,15 @@ class CreateProductionsTable extends Migration
 	        $table->dateTime('received_confirmation')->nullable();
             $table->timestamps();
         });
-        Schema::create('production_batches', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('product_id');
-            $table->integer('batch_qty')->nullable();
-            $table->date('start_production_date')->nullable();
-            $table->date('end_production_date')->nullable();
-            $table->text('notes')->nullable();
-            $table->timestamps();
-        });
+        // Schema::create('production_batches', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->unsignedInteger('product_id');
+        //     $table->integer('batch_qty')->nullable();
+        //     $table->date('start_production_date')->nullable();
+        //     $table->date('end_production_date')->nullable();
+        //     $table->text('notes')->nullable();
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -42,6 +42,6 @@ class CreateProductionsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('productions');
-        Schema::dropIfExists('production_batches');
+        // Schema::dropIfExists('production_batches');
     }
 }

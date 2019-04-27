@@ -23,12 +23,6 @@ class CreateProductsTable extends Migration
             $table->string('thumbnail');
             $table->timestamps();
         });
-        Schema::create('product_images', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('product_id')->nullable();
-            $table->string('image');
-            $table->timestamps();
-        });
 
         Artisan::call('db:seed', [
             '--class' => ProductsTableSeeder::class
@@ -43,6 +37,5 @@ class CreateProductsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('products');
-        Schema::dropIfExists('product_images');
     }
 }
