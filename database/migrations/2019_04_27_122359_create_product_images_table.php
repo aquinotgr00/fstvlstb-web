@@ -13,12 +13,12 @@ class CreateProductImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_images', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('product_id')->nullable();
-            $table->string('image');
-            $table->timestamps();
-        });
+        // Schema::create('product_images', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->unsignedInteger('product_id')->nullable();
+        //     $table->string('image');
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -28,6 +28,6 @@ class CreateProductImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_images');
+        // Schema::dropIfExists('product_images');
     }
 }
