@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/transaction', 'Api\\TransactionController@store');
 Route::get('/subdistrict', 'Api\\RajaOngkirController@getSubdistrict');
 Route::post('/get-shipping-cost', 'Api\\RajaOngkirController@getShippingCost');
+
+Route::get('/product/{id}', 'Api\\ProductController@getJsonProductById')->name('product.by-id');

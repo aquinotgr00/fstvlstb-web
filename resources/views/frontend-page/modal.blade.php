@@ -255,7 +255,7 @@
 </div>
 </div>
 
-<div class="modal fade modalbox" id="modal-kaos">
+<div class="modal fade modalbox" id="modal-product">
     <div class="modal-dialog modal-lg">
         <div class="modal-content modal-order">
             <button class="close" type="button" data-dismiss="modal">&times;</button>
