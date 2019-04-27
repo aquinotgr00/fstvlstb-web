@@ -41,7 +41,7 @@
                                         </span>
                                     </li>
                                     <li class="checkout">
-                                        <button class="btn btn-danger btn-block btn-submit" data-toggle="modal" data-target="#" data-dismiss="#">Checkout</button>
+                                        <a href="{{Route('store.index')}}"><button class="btn btn-danger btn-block btn-submit" data-toggle="modal" data-target="#" data-dismiss="#">Checkout</button></a>
                                     </li>
                                     
                                 </ul>
