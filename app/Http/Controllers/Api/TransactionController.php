@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 
 use App\Transaction;
 
+use GuzzleHttp\Client;
+
 use Veritrans_Config;
 use Veritrans_Snap;
 use Veritrans_Notification;
@@ -25,7 +27,8 @@ class TransactionController extends Controller
 
     public function store(Request $request)
     {
-        // return $request->all();
+        // return $request->all(); // debugging
+        // TODO: add validation
         // $request->validate([
         //     'subdistrict_id' => 'required',
         //     'email' => 'required|email',
@@ -33,78 +36,85 @@ class TransactionController extends Controller
         //     'amount' => 'required',
         //     'name' => 'required',
         // ]);
-        // $quantity   = 0;
-        // $amount     = 0;
-        // $pre_order_id = '';
         
-        // if (!is_null($request->items)) {
-        // $customer_name = explode(" ", $request->name);
-        //      foreach ($request->items as $item) {
-        //         $quantity += $item['quantity'];
-        //         $amount += $item['subtotal'];
-        //     }
-        // }
-
-        // $transaction = Transaction::create(
-        //     array_merge(
-        //         $request->except(['items']),
-        //         [
-        //             // 'quantity' => $request->item->quantity,
-        //             // 'amount' => $request->item->subtotal,
-        //             // 'pre_order_id' => $request->pre_order_id
-        //         ]
-        //     )
-        // );
-        
+        // create the transaction
         $transaction = Transaction::create($request->except(['items']));
         
-        // create payment proof token
-        \App\PaymentProof::create([
-            'transaction_id' => $transaction->id,
-            'account_id' => $transaction->account_id,
-            'token' => str_random(16)
-        ]);
+        // create payment proof token if the payment method is direct_bank_transfer
+        if ($transaction->payment_method == 'direct_bank_transfer') {
+            \App\PaymentProof::create([
+                'transaction_id' => $transaction->id,
+                'account_id' => $transaction->account_id,
+                'token' => str_random(16)
+            ]);
+        }
 
-        // $invoice = [
-        //     "transaction_details" =>[
-        //         "order_id"=> date("Y-m-d", strtotime($transaction->created_at)) .'-'. sprintf("%06d", $transaction->id),
-        //         "gross_amount"=>$request->amount
-        //     ],
-        //     "customer_details"=>[
-        //         "first_name"=>$customer_name[0],
-        //         "last_name"=>$customer_name[1]??'',
-        //         "email"=>$request->email,
-        //         "phone"=>$request->phone,
-        //         "billing_address"=>$request->address,
-        //         "shipping_address"=>$request->address
-        //     ],
-        //     "item_details"=>$request->item
-        // ];
+        // new array for courier fee to add in item details in invoice
+        $newArr = [
+            '9' => [
+                'id' => 'ongkir1',
+                'name' => $request->courier_name,
+                'quantity' => '1',
+                'price' => $transaction->courier_fee,
+                'subtotal' => $transaction->courier_fee
+            ]
+        ];
 
-        // store the order item
-        
-        // dd( $request->items );
+        // get the account associated with the transaction
+        $account = $transaction->account;
+        $customer_name = explode(" ", $account->name);
+
+        // create invoice for midtrans
+        $invoice = [
+            "transaction_details" =>[
+                "order_id"=> date("Y-m-d", strtotime($transaction->created_at)) .'-'. sprintf("%06d", $transaction->id),
+                "gross_amount"=>$request->amount+$request->courier_fee
+            ],
+            "customer_details"=>[
+                "first_name"=>$customer_name[0],
+                "last_name"=>$customer_name[1]??'',
+                "email"=>$account->email,
+                "phone"=>$account->phone,
+                "billing_address"=>$account->address,
+                "shipping_address"=>$request->address
+            ],
+            "item_details"=> array_merge($request->items, $newArr)
+        ];
+
+        // store the order items
         if (!is_null($request->items)) {
             foreach ($request->items as $key => $item) {
                 $item['transaction_id'] = $transaction->id;
-                // dd($item['product_id']);
                 \App\Order::create($item);
-                // if (!isset($item['model'])) {
-                //     $item['model']=' ';
-                // }
             }
         }
 
-        return redirect('/');
+        // create json response
+        $response = [
+            'status' => 'success',
+            'data' => $invoice
+        ];
 
-        // $snapToken = Veritrans_Snap::getSnapToken($invoice);
+        return $response;
+    }
 
-        // Beri response snap token
-        // $this->response['snap_token'] = $snapToken;
-        
-        // return $invoice;
-        // SendPaymentReminder::dispatch($transaction)
-        // ->delay(now()->addMinutes(10));
-        // return new TransactionResource($transaction);
+
+    public function charge(Request $request) {
+        $api_url = config('services.midtrans.isProduction') ? 'https://app.midtrans.com/snap/v1/transactions' : 'https://app.sandbox.midtrans.com/snap/v1/transactions';
+        $server_key = config('services.midtrans.serverKey');
+
+        $client = new Client();
+        $response = $client->post(
+            $api_url,
+            [
+                'headers'=>[
+                    'Content-Type'=>'application/json',
+                    'Accept'=>'application/json',
+                    'Authorization'=>'Basic ' . base64_encode($server_key . ':')
+                ],
+                'json'=>json_decode($request->getContent())
+            ]);
+            
+        return $response->getBody();
     }
 }

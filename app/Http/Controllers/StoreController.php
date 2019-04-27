@@ -19,6 +19,11 @@ class StoreController extends Controller
         return view('frontend-page.store', compact('products'));
     }
 
+    public function thankYou()
+    {
+        return view('frontend-page.thank-you');
+    }
+
     public function checkout(Request $request)
     {
         $items = json_decode($request->cart_list);
@@ -29,5 +34,18 @@ class StoreController extends Controller
     {
         dd($request->all());
         return view('frontend-page.checkout');
+    }
+
+    public function midtransNotif(Request $request)
+    {
+        $id = substr($request->order_id, -6);
+        if ($request->transaction_status == 'settlement') {
+            \App\Transaction::findOrFail($id)->update([
+                'status' => 'paid',
+                'payment_bank' => $request->payment_type
+            ]);
+        }
+
+        return 200;
     }
 }

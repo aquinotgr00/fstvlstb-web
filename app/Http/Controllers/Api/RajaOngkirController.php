@@ -32,20 +32,23 @@ class RajaOngkirController extends Controller
         //     ->get();
         $data = DB::table('cities')
             ->join('subdistricts', 'cities.id', '=', 'subdistricts.city_id')
-            ->select('cities.postal_code', 'cities.name as city_name', 'cities.id', 'subdistricts.name', 'subdistricts.id as subdistrict_id')
+            ->join('provinces', 'cities.province_id', '=', 'provinces.id' )
+            ->select('cities.postal_code', 'cities.name as city_name', 'cities.id',
+                    'subdistricts.name', 'subdistricts.id as subdistrict_id', 'provinces.name as province_name')
             ->where('subdistricts.name', 'LIKE', '%'.$key.'%')
             ->get()
             ->toArray();
         $count = 0;
         foreach ($data as $key => $value) {
             $response[$count]['id'] = $value->id;
-            $response[$count]['value'] = $value->name.', '.$value->city_name;
+            $response[$count]['value'] = $value->name;
             $response[$count]['label'] = $value->name.', '.$value->city_name;
             $response[$count]['postal_code'] = $value->postal_code;
+            $response[$count]['city_name'] = $value->city_name;
+            $response[$count]['province_name'] = $value->province_name;
             $response[$count]['subdistrict_id'] = $value->subdistrict_id;
             $count++;
         }
-        // dd($response);
         return response()->json($response);
     }
 

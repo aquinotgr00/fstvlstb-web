@@ -105,6 +105,11 @@ class TransactionController extends Controller
         return view('admin-page.transactions-show', compact('transaction'));
     }
 
+    public function thankYou()
+    {
+        return 'thank you for purchashing';
+    }
+
 
 
     // DEPRECATED!!
