@@ -17,6 +17,33 @@
                 <li><a class="custom-header-font"  href="#" data-toggle="modal" data-target="#modal-masuk">@lang('header.login')</a></li>
                 @endguest
                 @auth('account')
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        Keranjang : <span class="badge">1</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-cart" role="menu">
+                            <li>
+                                <span class="item">
+                                    <span class="item-left">
+                                        <img class="img-chck" src="images/gambar-cnth.jpg" alt="">
+                                        <span class="item-info">
+                                            <span><h5>KAOS FSTVLST II</h5></span>
+                                            <span><small>Ukuran : XXL</small></span>
+                                            <span><small>Jumlah : 1</small></span>
+                                            <span><h5>Rp. 123.456,-</h5></span>
+                                        </span>
+                                    </span>
+                                    <span class="item-right">
+                                        <button class="btn btn-xs pull-right">x</button>
+                                    </span>
+                                </span>
+                            </li>
+                            <li class="checkout">
+                                <button class="btn btn-danger btn-block btn-submit" data-toggle="modal" data-target="#" data-dismiss="#">Checkout</button>
+                            </li>
+                            
+                        </ul>
+                    </li>
                     <li>
                         <a class="custom-header-font"  href="{{ Route('store.index') }}">
                             <i class="fa fa-shopping-cart"></i>

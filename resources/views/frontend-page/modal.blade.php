@@ -255,6 +255,71 @@
 </div>
 </div>
 
+<div class="modal fade modalbox" id="modal-kaos">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content modal-order">
+            <button class="close" type="button" data-dismiss="modal">&times;</button>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="row">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="item carousel-item active">
+                                <div><img src="images/gambar-cnth.jpg" alt=""></div>
+                            </div>
+                            <div class="item carousel-item">
+                                <div><img src="images/gambar-cnth-2.jpg" alt=""></div>
+                            </div>
+                            
+                        </div>
+                        <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                            <i class="fa fa-long-arrow-left fa-lg"></i>
+                        </a>
+                        <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                            <i class="fa fa-long-arrow-right fa-lg"></i>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-8 m-3">
+                    <h2>KAOS FSVTVLST II</h2>
+                    <p class="harga">Rp. 123.456,-</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et voluptate nam eaque debitis nobis repellat illo corrupti magni ratione asperiores excepturi quasi vero cumque maxime obcaecati, quia recusandae cupiditate expedita dolore totam veniam voluptatibus quis! Repellat nihil, laudantium ducimus officiis.
+                    </p>
+                    <div class="section row">
+                        <div class="col-xs-4">
+                            <h5>UKURAN KAOS</h5>
+                        </div>
+                        <div class="col-xs-5 optional">
+                            <h5 class="attr2">S</h5>
+                            <h5 class="attr2">M</h5>
+                            <h5 class="attr2">L</h5>
+                            <h5 class="attr2">XL</h5>
+                            <h5 class="attr2">XXL</h5>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="section row">
+                        <div class="col-xs-4">
+                            <h5>JUMLAH</h5>
+                        </div>
+                        <div class="col-xs-5 optional jmlh">
+                            <div class="btn-minus"><span class="fa fa-minus fa-2x"></span></div>
+                            <input class="num-order"value="1" />
+                            <div class="btn-plus"><span class="fa fa-plus fa-2x"></span></div>   
+                        </div>
+
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <button class="btn btn-danger btn-block btn-submit" data-toggle="modal" data-target="#" data-dismiss="#">MASUK KERANJANG</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {{-- DEPRECATED!! checkout form modal --}}
 <div id="modal-checkout" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
