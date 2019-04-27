@@ -265,10 +265,10 @@
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="item carousel-item active">
-                                <div><img src="images/gambar-cnth.jpg" alt=""></div>
+                                <div><img src="{{asset('frontend/images/gambar-cnth.jpg')}}" alt=""></div>
                             </div>
                             <div class="item carousel-item">
-                                <div><img src="images/gambar-cnth-2.jpg" alt=""></div>
+                                <div><img src="{{asset('frontend/images/gambar-cnth-2.jpg')}}" alt=""></div>
                             </div>
                             
                         </div>
