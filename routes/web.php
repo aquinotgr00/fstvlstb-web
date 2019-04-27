@@ -33,8 +33,6 @@ Route::post('/charge', 'Api\\TransactionController@charge')->name('checkout.char
 Route::get('/confirm-payment/{token}', 'TransactionController@confirmPayment')->name('confirm.payment');
 Route::post('/confirm-payment', 'TransactionController@storeProof')->name('store.payment.proof');
 
-Route::get('/product/{id}', 'ProductController@getJsonProductById')->name('product.by-id');
-
 // MIDTRANS ROUTES
 Route::post('/midtrans-finish', function(){
     return redirect()->route('home');

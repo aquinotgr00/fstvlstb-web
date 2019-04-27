@@ -88,8 +88,11 @@
             })
 
             $('.single-product').click(function () {
-                alert($(this).data('id'));
-                // $.get('')
+                // alert($(this).data('id'));
+                var id = $(this).data('id');
+                $.get(`/api/product/${id}`, function (response) {
+                    alert(response);
+                });
             });
 
             $(".attr,.attr2").on("click",function(){
