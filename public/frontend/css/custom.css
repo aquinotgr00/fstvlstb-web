@@ -46,18 +46,26 @@
 .no-border[readonly]{
 	background: none;
 }
+/* ####################################################################################################################### */
 /*<!--inu-->*/
+/* ####################################################################################################################### */
+#checkout {
+    background: #fff;
+    color: #000;
+    padding: 80px 0 0;
+}
 
+.checkout-form{
+	margin-top: 60px; 
+}
 .modalbox .modal-order{
 	background-image: none;
 	background-color: #ffffff;
 	box-shadow: none;
     border-radius: 0;
     border: none;
-    min-height: 400px;
-    
+    min-height: 400px;  
 }
-
 .modalbox .modal-dialog.modal-lg .modal-order{
 	padding: 30px;
 	margin-top: 50px;
@@ -222,5 +230,44 @@ ul.dropdown-cart li .item-right button{
 	padding: 16px;
 	margin-top: 20px;
 }
+a.active{
+	color: #ff0000;
+}
+.nav-pills>li>a{
+	font-size: 14px;
+	color: #000000;
+}
+.nav-pills>li>a:hover{
+	color: #ff0000;
+	background-color: #337ab700;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+	background-color: #337ab700;
+	color: #ff0000;
+}
+.angel{
+	margin-left: 10px;
+}
+.fade{
+	opacity: 0.2;
+}
+.check-form{
+	margin-top: 40px;
+}
+.check-form .form-control{
+	background: #ffc300;
+    color: #ff0000;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    height: 30px;
+}
+.last-chck{
+	max-width: 100%;
+}
+/* additional adjustment by tgr */
 div#navbar { z-index: 9; }
+/* ####################################################################################################################### */
 /*<--inu-->*/
+/* ####################################################################################################################### */
+
