@@ -257,7 +257,7 @@
 
 {{-- modal for product detail in /boxset --}}
 <div class="modal fade modalbox" id="modal-product">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg">>
         <div class="modal-content modal-order">
             <button class="close" type="button" data-dismiss="modal">&times;</button>
             <div class="row">
@@ -285,9 +285,8 @@
                 <div class="col-xs-8 m-3">
                     <h2 id="product-name"></h2>
                     <p class="harga" id="product-price">Rp. 0</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et voluptate nam eaque debitis nobis repellat illo corrupti magni ratione asperiores excepturi quasi vero cumque maxime obcaecati, quia recusandae cupiditate expedita dolore totam veniam voluptatibus quis! Repellat nihil, laudantium ducimus officiis.
-                    </p>
-                    <div class="section row">
+                    <p id="product-description"></p>
+                    <div style="display:none;" id="product-sizes" class="section row">
                         <div class="col-xs-4">
                             <h5>UKURAN KAOS</h5>
                         </div>
@@ -314,7 +313,7 @@
                     <br/>
                     <br/>
                     <br/>
-                    <button class="btn btn-danger btn-block btn-submit" data-toggle="modal" data-target="#" data-dismiss="#">MASUK KERANJANG</button>
+                    <button class="btn btn-danger btn-block btn-submit sc-add-to-cart" data-toggle="modal" data-target="#" data-dismiss="#">MASUK KERANJANG</button>
                 </div>
             </div>
         </div>
