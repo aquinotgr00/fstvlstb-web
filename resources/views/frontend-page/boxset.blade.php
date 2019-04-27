@@ -74,16 +74,16 @@
                             @lang('boxset.description')
                         </p>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        {{-- CART --}}
-                        <div class="col-md-4">
-                            <form action="/checkout" method="POST">
-                                @csrf
-                                <!-- SmartCart element -->
-                                <div id="smartcart"></div>
-                            </form>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{-- CART --}}
+                            <div class="col-md-4">
+                                <form action="/checkout" method="POST">
+                                    @csrf
+                                    <!-- SmartCart element -->
+                                    <div id="smartcart"></div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -131,9 +131,11 @@
                 var id = $(this).data('id');
                 $.get(`/api/product/${id}`, function (response) {
                     console.log(response);
+                    $('input[name=product_id]').val(response.id);
+                    $('input[name=product_price]').val(response.price);
                     $('#product-name').html(response.name);
                     $('#product-price').html('Rp. '+response.price);
-                    $('#product-description').html(response.description);
+                    $('#product-desc').html(response.desc);
                     if (response.has_size) {
                         $('#product-sizes').css('display', 'block');
                     }

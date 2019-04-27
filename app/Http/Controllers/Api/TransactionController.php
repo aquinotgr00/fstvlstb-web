@@ -10,6 +10,11 @@ use App\Transaction;
 
 use GuzzleHttp\Client;
 
+use App\Mail\InvoiceMail;
+
+use App\Jobs\SendInvoiceMail;
+use Illuminate\Support\Facades\Mail;
+
 use Veritrans_Config;
 use Veritrans_Snap;
 use Veritrans_Notification;
@@ -95,6 +100,8 @@ class TransactionController extends Controller
             'data' => $invoice
         ];
 
+        // SendInvoiceMail::dispatch($transaction);
+        Mail::to($transaction->account->email)->send(new InvoiceMail($transaction));
         return $response;
     }
 

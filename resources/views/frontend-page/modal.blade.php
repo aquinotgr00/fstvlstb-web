@@ -266,7 +266,7 @@
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="item carousel-item active">
-                                <div><img src="{{asset('frontend/images/gambar-cnth.jpg')}}" alt=""></div>
+                                <div><img data-name="product_image" src="{{asset('frontend/images/gambar-cnth.jpg')}}" alt=""></div>
                             </div>
                             <div class="item carousel-item">
                                 <div><img src="{{asset('frontend/images/gambar-cnth-2.jpg')}}" alt=""></div>
@@ -283,9 +283,11 @@
                     </div>
                 </div>
                 <div class="col-xs-8 m-3">
-                    <h2 id="product-name"></h2>
-                    <p class="harga" id="product-price">Rp. 0</p>
-                    <p id="product-description"></p>
+                    <input name="product_id" type="hidden" />
+                    <input name="product_price" type="hidden" />
+                    <h2 data-name="product_name" id="product-name"></h2>
+                    <p class="harga" id="product-price" data-name="product_price">Rp. 0</p>
+                    <p id="product-desc" data-name="product_desc"></p>
                     <div style="display:none;" id="product-sizes" class="section row">
                         <div class="col-xs-4">
                             <h5>UKURAN KAOS</h5>

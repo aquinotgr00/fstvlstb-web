@@ -1,0 +1,1 @@
+INVOICE: INV-{{ $transaction->id }}

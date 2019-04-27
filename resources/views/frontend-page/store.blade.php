@@ -14,7 +14,6 @@
                             <div class="row">
                                 <!-- BEGIN PRODUCTS -->
                                 @foreach ($products as $item)
-                                    {{-- TODO: add to custom css --}}
                                     <div class="col-md-4 col-sm-6" style="margin-bottom:1rem;">
                                         <!-- PRODUCT CONTAINER, identified by the class "sc-product-item"  -->
                                         <div class="sc-product-item" style="min-height:420px;">

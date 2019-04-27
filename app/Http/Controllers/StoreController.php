@@ -38,11 +38,11 @@ class StoreController extends Controller
 
     public function midtransNotif(Request $request)
     {
-        $id = substr($request->order_id, -6);
-        if ($request->transaction_status == 'settlement') {
+        $id = substr($request['order_id'], -6);
+        if ($request['transaction_status'] == 'settlement') {
             \App\Transaction::findOrFail($id)->update([
                 'status' => 'paid',
-                'payment_bank' => $request->payment_type
+                'payment_bank' => $request['payment_type']
             ]);
         }
 
