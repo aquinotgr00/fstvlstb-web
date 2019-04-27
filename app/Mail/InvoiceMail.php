@@ -36,7 +36,7 @@ class InvoiceMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Invoice')
+        return $this->subject('Test Invoice')
             ->markdown('email.orders.invoice')
             ->with([
                 'transaction' => $this->transaction
