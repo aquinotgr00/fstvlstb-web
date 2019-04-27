@@ -26,6 +26,7 @@
   <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
   <script src="{{asset('dist/js/plyr.js')}}"></script>
   <script src="{{asset('frontend/js/jquery.smartCart.js')}}"></script>
+  <script src="{{asset('frontend/js/myScript.js')}}"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138417080-1"></script>
 
