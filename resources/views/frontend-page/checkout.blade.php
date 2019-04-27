@@ -118,13 +118,13 @@
                                     <div class="col-md-6">
                                         <label>
                                             <input type="radio" name="payment_method" value="direct_bank_transfer">
-                                            Transfer langsung
+                                            Bank Transfer (Verifikasi Manual)
                                         </label>
                                     </div>
                                     <div class="col-md-6">
                                         <label>
                                             <input type="radio" name="payment_method" value="others">
-                                            Midtrans Gateway
+                                            Transfer Virtual Account (Verifikasi Otomatis)
                                         </label>
                                     </div>
                                 </div>
