@@ -93,4 +93,10 @@ class ProductController extends Controller
             ->editColumn('created_at', '{!! date("d-m-Y", strtotime($created_at))!!}')
             ->make(true);
     }
+
+    public function getJsonProductById($id)
+    {
+        $product = $this->products->findOrFail($id);
+        return $product;
+    }
 }
