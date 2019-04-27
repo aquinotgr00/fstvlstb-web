@@ -452,8 +452,9 @@
                                 onClose: function(){console.log('customer closed the popup without finishing the payment');}
                             });
                         })
+                    } else if (!useMidtrans) {
+                        window.location = '/thank-you';
                     }
-                    window.location = '/thank-you';
                 }
             })
             
