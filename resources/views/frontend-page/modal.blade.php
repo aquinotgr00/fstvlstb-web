@@ -264,14 +264,13 @@
                     <div class="col-xs-4">
                         <div class="row">
                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
+                            <div class="carousel-inner" id="product_images">
                                 <div class="item carousel-item active">
-                                    <div><img class="item_image" src="{{asset('frontend/images/gambar-cnth.jpg')}}" alt=""></div>
+                                    <div><img id="product_image" class="item_image" src="{!!Storage::disk('s3')->url(Auth::guard('account')->user()->images)!!}" alt=""></div>
                                 </div>
                                 <div class="item carousel-item">
                                     <div><img src="{{asset('frontend/images/gambar-cnth.jpg')}}" alt=""></div>
                                 </div>
-                                
                             </div>
                             <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
                                 <i class="fa fa-long-arrow-left fa-lg"></i>

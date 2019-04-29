@@ -146,6 +146,15 @@
                     $('.item_weight').html(response.weight);
                     $('#product-price').html(formatRupiah(response.price));
                     $('.item_desc').html(response.description);
+                    $('#product_image').src = `Storage::disk('s3')->url(${response.image})`;
+                    console.log(response.product_images);
+                    if (response.product_images.length >= 1) {
+                        response.product_images.map(function (image) {
+                            $('#product_images').append('<div class="item carousel-item">' +
+                                `<div><img id="product_image" class="item_image" src="{{ Storage::disk('s3')->url('${image.image}') }}" alt=""></div>` +
+                            '</div>');
+                        });
+                    }
                     if (response.has_size) {
                         $('#product-sizes').css('display', 'block');
                         $('#product-sizes').addClass('show');

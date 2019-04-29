@@ -46,7 +46,7 @@ class TransactionController extends Controller
     	return DataTables::of($data)
             ->addColumn('action', function ($data) {
                 return '<a href="/admin/transactions/item/'.$data->id.'" class="btn btn-xs btn-info">View</a> 
-                    <a href="#" data-id="'.$data->id.'" data-toggle="modal" data-target="#modal-transaction-edit" class="btn btn-xs btn-primary">Edit</a>';
+                    <a href="#" onclick="openModalEdit('. $data->id .')" class="btn btn-xs btn-primary" data-id="'.$data->id.'" data-toggle="modal" data-target="#modal-transaction-edit">Edit</a>';
             })
             ->editColumn('id', '{!! sprintf("%06d", $id)!!}')
             ->editColumn('name', function ($data) {
@@ -102,6 +102,18 @@ class TransactionController extends Controller
     public function thankYou()
     {
         return 'thank you for purchashing';
+    }
+
+    public function getById($id)
+    {
+        $transaction = $this->transactions->findOrFail($id);
+        return $transaction;
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->transactions->findOrFail($id)->update($request->all());
+        return redirect()->back();
     }
 
 

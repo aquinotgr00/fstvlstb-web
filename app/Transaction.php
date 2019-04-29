@@ -28,6 +28,7 @@ class Transaction extends Model
         'payment_reminder',
         'payment_method',
         'payment_bank',
+        'tracking_number',
     ];
 
     public function account()
@@ -48,5 +49,12 @@ class Transaction extends Model
     public function paymentProof()
     {
         return $this->hasOne('App\PaymentProof');
+    }
+
+    public static function getToReminder(int $interval)
+    {
+        return static::where('status','unpaid')
+            ->where('payment_reminder','<=',$interval)
+            ->get();
     }
 }

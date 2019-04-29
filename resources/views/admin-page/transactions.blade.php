@@ -45,22 +45,44 @@
     <div class="modal" id="modal-transaction-edit">
         <div class="modal-dialog">
             <div class="modal-content">
-        
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Modal Heading</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-        
-            <!-- Modal body -->
-            <div class="modal-body">
-                Modal body..
-            </div>
-        
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
+                
+                <form id="update_form" action="#" method="post">
+                    @csrf
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Modal Heading</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="container">
+                            <div id="tracking_number_row" class="form-group row">
+                                <label for="name" class="col-sm-12 col-form-label">Nomor Resi</label>
+                                <div class="col-sm-12">
+                                    <input type="text" disabled class="form-control" name="tracking_number" id="tracking_number" placeholder="nomor resi">
+                                </div>
+                            </div>
+                            <div id="status_row" class="form-group">
+                                <label for="status">Status</label>
+                                <select class="form-control" name="status" id="input_status" disabled>
+                                    <option>...</option>
+                                    <option value="unpaid">unpaid</option>
+                                    <option value="bank confirmation">bank confirmation</option>
+                                    <option value="paid">paid</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info">Save</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </form>
         
             </div>
         </div>
@@ -69,6 +91,24 @@
 
 @section('script')
     <script>
+        function openModalEdit(id) {
+            $('#input_status').attr('disabled');
+            $.get('/admin/transactions/get/'+ id, function (response) {
+                $('#tracking_number_row').css('display', 'none');
+                $('#status_row').css('display', 'none');
+                $('#update_form').attr('action', '/admin/transactions/'+ response.id +'/update');
+                
+                if (response.status === 'paid') {
+                    $('#tracking_number_row').css('display', 'block');
+                    $('#tracking_number').attr('disabled', false);
+                } else if (response.status == 'unpaid' || response.status == 'bank confirmation') {
+                    $('#status_row').css('display', 'block');
+                    $('#input_status').attr('disabled', false);
+                    $('#input_status').val(response.status);
+                }
+            });
+        }
+
         $(document).ready( function () {
             var table = $('#datatables-resource').DataTable({
                 processing: true,
@@ -86,11 +126,9 @@
                 ]
             });
 
-            // $('#datatables-resource tbody').on('click', 'tr', function () {
-            //     var id = table.row( this ).id();
-            //     window.location = `/admin/transactions/item/${id}`
-            // });
-            // add 2 action buttons
+            $('.open_modal_edit').click(function () {
+                alert('clicked');
+            });
 
             $('#status').change(function () {
                 console.log('changed');

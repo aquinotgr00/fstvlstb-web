@@ -59,6 +59,12 @@
         </div>
         <div class="col-md-4">
             Others
+            <table class="table">
+                <tr>
+                    <td>Tracking Number</td>
+                    <td>: {{ $transaction->tracking_number }}</td>
+                </tr>
+            </table>
         </div>
     </div>
     <div class="row mt-5">

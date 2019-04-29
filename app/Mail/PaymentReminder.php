@@ -37,8 +37,8 @@ class PaymentReminder extends Mailable
     public function build()
     {
         return $this->subject('Payment Reminder')
-        ->markdown('emails.orders.payment-reminder')->with([
-            'transaction' => $this->transaction
-        ]);
+            ->markdown('email.orders.payment-reminder')->with([
+                'transaction' => $this->transaction
+            ]);
     }
 }

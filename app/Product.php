@@ -16,6 +16,11 @@ class Product extends Model
         'thumbnail', 'has_size', 'weight',
     ];
 
+    public function productImages()
+    {
+        return $this->hasMany('App\ProductImage');
+    }
+
     public function orders()
     {
         return $this->hasMany('App\Order');

@@ -188,43 +188,41 @@
             <!-- Modal body -->
             <div class="modal-body">
                 <div class="container">
-                    <form>
-                        <div class="form-group row">
-                            <label for="name" class="col-sm-12 col-form-label">Nama</label>
-                            <div class="col-sm-12">
-                                <input value="{{ $product->name }}" type="text" class="form-control" name="name" id="name" placeholder="nama">
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-12 col-form-label">Nama</label>
+                        <div class="col-sm-12">
+                            <input value="{{ $product->name }}" type="text" class="form-control" name="name" id="name" placeholder="nama">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="price" class="col-sm-12 col-form-label">Price</label>
+                        <div class="col-sm-12">
+                            <input value="{{ $product->price }}" type="number" class="form-control" name="price" id="price" placeholder="price">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="weight" class="col-sm-12 col-form-label">Description</label>
+                        <div class="col-sm-12">
+                            <textarea class="form-control" name="description" id="" rows="3">{{ $product->description }}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="weight" class="col-sm-6 col-form-label">Weight</label>
+                        <div class="col-sm-6">
+                            <input value="{{ $product->weight }}" type="number" class="form-control" name="weight" id="weight" placeholder="price">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="has_size" class="col-sm-6 col-form-label">Has Size</label>
+                        <div class="col-sm-6">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="has_size" id="has_size" value="1" @if($product->has_size) checked @endif>
+                                Has size
+                                </label>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="price" class="col-sm-12 col-form-label">Price</label>
-                            <div class="col-sm-12">
-                                <input value="{{ $product->price }}" type="number" class="form-control" name="price" id="price" placeholder="price">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="weight" class="col-sm-12 col-form-label">Description</label>
-                            <div class="col-sm-12">
-                                <textarea class="form-control" name="description" id="" rows="3">{{ $product->description }}</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="weight" class="col-sm-6 col-form-label">Weight</label>
-                            <div class="col-sm-6">
-                                <input value="{{ $product->weight }}" type="number" class="form-control" name="weight" id="weight" placeholder="price">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="has_size" class="col-sm-6 col-form-label">Has Size</label>
-                            <div class="col-sm-6">
-                                <div class="form-check">
-                                  <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="has_size" id="has_size" value="1" @if($product->has_size) checked @endif>
-                                    Has size
-                                  </label>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         
