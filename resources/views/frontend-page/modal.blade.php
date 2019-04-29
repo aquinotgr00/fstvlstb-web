@@ -260,64 +260,66 @@
     <div class="modal-dialog modal-lg">>
         <div class="modal-content modal-order">
             <button class="close" type="button" data-dismiss="modal">&times;</button>
-            <div class="row">
-                <div class="col-xs-4">
-                    <div class="row">
-                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="item carousel-item active">
-                                <div><img data-name="product_image" src="{{asset('frontend/images/gambar-cnth.jpg')}}" alt=""></div>
+            <div class="row simpleCart_shelfItem">
+                    <div class="col-xs-4">
+                        <div class="row">
+                           <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="item carousel-item active">
+                                    <div><img class="item_image" src="{{asset('frontend/images/gambar-cnth.jpg')}}" alt=""></div>
+                                </div>
+                                <div class="item carousel-item">
+                                    <div><img src="{{asset('frontend/images/gambar-cnth.jpg')}}" alt=""></div>
+                                </div>
+                                
                             </div>
-                            <div class="item carousel-item">
-                                <div><img src="{{asset('frontend/images/gambar-cnth-2.jpg')}}" alt=""></div>
-                            </div>
-                            
-                        </div>
-                        <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
-                            <i class="fa fa-long-arrow-left fa-lg"></i>
-                        </a>
-                        <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
-                            <i class="fa fa-long-arrow-right fa-lg"></i>
-                        </a>
+                            <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                                <i class="fa fa-long-arrow-left fa-lg"></i>
+                            </a>
+                            <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                                <i class="fa fa-long-arrow-right fa-lg"></i>
+                            </a>
+                           </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xs-8 m-3">
-                    <input name="product_id" type="hidden" />
-                    <input name="product_price" type="hidden" />
-                    <h2 data-name="product_name" id="product-name"></h2>
-                    <p class="harga" id="product-price" data-name="product_price">Rp. 0</p>
-                    <p id="product-desc" data-name="product_desc"></p>
-                    <div style="display:none;" id="product-sizes" class="section row">
-                        <div class="col-xs-4">
-                            <h5>UKURAN KAOS</h5>
+                    <div class="col-xs-8 m-3">
+                        <h2 class="item_name" id="product-name"></h2>
+                        <p class="item_productId" style="display:none;"></p>
+                        <p class="item_price" style="display:none;"></p>
+                        <p class="item_weight" style="display:none;"></p>
+                        <p class="harga" id="product-price">Rp. 0</p>
+                        <p id="product-desc" class="item_desc" data-name="product_desc"></p>
+                        </p>
+                        <div style="display:none;" id="product-sizes" class="section row">
+                            <div class="col-xs-4">
+                                <h5>UKURAN KAOS</h5>
+                            </div>
+                            <div class="col-xs-5 optional">
+                                <h5 class="attr2 sizes" data-value="S">S</h5>
+                                <h5 class="attr2 sizes" data-value="M">M</h5>
+                                <h5 class="attr2 sizes" data-value="L">L</h5>
+                                <h5 class="attr2 sizes" data-value="XL">XL</h5>
+                                <h5 class="attr2 sizes" data-value="XXL">XXL</h5>
+                            </div>
                         </div>
-                        <div class="col-xs-5 optional">
-                            <h5 class="attr2">S</h5>
-                            <h5 class="attr2">M</h5>
-                            <h5 class="attr2">L</h5>
-                            <h5 class="attr2">XL</h5>
-                            <h5 class="attr2">XXL</h5>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="section row">
-                        <div class="col-xs-4">
-                            <h5>JUMLAH</h5>
-                        </div>
-                        <div class="col-xs-5 optional jmlh">
-                            <div class="btn-minus"><span class="fa fa-minus fa-2x"></span></div>
-                            <input class="num-order"value="1" />
-                            <div class="btn-plus"><span class="fa fa-plus fa-2x"></span></div>   
-                        </div>
+                        <br/>
+                        <div class="section row">
+                           <div class="col-xs-4">
+                                <h5>JUMLAH</h5>
+                            </div>
+                            <div class="col-xs-5 optional jmlh">
+                                <div class="btn-minus"><span class="fa fa-minus fa-2x"></span></div>
+                                <input type="number" class="item_Quantity num-order" value="1" />
+                                <div class="btn-plus"><span class="fa fa-plus fa-2x"></span></div>   
+                            </div>
 
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <a href="javascript:;" class="btn btn-danger btn-block btn-submit item_add" data-toggle="modal" data-target="#" data-dismiss="#">MASUK KERANJANG</a>
                     </div>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <button class="btn btn-danger btn-block btn-submit sc-add-to-cart" data-toggle="modal" data-target="#" data-dismiss="#">MASUK KERANJANG</button>
                 </div>
-            </div>
         </div>
     </div>
 </div>

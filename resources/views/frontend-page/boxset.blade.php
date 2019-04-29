@@ -78,11 +78,7 @@
                         <div class="col-md-12">
                             {{-- CART --}}
                             <div class="col-md-4">
-                                <form action="/checkout" method="POST">
-                                    @csrf
-                                    <!-- SmartCart element -->
-                                    <div id="smartcart"></div>
-                                </form>
+                                
                             </div>
                         </div>
                     </div>
@@ -104,47 +100,108 @@
 @endsection
 
 @section('script')
+    <script src="{{asset('frontend/js/simpleCart.js')}}"></script>
     <script>
         $(document).ready(function () {
-            // smartcart init
-            $('#smartcart').smartCart({
-                cartItemTemplate: '<img class="img-responsive pull-left" src="{product_image}" /><h4 class="list-group-item-heading">{product_name} ({product_size})</h4><p class="list-group-item-text">{product_desc}</p>',
-                theme: 'anu',
-                currencySettings: {
-                    locales: 'id-ID', // A string with a BCP 47 language tag, or an array of such strings
-                    currencyOptions:  {
-                        style: 'currency', 
-                        currency: 'IDR', 
-                        currencyDisplay: 'symbol'
-                    }
+            /* Fungsi formatRupiah */
+            // function formatRupiah(angka, prefix){
+            function formatRupiah(angka){
+                // var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                var number_string = angka.toString().replace(/[^,\d]/g, ''),
+                split   		= number_string.split(','),
+                sisa     		= split[0].length % 3,
+                rupiah     		= split[0].substr(0, sisa),
+                ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
+    
+                // tambahkan titik jika yang di input sudah menjadi angka ribuan
+                if(ribuan){
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
                 }
+    
+                rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+                // return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+                return 'Rp. ' + rupiah;
+            }
+
+            // simple cart init
+            var selectedSize = ''
+            $('.item_add').attr('disabled')
+            $('.sizes').click(function () {
+                var size = $(this).data('value')
+                selectedSize = size
+            })
+
+           $('.single-product').click(function () {
+                selectedSize = ''
+                console.log(selectedSize)
+                $('#product-sizes').css('display', 'none');
+                var id = $(this).data('id');
+                $.get(`/api/product/${id}`, function (response) {
+                    $('.item_add').attr('disabled', false)
+                    $('.item_productId').html(response.id);
+                    $('input[name=product_price]').val(response.price);
+                    $('#product-name').html(response.name);
+                    $('.item_price').html(response.price);
+                    $('.item_weight').html(response.weight);
+                    $('#product-price').html(formatRupiah(response.price));
+                    $('.item_desc').html(response.description);
+                    if (response.has_size) {
+                        $('#product-sizes').css('display', 'block');
+                    }
+                });
+            }); 
+
+            simpleCart.currency({
+                code: "IDR",
+                name: "Indonesian Rupiah",
+                symbol: "Rp. ",
+                delimiter: ".", 
+                decimal: ",", 
+                accuracy: 0
             });
+            simpleCart({
+                currency: 'IDR',
+                checkout: { 
+                    type: "SendForm" , 
+                    url: "/checkout",
+                    extra_data: {
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                        customItemName: $(this).get('item_name_1')
+                    }, 
+                },
+                cartColumns: [
+                    { view: function (item, column) {
+                            var image = item.get('image')
+                            return '<span class="item">' +
+                                        '<span class="item-left">' +
+                                            `<img class="img-chck" src="${image}" alt="">` +
+                                            // p{{asset('frontend/images/gambar-cnth-2.jpg')}}
+                                            '<span class="item-info">' +
+                                                '<span><h5>'+ item.get('name') +'</h5></span>' +
+                                                '<span><small>Ukuran : '+ item.get('size') +'</small></span>' +
+                                                '<span><small>Jumlah : '+ item.quantity() +'</small></span>' +
+                                                '<span><h5>'+ simpleCart.toCurrency(item.price()) +' x '+ item.quantity() +' = '+ simpleCart.toCurrency(item.price()*item.quantity()) +'</h5></span>' +
+                                            '</span>' +
+                                        '</span>' +
+                                        '<span class="item-right">' +
+                                            '<button class="btn btn-xs pull-right">x</button>' +
+                                        '</span>' +
+                                    '</span>'
+                        },
+                        attr: 'custom',
+                    },
+                ],
+                beforeAdd: function (item) {
+                    item.set('size', selectedSize)
+                },
+            }) 
 
             //-- Click on detail
             $("ul.menu-items > li").on("click",function(){
                 $("ul.menu-items > li").removeClass("active");
                 $(this).addClass("active");
             })
-
-            $('.single-product').click(function () {
-                $('#product-sizes').css('display', 'none');
-                var id = $(this).data('id');
-                $.get(`/api/product/${id}`, function (response) {
-                    console.log(response);
-                    $('input[name=product_id]').val(response.id);
-                    $('input[name=product_price]').val(response.price);
-                    $('#product-name').html(response.name);
-                    $('#product-price').html('Rp. '+response.price);
-                    $('#product-desc').html(response.desc);
-                    if (response.has_size) {
-                        $('#product-sizes').css('display', 'block');
-                    }
-                });
-            });
-
-            $('.sc-add-to-cart').click(function () {
-                console.log('clicked');
-            });
 
             $(".attr,.attr2").on("click",function(){
                 var clase = $(this).attr("class");

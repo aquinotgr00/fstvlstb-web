@@ -149,7 +149,7 @@
                         @foreach ($items as $item)
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <img class="last-chck" src="images/gambar-cnth.jpg" alt="">
+                                    <img class="last-chck" src="{{asset('frontend/images/gambar-cnth.jpg')}}" alt="">
                                 </div>
                                 <div class="col-xs-4">
                                     <h6>{{ $item->product_name }}</h6>
@@ -429,6 +429,7 @@
             $.post('/checkout-store',$('#checkout-form').serialize(), function(response) {
                 const {status, data} = response;
                 if(status==='success') {
+                    localStorage.removeItem('simpleCart_items')
                     if (useMidtrans) {
                         $.post('/charge',JSON.stringify(data), function(success) {
                             console.log(success)

@@ -1,5 +1,9 @@
 @extends('frontend-page.main')
 
+@section('css')
+    <link rel="stylesheet" href="{{asset('frontend/css/smart_cart.css')}}">
+@endsection
+
 @section('content')
     <section id="NIF">
         <div class="container">
@@ -64,6 +68,7 @@
 @endsection
 
 @section('script')
+<script src="{{asset('frontend/js/jquery.smartCart.js')}}"></script>
 <script>
     $(document).ready(function() {
         $('#smartcart').smartCart({

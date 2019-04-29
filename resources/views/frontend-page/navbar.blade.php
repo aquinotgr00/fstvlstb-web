@@ -17,35 +17,21 @@
                 <li><a class="custom-header-font"  href="#" data-toggle="modal" data-target="#modal-masuk">@lang('header.login')</a></li>
                 @endguest
                 @auth('account')
-                    <li><a class="custom-header-font"  href="{{ Route('member.nif') }}">@lang('header.nif')</a></li>
-                    <li><a class="custom-header-font"  href="{{ Route('member.logout') }}">@lang('header.logout')</a></li>
+                    <li><a class="custom-header-font" href="{{ Route('member.nif') }}">@lang('header.nif')</a></li>
+                    <li><a class="custom-header-font" href="{{ Route('member.logout') }}">@lang('header.logout')</a></li>
                     <li class="dropdown">
-                                <a href="#" class="custom-header-font dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                Keranjang : <span class="badge">1</span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-cart" role="menu">
-                                    <li>
-                                        <span class="item">
-                                            <span class="item-left">
-                                                <img class="img-chck" src="{{asset('frontend/images/gambar-cnth.jpg')}}" alt="">
-                                                <span class="item-info">
-                                                    <span><h5>KAOS FSTVLST II</h5></span>
-                                                    <span><small>Ukuran : XXL</small></span>
-                                                    <span><small>Jumlah : 1</small></span>
-                                                    <span><h5>Rp. 123.456,-</h5></span>
-                                                </span>
-                                            </span>
-                                            <span class="item-right">
-                                                <button class="btn btn-xs pull-right">x</button>
-                                            </span>
-                                        </span>
-                                    </li>
-                                    <li class="checkout">
-                                        <a href="{{Route('store.index')}}"><button class="btn btn-danger btn-block btn-submit" data-toggle="modal" data-target="#" data-dismiss="#">Checkout</button></a>
-                                    </li>
-                                    
-                                </ul>
+                        <a href="#" class="custom-header-font dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Keranjang :
+                            <span class="badge simpleCart_quantity"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-cart" role="menu">
+                            <li class="simpleCart_items"></li>
+                            <li class="simpleCart_total"></li>
+                            <li class="checkout">
+                                <button class="btn btn-danger btn-block btn-submit simpleCart_checkout">Checkout</button>
                             </li>
+                        </ul>
+                    </li>
                 @endauth
             </ul>
                 <div class="navbar-header visible-xs">
