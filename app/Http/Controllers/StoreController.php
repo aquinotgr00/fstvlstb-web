@@ -26,7 +26,7 @@ class StoreController extends Controller
 
     public function checkout(Request $request)
     {
-        $items = json_decode($request->cart_list);
+        $items = json_decode($request->items);
         return view('frontend-page.checkout', compact('items'));
     }
 
@@ -47,5 +47,15 @@ class StoreController extends Controller
         }
 
         return 200;
+    }
+
+    public function confirmPayment($token)
+    {
+        $record = \App\PaymentProof::where('token', $token)->first();
+        $account = \Auth::guard('account')->user();
+        if ($record == null || $record->account_id !== $account->id) {
+            return abort(404);
+        }
+        return view('frontend-page.confirm-payment', compact('record'));
     }
 }

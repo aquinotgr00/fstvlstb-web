@@ -66,16 +66,6 @@ class TransactionController extends Controller
             ->make(true);
     }
 
-    public function confirmPayment($token)
-    {
-        $record = \App\PaymentProof::where('token', $token)->first();
-        $account = \Auth::guard('account')->user();
-        if ($record == null || $record->account_id !== $account->id) {
-            return abort(404);
-        }
-        return view('frontend-page.confirm-payment', compact('record'));
-    }
-
     public function storeProof(Request $request)
     {
         $request->request->add(['email' => \Auth::guard('account')->user()->email]);

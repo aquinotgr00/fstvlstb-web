@@ -30,7 +30,7 @@ Route::post('/midtrans-notification/handling', 'StoreController@midtransNotif')-
 Route::get('/thank-you', 'StoreController@thankYou')->name('thank.you');
 Route::post('/checkout-store', 'Api\\TransactionController@store')->name('checkout.store');
 Route::post('/charge', 'Api\\TransactionController@charge')->name('checkout.charge');
-Route::get('/confirm-payment/{token}', 'TransactionController@confirmPayment')->name('confirm.payment');
+Route::get('/confirm-payment/{token}', 'StoreController@confirmPayment')->name('confirm.payment');
 Route::post('/confirm-payment', 'TransactionController@storeProof')->name('store.payment.proof');
 
 // MIDTRANS ROUTES
