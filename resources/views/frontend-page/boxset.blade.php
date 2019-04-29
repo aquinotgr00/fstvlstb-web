@@ -184,8 +184,8 @@
                                                 '<span><h5>'+ simpleCart.toCurrency(item.price()) +' x '+ item.quantity() +' = '+ simpleCart.toCurrency(item.price()*item.quantity()) +'</h5></span>' +
                                             '</span>' +
                                         '</span>' +
-                                        '<span class="item-right">' +
-                                            '<button class="btn btn-xs pull-right">x</button>' +
+                                        '<span class="item-right item-remove">' +
+                                            '<a href="javascript:;" class="btn btn-xs pull-right simpleCart_remove">x</a>' +
                                         '</span>' +
                                     '</span>'
                         },
