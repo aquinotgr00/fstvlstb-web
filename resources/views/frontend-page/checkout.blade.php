@@ -24,8 +24,9 @@
                     @php $quantity = 0; $amount = 0; @endphp
                     @foreach ($items as $key => $item)
                         @php
+                            $subTotal = $item->product_price*$item->product_quantity;
                             $quantity += $item->product_quantity;
-                            $amount += $item->product_price;
+                            $amount += $subTotal;
                         @endphp
                         <input type="hidden" name="items[{{ $key }}][product_id]" value="{{ $item->product_id }}">
                         <input type="hidden" name="items[{{ $key }}][id]" value="{{ $item->product_id }}">
@@ -156,11 +157,12 @@
                                     @if ( isset($item->product_size) )
                                     <p class="nomargin">Ukuran : {{ $item->product_size }}</p>
                                     @endif
-                                    <p>Jumlah : {{ $item->product_quantity }}</p>
+                                    <p class="nomargin">Jumlah : {{ $item->product_quantity }}</p>
+                                    <p>Harga : {{ $item->product_price }}</p>
                                 </div>
                                 <div class="col-xs-4">
-                                    <input type="hidden" class="product_prices" value="{{ $item->product_price }}">
-                                    <h6>Rp. {{ $item->product_price }}</h6>
+                                    <input type="hidden" class="product_prices" value="{{ $item->product_price*$item->product_quantity }}">
+                                    <h6>Rp. {{ $item->product_price*$item->product_quantity }}</h6>
                                 </div>
                             </div> 
                         @endforeach

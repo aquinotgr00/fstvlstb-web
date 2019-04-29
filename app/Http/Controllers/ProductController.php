@@ -80,6 +80,18 @@ class ProductController extends Controller
         return view('admin-page.products-show', compact('product'));
     }
 
+    public function destroy($id)
+    {
+        $this->product->delete($id);
+        return redirect()->back();
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->product->findOrFail($id)->update($request->all());
+        return redirect(route('admin.product.show', $id));
+    }
+
     /**
      * get list data from products
      *

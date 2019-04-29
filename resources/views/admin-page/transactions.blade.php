@@ -30,6 +30,7 @@
                             <th>Products</th>
                             <th>Status</th>
                             <th>amount</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                 </table>
@@ -38,6 +39,34 @@
     </div>
     <!-- END MAIN CONTENT-->
 @endsection
+
+@section('modal')
+    <!-- The Transaction Edit Modal -->
+    <div class="modal" id="modal-transaction-edit">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+        
+            <!-- Modal body -->
+            <div class="modal-body">
+                Modal body..
+            </div>
+        
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        
+            </div>
+        </div>
+    </div>
+@endsection
+
 @section('script')
     <script>
         $(document).ready( function () {
@@ -53,13 +82,15 @@
                     { data: 'product', name: 'product' },
                     { data: 'status', name: 'status' },
                     { data: 'amount', name: 'amount' },
+                    { data: 'action', name: 'action', orderable: false, searchable: false },
                 ]
             });
 
-            $('#datatables-resource tbody').on('click', 'tr', function () {
-                var id = table.row( this ).id();
-                window.location = `/admin/transactions/item/${id}`
-            });
+            // $('#datatables-resource tbody').on('click', 'tr', function () {
+            //     var id = table.row( this ).id();
+            //     window.location = `/admin/transactions/item/${id}`
+            // });
+            // add 2 action buttons
 
             $('#status').change(function () {
                 console.log('changed');

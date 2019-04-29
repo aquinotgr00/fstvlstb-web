@@ -134,8 +134,8 @@
 
            $('.single-product').click(function () {
                 selectedSize = ''
-                console.log(selectedSize)
                 $('#product-sizes').css('display', 'none');
+                $('#product-sizes').removeClass('show');
                 var id = $(this).data('id');
                 $.get(`/api/product/${id}`, function (response) {
                     $('.item_add').attr('disabled', false)
@@ -148,6 +148,7 @@
                     $('.item_desc').html(response.description);
                     if (response.has_size) {
                         $('#product-sizes').css('display', 'block');
+                        $('#product-sizes').addClass('show');
                     }
                 });
             }); 
@@ -176,11 +177,10 @@
                             return '<span class="item">' +
                                         '<span class="item-left">' +
                                             `<img class="img-chck" src="${image}" alt="">` +
-                                            // p{{asset('frontend/images/gambar-cnth-2.jpg')}}
                                             '<span class="item-info">' +
                                                 '<span><h5>'+ item.get('name') +'</h5></span>' +
                                                 '<span><small>Ukuran : '+ item.get('size') +'</small></span>' +
-                                                '<span><small>Jumlah : '+ item.quantity() +'</small></span>' +
+                                                '<span><small>Jumlah : <a href="javascript:;" class="simpleCart_decrement">-</a> '+ item.quantity() +' <a href="javascript:;" class="simpleCart_increment">+</a></small></span>' +
                                                 '<span><h5>'+ simpleCart.toCurrency(item.price()) +' x '+ item.quantity() +' = '+ simpleCart.toCurrency(item.price()*item.quantity()) +'</h5></span>' +
                                             '</span>' +
                                         '</span>' +
@@ -194,6 +194,9 @@
                 ],
                 beforeAdd: function (item) {
                     item.set('size', selectedSize)
+                    if ( $('#product-sizes').hasClass('show') && selectedSize === '' ) {
+                        item.set('size', 'M')
+                    }
                 },
             }) 
 
@@ -211,23 +214,14 @@
             })
 
             //-- Click on QUANTITY
-            $(".btn-minus").on("click",function(){
-                var now = $(".section > div > input").val();
-                if ($.isNumeric(now)){
-                    if (parseInt(now) -1 > 0){ now--;}
-                    $(".section > div > input").val(now);
-                }else{
-                    $(".section > div > input").val("1");
+            var input = ('#item_qty');
+            $(".btn-number").click(function(){
+                if ($(this).hasClass('btn-plus')) {
+                    // input.val(parseInt(input.val())+1);
+                } else if (input.val()>=1) {
+                    // input.val(parseInt(input.val())-1);
                 }
-            })            
-            $(".btn-plus").on("click",function(){
-                var now = $(".section > div > input").val();
-                if ($.isNumeric(now)){
-                    $(".section > div > input").val(parseInt(now)+1);
-                }else{
-                    $(".section > div > input").val("1");
-                }
-            })   
+            });
         })
     </script>
 @endsection

@@ -308,9 +308,9 @@
                                 <h5>JUMLAH</h5>
                             </div>
                             <div class="col-xs-5 optional jmlh">
-                                <div class="btn-minus"><span class="fa fa-minus fa-2x"></span></div>
-                                <input type="number" class="item_Quantity num-order" value="1" />
-                                <div class="btn-plus"><span class="fa fa-plus fa-2x"></span></div>   
+                                <div class="btn-number btn-minus"><span class="fa fa-minus fa-2x"></span></div>
+                                <input type="number" id="item_qty" class="item_quantity num-order" value="1" />
+                                <div class="btn-number btn-plus"><span class="fa fa-plus fa-2x"></span></div>   
                             </div>
 
                         </div>

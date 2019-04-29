@@ -44,15 +44,6 @@ class TransactionController extends Controller
         
         // create the transaction
         $transaction = Transaction::create($request->except(['items']));
-        
-        // create payment proof token if the payment method is direct_bank_transfer
-        if ($transaction->payment_method == 'direct_bank_transfer') {
-            \App\PaymentProof::create([
-                'transaction_id' => $transaction->id,
-                'account_id' => $transaction->account_id,
-                'token' => str_random(16)
-            ]);
-        }
 
         // new array for courier fee to add in item details in invoice
         $newArr = [
@@ -100,8 +91,18 @@ class TransactionController extends Controller
             'data' => $invoice
         ];
 
-        // SendInvoiceMail::dispatch($transaction);
-        Mail::to($transaction->account->email)->send(new InvoiceMail($transaction));
+        // create payment proof token if the payment method is direct_bank_transfer
+        // also send email instructions
+        if ($transaction->payment_method == 'direct_bank_transfer') {
+            \App\PaymentProof::create([
+                'transaction_id' => $transaction->id,
+                'account_id' => $transaction->account_id,
+                'token' => str_random(16)
+            ]);
+            // SendInvoiceMail::dispatch($transaction);
+            Mail::to($transaction->account->email)->send(new InvoiceMail($transaction));
+        }
+        
         return $response;
     }
 

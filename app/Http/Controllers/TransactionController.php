@@ -44,6 +44,10 @@ class TransactionController extends Controller
     {
     	$data = $this->transactions->get();
     	return DataTables::of($data)
+            ->addColumn('action', function ($data) {
+                return '<a href="/admin/transactions/item/'.$data->id.'" class="btn btn-xs btn-info">View</a> 
+                    <a href="#" data-id="'.$data->id.'" data-toggle="modal" data-target="#modal-transaction-edit" class="btn btn-xs btn-primary">Edit</a>';
+            })
             ->editColumn('id', '{!! sprintf("%06d", $id)!!}')
             ->editColumn('name', function ($data) {
                 return $data->account->name;

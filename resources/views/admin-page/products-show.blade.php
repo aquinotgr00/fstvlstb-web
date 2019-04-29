@@ -29,18 +29,30 @@
                             <th>Price</th>
                             <td>: {{ $product->price }}</td>
                         </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>: {{ $product->description }}</td>
+                        </tr>
+                        <tr>
+                            <th>Weight</th>
+                            <td>: {{ $product->weight }}</td>
+                        </tr>
+                        <tr>
+                            <th>Has Size</th>
+                            <td>: {{ $product->has_size }}</td>
+                        </tr>
                     </table>
                 </div>
                 <div class="card-footer">
                     <div class="text-right">
-                        <button class="btn btn-primary">Edit Product</button>
-                        <button class="btn btn-danger">Delete Product</button>
+                        <button data-toggle="modal" data-target="#modal-product-edit" class="btn btn-primary">Edit Product</button>
+                        <a href="#" class="btn btn-danger">Delete Product</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-lg-12">
             <h2 class="title-1 m-b-25">Transaction List</h2>
 
@@ -73,8 +85,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    {{-- <th>Email</th>
-                                    <th>Phone</th> --}}
+                                    <th>Email</th>
+                                    <th>Phone</th>
                                     <th>Amount</th>
                                     <th>Created at</th>
                                 </tr>
@@ -89,8 +101,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    {{-- <th>Email</th>
-                                    <th>Phone</th> --}}
+                                    <th>Email</th>
+                                    <th>Phone</th>
                                     <th>Amount</th>
                                     <th>Created at</th>
                                 </tr>
@@ -115,7 +127,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- END MAIN CONTENT-->
 @endsection
 @section('modal')
@@ -158,26 +170,99 @@
             </div>
         </div>
     </div>
+
+    {{-- edit product modal --}}
+    <div class="modal" id="modal-product-edit">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+        
+            <form id="edit-product" action="/admin/products/item/{{ $product->id }}" method="post">
+            @csrf
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="container">
+                    <form>
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-12 col-form-label">Nama</label>
+                            <div class="col-sm-12">
+                                <input value="{{ $product->name }}" type="text" class="form-control" name="name" id="name" placeholder="nama">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="price" class="col-sm-12 col-form-label">Price</label>
+                            <div class="col-sm-12">
+                                <input value="{{ $product->price }}" type="number" class="form-control" name="price" id="price" placeholder="price">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="weight" class="col-sm-12 col-form-label">Description</label>
+                            <div class="col-sm-12">
+                                <textarea class="form-control" name="description" id="" rows="3">{{ $product->description }}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="weight" class="col-sm-6 col-form-label">Weight</label>
+                            <div class="col-sm-6">
+                                <input value="{{ $product->weight }}" type="number" class="form-control" name="weight" id="weight" placeholder="price">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="has_size" class="col-sm-6 col-form-label">Has Size</label>
+                            <div class="col-sm-6">
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" name="has_size" id="has_size" value="1" @if($product->has_size) checked @endif>
+                                    Has size
+                                  </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-info">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        
+            </form>
+        
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>
         $(document).ready( function () {
 
-            $('#create_batch_form').submit(function (evt) {
-                evt.preventDefault();
-                var form = $(this);
-                var url = form.attr('action');
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: form.serialize(), // serializes the form's elements.
-                    success: function(data)
-                    {
-                        // console.log(data); // show response from the php script.
-                        location.reload();
-                    }
-                });
-            });
+            $('#edit-product').submit(function () {
+                console.log('submitted')
+            })
+
+            // $('#create_batch_form').submit(function (evt) {
+            //     evt.preventDefault();
+            //     var form = $(this);
+            //     var url = form.attr('action');
+            //     $.ajax({
+            //         type: "POST",
+            //         url: url,
+            //         data: form.serialize(), // serializes the form's elements.
+            //         success: function(data)
+            //         {
+            //             // console.log(data); // show response from the php script.
+            //             location.reload();
+            //         }
+            //     });
+            // });
 
             // TODO: Continue simplified data table loadingitem
             // function loadDataTable(status) {
@@ -203,52 +288,52 @@
             //     loadDataTable('unpaid');
             // });
 
-            var table = $('#datatables-resource').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: "{!! route('admin.transaction.list-by-id', ['id' => $product->id, 'status' => 'unpaid']) !!}",
-                columns: [
-                    { data: 'id', name: 'id' },
-                    { data: 'name', name: 'name' },
-                    // { data: 'email', name: 'email' },
-                    // { data: 'phone', name: 'phone' },
-                    { data: 'amount', name: 'amount' },
-                    { data: 'created_at', name: 'created_at' }
-                ]
-            });
+            // var table = $('#datatables-resource').DataTable({
+            //     processing: true,
+            //     serverSide: true,
+            //     ajax: "{!! route('admin.transaction.list-by-id', ['id' => $product->id, 'status' => 'unpaid']) !!}",
+            //     columns: [
+            //         { data: 'id', name: 'id' },
+            //         { data: 'name', name: 'name' },
+            //         // { data: 'email', name: 'email' },
+            //         // { data: 'phone', name: 'phone' },
+            //         { data: 'amount', name: 'amount' },
+            //         { data: 'created_at', name: 'created_at' }
+            //     ]
+            // });
 
-            $('#datatables-paid').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: "{!! route('admin.transaction.list-by-id', ['id' => $product->id, 'status' => 'paid']) !!}",
-                columns: [
-                    { data: 'id', name: 'id' },
-                    { data: 'name', name: 'name' },
-                    // { data: 'email', name: 'email' },
-                    // { data: 'phone', name: 'phone' },
-                    { data: 'amount', name: 'amount' },
-                    { data: 'created_at', name: 'created_at' }
-                ]
-            });
+            // $('#datatables-paid').DataTable({
+            //     processing: true,
+            //     serverSide: true,
+            //     ajax: "{!! route('admin.transaction.list-by-id', ['id' => $product->id, 'status' => 'paid']) !!}",
+            //     columns: [
+            //         { data: 'id', name: 'id' },
+            //         { data: 'name', name: 'name' },
+            //         // { data: 'email', name: 'email' },
+            //         // { data: 'phone', name: 'phone' },
+            //         { data: 'amount', name: 'amount' },
+            //         { data: 'created_at', name: 'created_at' }
+            //     ]
+            // });
 
-            var batchTable = $('#datatables-batch').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: "{!! route('admin.production-batch.list-by-id', $product->id) !!}",
-                rowId: 'id',    
-                columns: [
-                    { data: 'id', name: 'id' },
-                    { data: 'batch_qty', name: 'quantity' },
-                    { data: 'start_production_date', name: 'start_production_date' },
-                    { data: 'end_production_date', name: 'end_production_date' },
-                    { data: 'created_at', name: 'created_at' }
-                ]
-            });
+            // var batchTable = $('#datatables-batch').DataTable({
+            //     processing: true,
+            //     serverSide: true,
+            //     ajax: "{!! route('admin.production-batch.list-by-id', $product->id) !!}",
+            //     rowId: 'id',    
+            //     columns: [
+            //         { data: 'id', name: 'id' },
+            //         { data: 'batch_qty', name: 'quantity' },
+            //         { data: 'start_production_date', name: 'start_production_date' },
+            //         { data: 'end_production_date', name: 'end_production_date' },
+            //         { data: 'created_at', name: 'created_at' }
+            //     ]
+            // });
             
-            $('#datatables-batch tbody').on('click', 'tr', function () {
-                var id = batchTable.row( this ).id();
-                window.location = `/admin/production-batch/${id}`;
-            });
+            // $('#datatables-batch tbody').on('click', 'tr', function () {
+            //     var id = batchTable.row( this ).id();
+            //     window.location = `/admin/production-batch/${id}`;
+            // });
         });
     </script>
 @endsection
