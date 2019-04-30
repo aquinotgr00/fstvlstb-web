@@ -206,8 +206,21 @@
                     if ( $('#product-sizes').hasClass('show') && selectedSize === '' ) {
                         item.set('size', 'M')
                     }
+                    $('.checkout_btn_wrapper').css('display', 'block');
                 },
-            }) 
+                beforeRemove: function () {
+                    if (simpleCart.quantity() == 0) {
+                        $('.checkout_btn_wrapper').css('display', 'none');
+                    }
+                },
+            })
+
+            simpleCart.bind( 'load' , function(){
+                console.log( "simpleCart has loaded " + simpleCart.quantity() + " items from from localStorage" );
+                if (simpleCart.quantity() === 0) {
+                    $('.checkout_btn_wrapper').css('display', 'none');
+                }
+            });
 
             //-- Click on detail
             $("ul.menu-items > li").on("click",function(){

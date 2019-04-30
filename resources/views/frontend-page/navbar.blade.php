@@ -27,7 +27,7 @@
                         <ul class="dropdown-menu dropdown-cart" role="menu">
                             <li class="simpleCart_items"></li>
                             <li class="simpleCart_total"></li>
-                            <li class="checkout">
+                            <li class="checkout checkout_btn_wrapper">
                                 <button class="btn btn-danger btn-block btn-submit simpleCart_checkout">Checkout</button>
                             </li>
                         </ul>
@@ -87,7 +87,7 @@
                                             </span>
                                         </span>
                                     </li>
-                                    <li class="checkout">
+                                    <li class="checkout checkout_btn_wrapper">
                                         <button class="btn btn-danger btn-block btn-submit" data-toggle="modal" data-target="#" data-dismiss="#">Checkout</button>
                                     </li>
                                     
