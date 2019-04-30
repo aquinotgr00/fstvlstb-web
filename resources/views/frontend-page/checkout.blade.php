@@ -44,15 +44,15 @@
                         <div class="check-form">
                             <div class="form-group">
                                 <label for="">Nama Lengkap</label>
-                                <input type="text" value="{{ Auth::guard('account')->user()->name }}" class="form-control">
+                                <input disabled type="text" value="{{ Auth::guard('account')->user()->name }}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">Email</label>
-                                <input type="email" value="{{ Auth::guard('account')->user()->email }}" class="form-control">
+                                <input disabled type="email" value="{{ Auth::guard('account')->user()->email }}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">No Telp</label>
-                                <input type="text" value="{{ Auth::guard('account')->user()->phone }}" class="form-control">
+                                <input disabled type="text" value="{{ Auth::guard('account')->user()->phone }}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">Alamat Lengkap</label>
@@ -100,7 +100,7 @@
                                 <label for="">Pilih Kurir</label>
                                 <select class="form-control" name="courier_name" id="courier_name">
                                     <option>...</option>
-                                    <option value="cod">COD di LIB</option>
+                                    <option value="ambil">Ambil di LIB</option>
                                     <option value="jne">JNE</option>
                                     <option value="pos">POS</option>
                                     <option value="tiki">Tiki</option>
@@ -384,7 +384,7 @@
         });
 
         $('#courier_name').change(function () {
-            if ($(this).val() !== 'cod') {
+            if ($(this).val() !== 'ambil') {
                 $('.courier_service_wrapper').css('display', 'block');
                 $.ajax({
                     type: 'POST',
@@ -403,7 +403,7 @@
                         });
                     }
                 });
-            } else if ($(this).val() === 'cod') {
+            } else if ($(this).val() === 'ambil') {
                 $('.courier_service_wrapper').css('display', 'none');
             }
         });

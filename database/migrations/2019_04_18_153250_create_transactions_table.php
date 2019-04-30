@@ -22,7 +22,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('quantity');
             $table->integer('amount');
             $table->text('note')->nullable();
-            $table->enum('status',['unpaid','paid', 'bank confirmation'])->default('unpaid');
+            $table->enum('status',['unpaid','paid'])->default('unpaid');
             $table->string('courier_name')->nullable();
             $table->string('courier_type')->nullable();
             $table->string('courier_fee')->nullable();

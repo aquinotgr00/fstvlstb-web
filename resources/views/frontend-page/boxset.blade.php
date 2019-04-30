@@ -37,7 +37,7 @@
                     <div class="hidden-xs">
                         <h2>
                             {{-- @lang('boxset.open_pre_order') @lang('index.right.date') --}}
-                            <button class="btn btn-danger btn-block btn-submit buy-boxset-btn">Beli Bokset</button>
+                            <a href="#" data-toggle="modal" data-target="#modal-product" data-id="6" class="btn btn-danger btn-block btn-submit buy-boxset-btn single-product">Beli Bokset</a>
                         </h2>
                         <br/><br/>
                         <br/><br/>
@@ -120,7 +120,6 @@
             $('.sizes').click(function () {
                 var size = $(this).data('value')
                 selectedSize = size
-                console.log('size clicked');
                 $('.sizes').map(function (size) {
                     $(this).removeClass('active');
                 });

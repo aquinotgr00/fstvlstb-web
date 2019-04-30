@@ -265,6 +265,23 @@ a.active{
 .last-chck{
 	max-width: 100%;
 }
+#reset-pass{
+	background: #ffc300;
+    position: relative;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+}
+#reset-pass ::placeholder{
+	color: #ff7200;
+}
+.thumbnail-struk{
+	max-width: 20%;
+}
+.thumbnail-photo .btn-struk{
+	font-size: 12px;
+}
 /* additional adjustment by tgr */
 div#navbar { z-index: 9; }
 img#product_image { width: 100%; }
@@ -275,9 +292,10 @@ div.cart_total_wrapper {
 	margin: 10px 0;
 }
 div.main-image { z-index: 0; }
-button.buy-boxset-btn { font-size: 25px;
+a.buy-boxset-btn { font-size: 25px;
     font-family: 'Helvetica Neue', sans-serif;
-    font-weight: 800; }
+	font-weight: 800; }
+img#proof_thumbnail { max-width: 124px; }
 /* ####################################################################################################################### */
 /*<--inu-->*/
 /* ####################################################################################################################### */

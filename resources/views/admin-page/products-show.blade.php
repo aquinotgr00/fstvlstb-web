@@ -1,4 +1,50 @@
 @extends('index')
+@section('css')
+    <style>
+    .imagePreview {
+        width: 100%;
+        height: 180px;
+        background-position: center center;
+        background:url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg);
+        background-color:#fff;
+            background-size: cover;
+        background-repeat:no-repeat;
+            display: inline-block;
+        box-shadow:0px -3px 6px 2px rgba(0,0,0,0.2);
+    }
+    .imgUp
+    {
+        margin-bottom:15px;
+    }
+    .del
+    {
+        position:absolute;
+        top:0px;
+        right:15px;
+        width:30px;
+        height:30px;
+        text-align:center;
+        line-height:30px;
+        background-color:rgba(255,255,255,0.6);
+        cursor:pointer;
+    }
+    .imgAdd
+    {
+        width:30px;
+        height:30px;
+        border-radius:50%;
+        background-color:#4bd7ef;
+        color:#fff;
+        box-shadow:0px 0px 2px 1px rgba(0,0,0,0.2);
+        text-align:center;
+        line-height:30px;
+        margin-top:0px;
+        cursor:pointer;
+        font-size:15px;
+    }
+    span.warning_image { color: red; display: none; }
+    </style>
+@endsection
 @section('content')
     <!-- MAIN CONTENT-->
     <div class="row">
@@ -10,7 +56,7 @@
         <div class="col-lg-4">
             <div class="card">
                 {{-- TODO: show the true image --}}
-                <img src="https://media.karousell.com/media/photos/products/2017/01/27/kaos_gap_polos_round_neck_hitam__black_1485501396_3b8c4a3a.png" alt="{{ $product->name   }}">
+                <img src="{!! Storage::disk('s3')->url($product->thumbnail) !!}" alt="{{ $product->name   }}">
             </div>
         </div>
 
@@ -46,6 +92,7 @@
                 <div class="card-footer">
                     <div class="text-right">
                         <button data-toggle="modal" data-target="#modal-product-edit" class="btn btn-primary">Edit Product</button>
+                        &nbsp;
                         <form class="form-inline float-right" action="{{ route('admin.product.destroy', $product->id) }}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-danger">Delete Product</button>
@@ -181,16 +228,29 @@
         
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Modal Heading</h4>
+                <h4 class="modal-title">Edit Product</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
         
-            <form id="edit-product" action="/admin/products/item/{{ $product->id }}" method="post">
+            <form id="edit-product" action="/admin/products/item/{{ $product->id }}" method="post" enctype="multipart/form-data">
             @csrf
 
             <!-- Modal body -->
             <div class="modal-body">
                 <div class="container">
+                    <div class="form-group row">
+                        <label for="image">Gambar </label>
+                        <div class="col-sm-12">
+                            <span class="warning_image">sebuah produk butuh sebuah gambar</span>
+                            {{-- <div class="col-sm-12 imgUp">
+                                <div class="imagePreview"></div>
+                                <label class="btn btn-primary btn-block">
+                                    Upload<input name="images[]" type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                </label>
+                            </div> --}}
+                            <i class="fa fa-plus imgAdd"></i>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label for="name" class="col-sm-12 col-form-label">Nama</label>
                         <div class="col-sm-12">
@@ -231,7 +291,7 @@
         
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="submit" class="btn btn-info">Save</button>
+                <button type="submit" class="btn btn-info" id="btn-submit">Save</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
         
@@ -248,6 +308,64 @@
             $('#edit-product').submit(function () {
                 console.log('submitted')
             })
+
+            $(".imgAdd").click(function(){
+                $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-12 imgUp"><div class="imagePreview"></div><label class="btn btn-primary btn-block">Upload<input type="file" name="images[]" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
+                $('#btn-submit').attr('disabled', false);
+                $('.warning_image').css('display', 'none');
+            });
+
+            $(document).on("click", "i.del" , function() {
+                $(this).parent().remove();
+                if ( $('.imgUp').length == 0 ) {
+                    $('#btn-submit').attr('disabled', true);
+                    $('.warning_image').css('display', 'block');
+                }
+            });
+
+            @if ( count($product->productImages) >= 2 )
+                @foreach($product->productImages as $key => $image)
+                    $('.imgAdd').closest(".row").find('.imgAdd').before('<div class="col-sm-12 imgUp"><div class="imagePreview imagePreview{!! $key !!}"></div><label class="btn btn-primary btn-block">Upload<input type="file" name="images[]" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
+
+                    var key = '{!! $key !!}';
+
+                    var ele = $(`.imagePreview${key}`);
+
+                    var uploadFile = $('.uploadFile');
+
+                    if (key == 0) {
+                        console.log(key);
+                        uploadFile.closest(".imgUp").find(".imagePreview").css("background-image", "url('{!! Storage::disk('s3')->url($image->image) !!}')");
+                    } else if (key != 0) {
+                        console.log(key);
+                        ele.css("background-image", "url('{!! Storage::disk('s3')->url($image->image) !!}')");
+                    }
+                    // }
+                @endforeach
+            @elseif ( count($product->productImages) == 1 )
+                $('.imgAdd').closest(".row").find('.imgAdd').before('<div class="col-sm-12 imgUp"><div class="imagePreview"></div><label class="btn btn-primary btn-block">Upload<input type="file" name="images[]" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
+                $('.imagePreview').css('background-image', 'url("{!! Storage::disk('s3')->url($product->thumbnail) !!}")')
+            @endif
+
+            $(function() {
+                $(document).on("change",".uploadFile", function()
+                {
+                    var uploadFile = $(this);
+                    var files = !!this.files ? this.files : [];
+                    if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+            
+                    if (/^image/.test( files[0].type)){ // only image file
+                        var reader = new FileReader(); // instance of the FileReader
+                        reader.readAsDataURL(files[0]); // read the local file
+                        
+                        reader.onloadend = function(){ // set image data as background of div
+                            //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+                            uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url("+this.result+")");
+                        }
+                    }
+                
+                });
+            });
 
             // $('#create_batch_form').submit(function (evt) {
             //     evt.preventDefault();

@@ -23,7 +23,7 @@ class TransactionController extends Controller
      */
     public function __construct(Transaction $transactions)
     {
-        $this->middleware('auth')->except('storeProof');
+        $this->middleware('auth');
         $this->transactions = $transactions;
     }
 
@@ -76,30 +76,6 @@ class TransactionController extends Controller
             ->toJson();
     }
 
-    public function storeProof(Request $request)
-    {
-        $email = $this->transactions->findOrFail($request->transaction_id)->account->email;
-        $request->request->add(['email' => $email]);
-        // dd($request->all());
-        // $accountEmail = Auth::guard('account')->user()->email;
-        if ( \Auth::guard('account')->attempt($request->only('email', 'password')) ) {
-            // handle the image
-            $unique = uniqid();
-            $file = $request->image;
-            $destinationPath = 'proofs';
-            $filePath = $destinationPath.'/'.$unique.'-'.$file->getClientOriginalName();
-            $fileimage = Image::make($file)->save($destinationPath.'/'.$file->getClientOriginalName());
-            $s3 = \Storage::disk('s3');
-            $s3->put($filePath, $fileimage, 'public');
-
-            // update the payment proof image and transaction status
-            \App\PaymentProof::findOrFail($request->id)->update([ 'image' => $filePath, 'token' => null ]);
-            $this->transactions->findOrFail($request->transaction_id)->update([ 'status' => 'bank confirmation' ]);
-            return redirect()->route('home');
-        }
-        return redirect()->back();
-    }
-
     public function show($id)
     {
         $transaction = $this->transactions->findOrFail($id);
@@ -119,9 +95,11 @@ class TransactionController extends Controller
 
     public function update(Request $request, $id)
     {
-        $transaction = $this->transactions->findOrFail($id)->update($request->all());
-        if ($transaction->status == 'paid' && $transaction->tracking_number != null) {
+        $transaction = $this->transactions->findOrFail($id);
+        $transaction->update($request->all());
+        if ($transaction->status !== 'unpaid' && $transaction->tracking_number != null) {
             Mail::to($transaction->account->email)->send(new OrderPaidMail($transaction));
+            $transaction->update(['status' => 'shipped']);
         }
         return redirect()->back();
     }

@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Product;
 
+use Image;
+
 class StoreController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:account')->except('confirmPayment');
+        $this->middleware('auth:account')->except(['confirmPayment', 'storeProof']);
     }
 
     public function index()
@@ -47,6 +49,36 @@ class StoreController extends Controller
         }
 
         return 200;
+    }
+
+    public function storeProof(Request $request)
+    {
+        // dd($request->all());
+        $request->validate([
+            'password' => 'required',
+            'image' => 'required',
+        ]);
+
+        $email = \App\Transaction::findOrFail($request->transaction_id)->account->email;
+        $request->request->add(['email' => $email]);
+        
+        if ( \Auth::guard('account')->attempt($request->only('email', 'password')) ) {
+            // handle the image
+            $unique = uniqid();
+            $file = $request->image;
+            $destinationPath = 'proofs';
+            $filePath = $destinationPath.'/'.$unique.'-'.$file->getClientOriginalName();
+            $fileimage = Image::make($file)->save($destinationPath.'/'.$file->getClientOriginalName());
+            $s3 = \Storage::disk('s3');
+            $s3->put($filePath, $fileimage, 'public');
+
+            // update the payment proof image and transaction status
+            \App\PaymentProof::findOrFail($request->id)->update([ 'image' => $filePath, 'token' => null ]);
+            \App\Transaction::findOrFail($request->transaction_id)->update([ 'status' => 'payment check' ]);
+            return redirect()->route('home');
+        }
+
+        return redirect()->back();
     }
 
     public function confirmPayment($token)

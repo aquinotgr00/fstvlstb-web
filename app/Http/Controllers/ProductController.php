@@ -40,10 +40,8 @@ class ProductController extends Controller
         return view('admin-page.products-create');
     }
 
-    public function store(Request $request)
+    private function handleUploadImages($files)
     {
-        // dd($request->all());
-        $files = $request->images;
         $destinationPath = 'products';
 
         foreach ($files as $key => $file) {
@@ -54,24 +52,44 @@ class ProductController extends Controller
             $s3->put($filePath, $fileimage, 'public');
             $files[$key] = $filePath;
             if ($key == 0) {
-                $request->request->add(['thumbnail' => $filePath]);
+                $files['thumbnail'] =  $filePath;
             }
         }
 
+        return $files;
+    }
+
+    public function store(Request $request)
+    {
+        // dd($request->all());
+        // $files = $request->images;
+        $files = $this->handleUploadImages($request->images);
+        $request->request->add(['thumbnail' => $files['thumbnail']]);
+        unset($files['thumbnail']);
+        // $destinationPath = 'products';
+
+        // foreach ($files as $key => $file) {
+        //     $unique = uniqid();
+        //     $filePath = $destinationPath.'/'.$unique.'-'.$file->getClientOriginalName();
+        //     $fileimage = Image::make($file)->save($destinationPath.'/'.$file->getClientOriginalName());
+        //     $s3 = \Storage::disk('s3');
+        //     $s3->put($filePath, $fileimage, 'public');
+        //     $files[$key] = $filePath;
+        //     if ($key == 0) {
+        //         $request->request->add(['thumbnail' => $filePath]);
+        //     }
+        // }
+
         $product = $this->products->create($request->except('images'));
 
-        foreach ($files as $value) {
-            ProductImage::create([
+        foreach ($files as $key => $value) {
+            $productImg = ProductImage::create([
                 'product_id' => $product->id,
                 'image' => $value
             ]);
         }
 
         return redirect('/admin/products');
-
-        // dd( array_merge($request->except('images'), ['images' => $files]) );
-        // TODO: handle upload images
-        // TODO: store new product
     }
 
     public function show($id)
@@ -86,9 +104,42 @@ class ProductController extends Controller
         return redirect()->route('admin.product.page');
     }
 
+    private function handleProductImages($id)
+    {
+        // delete the existing product images
+        $images = \App\ProductImage::where('product_id', $id)->delete();
+    }
+
     public function update(Request $request, $id)
     {
-        $this->products->findOrFail($id)->update($request->all());
+        $product = $this->products->findOrFail($id);
+        if (isset($request->images)) {
+            // dd($request->all());
+            if ( isset($request->images[0]) ) {
+                $this->handleProductImages($id);
+                $files = $this->handleUploadImages($request->images);
+                $request->request->add(['thumbnail' => $files['thumbnail']]);
+                unset($files['thumbnail']);
+            } else if ( !isset($request->images[0]) ) {
+                $files = $this->handleUploadImages($request->images);
+            }
+            foreach ($files as $key => $value) {
+                ProductImage::create([
+                    'product_id' => $id,
+                    'image' => $value
+                ]);
+            }
+            // if ( $request->images[0] != null ) {
+            //     // if (isset($files['thumbnail'])) {
+            //     //     $request->request->add(['thumbnail' => $files['thumbnail']]);
+            //     //     unset($files['thumbnail']);
+            //     // }
+            //     
+            // }
+            // $request->images[0] = $product->thumbnail;
+        }
+
+        $product->update($request->all());
         return redirect(route('admin.product.show', $id));
     }
 

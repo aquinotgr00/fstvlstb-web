@@ -16,7 +16,7 @@
                                 <option>Filter dari Status</option>
                                 <option value="unpaid">Unpaid</option>
                                 <option value="paid">Paid</option>
-                                <option value="bank confirmation">Bank Confirmation</option>
+                                <option value="payment check">Payment Check</option>
                             </select>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                                 <select class="form-control" name="status" id="input_status" disabled>
                                     <option>...</option>
                                     <option value="unpaid">unpaid</option>
-                                    <option value="bank confirmation">bank confirmation</option>
+                                    <option value="payment check">Payment Check</option>
                                     <option value="paid">paid</option>
                                 </select>
                             </div>
@@ -101,7 +101,7 @@
                 if (response.status === 'paid') {
                     $('#tracking_number_row').css('display', 'block');
                     $('#tracking_number').attr('disabled', false);
-                } else if (response.status == 'unpaid' || response.status == 'bank confirmation') {
+                } else if (response.status == 'unpaid' || response.status == 'payment check') {
                     $('#status_row').css('display', 'block');
                     $('#input_status').attr('disabled', false);
                     $('#input_status').val(response.status);
@@ -124,7 +124,7 @@
                     { data: 'amount', name: 'amount' },
                     { data: 'action', name: 'action', orderable: false, searchable: false },
                 ],
-                order: [1, 'desc'],
+                order: [0, 'desc'],
             });
 
             $('.open_modal_edit').click(function () {

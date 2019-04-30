@@ -66,9 +66,14 @@
                 </tr>
                 <tr>
                     <td>Tracking Number</td>
-                    <td>: {{ $transaction->tracking_number }}</td>
+                    <form action="{{ route('admin.transaction.update', $transaction->id) }}" method="post">@csrf
+                    <td>:
+                        <input type="text" name="tracking_number" value="{{ $transaction->tracking_number }}" required>
+                        <input type="submit" value="">
+                    </td>
+                    </form>
                 </tr>
-                @if ( isset($transaction->paymentProof) )
+                @if ( isset($transaction->paymentProof->image) )
                     <tr>
                         <td>Payment Proof</td>
                         <td>: <img src="{{ Storage::disk('s3')->url($transaction->paymentProof->image) }}" alt="payment_proof"></td>
