@@ -36,7 +36,8 @@
                     <br/>
                     <div class="hidden-xs">
                         <h2>
-                            @lang('boxset.open_pre_order') @lang('index.right.date')
+                            {{-- @lang('boxset.open_pre_order') @lang('index.right.date') --}}
+                            <button class="btn btn-danger btn-block btn-submit buy-boxset-btn">Beli Bokset</button>
                         </h2>
                         <br/><br/>
                         <br/><br/>
@@ -86,17 +87,6 @@
             </div>
         </div>
     </section>
-
-    <div id="footer">
-        <div class="visible-xs text-center mobilefooter">
-            <h2>FSTVLST II. HAMPIR ROCK, NYARIS SENI</h2>
-            <p>Terima kasih telah mengambil keputusan untuk mendukung FSTVLST.</p>
-        </div>
-        <div class="hidden-xs container">
-            <h2 class="navbar-left">FSTVLST II. HAMPIR ROCK, NYARIS SENI</h2>
-            <p class="navbar-right">Terimakasih telah mengambil keputusan untuk mendukung FSTVLST.</p>
-        </div>
-    </div>
 @endsection
 
 @section('script')
@@ -130,6 +120,10 @@
             $('.sizes').click(function () {
                 var size = $(this).data('value')
                 selectedSize = size
+                console.log('size clicked');
+                $('.sizes').map(function (size) {
+                    $(this).removeClass('active');
+                });
             })
 
            $('.single-product').click(function () {
@@ -147,7 +141,7 @@
                     $('#product-price').html(formatRupiah(response.price));
                     $('.item_desc').html(response.description);
                     $('#product_image').src = `Storage::disk('s3')->url(${response.image})`;
-                    console.log(response.product_images);
+                    // console.log(response.product_images);
                     if (response.product_images.length >= 1) {
                         response.product_images.map(function (image) {
                             $('#product_images').append('<div class="item carousel-item">' +
@@ -189,7 +183,7 @@
                                             '<span class="item-info">' +
                                                 '<span><h5>'+ item.get('name') +'</h5></span>' +
                                                 '<span><small>Ukuran : '+ item.get('size') +'</small></span>' +
-                                                '<span><small>Jumlah : <a href="javascript:;" class="simpleCart_decrement">-</a> '+ item.quantity() +' <a href="javascript:;" class="simpleCart_increment">+</a></small></span>' +
+                                                '<span><small>Jumlah : '+ item.quantity() +' </small></span>' +
                                                 '<span><h5>'+ simpleCart.toCurrency(item.price()) +' x '+ item.quantity() +' = '+ simpleCart.toCurrency(item.price()*item.quantity()) +'</h5></span>' +
                                             '</span>' +
                                         '</span>' +
@@ -207,19 +201,44 @@
                         item.set('size', 'M')
                     }
                     $('.checkout_btn_wrapper').css('display', 'block');
+                    $('.empty_card_wrapper').css('display', 'none');
                 },
-                beforeRemove: function () {
-                    if (simpleCart.quantity() == 0) {
+                afterAdd: function () {
+                    $('#modal-product').modal('hide');
+                    $('.dropdown-cart').toggleClass('open');
+                },
+                beforeRemove: function (item) {
+                    if ( (simpleCart.quantity() - item.quantity()) === 0 ) {
                         $('.checkout_btn_wrapper').css('display', 'none');
+                        $('.empty_card_wrapper').css('display', 'block');
                     }
                 },
             })
 
-            simpleCart.bind( 'load' , function(){
-                console.log( "simpleCart has loaded " + simpleCart.quantity() + " items from from localStorage" );
+            function isCartEmpty() {
                 if (simpleCart.quantity() === 0) {
                     $('.checkout_btn_wrapper').css('display', 'none');
+                } else if (simpleCart.quantity() !== 0) {
+                    $('.empty_card_wrapper').css('display', 'none');
                 }
+            }
+
+            // handle dropdown
+            $('li.dropdown.dropdown-cart a').on('click', function (event) {
+                $(this).parent().toggleClass('open');
+            });
+            // listen click outside the dropdown body and dismiss the dropdown
+            $('body').on('click', function (e) {
+                if (!$('li.dropdown.dropdown-cart').is(e.target) 
+                    && $('li.dropdown.dropdown-cart').has(e.target).length === 0 
+                    && $('.open').has(e.target).length === 0
+                ) {
+                    $('li.dropdown.dropdown-cart').removeClass('open');
+                }
+            });
+
+            simpleCart.bind( 'load' , function(){
+                isCartEmpty();
             });
 
             //-- Click on detail

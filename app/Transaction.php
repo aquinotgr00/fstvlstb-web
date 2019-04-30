@@ -51,6 +51,15 @@ class Transaction extends Model
         return $this->hasOne('App\PaymentProof');
     }
 
+    public function getFullAddressAttribute()
+    {
+        $id = $this->attributes['subdistrict_id'];
+        $subdistrict = \DB::table('subdistricts')->find($id);
+        $city = \DB::table('cities')->find($subdistrict->city_id);
+        $province = \DB::table('provinces')->find($city->province_id);
+        return $subdistrict->name.', '.$city->name.', '.$province->name.' '.$this->attributes['postal_code'];
+    }
+
     public static function getToReminder(int $interval)
     {
         return static::where('status','unpaid')

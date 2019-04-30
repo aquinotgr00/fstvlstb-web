@@ -82,13 +82,13 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $this->product->delete($id);
-        return redirect()->back();
+        $this->products->destroy($id);
+        return redirect()->route('admin.product.page');
     }
 
     public function update(Request $request, $id)
     {
-        $this->product->findOrFail($id)->update($request->all());
+        $this->products->findOrFail($id)->update($request->all());
         return redirect(route('admin.product.show', $id));
     }
 

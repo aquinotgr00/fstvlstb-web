@@ -41,11 +41,11 @@
             <table class="table">
                 <tr>
                     <td>Shipping Address</td>
-                    <td>: {{ $transaction->address }} - {{ $transaction->postal_code }}</td>
+                    <td>: {{ $transaction->address }}</td>
                 </tr>
                 <tr>
-                    <td>Subdistrict ID</td>
-                    <td>: {{ $transaction->subdistrict_id }}</td>
+                    <td>Subdistrict</td>
+                    <td>: {{ $transaction->fullAddress }}</td>
                 </tr>
                 <tr>
                     <td>Amount</td>
@@ -61,9 +61,19 @@
             Others
             <table class="table">
                 <tr>
+                    <td>Status</td>
+                    <td>: {{ $transaction->status }}</td>
+                </tr>
+                <tr>
                     <td>Tracking Number</td>
                     <td>: {{ $transaction->tracking_number }}</td>
                 </tr>
+                @if ( isset($transaction->paymentProof) )
+                    <tr>
+                        <td>Payment Proof</td>
+                        <td>: <img src="{{ Storage::disk('s3')->url($transaction->paymentProof->image) }}" alt="payment_proof"></td>
+                    </tr>
+                @endif
             </table>
         </div>
     </div>

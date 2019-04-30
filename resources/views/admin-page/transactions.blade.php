@@ -123,7 +123,8 @@
                     { data: 'status', name: 'status' },
                     { data: 'amount', name: 'amount' },
                     { data: 'action', name: 'action', orderable: false, searchable: false },
-                ]
+                ],
+                order: [1, 'desc'],
             });
 
             $('.open_modal_edit').click(function () {

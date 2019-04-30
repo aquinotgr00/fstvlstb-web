@@ -10,7 +10,7 @@ class StoreController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:account');
+        $this->middleware('auth:account')->except('confirmPayment');
     }
 
     public function index()
@@ -52,8 +52,8 @@ class StoreController extends Controller
     public function confirmPayment($token)
     {
         $record = \App\PaymentProof::where('token', $token)->first();
-        $account = \Auth::guard('account')->user();
-        if ($record == null || $record->account_id !== $account->id) {
+        // $account = \Auth::guard('account')->user();
+        if ($record == null) {
             return abort(404);
         }
         return view('frontend-page.confirm-payment', compact('record'));

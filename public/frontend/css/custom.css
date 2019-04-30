@@ -268,7 +268,16 @@ a.active{
 /* additional adjustment by tgr */
 div#navbar { z-index: 9; }
 img#product_image { width: 100%; }
-span.empty_card_wrapper { text-align: center; padding: 10px 0; }
+span.empty_card_wrapper { text-align: center; padding: 10px 0; display: block; }
+div.cart_total_wrapper {
+	float: left;
+    width: 100%;
+	margin: 10px 0;
+}
+div.main-image { z-index: 0; }
+button.buy-boxset-btn { font-size: 25px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 800; }
 /* ####################################################################################################################### */
 /*<--inu-->*/
 /* ####################################################################################################################### */

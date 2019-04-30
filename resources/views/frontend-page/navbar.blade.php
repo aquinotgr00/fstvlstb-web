@@ -19,15 +19,19 @@
                 @auth('account')
                     <li><a class="custom-header-font" href="{{ Route('member.nif') }}">@lang('header.nif')</a></li>
                     <li><a class="custom-header-font" href="{{ Route('member.logout') }}">@lang('header.logout')</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="custom-header-font dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <li class="dropdown dropdown-cart">
+                        <a href="javascript:;" id="dropdown-btn" class="custom-header-font dropdown-toggle" role="button" aria-expanded="false">
                             Keranjang :
                             <span class="badge simpleCart_quantity"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-cart" role="menu">
+                            <li><span class="empty_card_wrapper">Your cart is empty.</span></li>
                             <li class="simpleCart_items"></li>
-                            <li class="simpleCart_total"></li>
                             <li class="checkout checkout_btn_wrapper">
+                                <div class="cart_total_wrapper">
+                                    <span>Total:</span>
+                                    <span class="simpleCart_total"></span>
+                                </div>
                                 <button class="btn btn-danger btn-block btn-submit simpleCart_checkout">Checkout</button>
                             </li>
                         </ul>

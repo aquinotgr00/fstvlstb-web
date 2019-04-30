@@ -46,7 +46,10 @@
                 <div class="card-footer">
                     <div class="text-right">
                         <button data-toggle="modal" data-target="#modal-product-edit" class="btn btn-primary">Edit Product</button>
-                        <a href="#" class="btn btn-danger">Delete Product</a>
+                        <form class="form-inline float-right" action="{{ route('admin.product.destroy', $product->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Delete Product</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -207,7 +210,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="weight" class="col-sm-6 col-form-label">Weight</label>
+                        <label for="weight" class="col-sm-6 col-form-label">Weight (gr)</label>
                         <div class="col-sm-6">
                             <input value="{{ $product->weight }}" type="number" class="form-control" name="weight" id="weight" placeholder="price">
                         </div>

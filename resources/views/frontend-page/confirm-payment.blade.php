@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password">Kata Sandi</label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder="kata sandi">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="masukan kata sandimu">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

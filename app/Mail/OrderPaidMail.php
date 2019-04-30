@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class InvoiceMail extends Mailable
+class OrderPaidMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -21,7 +21,6 @@ class InvoiceMail extends Mailable
     /**
      * Create a new message instance.
      *
-     * @param object $transaction
      * @return void
      */
     public function __construct($transaction)
@@ -36,8 +35,8 @@ class InvoiceMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('FSTVLST Invoice')
-            ->markdown('email.orders.invoice')
+        return $this->subject('FSTVLST || Your Order has been paid.')
+            ->markdown('email.orders.paid')
             ->with([
                 'transaction' => $this->transaction
             ]);

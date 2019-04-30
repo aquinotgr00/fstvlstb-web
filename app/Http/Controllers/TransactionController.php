@@ -9,6 +9,8 @@ use App\ProductionBatch;
 
 use DataTables;
 use Image;
+use App\Mail\OrderPaidMail;
+use Illuminate\Support\Facades\Mail;
 
 class TransactionController extends Controller
 {
@@ -21,7 +23,7 @@ class TransactionController extends Controller
      */
     public function __construct(Transaction $transactions)
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('storeProof');
         $this->transactions = $transactions;
     }
 
@@ -43,7 +45,10 @@ class TransactionController extends Controller
     public function listData(Request $request)
     {
     	$data = $this->transactions->get();
-    	return DataTables::of($data)
+        return DataTables::of($data)
+            // ->order(function ($query) {
+            //     $query->sortByDesc('id');
+            // })
             ->addColumn('action', function ($data) {
                 return '<a href="/admin/transactions/item/'.$data->id.'" class="btn btn-xs btn-info">View</a> 
                     <a href="#" onclick="openModalEdit('. $data->id .')" class="btn btn-xs btn-primary" data-id="'.$data->id.'" data-toggle="modal" data-target="#modal-transaction-edit">Edit</a>';
@@ -67,19 +72,21 @@ class TransactionController extends Controller
                 return $data->amount+$data->courier_fee;
             })
             ->editColumn('created_at', '{!! date("d-m-Y", strtotime($created_at))!!}')
-            ->make(true);
+            // ->make(true);
+            ->toJson();
     }
 
     public function storeProof(Request $request)
     {
-        $request->request->add(['email' => \Auth::guard('account')->user()->email]);
+        $email = $this->transactions->findOrFail($request->transaction_id)->account->email;
+        $request->request->add(['email' => $email]);
         // dd($request->all());
         // $accountEmail = Auth::guard('account')->user()->email;
         if ( \Auth::guard('account')->attempt($request->only('email', 'password')) ) {
             // handle the image
             $unique = uniqid();
             $file = $request->image;
-            $destinationPath = 'uploads';
+            $destinationPath = 'proofs';
             $filePath = $destinationPath.'/'.$unique.'-'.$file->getClientOriginalName();
             $fileimage = Image::make($file)->save($destinationPath.'/'.$file->getClientOriginalName());
             $s3 = \Storage::disk('s3');
@@ -88,7 +95,7 @@ class TransactionController extends Controller
             // update the payment proof image and transaction status
             \App\PaymentProof::findOrFail($request->id)->update([ 'image' => $filePath, 'token' => null ]);
             $this->transactions->findOrFail($request->transaction_id)->update([ 'status' => 'bank confirmation' ]);
-            return redirect('/');
+            return redirect()->route('home');
         }
         return redirect()->back();
     }
@@ -112,7 +119,10 @@ class TransactionController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->transactions->findOrFail($id)->update($request->all());
+        $transaction = $this->transactions->findOrFail($id)->update($request->all());
+        if ($transaction->status == 'paid' && $transaction->tracking_number != null) {
+            Mail::to($transaction->account->email)->send(new OrderPaidMail($transaction));
+        }
         return redirect()->back();
     }
 

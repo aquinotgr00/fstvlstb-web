@@ -75,7 +75,7 @@ Route::prefix('admin')->group(function () {
 	Route::get('/products/list', 'ProductController@listData')->name('admin.product.list');
 	Route::get('/products/item/{id}', 'ProductController@show')->name('admin.product.show');
 	Route::post('/products/item/{id}', 'ProductController@update')->name('admin.product.update');
-	Route::delete('/products/{id}/delete', 'ProductController@destroy')->name('admin.product.destroy');
+	Route::post('/products/{id}/delete', 'ProductController@destroy')->name('admin.product.destroy');
 });
 
 

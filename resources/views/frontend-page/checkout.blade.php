@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Alamat Lengkap</label>
-                                <input type="text" name="address" class="form-control" required>
+                                <input type="text" name="address" value="{{ Auth::guard('account')->user()->address }}" class="form-control" required>
                             </div>
                             <div class="row">
                                     <div class="col-xs-6">
@@ -100,13 +100,14 @@
                                 <label for="">Pilih Kurir</label>
                                 <select class="form-control" name="courier_name" id="courier_name">
                                     <option>...</option>
+                                    <option value="cod">COD di LIB</option>
                                     <option value="jne">JNE</option>
                                     <option value="pos">POS</option>
                                     <option value="tiki">Tiki</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="">Pilih Service</label>
+                            <div class="form-group courier_service_wrapper">
+                                <label for="">Pilih Servis</label>
                                 <select id="courier_services" class="form-control">
                                     <option value="">...</option>
                                 </select>
@@ -116,24 +117,23 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <label>
-                                            <input type="radio" name="payment_method" value="direct_bank_transfer">
+                                            <input type="radio" name="payment_method" value="direct_bank_transfer" checked>
                                             Bank Transfer (Verifikasi Manual)
                                         </label>
                                     </div>
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <label>
                                             <input type="radio" name="payment_method" value="others">
                                             Transfer Virtual Account (Verifikasi Otomatis)
                                         </label>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
-                                {{-- TODO: add detail to each options --}}
-                            <div class="form-group" id="payment_bank_group" style="display:none;">
+                            <div class="form-group" id="payment_bank_group">
                                 <label for="payment_bank">Pilih Bank</label>
-                                <select class="form-control" name="payment_bank" id="payment_bank" disabled>
+                                <select class="form-control" name="payment_bank" id="payment_bank">
                                     <option>...</option>
                                     <option value="bca">BCA</option>
                                     <option value="bni">BNI</option>
@@ -150,7 +150,7 @@
                         @foreach ($items as $item)
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <img class="last-chck" src="{{asset('frontend/images/gambar-cnth.jpg')}}" alt="">
+                                    <img class="last-chck" src="{!! $item->product_image !!}" alt="">
                                 </div>
                                 <div class="col-xs-4">
                                     <h6>{{ $item->product_name }}</h6>
@@ -384,23 +384,28 @@
         });
 
         $('#courier_name').change(function () {
-            $.ajax({
-                type: 'POST',
-                url: '/api/get-shipping-cost',
-                data: {
-                    'origin': '419',
-                    'destination': $('#city_id').val(),
-                    'weight': '300',
-                    'courier': $(this).val()
-                },
-                success: function (res) {
-                    res.results[0].costs.map(function (service) {
-                        var o = new Option(service.service, service.cost[0].value);
-                        $(o).html(service.service);
-                        $("#courier_services").append(o);
-                    });
-                }
-            });
+            if ($(this).val() !== 'cod') {
+                $('.courier_service_wrapper').css('display', 'block');
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/get-shipping-cost',
+                    data: {
+                        'origin': '419',
+                        'destination': $('#city_id').val(),
+                        'weight': '300',
+                        'courier': $(this).val()
+                    },
+                    success: function (res) {
+                        res.results[0].costs.map(function (service) {
+                            var o = new Option(service.service, service.cost[0].value);
+                            $(o).html(service.service);
+                            $("#courier_services").append(o);
+                        });
+                    }
+                });
+            } else if ($(this).val() === 'cod') {
+                $('.courier_service_wrapper').css('display', 'none');
+            }
         });
 
         $('.btn-submit').click(function () {
