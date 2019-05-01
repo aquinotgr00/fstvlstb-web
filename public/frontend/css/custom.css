@@ -284,7 +284,7 @@ a.active{
 }
 /* additional adjustment by tgr */
 div#navbar { z-index: 9; }
-img#product_image { width: 100%; }
+img.item_image { width: 100%; }
 span.empty_card_wrapper { text-align: center; padding: 10px 0; display: block; }
 div.cart_total_wrapper {
 	float: left;

@@ -92,11 +92,16 @@
 @section('script')
     <script src="{{asset('frontend/js/simpleCart.js')}}"></script>
     <script>
+        function getThumbnail(thumbnail) {
+            if ('{{ env('AWS_BUCKET') }}' === 'fstvlst-bucket') {
+                return 'https://fstvlst-bucket.s3.ap-southeast-1.amazonaws.com/'+ thumbnail;
+            } else if ('{{ env('AWS_BUCKET') }}' === 'fstvlst-bucket') {
+                return 'https://fstvlst-bucket-staging.s3.ap-southeast-1.amazonaws.com/' + thumbnail;
+            }
+        }
         $(document).ready(function () {
             /* Fungsi formatRupiah */
-            // function formatRupiah(angka, prefix){
             function formatRupiah(angka){
-                // var number_string = angka.replace(/[^,\d]/g, '').toString(),
                 var number_string = angka.toString().replace(/[^,\d]/g, ''),
                 split   		= number_string.split(','),
                 sisa     		= split[0].length % 3,
@@ -110,7 +115,6 @@
                 }
     
                 rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-                // return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
                 return 'Rp. ' + rupiah;
             }
 
@@ -127,6 +131,7 @@
 
            $('.single-product').click(function () {
                 selectedSize = ''
+                $('#product_images .carousel-item').not(':first').remove();
                 $('#product-sizes').css('display', 'none');
                 $('#product-sizes').removeClass('show');
                 var id = $(this).data('id');
@@ -139,13 +144,14 @@
                     $('.item_weight').html(response.weight);
                     $('#product-price').html(formatRupiah(response.price));
                     $('.item_desc').html(response.description);
-                    $('#product_image').src = `Storage::disk('s3')->url(${response.image})`;
-                    // console.log(response.product_images);
+                    $('#product_image').attr('src', getThumbnail(response.thumbnail));
                     if (response.product_images.length >= 1) {
                         response.product_images.map(function (image) {
-                            $('#product_images').append('<div class="item carousel-item">' +
-                                `<div><img id="product_image" class="item_image" src="{{ Storage::disk('s3')->url('${image.image}') }}" alt=""></div>` +
-                            '</div>');
+                            if (image.image !== response.thumbnail) {
+                                $('#product_images').append('<div class="item carousel-item">' +
+                                    '<div><img class="item_image" src="'+ getThumbnail(image.image) +'" alt=""></div>' +
+                                '</div>');
+                            }
                         });
                     }
                     if (response.has_size) {
@@ -254,14 +260,14 @@
             })
 
             //-- Click on QUANTITY
-            var input = ('#item_qty');
-            $(".btn-number").click(function(){
-                if ($(this).hasClass('btn-plus')) {
-                    // input.val(parseInt(input.val())+1);
-                } else if (input.val()>=1) {
-                    // input.val(parseInt(input.val())-1);
-                }
-            });
+            // var input = ('#item_qty');
+            // $(".btn-number").click(function(){
+            //     if ($(this).hasClass('btn-plus')) {
+            //         // input.val(parseInt(input.val())+1);
+            //     } else if (input.val()>=1) {
+            //         // input.val(parseInt(input.val())-1);
+            //     }
+            // });
         })
     </script>
 @endsection
