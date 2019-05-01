@@ -28,7 +28,7 @@ class UpdateColumnPaymentProof extends Migration
     public function down()
     {
         Schema::table('payment_proofs', function (Blueprint $table) {
-            $table->dropUnique('products_token_unique');
+            $table->dropUnique('payment_proofs_token_unique');
         });
     }
 }
