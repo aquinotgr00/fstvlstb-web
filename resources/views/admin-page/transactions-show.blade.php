@@ -140,9 +140,11 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                @if ( isset($transaction->paymentProof->image) )
                 <div class="modal-body">
                     <img src="{{ Storage::disk('s3')->url($transaction->paymentProof->image) }}" alt="proof image">
                 </div>
+                @endif
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
