@@ -8,13 +8,13 @@
 @section('content')
     <section id="checkout">
         <ul class="nav nav-pills container">
-            <li id="menu1-nav" class="active"><a data-toggle="tab" href="#menu1">ALAMAT PRENGIRIMAN
+            <li id="menu1-nav" class="menu-session-checkout active"><a data-toggle="tab" href="#menu1">ALAMAT PRENGIRIMAN
                 <span class="angel"><i class="fa fa-angle-right fa-lg"></i></span></a>
             </li>
-                <li id="menu2-nav"><a data-toggle="tab" href="#menu2">PILIH AGEN PENGIRIMAN
+                <li id="menu2-nav" class="menu-session-checkout"><a data-toggle="tab" href="#menu2">PILIH AGEN PENGIRIMAN
                 <span class="angel"><i class="fa fa-angle-right fa-lg"></i></span></a>
             </li>
-            <li id="menu3-nav"><a data-toggle="tab" href="#menu3">ULASAN PESANAN</a></li>
+            <li id="menu3-nav" class="menu-session-checkout"><a data-toggle="tab" href="#menu3">ULASAN PESANAN</a></li>
         </ul>
         <div class="tab-content container">
             <div class="row">
@@ -40,7 +40,7 @@
                     @endforeach
                     <input type="hidden" name="quantity" value="{{ $quantity }}">
                     <input type="hidden" name="amount" value="{{ $amount }}">
-                    <div class="col-xs-4 tab-pane fade in active" id="menu1">
+                    <div class="col-xs-12 col-md-4 tab-pane fade in active" id="menu1">
                         <div class="check-form">
                             <div class="form-group">
                                 <label for="">Nama Lengkap</label>
@@ -94,7 +94,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-4 tab-pane fade" id="menu2">
+                    <div class="col-xs-12 col-md-4 tab-pane fade" id="menu2">
                         <div class="check-form">
                             <div class="form-group">
                                 <label for="">Pilih Kurir</label>
@@ -144,7 +144,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-4 tab-pane fade" id="menu3">
+                    <div class="col-xs-12 col-md-4 tab-pane fade" id="menu3">
                         <div class="check-form">
                         <p class="nomargin">Item</p>
                         @foreach ($items as $item)

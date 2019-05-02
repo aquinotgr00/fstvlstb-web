@@ -37,7 +37,7 @@
                     <div class="hidden-xs">
                         <h2>
                             {{-- @lang('boxset.open_pre_order') @lang('index.right.date') --}}
-                            <a href="#" data-toggle="modal" data-target="#modal-product" data-id="6" class="btn btn-danger btn-block btn-submit buy-boxset-btn single-product">Beli Bokset</a>
+                            <a href="#" data-toggle="modal" data-target="#modal-product" data-id="6" class="btn btn-danger btn-intip btn-block btn-submit buy-boxset-btn single-product">Beli Bokset</a>
                         </h2>
                         <br/><br/>
                         <br/><br/>
@@ -64,12 +64,12 @@
                     <div class="visible-xs">
                         <br/>
                         <div class="row">
-                            <div class="col-xs-8">
+                            <div class="col-xs-12">
                                 <h2 style="font-size: 30px;">
-                                    @lang('boxset.pre-order') @lang('boxset.opened') <br/> 01/05/2019
+                                    {{-- @lang('boxset.open_pre_order') @lang('index.right.date') --}}
+                                    <a href="#" data-toggle="modal" data-target="#modal-product" data-id="6" class="btn btn-danger btn-intip btn-block btn-submit buy-boxset-btn single-product">Beli Bokset</a>
                                 </h2>  
                             </div>
-
                         </div>
                         <p>
                             @lang('boxset.description')
@@ -212,6 +212,7 @@
                 afterAdd: function () {
                     $('#modal-product').modal('hide');
                     $('.dropdown-cart').toggleClass('open');
+                    updateMobileCart();
                 },
                 beforeRemove: function (item) {
                     if ( (simpleCart.quantity() - item.quantity()) === 0 ) {
@@ -220,6 +221,15 @@
                     }
                 },
             })
+
+            function updateMobileCart() {
+                simpleCart.bind('update', function(){
+                    var cartt = $('#main_cart_items').html();
+                    $('#main_cart_items').clone().appendTo("#mobile_cart_items");
+                    $('#mobile_cart_items').html($('#main_cart_items').html());
+                    console.log(cartt);
+                });
+            }
 
             function isCartEmpty() {
                 if (simpleCart.quantity() === 0) {
@@ -245,6 +255,7 @@
 
             simpleCart.bind( 'load' , function(){
                 isCartEmpty();
+                updateMobileCart();
             });
 
             //-- Click on detail

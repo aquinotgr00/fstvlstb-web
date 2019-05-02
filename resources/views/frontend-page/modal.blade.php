@@ -261,7 +261,7 @@
         <div class="modal-content modal-order">
             <button class="close" type="button" data-dismiss="modal">&times;</button>
             <div class="row simpleCart_shelfItem">
-                <div class="col-xs-4">
+                <div class="col-xs-12 col-md-4">
                     <div class="row">
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner" id="product_images">
@@ -281,7 +281,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-8 m-3">
+                <div class="col-xs-12 col-md-8 m-3">
                     <h2 class="item_name" id="product-name"></h2>
                     <p class="item_productId" style="display:none;"></p>
                     <p class="item_price" style="display:none;"></p>
