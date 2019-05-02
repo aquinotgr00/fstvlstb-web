@@ -52,7 +52,7 @@ class TransactionController extends Controller
             })
             ->editColumn('id', '{!! sprintf("%06d", $id)!!}')
             ->editColumn('name', function ($data) {
-                return $data->account->name;
+                return $data->account->id;
             })
             ->editColumn('product', function ($data) {
                 $orders = [];
