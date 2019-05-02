@@ -257,7 +257,7 @@
 
 {{-- modal for product detail in /boxset --}}
 <div class="modal fade modalbox" id="modal-product">
-    <div class="modal-dialog modal-lg">>
+    <div class="modal-dialog modal-lg">
         <div class="modal-content modal-order">
             <div class="row loader_wrapper">
                 <img src="{{ asset('images/fstvlst.gif') }}" alt="">
