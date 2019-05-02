@@ -52,16 +52,17 @@ class TransactionController extends Controller
             })
             ->editColumn('id', '{!! sprintf("%06d", $id)!!}')
             ->editColumn('name', function ($data) {
-                return $data->account->id;
+                return $data->account->name;
             })
             ->editColumn('product', function ($data) {
                 $orders = [];
                 foreach ($data->orders as $value) {
-                    $name = $value->product->name;
-                    if ($value->size !== null) {
-                        $name = $value->product->name.' ('.$value->size.')';
-                    }
-                    $orders[] = $name;
+                    // $name = $value->product->name;
+                    // if ($value->size !== null) {
+                    //     $name = $value->product->name.' ('.$value->size.')';
+                    // }
+                    // $orders[] = $name;
+                    $orders[] = 'test';
                 }
                 return "<pre>".implode(", \n", $orders)."</pre>";
             })
