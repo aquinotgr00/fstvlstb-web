@@ -58,11 +58,10 @@ class TransactionController extends Controller
                 $orders = [];
                 foreach ($data->orders as $i=>$value) {
                     $name = $value->product->name;
-                    // if ($value->size !== null) {
-                    //     $name = $value->product->name.' ('.$value->size.')';
-                    // }
+                    if ($value->size !== null) {
+                        $name = $value->product->name.' ('.$value->size.')';
+                    }
                     $orders[] = $name;
-                    // $orders[] = 'test';
                 }
                 return "<pre>".implode(", \n", $orders)."</pre>";
             })
