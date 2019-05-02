@@ -16,15 +16,16 @@ class FileStreamController extends Controller
 
     public function fileStream($id = null){
 
-    	$tracklist = $this->tracklist->whereNull('deleted_at');
+    	$tracklist = $this->tracklist->where('status','active')whereNull('deleted_at');
     	if(!is_null($id)){
     		$tracklist->where('id',$id);
     	}
     	$stream = $tracklist->first();
     	$audio = $this->streamFilter($stream);
-        if(!empty($stream)){
-            $this->streamCounter($stream);
+        if(empty($stream)){
+            abort(404);
         }
+        $this->streamCounter($stream);
         $file = \Storage::disk('s3')->get($audio);
 
     	return response()->make($file, 200,['Content-Type' => 'audio/mpeg']);
