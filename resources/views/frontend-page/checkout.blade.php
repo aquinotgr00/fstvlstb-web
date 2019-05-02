@@ -7,6 +7,9 @@
 
 @section('content')
     <section id="checkout">
+        <div class="checkout_loader_wrapper">
+            <img src="{{ asset('images/fstvlst.gif') }}" alt="">
+        </div>
         <ul class="nav nav-pills container">
             <li id="menu1-nav" class="menu-session-checkout active"><a data-toggle="tab" href="#menu1">ALAMAT PRENGIRIMAN
                 <span class="angel"><i class="fa fa-angle-right fa-lg"></i></span></a>
@@ -432,6 +435,8 @@
 
         $('#checkout-form').submit(function (evt) {
             evt.preventDefault();
+
+            $('.checkout_loader_wrapper').css('display', 'block');
             
             $.post('/checkout-store',$('#checkout-form').serialize(), function(response) {
                 const {status, data} = response;
@@ -465,8 +470,6 @@
                     }
                 }
             })
-            
-            
         });
 
         $('#courier_services').change(function () {

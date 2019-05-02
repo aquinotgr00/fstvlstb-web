@@ -243,17 +243,43 @@
 							<td width="100%" height="20" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
 						</tr>
 						<tr>
+							<td style="font-family: Helvetica, arial, sans-serif; font-size: 12px; color: #000000; text-align:center; " st-content="fulltext-content">
+									Silahkan melakukan pembayaran dengan mentransfer dengan jumlah 
+							</td>
+						</tr>
+						<tr>
+							<td style="font-family: Helvetica, arial, sans-serif; font-size: 12px; color: #000000; text-align:center; " st-content="fulltext-content">
+								yang sesuai dengan yang tertera dalam tabel ke
+							</td>
+						</tr>
+						<tr>
 							<td width="100%" height="20" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
 						</tr>
 						<tr>
-							<td style="font-family: Helvetica, arial, sans-serif; font-size: 12px; color: #000000; text-align:center; " st-content="fulltext-content">
-								 Silahkan melakukan pembayaran dengan mentransfer sesuai dengan 
+							<td width="100%" height="20" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
+						</tr>
+						<tr>
+							<td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; font-weight: 600; color: #000000; text-align:center; " st-content="fulltext-content">
+								No rek : 8610188711
 							</td>
 						</tr>
 						<tr>
-							<td style="font-family: Helvetica, arial, sans-serif; font-size: 12px; color: #000000; text-align:center; " st-content="fulltext-content">
-								jumlah yang tertera dalam tabel.
+							<td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; font-weight: 600; color: #000000; text-align:center; " st-content="fulltext-content">
+								Atas Nama : Anindito Susanto
 							</td>
+						</tr>
+						<tr>
+							<td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; font-weight: 600; color: #000000; text-align:center; " st-content="fulltext-content">
+								Bank : BCA
+							</td>
+						</tr>
+						<tr>
+							<td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; font-weight: 600; color: #000000; text-align:center; " st-content="fulltext-content">
+								Cabang : KCP Kaliurang
+							</td>
+						</tr>
+						<tr>
+							<td width="100%" height="20" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
 						</tr>
 						<tr>
 							<td width="100%" height="20" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>

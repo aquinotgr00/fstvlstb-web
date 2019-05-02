@@ -8,6 +8,7 @@ use App\Product;
 use App\ProductImage;
 use DataTables;
 use Image;
+use Storage;
 
 class ProductController extends Controller
 {
@@ -150,10 +151,16 @@ class ProductController extends Controller
      */
     public function listData(Request $request)
     {
-    	$data = $this->products->get();
-    	return DataTables::of($data)
+    	$products = $this->products->get();
+        return DataTables::of($products)
+            // ->editColumn('thumbnail', '<img src="{!!Storage::disk("s3")->url($thumbnail)!!}"/>')
+            ->editColumn('thumbnail', function ($product) {
+                $url = Storage::disk('s3')->url($product->thumbnail);
+                return '<img src="'. $url .'"/>';
+            })
             ->editColumn('id', '{!! sprintf("%06d", $id)!!}')
             ->editColumn('created_at', '{!! date("d-m-Y", strtotime($created_at))!!}')
+            ->rawColumns(['thumbnail'])
             ->make(true);
     }
 }

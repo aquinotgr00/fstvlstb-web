@@ -13,6 +13,7 @@ return [
     |
     */
     'peek'=>'إنتيف',
+    'pre-order'=>'PRE-ORDER',
     'boxset'=>'بوكسيت',
     'open_pre_order'=>'فرا- فسن دىبوكا',
     'closed_pre_order' => 'فرا- فسن ديتوتوب',

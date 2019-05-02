@@ -259,6 +259,9 @@
 <div class="modal fade modalbox" id="modal-product">
     <div class="modal-dialog modal-lg">>
         <div class="modal-content modal-order">
+            <div class="row loader_wrapper">
+                <img src="{{ asset('images/fstvlst.gif') }}" alt="">
+            </div>
             <button class="close" type="button" data-dismiss="modal">&times;</button>
             <div class="row simpleCart_shelfItem">
                 <div class="col-xs-12 col-md-4">

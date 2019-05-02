@@ -13,6 +13,7 @@ return [
     |
     */
     'peek'=>'INTIP',
+    'pre-order'=>'PRA-PESAN',
     'boxset'=>'BOKSET',
     'open_pre_order'=>'PRA-PESAN DIBUKA',
     'closed_pre_order' => 'PRA-PESAN DITUTUP',

@@ -25,7 +25,7 @@
                             <span class="badge simpleCart_quantity"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-cart" role="menu">
-                            <li><span class="empty_card_wrapper">Your cart is empty.</span></li>
+                            <li><span class="empty_card_wrapper">Keranjang Anda Kosong</span></li>
                             <li id="main_cart_items" class="simpleCart_items"></li>
                             <li class="checkout checkout_btn_wrapper">
                                 <div class="cart_total_wrapper">
@@ -71,7 +71,7 @@
                                     <span class="badge simpleCart_quantity"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-cart" role="menu">
-                                    <li><span class="empty_card_wrapper">Your cart is empty.</span></li>
+                                    <li><span class="empty_card_wrapper">Keranjang Anda Kosong</span></li>
                                     <li id="mobile_cart_items"></li>
                                     <li class="checkout checkout_btn_wrapper">
                                         <div class="cart_total_wrapper">

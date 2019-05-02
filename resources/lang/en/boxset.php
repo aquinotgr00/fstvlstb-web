@@ -13,6 +13,7 @@ return [
     |
     */
     'peek'=>'PREVIEW',
+    'pre-order'=>'PRE-ORDER',
     'boxset'=>'BOXSET',
     'open_pre_order'=>'OPEN PRE-ORDER',
     'closed_pre_order' => 'CLOSED PRE-ORDER',

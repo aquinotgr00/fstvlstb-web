@@ -7,8 +7,8 @@
                 <div class="col-md-4">
                     <h2 class="text-warning">@lang('boxset.peek')</h2>
                     <br/>
-                    <h2 class="nomargin">@lang('boxset.boxset')</h2>
-                    <h2 class="nomargin">@lang('index.left.heading')</h2>
+                    <h2 class="nomargin">@lang('boxset.pre-order')</h2>
+                    <h2 class="nomargin">@lang('boxset.boxset') @lang('index.left.heading')</h2>
                     <h2 class="nomargin">@lang('boxset.edition')</h2>
                     <br/><br/>
                     <ul class="treklist nomargin">
@@ -35,12 +35,16 @@
                     </ul>
                     <br/>
                     <div class="hidden-xs">
+                        <br/><br/>
+                        <h5 class="nomargin boxset-text">Semua cendera mata juga bisa dibeli secara eceran.</h5>
+                        <br/><br/>
+                        <h5 class="nomargin mb-1 boxset-text">Masa Pra-Pesan: 3 - 20 Mei 2019</h5>
+                        <h5 class="nomargin mb-1 boxset-text">Masa Produksi: 20 Mei – 20 Juni 2019</h5>
+                        <h5 class="nomargin mb-1 boxset-text">Masa pengiriman: Mulai 21 Juni 2019</h5>
                         <h2>
                             {{-- @lang('boxset.open_pre_order') @lang('index.right.date') --}}
-                            <a href="#" data-toggle="modal" data-target="#modal-product" data-id="6" class="btn btn-danger btn-intip btn-block btn-submit buy-boxset-btn single-product">Beli Bokset</a>
+                            <a href="#" data-toggle="modal" data-target="#modal-product" data-id="6" class="btn btn-danger btn-intip btn-block btn-submit buy-boxset-btn single-product">Pesan Bokset</a>
                         </h2>
-                        <br/><br/>
-                        <br/><br/>
                         <div class="hidden-xs">
                             <br/><br/><br/><br/>
                         </div>
@@ -132,6 +136,7 @@
            $('.single-product').click(function () {
                 selectedSize = ''
                 $('#product_images .carousel-item').not(':first').remove();
+                $('#product_images .carousel-item:first').addClass('active');
                 $('#product-sizes').css('display', 'none');
                 $('#product-sizes').removeClass('show');
                 var id = $(this).data('id');
@@ -150,7 +155,7 @@
                         response.product_images.map(function (image) {
                             if (image.image !== response.thumbnail) {
                                 $('#product_images').append('<div class="item carousel-item">' +
-                                    '<div><img class="item_image" src="'+ getThumbnail(image.image) +'" alt=""></div>' +
+                                    '<div><img class="product_add_images" src="'+ getThumbnail(image.image) +'" alt=""></div>' +
                                 '</div>');
                             }
                         });
@@ -159,6 +164,7 @@
                         $('#product-sizes').css('display', 'block');
                         $('#product-sizes').addClass('show');
                     }
+                    $('.loader_wrapper').css('display', 'none');
                 });
             }); 
 
@@ -194,7 +200,7 @@
                                             '</span>' +
                                         '</span>' +
                                         '<span class="item-right item-remove">' +
-                                            '<a href="javascript:;" class="btn btn-xs pull-right simpleCart_remove">x</a>' +
+                                            '<a href="javascript:;" class="btn btn-xs pull-right simpleCart_remove"><span class="fa fa-trash"></span></a>' +
                                         '</span>' +
                                     '</span>'
                         },
@@ -251,6 +257,7 @@
                 ) {
                     $('li.dropdown.dropdown-cart').removeClass('open');
                 }
+                $('.loader_wrapper').css('display', 'block');
             });
 
             simpleCart.bind( 'load' , function(){
