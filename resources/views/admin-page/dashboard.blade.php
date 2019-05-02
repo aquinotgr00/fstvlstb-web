@@ -5,83 +5,43 @@
      @section('content')
      <!-- MAIN CONTENT-->
                             <div class="row">
-                                <div class="col-lg-9">
-                                    <h2 class="title-1 m-b-25">List order <a href="#" class="pull-right">=</a></h2>
+                                <div class="col-lg-7">
+                                    <h2 class="title-1 m-b-25">Stream & Download <a href="#" class="pull-right">=</a></h2>
 
                                     <div class="table-responsive table--no-card m-b-40">
                                         <table class="table table-borderless table-striped table-earning">
                                             <thead>
                                                 <tr>
-                                                    <th>order ID</th>
-                                                    <th>product</th>
-                                                    <th class="text-right">status</th>
+                                                    <th>Tracklist</th>
+                                                    <th >Stream</th>
+                                                    <th >Download</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach($tracklist as $i=>$row)
                                                 <tr>
-                                                    <td>100398</td>
-                                                    <td>iPhone X 64Gb Grey</td>
-                                                    <td class="text-right">1</td>
+                                                    <td>{{ $row->name }}</td>
+                                                    <td class="text-right">{{ $row->counter }}</td>
+                                                    <td class="text-right">{{ $row->download }}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>100397</td>
-                                                    <td>Samsung S8 Black</td>
-                                                    <td class="text-right">1</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>100396</td>
-                                                    <td>Game Console Controller</td>
-                                                    <td class="text-right">2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>100395</td>
-                                                    <td>iPhone X 256Gb Black</td>
-                                                    <td class="text-right">1</td>
-                                                <tr>
-                                                    <td>100393</td>
-                                                    <td>USB 3.0 Cable</td>
-                                                    <td class="text-right">3</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>100392</td>
-                                                    <td>Smartwatch 4.0 LTE Wifi</td>
-                                                    <td class="text-right">6</td>
-                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-5">
                                     <h2 class="title-1 m-b-25">Best Seller</h2>
                                     <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
                                         <div class="au-card-inner">
                                             <div class="table-responsive">
                                                 <table class="table table-top-countries">
                                                     <tbody>
+                                                        @foreach($order as$i=>$row)
                                                         <tr>
-                                                            <td>United States</td>
-                                                            <td class="text-right">$119,366.96</td>
+                                                            <td>{{ $row->product }}</td>
+                                                            <td class="text-right">{{ $row->quantity }}</td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>Australia</td>
-                                                            <td class="text-right">$70,261.65</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>United Kingdom</td>
-                                                            <td class="text-right">$46,399.22</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Turkey</td>
-                                                            <td class="text-right">$35,364.90</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Germany</td>
-                                                            <td class="text-right">$20,366.96</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>France</td>
-                                                            <td class="text-right">$10,366.96</td>
-                                                        </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

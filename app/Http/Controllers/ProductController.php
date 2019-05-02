@@ -62,25 +62,11 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
-        // $files = $request->images;
+ 
         $files = $this->handleUploadImages($request->images);
         $request->request->add(['thumbnail' => $files['thumbnail']]);
         unset($files['thumbnail']);
-        // $destinationPath = 'products';
-
-        // foreach ($files as $key => $file) {
-        //     $unique = uniqid();
-        //     $filePath = $destinationPath.'/'.$unique.'-'.$file->getClientOriginalName();
-        //     $fileimage = Image::make($file)->save($destinationPath.'/'.$file->getClientOriginalName());
-        //     $s3 = \Storage::disk('s3');
-        //     $s3->put($filePath, $fileimage, 'public');
-        //     $files[$key] = $filePath;
-        //     if ($key == 0) {
-        //         $request->request->add(['thumbnail' => $filePath]);
-        //     }
-        // }
-
+       
         $product = $this->products->create($request->except('images'));
 
         foreach ($files as $key => $value) {
@@ -115,7 +101,6 @@ class ProductController extends Controller
     {
         $product = $this->products->findOrFail($id);
         if (isset($request->images)) {
-            // dd($request->all());
             if ( isset($request->images[0]) ) {
                 $this->handleProductImages($id);
                 $files = $this->handleUploadImages($request->images);
@@ -130,14 +115,6 @@ class ProductController extends Controller
                     'image' => $value
                 ]);
             }
-            // if ( $request->images[0] != null ) {
-            //     // if (isset($files['thumbnail'])) {
-            //     //     $request->request->add(['thumbnail' => $files['thumbnail']]);
-            //     //     unset($files['thumbnail']);
-            //     // }
-            //     
-            // }
-            // $request->images[0] = $product->thumbnail;
         }
 
         $product->update($request->all());

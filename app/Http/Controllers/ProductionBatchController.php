@@ -28,8 +28,7 @@ class ProductionBatchController extends Controller
 
     public function store(Request $request)
     {
-        // return $request->all();
-        $transactions       = $this->transaction->where('status', 'paid')
+        $transactions  = $this->transaction->where('status', 'paid')
             ->where('product_id', $request->product_id)
             ->orderBy('created_at', 'ASC')
             ->get();
@@ -48,11 +47,8 @@ class ProductionBatchController extends Controller
                 $new_production->production_batch_id = $productionBatch->id;
                 $new_production->save();
             }
-            // $productionBatch->getProductions;
-            // return new ProductionBatchResource($productionBatch);
             return $productionBatch->toArray();
         } elseif ($transactions->count() == 0) {
-            // return TransactionResource::collection($transactions);
             return $transaction->toArray();
         }
     }
