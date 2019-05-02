@@ -95,7 +95,7 @@
         function getThumbnail(thumbnail) {
             if ('{{ env('AWS_BUCKET') }}' === 'fstvlst-bucket') {
                 return 'https://fstvlst-bucket.s3.ap-southeast-1.amazonaws.com/'+ thumbnail;
-            } else if ('{{ env('AWS_BUCKET') }}' === 'fstvlst-bucket') {
+            } else if ('{{ env('AWS_BUCKET') }}' === 'fstvlst-bucket-staging') {
                 return 'https://fstvlst-bucket-staging.s3.ap-southeast-1.amazonaws.com/' + thumbnail;
             }
         }
@@ -145,6 +145,7 @@
                     $('#product-price').html(formatRupiah(response.price));
                     $('.item_desc').html(response.description);
                     $('#product_image').attr('src', getThumbnail(response.thumbnail));
+                    console.log(getThumbnail(response.thumbnail));
                     if (response.product_images.length >= 1) {
                         response.product_images.map(function (image) {
                             if (image.image !== response.thumbnail) {
