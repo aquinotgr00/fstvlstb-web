@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Tracklist;
+use App\Order;
 
 class HomeController extends Controller
 {
@@ -11,9 +13,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Tracklist $tracklists,Order $order)
     {
         $this->middleware('auth');
+        $this->tracklist = $tracklists;
+        $this->order = $order;
     }
 
     /**
@@ -22,7 +26,9 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('admin-page.dashboard');
+    {   
+        $tracklist = $this->tracklist->getListStreamDownload();
+        $order = $this->order->reportOrder();
+        return view('admin-page.dashboard',compact('tracklist','order'));
     }
 }
