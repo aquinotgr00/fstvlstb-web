@@ -56,13 +56,13 @@ class TransactionController extends Controller
             })
             ->editColumn('product', function ($data) {
                 $orders = [];
-                foreach ($data->orders as $value) {
-                    // $name = $value->product->name;
+                foreach ($data->orders as $i=>$value) {
+                    $name = $value->product->name;
                     // if ($value->size !== null) {
                     //     $name = $value->product->name.' ('.$value->size.')';
                     // }
-                    // $orders[] = $name;
-                    $orders[] = 'test';
+                    $orders[] = $name;
+                    // $orders[] = 'test';
                 }
                 return "<pre>".implode(", \n", $orders)."</pre>";
             })
