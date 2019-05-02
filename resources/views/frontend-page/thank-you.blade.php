@@ -1,11 +1,12 @@
 @extends('frontend-page.main')
 
 @section('content')
-    <section id="boxset">
+    <section id="boxset" style="text-align:center;">
         <div class="container">
-            <div class="row">
+            <div class="row" style="padding-top: 28rem; padding-bottom: 28rem;">
                 <div class="col-md-12">
-                    <h2>Thank you for your purchasing, please check your email for further instructions.</h2>
+                    <h2>Thank you for your order!</h2>
+                    <h4><strong>Please check your email for further instructions.</strong></h4>
                 </div>
             </div>
         </div>
