@@ -22,7 +22,9 @@ class FileStreamController extends Controller
     	}
     	$stream = $tracklist->first();
     	$audio = $this->streamFilter($stream);
-    	$this->streamCounter($stream);
+        if(!empty($stream)){
+            $this->streamCounter($stream);
+        }
         $file = \Storage::disk('s3')->get($audio);
 
     	return response()->make($file, 200,['Content-Type' => 'audio/mpeg']);
