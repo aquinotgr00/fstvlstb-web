@@ -280,7 +280,7 @@
                                             <td width="auto" align="center" valign="middle" height="36" style=" background-color:#ff0000; background-clip: padding-box;font-size:13px; font-family:Helvetica, arial, sans-serif; text-align:center; padding-left:25px; padding-right:25px;">
                                                                         
                                                 <span style="color: #ffffff; font-weight: 600;">
-                                                <a style="color: #ffffff; text-align:center;text-decoration: none;" href="/confirm-payment/{{ $transaction->paymentProof->token }}">Konfirmasi Pembayaran</a>
+                                                <a style="color: #ffffff; text-align:center;text-decoration: none;" href="{{ route('confirm.payment', $transaction->paymentProof->token) }}">Konfirmasi Pembayaran</a>
                                                 </span>
                                             </td>
                                         </tr>

@@ -70,7 +70,7 @@
             </div>
 
             <div class="col-md-4 mrgn">
-                <section id="reset-pass">
+                <section id="reset-password">
                     @if(Session::has('success'))
                     <div class="alert alert-success">{{ Session::get('success') }}</div>
                     @endif
