@@ -30,7 +30,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
-                                    <h2 class="title-1 m-b-25">Best Seller</h2>
+                                    <h2 class="title-1 m-b-25">Product Selling</h2>
                                     <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
                                         <div class="au-card-inner">
                                             <div class="table-responsive">

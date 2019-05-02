@@ -63,12 +63,13 @@ class TransactionController extends Controller
                     }
                     $orders[] = $name;
                 }
-                return $orders;
+                return "<pre>".implode(", \n", $orders)."</pre>";
             })
             ->editColumn('amount', function ($data) {
                 return $data->amount+$data->courier_fee;
             })
             ->editColumn('created_at', '{!! date("d-m-Y", strtotime($created_at))!!}')
+            ->rawColumns(['product', 'action'])
             // ->make(true);
             ->toJson();
     }
