@@ -135,8 +135,8 @@
 
            $('.single-product').click(function () {
                 selectedSize = ''
+                $('.loader_wrapper').css('display', 'block');
                 $('#product_images .carousel-item').not(':first').remove();
-                $('#product_images .carousel-item:first').addClass('active');
                 $('#product-sizes').css('display', 'none');
                 $('#product-sizes').removeClass('show');
                 var id = $(this).data('id');
@@ -150,7 +150,6 @@
                     $('#product-price').html(formatRupiah(response.price));
                     $('.item_desc').html(response.description);
                     $('#product_image').attr('src', getThumbnail(response.thumbnail));
-                    console.log(getThumbnail(response.thumbnail));
                     if (response.product_images.length >= 1) {
                         response.product_images.map(function (image) {
                             if (image.image !== response.thumbnail) {
@@ -164,6 +163,7 @@
                         $('#product-sizes').css('display', 'block');
                         $('#product-sizes').addClass('show');
                     }
+                    $('#product_images .carousel-item:first-child').addClass('active');
                     $('.loader_wrapper').css('display', 'none');
                 });
             }); 
@@ -233,7 +233,6 @@
                     var cartt = $('#main_cart_items').html();
                     $('#main_cart_items').clone().appendTo("#mobile_cart_items");
                     $('#mobile_cart_items').html($('#main_cart_items').html());
-                    console.log(cartt);
                 });
             }
 
@@ -257,7 +256,6 @@
                 ) {
                     $('li.dropdown.dropdown-cart').removeClass('open');
                 }
-                $('.loader_wrapper').css('display', 'block');
             });
 
             simpleCart.bind( 'load' , function(){
@@ -277,16 +275,6 @@
                 $("." + clase).removeClass("active");
                 $(this).addClass("active");
             })
-
-            //-- Click on QUANTITY
-            // var input = ('#item_qty');
-            // $(".btn-number").click(function(){
-            //     if ($(this).hasClass('btn-plus')) {
-            //         // input.val(parseInt(input.val())+1);
-            //     } else if (input.val()>=1) {
-            //         // input.val(parseInt(input.val())-1);
-            //     }
-            // });
         })
     </script>
 @endsection
