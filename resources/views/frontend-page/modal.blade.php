@@ -294,7 +294,7 @@
                     </p>
                     <div style="display:none;" id="product-sizes" class="section row">
                         <div class="col-xs-4">
-                            <h5>UKURAN ITEM</h5>
+                            <h5>UKURAN KAOS</h5>
                         </div>
                         <div class="col-xs-5 optional">
                             <h5 class="attr2 sizes" data-value="S">S</h5>
