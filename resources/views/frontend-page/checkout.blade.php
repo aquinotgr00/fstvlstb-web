@@ -139,7 +139,6 @@
                                 <select class="form-control" name="payment_bank" id="payment_bank">
                                     <option>...</option>
                                     <option value="bca">BCA</option>
-                                    <option value="bni">BNI</option>
                                 </select>
                             </div>
                             <div class="form-group">
