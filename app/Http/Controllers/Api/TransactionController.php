@@ -32,16 +32,6 @@ class TransactionController extends Controller
 
     public function store(Request $request)
     {
-        // return $request->all(); // debugging
-        // TODO: add validation
-        // $request->validate([
-        //     'subdistrict_id' => 'required',
-        //     'email' => 'required|email',
-        //     'phone' => 'required',
-        //     'amount' => 'required',
-        //     'name' => 'required',
-        // ]);
-        
         // create the transaction
         $transaction = Transaction::create($request->except(['items']));
 
@@ -99,7 +89,6 @@ class TransactionController extends Controller
                 'account_id' => $transaction->account_id,
                 'token' => str_random(16)
             ]);
-            // SendInvoiceMail::dispatch($transaction);
             Mail::to($transaction->account->email)->send(new InvoiceMail($transaction));
         }
         

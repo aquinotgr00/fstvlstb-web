@@ -25,11 +25,6 @@ class RajaOngkirController extends Controller
     public function getSubdistrict(Request $request)
     {
         $key = $request->term;
-        // $users = DB::table('users')
-        //     ->join('contacts', 'users.id', '=', 'contacts.user_id')
-        //     ->join('orders', 'users.id', '=', 'orders.user_id')
-        //     ->select('users.*', 'contacts.phone', 'orders.price')
-        //     ->get();
         $data = DB::table('cities')
             ->join('subdistricts', 'cities.id', '=', 'subdistricts.city_id')
             ->join('provinces', 'cities.province_id', '=', 'provinces.id' )
@@ -57,9 +52,7 @@ class RajaOngkirController extends Controller
         // return $request->all();
         $request->validate([
             'origin' => 'required', // ID kota/kabupaten atau kecamatan asal
-            // 'originType' => 'required', // Tipe origin: 'city' atau 'subdistrict'.
             'destination' => 'required', // ID kota/kabupaten atau kecamatan tujuan
-            // 'destinationType' => 'required', // Tipe origin: 'city' atau 'subdistrict' tujuan.
             'weight' => 'required',
             'courier' => 'required',
         ]);
@@ -72,10 +65,7 @@ class RajaOngkirController extends Controller
         ]);
         $response   = $req->getBody()->getContents();
         $collection = json_decode($response);
-        // dd($collection);
         return response()->json($collection->rajaongkir);
-        // return json_encode($collection->rajaongkir);
-        // return new RajaOngkirResource($collection->rajaongkir);
     }
 
     public function getWayBill(Request $request)

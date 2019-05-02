@@ -37,9 +37,7 @@ class FileDownloadController extends Controller
 
 	public function imageDownload(){
 
-		// $path = public_path(). '/'. Auth::guard('account')->user()->images;
 	   	$path = \Storage::disk('s3')->get(Auth::guard('account')->user()->images);
-	   	// return response($path,200,['Content-Type' => 'image/jpg','filename'=> sprintf("%06d", Auth::guard('account')->user()->id).'.jpg']);
 	   	return response()->make($path, 200, ['Content-Type' => 'image/jpg','Content-Disposition' => 'attachment;filename= '.sprintf("%06d", Auth::guard('account')->user()->id).'.jpg']);
 	}
 }

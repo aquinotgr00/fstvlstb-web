@@ -46,9 +46,6 @@ class TransactionController extends Controller
     {
     	$data = $this->transactions->get();
         return DataTables::of($data)
-            // ->order(function ($query) {
-            //     $query->sortByDesc('id');
-            // })
             ->addColumn('action', function ($data) {
                 return '<a href="/admin/transactions/item/'.$data->id.'" class="btn btn-xs btn-info">View</a> 
                     <a href="#" onclick="openModalEdit('. $data->id .')" class="btn btn-xs btn-primary" data-id="'.$data->id.'" data-toggle="modal" data-target="#modal-transaction-edit">Edit</a>';
