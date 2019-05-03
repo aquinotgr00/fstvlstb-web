@@ -152,7 +152,7 @@
                         @foreach ($items as $item)
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <img class="last-chck" src="{!! $item->product_image !!}" alt="">
+                                    <img class="last-chck" src="{!! $item->product_image !!}" alt="product image">
                                 </div>
                                 <div class="col-xs-4">
                                     <h6>{{ $item->product_name }}</h6>

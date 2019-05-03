@@ -51,7 +51,7 @@
 
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title">Modal Heading</h4>
+                        <h4 class="modal-title">Edit Order Data</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                 
@@ -71,6 +71,9 @@
                                     <option value="unpaid">unpaid</option>
                                     <option value="payment check">Payment Check</option>
                                     <option value="paid">paid</option>
+                                    <option value="shipped">shipped</option>
+                                    <option value="complete">complete</option>
+                                    <option value="cancel">cancel</option>
                                 </select>
                             </div>
                         </div>
