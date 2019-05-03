@@ -1,42 +1,19 @@
 @extends('frontend-page.main')
 
 @section('content')
-    {{-- <section id="NIF">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <form action="{{ route('store.payment.proof') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="id" value="{{ $record->id }}">
-                        <input type="hidden" name="token_payment" value="{{ $record->token }}">
-                        <input type="hidden" name="transaction_id" value="{{ $record->transaction_id }}">
-                        <div class="form-group">
-                            <label for="image">Gambar</label>
-                            <input type="file" class="form-control-file" name="image" id="image" placeholder="image" aria-describedby="fileImage">
-                            <small id="fileImage" class="form-text text-muted">Upload bukti pembayaran disini</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Kata Sandi</label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder="masukan kata sandimu">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section> --}}
     <section id="reset-pass">
         <div class="wrapper resetbox">
             <div id="formContent">
                 <div class="first">
                     <h2>KONFIRMASI PEMBAYARAN</h2>
+                    <h5 style="color: red;">*Input hanya berlaku satu kali, silakan input dengan seksama.</h5>
                 </div>
                 <form action="{{ route('store.payment.proof') }}" enctype="multipart/form-data" id='form-proof' method="post">
                     <input type="hidden" name="id" value="{{ $record->id }}">
                     <input type="hidden" name="token_payment" value="{{ $record->token }}">
                     <input type="hidden" name="transaction_id" value="{{ $record->transaction_id }}">
                     <div class="form-group">
-                        <label for="">Foto Bukti</label>
+                        <label for="">Foto Bukti Transfer</label>
                         <div class="thumbnail thumbnail-photo thumbnail-struk">
                                 @csrf
                                 <img id="proof_thumbnail" src="{{asset('frontend/images/struk-atm.jpg')}}" alt="">

@@ -93,10 +93,10 @@
                 selectedSize = ''
                 $('.loader_wrapper').css('display', 'block');
                 $('#product_images .carousel-item').not(':first').remove();
-                $('#product-sizes').css('display', 'none');
-                $('#product-sizes').removeClass('show');
-                $('#item_qty').val(1);
+                $('.product-notes').css('display', 'none');
+                $('.product-notes').removeClass('show');
                 var id = $(this).data('id');
+                $('#item_qty').val(1);
                 $.get(`/api/product/${id}`, function (response) {
                     $('.item_add').attr('disabled', false)
                     $('.item_productId').html(response.id);
@@ -117,8 +117,8 @@
                         });
                     }
                     if (response.has_size) {
-                        $('#product-sizes').css('display', 'block');
-                        $('#product-sizes').addClass('show');
+                        $('.product-notes').css('display', 'block');
+                        $('.product-notes').addClass('show');
                     }
                     $('#product_images .carousel-item:first-child').addClass('active');
                     $('.loader_wrapper').css('display', 'none');

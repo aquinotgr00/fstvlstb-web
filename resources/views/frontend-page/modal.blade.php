@@ -271,9 +271,6 @@
                             <div class="item carousel-item active">
                                 <div><img id="product_image" class="item_image" src="" alt=""></div>
                             </div>
-                            {{-- <div class="item carousel-item">
-                                <div><img src="{{asset('frontend/images/gambar-cnth.jpg')}}" alt=""></div>
-                            </div> --}}
                         </div>
                         <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
                             <i class="fa fa-long-arrow-left fa-lg"></i>
@@ -291,8 +288,8 @@
                     <p class="item_weight" style="display:none;"></p>
                     <p class="harga" id="product-price">Rp. 0</p>
                     <p id="product-desc" class="item_desc" data-name="product_desc"></p>
-                    </p>
-                    <div style="display:none;" id="product-sizes" class="section row">
+                    <p style="display:none; color:red;" class="product-notes">Untuk pemesanan cenderamata beda ukuran kaos silakan tambah ke keranjang terlebih dahulu, lalu pilih cenderamata dengan ukuran berbeda</p>
+                    <div style="display:none;" id="product-sizes" class="product-notes section row">
                         <div class="col-xs-4">
                             <h5>UKURAN KAOS</h5>
                         </div>
