@@ -17,7 +17,7 @@ class RajaOngkirController extends Controller
     public function __construct()
     {
         $this->client = new Client([
-            'base_uri' => 'https://api.rajaongkir.com/starter/'
+            'base_uri' => 'https://pro.rajaongkir.com/api/'
         ]);
         $this->key      = '6c40cd040e674cd568384287e0ef794d';
     }

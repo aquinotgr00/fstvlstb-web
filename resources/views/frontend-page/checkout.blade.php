@@ -104,9 +104,7 @@
                                 <select class="form-control" name="courier_name" id="courier_name">
                                     <option>...</option>
                                     <option value="ambil">Ambil di LIB</option>
-                                    <option value="jne">JNE</option>
-                                    <option value="pos">POS</option>
-                                    <option value="tiki">Tiki</option>
+                                    <option value="jnt">J&T</option>
                                 </select>
                             </div>
                             <div class="form-group courier_service_wrapper">
@@ -393,7 +391,9 @@
                     url: '/api/get-shipping-cost',
                     data: {
                         'origin': '419',
+                        'originType': 'city',
                         'destination': $('#city_id').val(),
+                        'destinationType': 'subdistrict',   
                         'weight': '300',
                         'courier': $(this).val()
                     },
