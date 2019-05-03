@@ -95,6 +95,7 @@
                 $('#product_images .carousel-item').not(':first').remove();
                 $('#product-sizes').css('display', 'none');
                 $('#product-sizes').removeClass('show');
+                $('#item_qty').val(1);
                 var id = $(this).data('id');
                 $.get(`/api/product/${id}`, function (response) {
                     $('.item_add').attr('disabled', false)
@@ -219,7 +220,7 @@
                 updateMobileCart();
             });
 
-            //-- Click on detail
+            //-- Click on sizes items to make the active class move.
             $("ul.menu-items > li").on("click",function(){
                 $("ul.menu-items > li").removeClass("active");
                 $(this).addClass("active");
