@@ -64,14 +64,18 @@
             <table class="table td-no-p">
                 <tr>
                     <td>Status</td>
-                    <td>: {{ $transaction->status }}</td>
+                    <td>:
+                        {{ $transaction->status }}
+                        <a href="#" id="displayProofImg" data-toggle="modal" data-target="#editStatusModal">
+                            <span class="fa fa-edit"></span>
+                        </a>
+                    </td>
                 </tr>
                 @if ( isset($transaction->paymentProof->image) )
                     <tr>
                         <td>Payment Proof</td>
                         <td>:
-                            <a href="#" id="displayProofImg" data-toggle="modal" data-target="#proofImgModal">lihat gambar</a>
-                            {{-- <img src="{{ Storage::disk('s3')->url($transaction->paymentProof->image) }}" alt="payment_proof"> --}}
+                            <a href="#" data-toggle="modal" data-target="#proofImgModal">lihat gambar</a>
                         </td>
                     </tr>
                 @endif
@@ -130,25 +134,85 @@
 @endsection
 
 @section('modal')
-    <!-- Modal -->
+    <!-- Payment Proof Image Modal -->
     <div class="modal fade" id="proofImgModal" tabindex="-1" role="dialog" aria-labelledby="proofImgModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="proofImgModalLabel">Gambar bukti transfer</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                @if ( isset($transaction->paymentProof->image) )
-                <div class="modal-body">
-                    <img src="{{ Storage::disk('s3')->url($transaction->paymentProof->image) }}" alt="proof image">
-                </div>
-                @endif
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+
+                <form action="{{ route('admin.transaction.update', $transaction->id) }}" method="post">@csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="proofImgModalLabel">Gambar bukti transfer</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @if ( isset($transaction->paymentProof->image) )
+                    <div class="modal-body">
+                        <select style="display: none;" class="form-control" name="status" id="status_input">
+                            <option value="paid"></option>
+                            <option value="cancel"></option>
+                        </select>
+                        <img src="{{ Storage::disk('s3')->url($transaction->paymentProof->image) }}" alt="proof image">
+                    </div>
+                    @endif
+                    <div class="modal-footer">
+                        @if ($transaction->status !== 'paid' && $transaction->status !== 'cancel')
+                            <button id="button-confirm" type="submit" class="btn btn-info">Confirm</button>
+                            <button id="button-reject" type="submit" class="btn btn-danger">Reject</button>
+                        @endif
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
+    <!-- Edit Status Modal -->
+    <div class="modal fade" id="editStatusModal" tabindex="-1" role="dialog" aria-labelledby="editStatusModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <form action="{{ route('admin.transaction.update', $transaction->id) }}" method="post">@csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editStatusModalLabel">Edit Status Order</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @if ( isset($transaction->paymentProof->image) )
+                    <div class="modal-body">
+                        <div id="status_row" class="form-group">
+                            <label for="status">Status</label>
+                            <select class="form-control" name="status" id="input_status">
+                                <option>...</option>
+                                <option {{ $transaction->status == 'unpaid' ? 'selected' : '' }} value="unpaid">Unpaid</option>
+                                <option {{ $transaction->status == 'payment check' ? 'selected' : '' }} value="payment check">Payment Check</option>
+                                <option {{ $transaction->status == 'paid' ? 'selected' : '' }} value="paid">Paid</option>
+                                <option {{ $transaction->status == 'shipped' ? 'selected' : '' }} value="shipped">Shipped</option>
+                                <option {{ $transaction->status == 'complete' ? 'selected' : '' }} value="complete">Complete</option>
+                                <option {{ $transaction->status == 'cancel' ? 'selected' : '' }} value="cancel">Cancel</option>
+                            </select>
+                        </div>
+                    </div>
+                    @endif
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info">Save</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('script')
+    <script>
+        $('#button-confirm').click(function () {
+            $('#status_input').val('paid')
+        })
+        $('#button-reject').click(function () {
+            $('#status_input').val('cancel')
+        })
+    </script>
 @endsection

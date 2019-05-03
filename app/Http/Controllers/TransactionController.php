@@ -96,8 +96,10 @@ class TransactionController extends Controller
         $transaction = $this->transactions->findOrFail($id);
         $transaction->update($request->all());
         if ($transaction->status !== 'unpaid' && $transaction->tracking_number != null) {
-            Mail::to($transaction->account->email)->send(new OrderPaidMail($transaction));
-            $transaction->update(['status' => 'shipped']);
+            if ( isset($request->tracking_number) ) {
+                Mail::to($transaction->account->email)->send(new OrderPaidMail($transaction));
+                $transaction->update(['status' => 'shipped']);
+            }
         }
         return redirect()->back();
     }
