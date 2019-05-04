@@ -393,7 +393,7 @@
                         'origin': '419',
                         'originType': 'city',
                         'destination': $('#city_id').val(),
-                        'destinationType': 'subdistrict',   
+                        'destinationType': 'city',   
                         'weight': '300',
                         'courier': $(this).val()
                     },
