@@ -32,6 +32,11 @@ class TransactionController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
+        if ($request->courier_name == 'jnt' && $request->courier_fee == 0) {
+            return 'failed';
+        }
+
         // create the transaction
         $transaction = Transaction::create($request->except(['items']));
 

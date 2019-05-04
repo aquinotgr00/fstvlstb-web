@@ -109,7 +109,7 @@
                             </div>
                             <div class="form-group courier_service_wrapper">
                                 <label for="">Pilih Servis</label>
-                                <select id="courier_services" class="form-control">
+                                <select id="courier_services" class="form-control" required>
                                     <option value="">...</option>
                                 </select>
                             </div>
@@ -385,6 +385,7 @@
 
         $('#courier_name').change(function () {
             if ($(this).val() !== 'ambil') {
+                $('#courier_services').attr('required', true);
                 $('.courier_service_wrapper').css('display', 'block');
                 $.ajax({
                     type: 'POST',
@@ -407,6 +408,10 @@
                 });
             } else if ($(this).val() === 'ambil') {
                 $('.courier_service_wrapper').css('display', 'none');
+                $('#courier_services').attr('required', false);
+                $('#courier_fee').html(0);
+                $('#courier_fee_field').val(0);
+                $('#courier_services').children('option:not(:first)').remove();
             }
         });
 
@@ -438,6 +443,9 @@
             $('.checkout_loader_wrapper').css('display', 'block');
             
             $.post('/checkout-store',$('#checkout-form').serialize(), function(response) {
+                if (response === 'failed') {
+                    location.reload();
+                }
                 const {status, data} = response;
                 if(status==='success') {
                     localStorage.removeItem('simpleCart_items')
