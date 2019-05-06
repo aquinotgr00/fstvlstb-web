@@ -8,9 +8,9 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <div class="table-responsive table--no-card m-b-40">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-2 p-0">
                         <div class="form-group">
                             <select class="form-control" name="status" id="status">
                                 <option>Filter dari Status</option>
@@ -20,7 +20,28 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-md-3 p-0 offset-md-3">
+                        <label class="sr-only" for="start_date">Start Date</label>
+                        <input type="date" class="form-control mb-2 mr-sm-2" id="start_date" placeholder="01/01/2018">
+                    </div>
+                    <div class="col-md-3 p-0">
+                        <label class="sr-only" for="end_date">Username</label>
+                        <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                            <div class="input-group-text">-</div>
+                            </div>
+                            <input type="date" class="form-control" id="end_date" placeholder="01/31/2019">
+                        </div>
+                    </div>
+                    <div class="col-md-1 p-0 text-right">
+                        <button type="submit" class="btn btn-primary mb-2">
+                            <i class="fa fa-download"></i>
+                            CSV
+                        </button>
+                    </div>
                 </div>
+            </div>
+            <div class="table-responsive table--no-card m-b-40">
                 <table class="table table-borderless table-striped table-earning" id="datatables-resource">
                     <thead>
                         <tr>
@@ -29,7 +50,7 @@
                             <th>Name</th>
                             <th>Products</th>
                             <th>Status</th>
-                            <th>amount</th>
+                            <th>Amount</th>
                             <th>Action</th>
                         </tr>
                     </thead>
