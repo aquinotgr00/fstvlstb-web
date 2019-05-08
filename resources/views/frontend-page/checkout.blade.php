@@ -14,10 +14,14 @@
             <li id="menu1-nav" class="menu-session-checkout active"><a data-toggle="tab" href="#menu1">ALAMAT PRENGIRIMAN
                 <span class="angel"><i class="fa fa-angle-right fa-lg"></i></span></a>
             </li>
-                <li id="menu2-nav" class="menu-session-checkout"><a data-toggle="tab" href="#menu2">PILIH AGEN PENGIRIMAN
-                <span class="angel"><i class="fa fa-angle-right fa-lg"></i></span></a>
+                <li id="menu2-nav" class="menu-session-checkout disabled">
+                    <a id="link-2" class="disabled-all" data-toggle="tab" href="#menu2">PILIH AGEN PENGIRIMAN
+                        <span class="angel"><i class="fa fa-angle-right fa-lg"></i></span>
+                    </a>
             </li>
-            <li id="menu3-nav" class="menu-session-checkout"><a data-toggle="tab" href="#menu3">ULASAN PESANAN</a></li>
+            <li id="menu3-nav" class="menu-session-checkout disabled">
+                <a id="link-3" class="disabled-all" data-toggle="tab" href="#menu3">ULASAN PESANAN</a>
+            </li>
         </ul>
         <div class="tab-content container">
             <div class="row">
@@ -93,7 +97,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button data-toggle="tab" class="btn btn-danger btn-block btn-submit" data-target="#menu2">LANJUT</button>
+                                <button data-toggle="tab" id="btn-submit1" class="btn btn-danger btn-block btn-submit" disabled data-target="#menu2">LANJUT</button>
                             </div>
                         </div>
                     </div>
@@ -101,7 +105,7 @@
                         <div class="check-form">
                             <div class="form-group">
                                 <label for="">Pilih Kurir</label>
-                                <select class="form-control" name="courier_name" id="courier_name">
+                                <select disabled class="form-control" name="courier_name" id="courier_name">
                                     <option>...</option>
                                     <option value="ambil">Ambil di LIB</option>
                                     <option value="jnt">J&T</option>
@@ -109,7 +113,7 @@
                             </div>
                             <div class="form-group courier_service_wrapper">
                                 <label for="">Pilih Servis</label>
-                                <select id="courier_services" class="form-control" required>
+                                <select disabled id="courier_services" class="form-control" required>
                                     <option value="">...</option>
                                 </select>
                             </div>
@@ -134,13 +138,13 @@
                             </div>
                             <div class="form-group" id="payment_bank_group">
                                 <label for="payment_bank">Pilih Bank</label>
-                                <select class="form-control" name="payment_bank" id="payment_bank">
-                                    <option>...</option>
+                                <select disabled class="form-control" name="payment_bank" id="payment_bank">
+                                    {{-- <option>...</option> --}}
                                     <option value="bca">BCA</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <button data-toggle="tab" class="btn btn-danger btn-block btn-submit" data-target="#menu3">LANJUT</button>
+                                <button data-toggle="tab" id="btn-submit2" class="btn btn-danger btn-block btn-submit" disabled data-target="#menu3">LANJUT</button>
                             </div>
                         </div>
                     </div>
@@ -187,7 +191,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-danger btn-block" id="submit-button">BAYAR</button>
+                            <button disabled type="submit" id="btn-submit3" class="btn btn-danger btn-block" id="submit-button">BAYAR</button>
                         </div>
                     </div>
                 </form>
@@ -241,10 +245,66 @@
                 $('#province_field').val(ui.item.province_name);
                 $('#courier_name').val(0);
                 resetCourierFee();
+                checkFirstForm();
             }
         });
 
+        $('input[name=address]').change(function () {
+            checkFirstForm();
+        });
+        $('#payment_bank').change(function () {
+            checkSecondForm();
+        });
+
+        function checkFirstForm() {
+            var empty = $('#menu1').find("input").filter(function() {
+                return this.value === "";
+            });
+            $('#btn-submit1').attr('disabled', false);
+            $('#link-2').css('pointer-events', 'auto');
+            $('#menu2-nav').removeClass('disabled');
+            toggleFormTwo(true);
+            if(empty.length) {
+                $('#btn-submit1').attr('disabled', true);
+                $('#link-2').css('pointer-events', 'none');
+                $('#menu2-nav').addClass('disabled');
+                toggleFormTwo(false);
+            }
+        };
+
+        function checkSecondForm() {
+            var empty = $('#menu2').find("select").filter(function() {
+                return this.value === "";
+            });
+            $('#btn-submit2').attr('disabled', false);
+            $('#btn-submit3').attr('disabled', false);
+            $('#link-3').css('pointer-events', 'auto');
+            $('#menu3-nav').removeClass('disabled');
+            if(empty.length) {
+                $('#btn-submit2').attr('disabled', true);
+                $('#btn-submit3').attr('disabled', true);
+                $('#link-3').css('pointer-events', 'none');
+                $('#menu3-nav').addClass('disabled');
+            }
+        }
+
+        function toggleFormTwo(active) {
+            $('#courier_name').attr('disabled', true);
+            $('#courier_services').attr('disabled', true);
+            $('#payment_bank').attr('disabled', true);
+            $('#courier_name').val(null);
+            $('#courier_services').val(null);
+            $('#payment_bank').val(null);
+            resetCourierFee();
+            if (active) {
+                $('#courier_name').attr('disabled', false);
+                $('#courier_services').attr('disabled', false);
+                $('#payment_bank').attr('disabled', false);
+            }
+        }
+
         $('#courier_name').change(function () {
+            checkSecondForm();
             if ($(this).val() !== 'ambil') {
                 $('#courier_services').attr('required', true);
                 $('.courier_service_wrapper').css('display', 'block');
@@ -339,6 +399,7 @@
         });
 
         $('#courier_services').change(function () {
+            checkSecondForm();
             var sum = 0;
             var fee = +$(this).val();
             $('#courier_fee').html('Rp. '+fee);

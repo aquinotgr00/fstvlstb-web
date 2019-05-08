@@ -323,7 +323,8 @@ div.checkout_loader_wrapper { position: absolute;
 	opacity: .8; }
 div.checkout_loader_wrapper > img { margin-top: 25rem;
     width: 4%;
-    opacity: .8; }
+	opacity: .8; }
+a.disabled-all { pointer-events: none; }
 /* ####################################################################################################################### */
 /*<--inu-->*/
 /* ####################################################################################################################### */
