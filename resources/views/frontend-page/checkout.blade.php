@@ -267,7 +267,7 @@
                         });
                     }
                 });
-            } else if ($(this).val() === 'ambil') {
+            } else if ($(this).val() === 'ambil' || $(this).val() === null) {
                 $('.courier_service_wrapper').css('display', 'none');
                 $('#courier_services').attr('required', false);
                 resetCourierFee();
