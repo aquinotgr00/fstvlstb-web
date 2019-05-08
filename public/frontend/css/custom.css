@@ -300,6 +300,7 @@ img#proof_thumbnail { max-width: 124px; }
 @media (max-width: 767px) {
 	li.menu-session-checkout a { padding: 10px 5px 10px 5px; font-size: 10px; }
 	li.menu-session-checkout:first-child a { margin-left: 10px; }
+	ul.dropdown-cart { margin-left: -25px; }
 }
 div.loader_wrapper { position: absolute;
     z-index: 9;
