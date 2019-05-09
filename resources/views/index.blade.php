@@ -131,12 +131,20 @@
             </header>
             <!-- HEADER DESKTOP-->
                 <div class="main-content">
+                    @if (session('alert'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('alert') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                     <div class="section__content section__content--p30">
                         <div class="container-fluid">
 
-           @yield('content')
+                            @yield('content')
 
-            <div class="row">
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="copyright">
                                         <p>Copyright © 2018 Colorlib. All rights reserved.</p>
