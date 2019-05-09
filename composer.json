@@ -22,6 +22,8 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "league/flysystem-aws-s3-v3": "^1.0",
+        "maatwebsite/excel": "2.1.x-dev",
+        "phpoffice/phpspreadsheet": "^1.6",
         "veritrans/veritrans-php": "^1.2",
         "yajra/laravel-datatables": "^1.2",
         "yajra/laravel-datatables-oracle": "^8.0"

@@ -11,6 +11,7 @@ use DataTables;
 use Image;
 use App\Mail\OrderPaidMail;
 use Illuminate\Support\Facades\Mail;
+use Excel;
 
 class TransactionController extends Controller
 {
@@ -89,6 +90,22 @@ class TransactionController extends Controller
     {
         $transaction = $this->transactions->findOrFail($id);
         return $transaction;
+    }
+
+    public function exportToExcel(Request $request)
+    {
+        $data = $this->transactions->whereBetween('created_at', [$request->start_date, $request->end_date])->get()->toArray();
+        if (count($data) == 0) {
+            return redirect()->back()->with('alert', 'No Data found!');
+        }
+        $fileName = $request->start_date.'-'.$request->end_date.'-FSTVLST-Data-Orders';
+        return Excel::create($fileName, function($excel) use ($data) {
+            $excel->sheet('mySheet', function($sheet) use ($data)
+            {
+                $sheet->fromArray($data);
+            });
+        })->download('csv');
+        
     }
 
     public function update(Request $request, $id)

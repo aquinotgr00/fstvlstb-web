@@ -20,25 +20,27 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-3 p-0 offset-md-3">
-                        <label class="sr-only" for="start_date">Start Date</label>
-                        <input type="date" class="form-control mb-2 mr-sm-2" id="start_date" placeholder="01/01/2018">
-                    </div>
-                    <div class="col-md-3 p-0">
-                        <label class="sr-only" for="end_date">Username</label>
-                        <div class="input-group mb-2 mr-sm-2">
-                            <div class="input-group-prepend">
-                            <div class="input-group-text">-</div>
-                            </div>
-                            <input type="date" class="form-control" id="end_date" placeholder="01/31/2019">
+                    <form action="{{ route('admin.transaction.export') }}" method="POST" style="display: contents;">@csrf
+                        <div class="col-md-3 p-0 offset-md-3">
+                            <label class="sr-only" for="start_date">Start Date</label>
+                            <input name="start_date" type="date" class="form-control mb-2 mr-sm-2" id="start_date" placeholder="01/01/2018">
                         </div>
-                    </div>
-                    <div class="col-md-1 p-0 text-right">
-                        <button type="submit" class="btn btn-primary mb-2">
-                            <i class="fa fa-download"></i>
-                            CSV
-                        </button>
-                    </div>
+                        <div class="col-md-3 p-0">
+                            <label class="sr-only" for="end_date">Username</label>
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                <div class="input-group-text">-</div>
+                                </div>
+                                <input name="end_date" type="date" class="form-control" id="end_date" placeholder="01/31/2019">
+                            </div>
+                        </div>
+                        <div class="col-md-1 p-0 text-right">
+                            <button type="submit" class="btn btn-primary mb-2">
+                                <i class="fa fa-download"></i>
+                                CSV
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="table-responsive table--no-card m-b-40">

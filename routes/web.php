@@ -59,6 +59,7 @@ Route::prefix('admin')->group(function () {
 	Route::get('/transactions/item/{id}', 'TransactionController@show')->name('admin.transaction.show');
 	Route::get('/transactions/get/{id}', 'TransactionController@getById')->name('admin.transaction.get-by-id');
 	Route::post('/transactions/{id}/update', 'TransactionController@update')->name('admin.transaction.update');
+	Route::post('/downloadExcel', 'TransactionController@exportToExcel')->name('admin.transaction.export');
 
 	// PRODUCTION BATCH ROUTES
 	Route::post('/production-batch', 'ProductionBatchController@store')->name('admin.production-batch.store');
