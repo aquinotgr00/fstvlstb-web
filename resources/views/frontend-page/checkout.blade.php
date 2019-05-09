@@ -233,7 +233,6 @@
             $('#courier_services').children('option:not(:first)').remove();
         }
 
-        // TODO: add loading gif
         $( "#subdistrict_text" ).autocomplete({
             source: "/api/subdistrict",
             minLength: 3,
