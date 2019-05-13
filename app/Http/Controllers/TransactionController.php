@@ -55,6 +55,12 @@ class TransactionController extends Controller
             ->editColumn('name', function ($data) {
                 return $data->account->name;
             })
+            ->editColumn('status', function ($data) {
+                if ($data->status == 'unpaid') {
+                    return 'pending';
+                }
+                return $data->status;
+            })
             ->editColumn('product', function ($data) {
                 $orders = [];
                 foreach ($data->orders as $i=>$value) {

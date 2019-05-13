@@ -14,7 +14,7 @@
                         <div class="form-group">
                             <select class="form-control" name="status" id="status">
                                 <option>Filter dari Status</option>
-                                <option value="unpaid">Unpaid</option>
+                                <option value="pending">Pending</option>
                                 <option value="paid">Paid</option>
                                 <option value="payment check">Payment Check</option>
                             </select>
@@ -158,8 +158,8 @@
             });
 
             $('#status').change(function () {
-                console.log('changed');
-                $('#datatables-resource').html = '';
+                var status = $(this).val();
+                table.search(status).draw();
             });
         });
     </script>
