@@ -54,7 +54,7 @@ class TwitterController extends Controller
 		//     return redirect()->to(config('services.twitter.url_login'));
 		// }
 
-		$token = $this->tokenAccess($oauth_verifier);
+		$token = $this->tokenAccess($oauth_verifier,$request);
 
 		$twitter = new TwitterOAuth(
 			    config('services.twitter.consumer_key'),
@@ -71,7 +71,7 @@ class TwitterController extends Controller
 		echo ('Created new status with #' . $status->id . PHP_EOL);
 
     }
-    private function tokenAccess($oauth_verifier){
+    private function tokenAccess($oauth_verifier,$request){
     	
     	// connect with application token
 		$connection = new TwitterOAuth(
