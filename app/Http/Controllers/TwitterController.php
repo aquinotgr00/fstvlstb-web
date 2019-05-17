@@ -64,12 +64,7 @@ class TwitterController extends Controller
 		// $path = \Storage::disk('s3')->get(Auth::guard('account')->user()->images);
 		 $assetPath = \Storage::disk('s3')->url(Auth::guard('account')->user()->images);
 
-        header("Cache-Control: public");
-        header("Content-Description: File Transfer");
-        header("Content-Disposition: attachment; filename=" . basename($assetPath));
-        header("Content-Type: " . $asset->mime);
-
-        $path =  readfile($assetPath);
+        $path = response()->make($assetPath, 200, ['Content-Type' => 'image/jpg','Content-Disposition' => 'attachment;filename= '.sprintf("%06d", Auth::guard('account')->user()->id).'.jpg']);
 		$media = $twitter->upload('media/upload', ['media' => $path]);
 		$status = $twitter->post(
 		    "statuses/update", [
