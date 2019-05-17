@@ -50,5 +50,14 @@ return [
         'isSanitized'   => env('MIDTRANS_IS_SANITIZED', true),
         'is3ds'         => env('MIDTRANS_IS_3DS', true),                
     ],
+    'twitter' =>[
+        //key using to access twitter app
+        'consumer_key'      => env('twitter_consumer_key','UoPGgarYjxhm6aBBhCnvaRSIC'),
+        'consumer_secret'   => env('twitter_consumer_secret','rpieLT3nRHAVBE6xtwBEKAgwvFxSsCvyOzNsgNPmCVUzWTSvEI'),
+ 
+        //url login and callback
+        'url_login'         => env('twitter_url_login','https://staging-env.fstvlst.id/twitter/auth'),
+        'url_callback'      => env('twitter_url_callback','https://staging-env.fstvlst.id/twitter/callback'),
+    ],
 
 ];

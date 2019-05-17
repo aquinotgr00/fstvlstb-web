@@ -23,6 +23,11 @@ Route::prefix('member')->group(function(){
 	Route::post('/ganti-password','NifController@gantiPassword')->name('member.ganti-password');
 });
 
+Route::prefix('twitter')->group(function(){
+	Route::get('/auth','TwitterController@twitterlogin');
+	Route::get('/callback','TwitterController@twitterCallback');
+});
+
 // E-COMMERCE ROUTES
 Route::get('/store', 'StoreController@index')->name('store.index');
 Route::post('/checkout', 'StoreController@checkout')->name('checkout.view');
