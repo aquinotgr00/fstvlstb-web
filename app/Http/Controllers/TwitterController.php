@@ -13,7 +13,7 @@ class TwitterController extends Controller
     	$this->twitteroauth = new TwitterOAuth(config('services.twitter.consumer_key'), config('services.twitter.consumer_secret'));
     }
 
-    public function twitterLogin(){
+    public function twitterLogin(Request $request){
 
     	$request_token = $this->twitteroauth->oauth(
 						    'oauth/request_token', [
