@@ -62,7 +62,7 @@ class TwitterController extends Controller
 			    $token['oauth_token_secret']
 			);
 		$path = \Storage::disk('s3')->get(Auth::guard('account')->user()->images);
-		$media = $connection->upload('media/upload', ['media' => $path]);
+		$media = $twitter->upload('media/upload', ['media' => $path]);
 		$status = $twitter->post(
 		    "statuses/update", [
 		        "status" => "#FSTVLST",
