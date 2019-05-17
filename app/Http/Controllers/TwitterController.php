@@ -46,12 +46,13 @@ class TwitterController extends Controller
 
     public function twitterCallback(Request $request){
     	$oauth_verifier = $request->oauth_verifier;
- 
-		if (empty($oauth_verifier) || empty($_SESSION['oauth_token']) || empty($_SESSION['oauth_token_secret'])
-		){
-		    // something's missing, go and login again
-		    return redirect()->to(config('services.twitter.url_login'));
-		}
+    	echo ('Created new status with #' . $oauth_verifier );
+ 		// return $oauth_verifier;
+		// if (empty($oauth_verifier) || empty($_SESSION['oauth_token']) || empty($_SESSION['oauth_token_secret'])
+		// ){
+		//     // something's missing, go and login again
+		//     return redirect()->to(config('services.twitter.url_login'));
+		// }
 
 		$token = $this->tokenAccess($oauth_verifier);
 
