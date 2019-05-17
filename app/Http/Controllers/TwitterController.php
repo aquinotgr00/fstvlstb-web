@@ -29,13 +29,13 @@ class TwitterController extends Controller
 			$request->session()->put('oauth_token_secret',$request_token['oauth_token_secret']);
 			 
 			// generate the URL to make request to authorize our application
-			$url = $twitteroauth->url(
+			$url = $this->twitteroauth->url(
 			    'oauth/authorize', [
 			        'oauth_token' => $request_token['oauth_token']
 			    ]
 			);
 		// generate the URL to make request to authorize our application
-			$url = $twitteroauth->url(
+			$url = $this->twitteroauth->url(
 			    'oauth/authorize', [
 			        'oauth_token' => $request_token['oauth_token']
 			    ]
