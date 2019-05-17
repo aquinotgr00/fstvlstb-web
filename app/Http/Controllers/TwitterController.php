@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Abraham\TwitterOAuth\TwitterOAuth;
+use Auth;
 
 class TwitterController extends Controller
 {	
 	protected $twitteroauth;
 
     public function __construct(){
+    	$this->middleware('auth:account');
     	$this->twitteroauth = new TwitterOAuth(config('services.twitter.consumer_key'), config('services.twitter.consumer_secret'));
     }
 
@@ -46,14 +48,9 @@ class TwitterController extends Controller
 
     public function twitterCallback(Request $request){
     	$oauth_verifier = $request->oauth_verifier;
-    	echo ('Created new status with #' . $oauth_verifier );
- 		// return $oauth_verifier;
 		if (empty($oauth_verifier) || empty($request->session()->get('oauth_token')) || empty($request->session()->get('oauth_token_secret'))
 		){
-		    // something's missing, go and login again
-		echo $request->session()->get('oauth_token')."<br/>";
-		echo $request->session()->get('oauth_token_secret')."<br/>";
-		    // return redirect()->to(config('services.twitter.url_login'));
+		    return redirect()->to(config('services.twitter.url_login'));
 		}
 
 		$token = $this->tokenAccess($oauth_verifier,$request);
@@ -64,13 +61,16 @@ class TwitterController extends Controller
 			    $token['oauth_token'],
 			    $token['oauth_token_secret']
 			);
+		$path = \Storage::disk('s3')->get(Auth::guard('account')->user()->images);
+		$media = $connection->upload('media/upload', ['media' => $path]);
 		$status = $twitter->post(
 		    "statuses/update", [
-		        "status" => "Test"
+		        "status" => "#FSTVLST",
+		        'media_ids' => $media->media_id_string
 		    ]
 		);
- 
-		echo ('Created new status with #');
+ 		
+		echo ('Created new status with #'.$media->media_id_string);
 
     }
     private function tokenAccess($oauth_verifier,$request){
