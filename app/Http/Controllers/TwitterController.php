@@ -62,10 +62,9 @@ class TwitterController extends Controller
 			    $token['oauth_token_secret']
 			);
 		// $path = \Storage::disk('s3')->get(Auth::guard('account')->user()->images);
-		 $assetPath = \Storage::disk('s3')->url(Auth::guard('account')->user()->images);
-
-        $path = response()->make($assetPath, 200, ['Content-Type' => 'image/jpg','Content-Disposition' => 'attachment;filename= '.sprintf("%06d", Auth::guard('account')->user()->id).'.jpg']);
-		$media = $twitter->upload('media/upload', ['media' => $path]);
+		$assetPath = \Storage::disk('s3')->url(Auth::guard('account')->user()->images);
+		$path =$this->toBase64($assetPath);
+		$media = $twitter->upload('media/upload', ['media_data' => $path]);
 		$status = $twitter->post(
 		    "statuses/update", [
 		        "status" => "#FSTVLST",
@@ -95,8 +94,13 @@ class TwitterController extends Controller
 		return $token;
     }
 
-    public function testImage(){
-
+    private function toBase64($image_location) {
+        $image_path = $image_location;
+        $image_type = pathinfo($image_path, PATHINFO_EXTENSION);
+        $image_data = file_get_contents($image_path);
+        $image_base64 = 'data:image/' . $image_type . ';base64,' . base64_encode($image_data);
+ 
+        return $image_base64;
     }
 
 }
