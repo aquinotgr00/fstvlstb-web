@@ -61,7 +61,15 @@ class TwitterController extends Controller
 			    $token['oauth_token'],
 			    $token['oauth_token_secret']
 			);
-		$path = \Storage::disk('s3')->get(Auth::guard('account')->user()->images);
+		// $path = \Storage::disk('s3')->get(Auth::guard('account')->user()->images);
+		 $assetPath = \Storage::disk('s3')->url(Auth::guard('account')->user()->images);
+
+        header("Cache-Control: public");
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=" . basename($assetPath));
+        header("Content-Type: " . $asset->mime);
+
+        $path =  readfile($assetPath);
 		$media = $twitter->upload('media/upload', ['media' => $path]);
 		$status = $twitter->post(
 		    "statuses/update", [
@@ -90,6 +98,10 @@ class TwitterController extends Controller
 		    ]
 		);
 		return $token;
+    }
+
+    public function testImage(){
+
     }
 
 }
