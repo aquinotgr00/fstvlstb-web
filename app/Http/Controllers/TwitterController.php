@@ -68,7 +68,7 @@ class TwitterController extends Controller
 		    ]
 		);
  		
-		echo ('Created new status with #');
+		return redirect()->route('member.nif')
 
     }
     private function tokenAccess($oauth_verifier,$request){
