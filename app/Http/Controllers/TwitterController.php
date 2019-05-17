@@ -53,7 +53,7 @@ class TwitterController extends Controller
 		    // something's missing, go and login again
 		echo $request->session()->get('oauth_token')."<br/>";
 		echo $request->session()->get('oauth_token_secret')."<br/>";
-		    return redirect()->to(config('services.twitter.url_login'));
+		    // return redirect()->to(config('services.twitter.url_login'));
 		}
 
 		$token = $this->tokenAccess($oauth_verifier,$request);
