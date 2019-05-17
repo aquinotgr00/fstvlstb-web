@@ -68,7 +68,7 @@ class TwitterController extends Controller
 		    ]
 		);
  		
-		echo ('Created new status with #'.$media->media_id_string);
+		echo ('Created new status with #');
 
     }
     private function tokenAccess($oauth_verifier,$request){
