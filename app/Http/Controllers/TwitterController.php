@@ -62,14 +62,9 @@ class TwitterController extends Controller
 			    $token['oauth_token_secret']
 			);
 		// $path = \Storage::disk('s3')->get(Auth::guard('account')->user()->images);
-		$assetPath = \Storage::disk('s3')->url(Auth::guard('account')->user()->images);
-		$path =$this->toBase64($assetPath);
-		$media = $twitter->upload('media/upload', ['media_data' => $path]);
-		return $media;
 		$status = $twitter->post(
 		    "statuses/update", [
-		        "status" => "#FSTVLST",
-		        'media_ids' => $media->media_id_string
+		        "status" => "https://staging-env.fstvlst.id/image/preview",
 		    ]
 		);
  		
