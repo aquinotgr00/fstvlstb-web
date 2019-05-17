@@ -11,6 +11,9 @@ Route::get('/filestream','FileStreamController@fileStream')->name('stream.audio.
 
 Route::get('file/download',['as' => 'files.download', 'uses' => 'FileDownloadController@downloadFile']);
 Route::get('image/download',['as' => 'images.download', 'uses' => 'FileDownloadController@imageDownload']);
+Route::get('image/preview',function(){
+	return view('frontend-page.image-card');
+});
 
 Route::prefix('member')->group(function(){
 	Route::post('/login', 'Auth\MemberLoginController@loginMember')->name('member.login');
