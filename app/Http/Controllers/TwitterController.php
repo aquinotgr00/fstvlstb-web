@@ -65,6 +65,7 @@ class TwitterController extends Controller
 		$assetPath = \Storage::disk('s3')->url(Auth::guard('account')->user()->images);
 		$path =$this->toBase64($assetPath);
 		$media = $twitter->upload('media/upload', ['media_data' => $path]);
+		return $media;
 		$status = $twitter->post(
 		    "statuses/update", [
 		        "status" => "#FSTVLST",
