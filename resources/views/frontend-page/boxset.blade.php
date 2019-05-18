@@ -44,7 +44,7 @@
                         <h5 class="nomargin mb-1 boxset-text">Masa pengiriman: Mulai 21 Juni 2019</h5>
                         <h2>
                             {{-- @lang('boxset.open_pre_order') @lang('index.right.date') --}}
-                            <a href="#" data-toggle="modal" data-target="#modal-product" data-id="6" class="btn btn-danger btn-intip btn-block btn-submit buy-boxset-btn single-product">Pesan Bokset</a>
+                            {{-- <a href="#" data-toggle="modal" data-target="#modal-product" data-id="6" class="btn btn-danger btn-intip btn-block btn-submit buy-boxset-btn single-product">Pesan Bokset</a> --}}
                         </h2>
                         <div class="hidden-xs">
                             <br/><br/><br/><br/>

@@ -32,14 +32,14 @@ Route::prefix('twitter')->group(function(){
 });
 
 // E-COMMERCE ROUTES
-Route::get('/store', 'StoreController@index')->name('store.index');
-Route::post('/checkout', 'StoreController@checkout')->name('checkout.view');
-Route::post('/midtrans-notification/handling', 'StoreController@midtransNotif')->name('store.midtrans.handler');
-Route::get('/thank-you', 'StoreController@thankYou')->name('thank.you');
-Route::post('/checkout-store', 'Api\\TransactionController@store')->name('checkout.store');
-Route::post('/charge', 'Api\\TransactionController@charge')->name('checkout.charge');
-Route::get('/confirm-payment/{token}', 'StoreController@confirmPayment')->name('confirm.payment');
-Route::post('/confirm-payment', 'StoreController@storeProof')->name('store.payment.proof');
+// Route::get('/store', 'StoreController@index')->name('store.index');
+// Route::post('/checkout', 'StoreController@checkout')->name('checkout.view');
+// Route::post('/midtrans-notification/handling', 'StoreController@midtransNotif')->name('store.midtrans.handler');
+// Route::get('/thank-you', 'StoreController@thankYou')->name('thank.you');
+// Route::post('/checkout-store', 'Api\\TransactionController@store')->name('checkout.store');
+// Route::post('/charge', 'Api\\TransactionController@charge')->name('checkout.charge');
+// Route::get('/confirm-payment/{token}', 'StoreController@confirmPayment')->name('confirm.payment');
+// Route::post('/confirm-payment', 'StoreController@storeProof')->name('store.payment.proof');
 
 // MIDTRANS ROUTES
 Route::post('/midtrans-finish', function(){
