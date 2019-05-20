@@ -321,7 +321,7 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>  --}}
 
 {{-- DEPRECATED!! checkout form modal --}}
 <div id="modal-checkout" class="modal fade" tabindex="-1" role="dialog">

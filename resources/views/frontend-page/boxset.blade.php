@@ -3,15 +3,14 @@
     <section id="boxset">
         <div class="container">
             <div class="row row-layout">
-                {{-- product list --}}
                 <div class="col-md-4">
                     <h2 class="text-warning">@lang('boxset.peek')</h2>
                     <br/>
                     <h2 class="nomargin">@lang('index.right.pre-order') @lang('boxset.boxset')</h2>
                     <h2 class="nomargin">@lang('index.left.heading') @lang('boxset.edition')</h2>
                     <h2 class="nomargin boks">@lang('index.right.closed')</h2>
-                    {{-- <br/><br/>
-                    <ul class="treklist nomargin">
+                    <br/><br/>
+                    {{-- <ul class="treklist nomargin">
                         <li>
                             <div class="number">@lang('index.01')</div>
                             <div class="title">@lang('index.right.kaos')</div>
@@ -32,12 +31,12 @@
                             <div class="number">@lang('index.05')</div>
                             <div class="title">@lang('index.right.lakban')</div>
                         </li>
-                    </ul>
-                    <br/> --}}
+                    </ul> --}}
+                    <br/> 
                     <div class="hidden-xs">
                         {{-- <h5 class="nomargin boxset-text">Semua cendera mata juga bisa dibeli secara eceran,</h5>
-                        <h5 class="nomargin boxset-text">dengan cara klik lingkaran kuning di gambar.</h5> --}}
-                        <br/><br/>
+                        <h5 class="nomargin boxset-text">dengan cara klik lingkaran kuning di gambar.</h5>
+                        <br/><br/> --}}
                         {{-- <h5 class="nomargin mb-1 boxset-text">Masa Pra-Pesan: 3 - 20 Mei 2019</h5> --}}
                         <h5 class="nomargin mb-1 boxset-text">@lang('boxset.production-period')</h5>
                         <h5 class="nomargin mb-1 boxset-text">@lang('boxset.shipping-period')</h5>
@@ -45,7 +44,7 @@
                         <h2 class="nomargin boks">@lang('index.right.coming-soon')</h2>
                         <h2>
                             {{-- @lang('boxset.open_pre_order') @lang('index.right.date') --}}
-                            {{-- <a href="#" data-toggle="modal" data-target="#modal-product" data-id="6" class="btn btn-danger btn-intip btn-block btn-submit buy-boxset-btn single-product">Pesan Bokset</a> --}}
+                             {{-- <a href="#" data-toggle="modal" data-target="#modal-product" data-id="6" class="btn btn-danger btn-intip btn-block btn-submit buy-boxset-btn single-product">Pesan Bokset</a>  --}}
                         </h2>
                         <div class="hidden-xs">
                             <br/><br/><br/><br/>
@@ -55,7 +54,7 @@
                         </p>
                     </div>
                 </div>
-                {{-- product big image --}}
+
                 <div class="col-md-8">
                     <div class="main-image">
                         <img src="{{ asset('frontend/images/boxset-image.png')}}" alt="">
@@ -71,9 +70,9 @@
                         <br/><br/>
                         <h2 class="nomargin boks">@lang('index.right.coming-soon')</h2>
                         <br/><br/>
-                        <h5 class="nomargin boxset-text">Semua cendera mata juga bisa dibeli secara eceran,</h5>
+                        {{-- <h5 class="nomargin boxset-text">Semua cendera mata juga bisa dibeli secara eceran,</h5>
                         <h5 class="nomargin boxset-text">dengan cara klik lingkaran kuning di gambar.</h5>
-                        <br/><br/>
+                        <br/><br/> --}}
                         {{-- <h5 class="nomargin mb-1 boxset-text">Masa Pra-Pesan: 3 - 20 Mei 2019</h5> --}}
                         <h5 class="nomargin mb-1 boxset-text">@lang('boxset.production-period')</h5>
                         <h5 class="nomargin mb-1 boxset-text">@lang('boxset.shipping-period')</h5>

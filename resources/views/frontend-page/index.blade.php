@@ -77,7 +77,7 @@
                             <h2 class="nomargin">@lang('index.right.pre-order') @lang('boxset.boxset')</h2>
                             <h2 class="nomargin">@lang('index.left.heading') @lang('boxset.edition')</h2>
                             <h2 class="nomargin boks">@lang('index.right.closed')</h2>
-                            <br />
+                            <!-- <br /> -->
                             <br />
                             <br />
                             <br />
@@ -93,7 +93,7 @@
                             </div>
                             <div class="clearfix"></div>
                             <br/>
-                            {{-- <ul class="treklist nomargin">
+                             {{-- <ul class="treklist nomargin">
                                 <li>
                                     <div class="number">@lang('index.01')</div>
                                     <div class="title">@lang('index.right.kaos')</div>
@@ -114,14 +114,14 @@
                                     <div class="number">@lang('index.05')</div>
                                     <div class="title">@lang('index.right.lakban')</div>
                                 </li>
-                            </ul> --}}
+                            </ul>  --}}
                             <br/>
                             <div class="row">
                                 {{-- <div class="col-md-12 col-xs-6">
                                     <p>
                                         @lang('index.right.pre-order') @lang('boxset.boxset') <br /> @lang('index.right.opened') : @lang('index.right.date')
                                     </p>  
-                                </div> --}}
+                                </div>  --}}
                                 <div class="col-md-12 col-xs-6 visible-xs">
                                     @guest('account')      
                                         <a href="#" class="btn btn-danger btn-intip btn-xs" data-toggle="modal" data-target="#modal-daftar" >@lang('index.right.peek')</a>

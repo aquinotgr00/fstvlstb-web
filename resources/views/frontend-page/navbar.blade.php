@@ -35,7 +35,7 @@
                                 <button class="btn btn-danger btn-intip btn-block btn-submit simpleCart_checkout">Checkout</button>
                             </li>
                         </ul>
-                    </li> --}}
+                    </li>  --}}
                 @endauth
             </ul>
             <div class="navbar-header visible-xs">

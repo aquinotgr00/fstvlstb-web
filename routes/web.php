@@ -27,8 +27,14 @@ Route::prefix('member')->group(function(){
 });
 
 Route::prefix('twitter')->group(function(){
-	Route::get('/auth','TwitterController@twitterlogin');
-	Route::get('/callback','TwitterController@twitterCallback');
+	Route::get('/auth','TwitterController@twitterlogin')->name('twitter.auth');
+	Route::get('/callback','TwitterController@twitterCallback')->name('twitter.callback');
+});
+
+Route::prefix('facebook')->group(function(){
+	Route::get('/auth','FacebookController@redirectToFacebookProvider')->name('facebook.auth');
+	Route::get('/callback','FacebookController@handleProviderFacebookCallback')->name('facebook.callback');
+	Route::get('/publish', 'GraphController@publishToProfile')->name('facebook.publish');
 });
 
 // E-COMMERCE ROUTES
@@ -42,10 +48,10 @@ Route::prefix('twitter')->group(function(){
 // Route::post('/confirm-payment', 'StoreController@storeProof')->name('store.payment.proof');
 
 // MIDTRANS ROUTES
-Route::post('/midtrans-finish', function(){
-    return redirect()->route('home');
-})->name('midtrans.finish');
-Route::post('/midtrans-notification/handler', 'Api\\TransactionController@notificationHandler')->name('midtrans.notification.handler');
+// Route::post('/midtrans-finish', function(){
+//     return redirect()->route('home');
+// })->name('midtrans.finish');
+// Route::post('/midtrans-notification/handler', 'Api\\TransactionController@notificationHandler')->name('midtrans.notification.handler');
 
 Route::prefix('admin')->group(function () {
 	  Auth::routes();

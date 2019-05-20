@@ -106,7 +106,7 @@
                             <div class="form-group">
                                 <label for="">Pilih Kurir</label>
                                 <select disabled class="form-control" name="courier_name" id="courier_name">
-                                    <option>...</option>
+                                    <option value="">Silahkan Pilih</option>
                                     <option value="ambil">Ambil di LIB</option>
                                     <option value="jnt">J&T</option>
                                 </select>
@@ -114,7 +114,7 @@
                             <div class="form-group courier_service_wrapper">
                                 <label for="">Pilih Servis</label>
                                 <select disabled id="courier_services" class="form-control" required>
-                                    <option value="">...</option>
+                                    <option value="">Silahkan Pilih</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -139,7 +139,7 @@
                             <div class="form-group" id="payment_bank_group">
                                 <label for="payment_bank">Pilih Bank</label>
                                 <select disabled class="form-control" name="payment_bank" id="payment_bank">
-                                    {{-- <option>...</option> --}}
+                                    <option value="">Silahkan Pilih</option>
                                     <option value="bca">BCA</option>
                                 </select>
                             </div>
@@ -275,11 +275,19 @@
             var empty = $('#menu2').find("select").filter(function() {
                 return this.value === "";
             });
+            var courier = $('#courier_name').val();
+            var bank = $('#payment_bank').val();
             $('#btn-submit2').attr('disabled', false);
             $('#btn-submit3').attr('disabled', false);
             $('#link-3').css('pointer-events', 'auto');
             $('#menu3-nav').removeClass('disabled');
-            if(empty.length) {
+            if(empty.length && courier != "ambil" ) {
+                $('#btn-submit2').attr('disabled', true);
+                $('#btn-submit3').attr('disabled', true);
+                $('#link-3').css('pointer-events', 'none');
+                $('#menu3-nav').addClass('disabled');
+            }
+            if(bank =="" && courier == "ambil" ) {
                 $('#btn-submit2').attr('disabled', true);
                 $('#btn-submit3').attr('disabled', true);
                 $('#link-3').css('pointer-events', 'none');
