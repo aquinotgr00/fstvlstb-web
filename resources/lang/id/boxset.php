@@ -22,5 +22,7 @@ return [
                     berarti kamu telah mendukung kami, tapi juga mempercayakan sepotong kecil dari cita-cita besarmu
                     pada kami.',
     'edition'=>'EDISI 01',
+    'production-period'=>'Masa Produksi: 20 Mei – 20 Juni 2019',
+    'shipping-period'=>'Masa pengiriman: Mulai 21 Juni 2019'
 
 ];

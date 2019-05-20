@@ -39,8 +39,8 @@
                         <h5 class="nomargin boxset-text">dengan cara klik lingkaran kuning di gambar.</h5> --}}
                         <br/><br/>
                         {{-- <h5 class="nomargin mb-1 boxset-text">Masa Pra-Pesan: 3 - 20 Mei 2019</h5> --}}
-                        <h5 class="nomargin mb-1 boxset-text">Masa Produksi: 20 Mei – 20 Juni 2019</h5>
-                        <h5 class="nomargin mb-1 boxset-text">Masa pengiriman: Mulai 21 Juni 2019</h5>
+                        <h5 class="nomargin mb-1 boxset-text">@lang('boxset.production-period')</h5>
+                        <h5 class="nomargin mb-1 boxset-text">@lang('boxset.shipping-period')</h5>
                         <br/><br/>
                         <h2 class="nomargin boks">@lang('index.right.coming-soon')</h2>
                         <h2>
@@ -69,18 +69,20 @@
                     </div>
                     <div class="visible-xs">
                         <br/><br/>
+                        <h2 class="nomargin boks">@lang('index.right.coming-soon')</h2>
+                        <br/><br/>
                         <h5 class="nomargin boxset-text">Semua cendera mata juga bisa dibeli secara eceran,</h5>
                         <h5 class="nomargin boxset-text">dengan cara klik lingkaran kuning di gambar.</h5>
                         <br/><br/>
                         {{-- <h5 class="nomargin mb-1 boxset-text">Masa Pra-Pesan: 3 - 20 Mei 2019</h5> --}}
-                        <h5 class="nomargin mb-1 boxset-text">Masa Produksi: 20 Mei – 20 Juni 2019</h5>
-                        <h5 class="nomargin mb-1 boxset-text">Masa pengiriman: Mulai 21 Juni 2019</h5>
+                        <h5 class="nomargin mb-1 boxset-text">@lang('boxset.production-period')</h5>
+                        <h5 class="nomargin mb-1 boxset-text">@lang('boxset.shipping-period')</h5>
                         <br/>
                         <div class="row">
                             <div class="col-xs-12">
                                 <h2 style="font-size: 30px;">
                                     {{-- @lang('boxset.open_pre_order') @lang('index.right.date') --}}
-                                    <a href="#" data-toggle="modal" data-target="#modal-product" data-id="6" class="btn btn-danger btn-intip btn-block btn-submit buy-boxset-btn single-product">Beli Bokset</a>
+                                    {{-- <a href="#" data-toggle="modal" data-target="#modal-product" data-id="6" class="btn btn-danger btn-intip btn-block btn-submit buy-boxset-btn single-product">Beli Bokset</a> --}}
                                 </h2>  
                             </div>
                         </div>

@@ -20,6 +20,8 @@ return [
     'description'=>'This album is marketed in some sets of BOXSET containing souvenirs that you can get either as a pack
                     or separately. Taking BOXSET of FSTVLST II album, not only you share your support but also a piece of
                     your idealism to us.',
-    'edition'=>'EDITION 01'
+    'edition'=>'EDITION 01',
+    'production-period'=>'Production Period: May 20 – June 20 2019',
+    'shipping-period'=>'Shipping Period: Start From June 21 2019'
 
 ];
