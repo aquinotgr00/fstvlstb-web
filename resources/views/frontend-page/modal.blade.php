@@ -256,7 +256,7 @@
 </div>
 
 {{-- modal for product detail in /boxset --}}
-<div class="modal fade modalbox" id="modal-product">
+{{-- <div class="modal fade modalbox" id="modal-product">
     <div class="modal-dialog modal-lg">
         <div class="modal-content modal-order">
             <div class="row loader_wrapper">
@@ -321,7 +321,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 {{-- DEPRECATED!! checkout form modal --}}
 <div id="modal-checkout" class="modal fade" tabindex="-1" role="dialog">

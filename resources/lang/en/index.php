@@ -27,6 +27,8 @@ return [
         'pre-order'=>'PRE-ORDER',
         'peek' =>'Preview',
         'opened' =>'OPEN',
+        'closed' => 'CLOSED',
+        'coming-soon' => 'NEXT, BOXSET FSTVLST II EDITION 02. SOON',
         'date' => '01/05/2019',
         'kaos' => 'T-Shirt',
         'buku' => 'Artwork, Lyric &amp; Chord Book',

@@ -28,6 +28,8 @@ return [
         'pre-order'=>'PRA-PESAN',
         'peek' =>'Intip',
         'opened' =>'DIBUKA',
+        'closed' => 'SUDAH DITUTUP',
+        'coming-soon' => 'SELANJUTNYA, NANTIKAN BOKSET FSTVLST II EDISI 02. SEGERA',
         'date' => '01/05/2019',
         'kaos' => 'Kaos',
         'buku' => 'Buku Karya Seni, Lirik & Kord',
