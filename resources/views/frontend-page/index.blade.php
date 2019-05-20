@@ -77,10 +77,10 @@
                             <h2 class="nomargin">@lang('index.right.pre-order') @lang('boxset.boxset')</h2>
                             <h2 class="nomargin">@lang('index.left.heading') @lang('boxset.edition')</h2>
                             <!-- <h2 class="nomargin boks">@lang('index.right.closed')</h2> -->
+                            <!-- <br /> -->
+                            <!-- <br />
                             <br />
-                            <br />
-                            <br />
-                            <br />
+                            <br /> -->
                             <!-- <h2 class="nomargin boks">@lang('index.right.coming-soon')</h2> -->
                             <div class="pull-right hidden-xs inceng">
                                 @guest('account') 
