@@ -1,4 +1,8 @@
-    <div id="navbar">
+    <div id="navbar"
+        @if (Request::is('privacy-policy'))
+            style="background: #fff;"
+        @endif
+    >
         <div class="container">
             <ul class="nav navbar-nav hidden-xs">
                 <li class="mr-3">

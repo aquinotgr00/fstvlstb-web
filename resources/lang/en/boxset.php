@@ -21,7 +21,7 @@ return [
                     or separately. Taking BOXSET of FSTVLST II album, not only you share your support but also a piece of
                     your idealism to us.',
     'edition'=>'EDITION 01',
-    'production-period'=>'Production Period: May 20 – June 20 2019',
-    'shipping-period'=>'Shipping Period: Start From June 21 2019'
+    'production-period'=>'Production : May 20th – June 20th 2019',
+    'shipping-period'=>'Shipping : Starts From June 21st 2019'
 
 ];

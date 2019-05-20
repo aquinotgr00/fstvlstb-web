@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct(Tracklist $tracklists,Order $order)
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('privacy');
         $this->tracklist = $tracklists;
         $this->order = $order;
     }
@@ -30,5 +30,15 @@ class HomeController extends Controller
         $tracklist = $this->tracklist->getListStreamDownload();
         $order = $this->order->reportOrder();
         return view('admin-page.dashboard',compact('tracklist','order'));
+    }
+
+    /**
+     * Show the application privacy policy.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function privacy()
+    {
+        return view('frontend-page.privacy-policy');
     }
 }

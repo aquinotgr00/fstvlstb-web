@@ -4,6 +4,8 @@ Route::get('/', 'HomeMemberController@index')->name('home');
 
 Route::get('/boxset', 'BoxsetController@index');
 
+Route::get('/privacy-policy', 'HomeController@privacy')->name('privacy-policy');
+
 Route::get('/change-language/{locale}','ChangeLanguageController@changeLanguage')->name('change.language');
 
 Route::get('/filestream/{id}','FileStreamController@fileStream')->name('stream.audio');

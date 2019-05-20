@@ -58,6 +58,8 @@
                         </div>
                         <small>
                             @lang('footer.left.detail')
+                            <br><br>
+                            <a class="custom-header-font" href="/privacy-policy">@lang('privacy-policy.title')</a>
                         </small>
                     </div>
                 </div>
@@ -153,6 +155,8 @@
                         <h2 class="text-white nomargin">@lang('footer.left.title') @lang('footer.right.title')</h2>
                         <small>
                             @lang('footer.left.detail')
+                            <br><br>
+                            <a class="custom-header-font" href="/privacy-policy">@lang('privacy-policy.title')</a>
                         </small>
                     </div>
                 </div>

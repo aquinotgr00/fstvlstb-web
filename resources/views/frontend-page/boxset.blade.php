@@ -58,13 +58,13 @@
                 <div class="col-md-8">
                     <div class="main-image">
                         <img src="{{ asset('frontend/images/boxset-image.png')}}" alt="">
-                        <div class="marker-container">
+                        {{-- <div class="marker-container">
                             <a href="#" class="marker single-product" style="top:25%;left:12%" data-toggle="modal" data-target="#modal-product" data-id="1"><span class="number"></span></a>
                             <a href="#" class="marker single-product" style="top:19%;left:48%" data-toggle="modal" data-target="#modal-product" data-id="5"><span class="number"></span></a>
                             <a href="#" class="marker single-product" style="top:55%;left:48%" data-toggle="modal" data-target="#modal-product" data-id="3"><span class="number"></span></a>
                             <a href="#" class="marker single-product" style="top:45%;left:88%" data-toggle="modal" data-target="#modal-product" data-id="2"><span class="number"></span></a>
                             <a href="#" class="marker single-product" style="top:60%;left:7%" data-toggle="modal" data-target="#modal-product" data-id="4"><span class="number"></span></a>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="visible-xs">
                         <br/><br/>
