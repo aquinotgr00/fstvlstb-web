@@ -3,7 +3,7 @@
 return [
 
     'title' => 'Kebijakan Privasi',
-   'first-section' => '
+    'first-section' => '
         <p>
             FSTVLST mengoperasikan situs web http://fstvlst.id (yang selanjutnya disebut sebagai "Layanan").
         </p>
@@ -17,16 +17,16 @@ return [
         </p>
 
 
-        <h2>Pengumpulan dan Penggunaan Informasi</h2>
+        <h1>Pengumpulan dan Penggunaan Informasi</h1>
         <p>
             Kami mengumpulkan beberapa jenis informasi yang berbeda untuk berbagai keperluan untuk menyediakan dan meningkatkan Layanan kami kepada Anda.
         </p>
     ',
 
     'second-section' => '
-        <h3 class="privacy-h3">Jenis Data yang Dikumpulkan</h3>
+        <h2 class="privacy-h2">Jenis Data yang Dikumpulkan</h2>
 
-        <h4>Data pribadi</h4>
+        <p>Data pribadi</p>
         <p>
             Saat menggunakan Layanan kami, kami mungkin meminta Anda untuk memberikankami informasi pengenal pribadi tertentu yang dapat digunakan untuk menghubungi atau mengidentifikasi Anda ("Data Pribadi"). Informasi yang dapat diidentifikasi secara pribadi dapat mencakup, tetapi tidak terbatas pada:
         </p>
@@ -39,12 +39,12 @@ return [
             <li>Data Cookie</li>
         </ul>
 
-        <h4>Data Penggunaan</h4>
+        <p>Data Pengguna</p>
         <p>
-            Kami juga dapat mengumpulkan informasi tentang bagaimana Layanan diakses dandigunakan ("Data Penggunaan"). Data Penggunaan ini dapat mencakup informasi seperti alamat Protokol Internet komputer Anda (mis. Alamat IP), jenis browser, versibrowser, halaman Layanan kami yang Anda kunjungi, waktu dan tanggal kunjungan Anda, waktu yang dihabiskan untuk halaman-halaman itu, unik pengidentifikasi perangkat dan data diagnostik lainnya.
+            Kami juga dapat mengumpulkan informasi tentang bagaimana Layanan diakses dan digunakan ("Data Pengguna"). Data Pengguna ini dapat mencakup informasi seperti alamat Protokol Internet komputer Anda (mis. Alamat IP), jenis browser, versibrowser, halaman Layanan kami yang Anda kunjungi, waktu dan tanggal kunjungan Anda, waktu yang dihabiskan untuk halaman-halaman itu, unik pengidentifikasi perangkat dan data diagnostik lainnya.
         </p>
 
-        <h4>Pelacakan & Data Cookie</h4>
+        <p>Pelacakan & Data Cookie</p>
         <p>
             Kami menggunakan cookie dan teknologi pelacakan serupa untuk melacak aktivitas di Layanan kami dan menyimpan informasi tertentu.
         </p>
@@ -58,12 +58,12 @@ return [
             Contoh Cookie yang kami gunakan:
         </p>
         <ul class="privacy-ul" style="margin-left: 3rem;">
-            <li>Cookie Sesi. Kami menggunakan Cookie Sesi untuk mengoperasikan Layanan kami.</li>
-            <li>Cookie Pilihan. Kami menggunakan Cookie Preferensi untuk mengingat preferensi Anda dan berbagai pengaturan.</li>
-            <li>Cookie Keamanan. Kami menggunakan Cookie Keamanan untuk tujuan keamanan.</li>
+            <li><b>Cookie Sesi.</b> Kami menggunakan Cookie Sesi untuk mengoperasikan Layanan kami.</li>
+            <li><b>Cookie Pilihan.</b> Kami menggunakan Cookie Preferensi untuk mengingat preferensi Anda dan berbagai pengaturan.</li>
+            <li><b>Cookie Keamanan.</b> Kami menggunakan Cookie Keamanan untuk tujuan keamanan.</li>
         </ul>
 
-        <h4>Penggunaan Data</h4>
+        <h1>Penggunaan Data</h1>
         <p>
             FSTVLST menggunakan data yang dikumpulkan untuk berbagai keperluan:
         </p>
@@ -77,7 +77,7 @@ return [
             <li>Untuk memantau penggunaan Layanan• Untuk mendeteksi, mencegah dan mengatasi masalah teknis</li>
         </ul>
 
-        <h4>Transfer Data</h4>
+        <h1>Transfer Data</h1>
         <p>
             Informasi Anda, termasuk Data Pribadi, dapat ditransfer ke - dan dipelihara di - komputer yang berlokasi di luar negara bagian, provinsi, negara atau yurisdiksi pemerintah lainnya di mana undang-undang perlindungan data mungkin berbeda dari yang ada di yurisdiksi Anda.
         </p>
@@ -93,8 +93,8 @@ return [
     ',
 
     'third-section' => '
-        <h3 class="privacy-h3">Keterbukaan Data</h3>
-        <h4>Legal Requirements</h4>
+        <h1>Keterbukaan Data</h1>
+        <h2 class="privacy-h2">Legal Requirements</h2>
         
         <p>
             FSTVLST dapat mengungkapkan Data Pribadi Anda dengan itikad baik bahwa tindakan tersebut diperlukan untuk:
@@ -108,32 +108,32 @@ return [
             <li>Untuk melindungi terhadap tanggung jawab hukum</li>
         </ul>
         
-        <h4>Keamanan Data</h4>
+        <h1>Keamanan Data</h1>
         <p>
             Keamanan data Anda penting bagi kami, tetapi ingat bahwa tidak ada metode transmisi melalui Internet, atau metode penyimpanan elektronik yang 100% aman. Meskipun kami berusaha untuk menggunakan cara yang dapat diterima secara komersial untuk melindungi Data Pribadi Anda, kami tidak dapat menjamin keamanan mutlaknya.
         </p>
         
-        <h4>Penyedia jasa</h4>
+        <h1>Penyedia jasa</h1>
         <p>
             Kami dapat mempekerjakan perusahaan pihak ketiga dan individu untuk memfasilitasi Layanan kami ("Penyedia Layanan"), untuk memberikan Layanan atasnama kami, untuk melakukan layanan terkait Layanan atau untuk membantu kami dalam menganalisis bagaimana Layanan kami digunakan.Pihak ketiga ini memiliki akses ke Data Pribadi Anda hanya untuk melakukan tugas-tugas ini atas nama kami dan berkewajiban untuk tidak mengungkapkan atau menggunakannya untuk tujuan lain apa pun.
         </p>
 
-        <h4>Tautan ke Situs Lain</h4>
+        <h1>Tautan ke Situs Lain</h1>
         <p>
             Layanan kami dapat berisi tautan ke situs lain yang tidak dioperasikan oleh kami. Jika Anda mengklik tautan pihak ketiga, Anda akan diarahkan ke situs pihak ketiga itu. Kami sangat menyarankan Anda untuk meninjau Kebijakan Privasi setiap situs yang Anda kunjungi.Kami tidak memiliki kendali atas dan tidak bertanggung jawab atas konten, kebijakan privasi, atau praktik situs atau layanan pihak ketiga mana pun.
         </p>
         
-        <h4>Privasi anak-anak</h4>
+        <h1>Privasi anak-anak</h1>
         <p>
             Layanan kami tidak membahas siapa pun yang berusia di bawah 18 ("Anak-anak").Kami tidak secara sadar mengumpulkan informasi yang dapat diidentifikasi secara pribadi dari siapa pun yang berusia di bawah 18 tahun. Jika Anda adalah orang tua atau wali dan Anda mengetahui bahwa Anak-anak Anda telah memberikan kepada kami Data Pribadi, silakan hubungi kami. Jika kami mengetahui bahwa kami telah mengumpulkan Data Pribadi dari anak-anak tanpa verifikasi izin orang tua, kami mengambil langkah-langkah untuk menghapus informasi itu dari server kami.
         </p>
         
-        <h4>Perubahan pada Kebijakan Privasi Ini</h4>
+        <h1>Perubahan pada Kebijakan Privasi Ini</h1>
         <p>
             Kami dapat memperbarui Kebijakan Privasi kami dari waktu ke waktu. Kami akan memberi tahu Anda tentang segala perubahan dengan memposting Kebijakan Privasi baru di halaman ini.Kami akan memberi tahu Anda melalui email dan / atau pemberitahuan penting pada Layanan kami, sebelum perubahan menjadi efektif dan memperbarui "tanggal efektif" di bagian atas Kebijakan Privasi ini.Anda disarankan untuk meninjau Kebijakan Privasi ini secara berkala untuk setiap perubahan. Perubahan pada Kebijakan Privasi ini efektif ketika diposkan pada halaman ini.
         </p>
         
-        <h4>Hubungi kami</h4>
+        <h1>Hubungi kami</h1>
         <p>
             Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini, silakan hubungi kami:
         </p>
