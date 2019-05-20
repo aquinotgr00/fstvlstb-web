@@ -27,8 +27,14 @@ Route::prefix('member')->group(function(){
 });
 
 Route::prefix('twitter')->group(function(){
-	Route::get('/auth','TwitterController@twitterlogin');
-	Route::get('/callback','TwitterController@twitterCallback');
+	Route::get('/auth','TwitterController@twitterlogin')->name('twitter.auth');
+	Route::get('/callback','TwitterController@twitterCallback')->name('twitter.callback');
+});
+
+Route::prefix('facebook')->group(function(){
+	Route::get('/auth','FacebookController@redirectToFacebookProvider')->name('facebook.auth');
+	Route::get('/callback','FacebookController@handleProviderFacebookCallback')->name('facebook.callback');
+	Route::get('/publish', 'GraphController@publishToProfile')->name('facebook.publish');
 });
 
 // E-COMMERCE ROUTES

@@ -59,5 +59,11 @@ return [
         'url_login'         => env('twitter_url_login','https://staging-env.fstvlst.id/twitter/auth'),
         'url_callback'      => env('twitter_url_callback','https://staging-env.fstvlst.id/twitter/callback'),
     ],
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID','421539265311963'),         // Your Facebook App Client ID
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET','26e590d3b7a7680c90f418672501b6d3'), // Your Facebook App Client Secret
+        'redirect' => env('FACEBOOK_REDIRECT','http://localhost:8000/facebook/callback'), // Your application route used to redirect users back to your app after authentication
+        'default_graph_version' => 'v3.2',
+    ],
 
 ];
