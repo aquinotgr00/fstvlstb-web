@@ -65,7 +65,7 @@
                         @auth('account')
                             <li><a href="{{ Route('member.nif') }}">@lang('header.nif')</a></li>
                             <li><a href="{{ Route('member.logout') }}">@lang('header.logout')</a></li>
-                            {{-- <li class="dropdown dropdown-cart">
+                            <li class="dropdown dropdown-cart">
                                 <a href="javascript:;" class="custom-header-font dropdown-toggle" role="button" aria-expanded="false">
                                     Keranjang :
                                     <span class="badge simpleCart_quantity"></span>
@@ -81,7 +81,7 @@
                                         <button class="btn btn-danger btn-block btn-submit simpleCart_checkout">Checkout</button>
                                     </li>
                                 </ul>
-                            </li> --}}
+                            </li>
                         @endauth
                     </ul>
                 </div>
