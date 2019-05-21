@@ -312,6 +312,7 @@ div.loader_wrapper > img { width: 6%;
     margin-top: 17rem;
 	opacity: 0.5; }
 h5.boxset-text { font-family: 'Helvetica Neue', sans-serif; font-weight: bold; font-size: 12px; }
+.mb-0 { margin-bottom: 0; }
 .mb-1 { margin-bottom: .4em!important; }
 div.checkout_loader_wrapper { position: absolute;
 	display: none;
@@ -330,8 +331,14 @@ div.privacy-policy-p {
 	margin-bottom: 80px;
 	font-size: 14px;
 }
+div.privacy-policy-p h1,
 div.privacy-policy-p h4 {
 	font-weight: 800;
+}
+div.privacy-policy-p h1,
+div.privacy-policy-p h2 {
+	margin-top: 40px;
+	text-transform: uppercase;
 }
 h2.privacy-h2 { font-weight: 400; }
 ul.privacy-ul { margin-bottom: 2rem; }

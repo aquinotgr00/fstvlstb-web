@@ -14,6 +14,7 @@
                         <div class="form-group">
                             <select class="form-control" name="status" id="status">
                                 <option>Filter dari Status</option>
+                                <option value="">All</option>
                                 <option value="pending">Pending</option>
                                 <option value="paid">Paid</option>
                                 <option value="payment check">Payment Check</option>
