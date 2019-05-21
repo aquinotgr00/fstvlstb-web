@@ -18,11 +18,11 @@
                 <div class="pull-left">
                     <a href="{{ route('images.download') }}" class="btn"><i class="fa fa-download"></i></a>
                 </div>
-               <!--  <div class="pull-right">
-                    <a href="#" class="btn"><i class="fa fa-instagram"></i></a>
-                    <a href="#" class="btn"><i class="fa fa-facebook"></i></a>
-                    <a href="#" class="btn"><i class="fa fa-twitter"></i></a>
-                </div> -->
+                <div class="pull-right">
+                    <!-- <a href="#" class="btn"><i class="fa fa-instagram"></i></a> -->
+                    <a href="/facebook/auth" class="btn"><i class="fa fa-facebook"></i></a>
+                    <!-- <a href="#" class="btn"><i class="fa fa-twitter"></i></a> -->
+                </div>
             </div>
             <div class="col-md-5 mrgn">
                 <form action="{{ route('member.change.nif') }}" method="post" id="change-password">
