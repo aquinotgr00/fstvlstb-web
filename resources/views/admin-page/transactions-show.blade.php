@@ -156,7 +156,7 @@
                     </div>
                     @endif
                     <div class="modal-footer">
-                        @if ($transaction->status !== 'paid' && $transaction->status !== 'cancel')
+                        @if ($transaction->status !== 'paid' && $transaction->status !== 'cancel' && $transaction->status !== 'shipped')
                             <button id="button-confirm" type="submit" class="btn btn-info">Confirm</button>
                             <button id="button-reject" type="submit" class="btn btn-danger">Reject</button>
                         @endif

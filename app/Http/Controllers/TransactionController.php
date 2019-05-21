@@ -12,6 +12,7 @@ use Image;
 use App\Mail\OrderPaidMail;
 use Illuminate\Support\Facades\Mail;
 use Excel;
+use DB;
 
 class TransactionController extends Controller
 {
@@ -118,7 +119,7 @@ class TransactionController extends Controller
                     'provinces.name as province',
                     'transactions.postal_code',
                     'transactions.quantity',
-                    'products.name as product',
+                    DB::raw('CONCAT(products.name,"(",orders.size,")") AS products'),
                     'transactions.amount',
                     'transactions.note',
                     'transactions.status',
