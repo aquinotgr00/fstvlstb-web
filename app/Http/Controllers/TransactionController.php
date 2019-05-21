@@ -100,7 +100,15 @@ class TransactionController extends Controller
 
     public function exportToExcel(Request $request)
     {
-        $data = $this->transactions->whereBetween('created_at', [$request->start_date, $request->end_date])->get()->toArray();
+        $data = $this->transactions->with('orders')->whereBetween('created_at', [$request->start_date, $request->end_date])->get()->toArray();
+        foreach ($data as $key => $item) {
+            $orderString = '';
+            foreach ($item['orders'] as $order) {
+                $productName = \App\Product::find($order['product_id'])->name;
+                $orderString .= $productName. ' '. $order['size']. ', ';
+            }
+            $data[$key]['orders'] = $orderString;
+        }
         if (count($data) == 0) {
             return redirect()->back()->with('alert', 'No Data found!');
         }
