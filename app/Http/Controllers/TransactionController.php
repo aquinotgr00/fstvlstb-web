@@ -110,7 +110,7 @@ class TransactionController extends Controller
             {
                 $sheet->fromArray($data);
             });
-        })->download('csv');
+        })->download('xlsx');
         
     }
 

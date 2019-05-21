@@ -37,7 +37,7 @@
                         <div class="col-md-1 p-0 text-right">
                             <button type="submit" class="btn btn-primary mb-2">
                                 <i class="fa fa-download"></i>
-                                CSV
+                                EXCEL
                             </button>
                         </div>
                     </form>
