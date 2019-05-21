@@ -100,7 +100,34 @@ class TransactionController extends Controller
 
     public function exportToExcel(Request $request)
     {
-        $data = $this->transactions->whereBetween('created_at', [$request->start_date, $request->end_date])->get()->toArray();
+        $data = $this->transactions->whereBetween('transactions.created_at', [$request->start_date, $request->end_date])
+                ->leftjoin('subdistricts','subdistricts.id','=','transactions.subdistrict_id')
+                ->leftjoin('cities','cities.id','=','subdistricts.city_id')
+                ->leftjoin('provinces','provinces.id','=','cities.province_id')
+                ->leftjoin('accounts','accounts.id','=','transactions.account_id')
+                ->select('transactions.id as id',
+                    'transactions.account_id as nif',
+                    'accounts.name',
+                    'accounts.email',
+                    'accounts.phone',
+                    'transactions.address as address',
+                    'subdistricts.name as subdistrict',
+                    'cities.name as city',
+                    'provinces.name as province',
+                    'transactions.postal_code',
+                    'transactions.quantity',
+                    'transactions.amount',
+                    'transactions.note',
+                    'transactions.status',
+                    'transactions.courier_name',
+                    'transactions.courier_fee',
+                    'transactions.payment_method',
+                    'transactions.payment_bank',
+                    'transactions.tracking_number as tracking_note',
+                    'transactions.created_at',
+                    'transactions.updated_at'
+                    )
+                ->get()->toArray();
         if (count($data) == 0) {
             return redirect()->back()->with('alert', 'No Data found!');
         }
