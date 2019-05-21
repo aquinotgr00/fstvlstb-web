@@ -20,7 +20,7 @@
                 </div>
                 <div class="pull-right">
                     <!-- <a href="#" class="btn"><i class="fa fa-instagram"></i></a> -->
-                    <a href="/facebook/auth" class="btn"><i class="fa fa-facebook"></i></a>
+                    <a href="/facebook/auth" class="btn"><img width="16px" src="{{ asset('frontend/images/facebook-logo-16.svg')}}"></a>
                     <!-- <a href="#" class="btn"><i class="fa fa-twitter"></i></a> -->
                 </div>
             </div>
