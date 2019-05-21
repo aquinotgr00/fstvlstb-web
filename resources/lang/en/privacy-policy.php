@@ -17,15 +17,16 @@ return [
         </p>
 
 
-        <h2>Information Collection and Use</h2>
+        <h1>Information Collection and Use</h1>
         <p>
             We collect several different types of information for various purposes to provide and improve our Service to you.
         </p>
     ',
 
     'second-section' => '
-        <h3 class="privacy-h3">Types of Data Collected</h3>
-        <h4>Personal Data</h4>
+        <h2 class="privacy-h2">Types of Data Collected</h2>
+
+        <p>Personal Data</p>
         <p>
             While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). Personally identifiable information may include, but is not limited to:
         </p>
@@ -38,12 +39,12 @@ return [
             <li>Cookies and Usage Data</li>
         </ul>
 
-        <h4>Usage Data</h4>
+        <p>Usage Data</p>
         <p>
             We may also collect information on how the Service is accessed and used ("Usage Data"). This Usage Data may include information such as your computer s Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.
         </p>
 
-        <h4>Tracking & Cookies Data</h4>
+        <p>Tracking & Cookies Data</p>
         <p>
             We use cookies and similar tracking technologies to track the activity on our Service and hold certain information.
         </p>
@@ -57,12 +58,12 @@ return [
             Examples of Cookies we use:
         </p>
         <ul class="privacy-ul" style="margin-left: 3rem;">
-            <li>Session Cookies. We use Session Cookies to operate our Service.</li>
-            <li>Preference Cookies. We use Preference Cookies to remember your preferences and various settings.</li>
-            <li>Security Cookies.We use Security Cookies for security purposes.</li>
+            <li><b>Session Cookies.</b> We use Session Cookies to operate our Service.</li>
+            <li><b>Preference Cookies.</b> We use Preference Cookies to remember your preferences and various settings.</li>
+            <li><b>Security Cookies.</b> We use Security Cookies for security purposes.</li>
         </ul>
 
-        <h4>Use of Data</h4>
+        <h1>Use of Data</h1>
         <p>
             FSTVLST uses the collected data for various purposes:
         </p>
@@ -76,7 +77,7 @@ return [
             <li>To detect, prevent and address technical issues</li>
         </ul>
 
-        <h4>Transfer of Data</h4>
+        <h1>Transfer of Data</h1>
         <p>
             Your information, including Personal Data, may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction.
         </p>
@@ -92,8 +93,8 @@ return [
     ',
 
     'third-section' => '
-        <h3 class="privacy-h3">Disclosure of Data</h3>
-        <h4>Legal Requirements</h4>
+        <h1>Disclosure of Data</h1>
+        <h2 class="privacy-h2">Legal Requirements</h2>
         
         <p>
             FSTVLST may disclose your Personal Data in the good faith belief that such action is necessary to:
@@ -107,32 +108,32 @@ return [
             <li>To protect against legal liability</li>
         </ul>
         
-        <h4>Security of Data</h4>
+        <h1>Security of Data</h1>
         <p>
             The security of your data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.
         </p>
         
-        <h4>Service Providers</h4>
+        <h1>Service Providers</h1>
         <p>
             We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
         </p>
 
-        <h4>Links to Other Sites</h4>
+        <h1>Links to Other Sites</h1>
         <p>
             Our Service may contain links to other sites that are not operated by us. If you click on athird-party link, you will be directed to that third party s site. We strongly advise you to review the Privacy Policy of every site you visit.We have no control over and assume no responsibility for the content, privacy policies or practices of any third-party sites or services.
         </p>
         
-        <h4>Children\'s Privacy</h4>
+        <h1>Children\'s Privacy</h1>
         <p>
             Our Service does not address anyone under the age of 18 ("Children").We do not knowingly collect personally identifiable information from anyone under the age of 18. If you are a parent or guardian and you are aware that your Children has provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from children without verification of parental consent, we take steps to remove that information from our servers.
         </p>
         
-        <h4>Changes to This Privacy Policy</h4>
+        <h1>Changes to This Privacy Policy</h1>
         <p>
             We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the "effective date" at the top of this Privacy Policy.You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
         </p>
         
-        <h4>Contact Us</h4>
+        <h1>Contact Us</h1>
         <p>
             If you have any questions about this Privacy Policy, please contact us:
         </p>
