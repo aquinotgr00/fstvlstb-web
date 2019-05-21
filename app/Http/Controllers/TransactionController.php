@@ -105,6 +105,8 @@ class TransactionController extends Controller
                 ->leftjoin('cities','cities.id','=','subdistricts.city_id')
                 ->leftjoin('provinces','provinces.id','=','cities.province_id')
                 ->leftjoin('accounts','accounts.id','=','transactions.account_id')
+                ->leftjoin('orders','transactions.id','=','orders.transaction_id')
+                ->leftjoin('products','orders.product_id','=','products.id')
                 ->select('transactions.id as id',
                     'transactions.account_id as nif',
                     'accounts.name',
@@ -116,6 +118,7 @@ class TransactionController extends Controller
                     'provinces.name as province',
                     'transactions.postal_code',
                     'transactions.quantity',
+                    'products.name as product',
                     'transactions.amount',
                     'transactions.note',
                     'transactions.status',
