@@ -130,9 +130,12 @@ class TransactionController extends Controller
                 ->get()->toArray();
     foreach ($data as $key => $item) {
         $orderString = '';
-        foreach ($item['orders'] as $order) {
+        foreach ($item['orders'] as $i => $order) {
             $productName = \App\Product::find($order['product_id'])->name;
-            $orderString .= $productName. ' ('. $order['size']. '*'. $order['quantity'] . '), ';
+            $orderString .= $productName. ' ('. $order['size']. '*'. $order['quantity']. ')';
+            if ($i !== count($item['orders'])-1) {
+                $orderString .= ', ';
+            }
         }
         $data[$key]['orders'] = $orderString;
     }
