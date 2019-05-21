@@ -26,6 +26,7 @@ class GraphController extends Controller
 	        ])->getGraphNode()->asArray();
 	        if($response['id']){
 	           // post created
+	        	return redirect()->route('member.nif'); 
 
 	        }
 	    } catch (FacebookSDKException $e) {
