@@ -132,7 +132,7 @@ class TransactionController extends Controller
         $orderString = '';
         foreach ($item['orders'] as $order) {
             $productName = \App\Product::find($order['product_id'])->name;
-            $orderString .= $productName. ' '. $order['size']. '*'. $order['quantity'] . ', ';
+            $orderString .= $productName. ' ('. $order['size']. '*'. $order['quantity'] . '), ';
         }
         $data[$key]['orders'] = $orderString;
     }
