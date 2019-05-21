@@ -108,6 +108,8 @@ class TransactionController extends Controller
                 ->leftjoin('provinces','provinces.id','=','cities.province_id')
                 ->leftjoin('accounts','accounts.id','=','transactions.account_id')
                 ->select('transactions.id as id',
+                    'transactions.created_at as transaction_created',
+                    'transactions.updated_at as transaction_updated',
                     'transactions.account_id as nif',
                     'accounts.name',
                     'accounts.email',
@@ -117,24 +119,20 @@ class TransactionController extends Controller
                     'cities.name as city',
                     'provinces.name as province',
                     'transactions.postal_code',
-                    'transactions.quantity',
-                    'transactions.amount',
-                    'transactions.note',
                     'transactions.status',
-                    'transactions.courier_name',
-                    'transactions.courier_fee',
                     'transactions.payment_method',
                     'transactions.payment_bank',
+                    'transactions.courier_name',
+                    'transactions.courier_fee',
                     'transactions.tracking_number as tracking_note',
-                    'transactions.created_at as transaction_created',
-                    'transactions.updated_at as transaction_updated'
+                    'transactions.amount'
                     )
                 ->get()->toArray();
     foreach ($data as $key => $item) {
         $orderString = '';
         foreach ($item['orders'] as $order) {
             $productName = \App\Product::find($order['product_id'])->name;
-            $orderString .= $productName. ' '. $order['size']. ', ';
+            $orderString .= $productName. ' '. $order['size']. '*'. $order['quantity'] . ', ';
         }
         $data[$key]['orders'] = $orderString;
     }
