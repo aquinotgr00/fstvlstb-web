@@ -11,7 +11,7 @@ class Tracklist extends Model
 
     	return $this->whereNULL('tracklists.deleted_at')
     				->where('tracklists.status','active')
-    				->leftjoin('files','files.tracklist_id','=','files.id')
+    				->leftjoin('files','files.tracklist_id','=','tracklists.id')
     				->select('tracklists.*','files.counter as download')
     				->get();
     }

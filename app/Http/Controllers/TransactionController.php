@@ -128,18 +128,18 @@ class TransactionController extends Controller
                     'transactions.amount'
                     )
                 ->get()->toArray();
-    foreach ($data as $key => $item) {
-        $orderString = '';
-        foreach ($item['orders'] as $i => $order) {
-            $productName = \App\Product::find($order['product_id'])->name;
-            $orderString .= $productName. ' ('. $order['size']. '*'. $order['quantity']. ')';
-            if ($i !== count($item['orders'])-1) {
-                $orderString .= ', ';
+        foreach ($data as $key => $item) {
+            $orderString = '';
+            foreach ($item['orders'] as $i => $order) {
+                $productName = \App\Product::find($order['product_id'])->name;
+                $orderString .= $productName. ' ('. $order['size']. '*'. $order['quantity']. ')';
+                if ($i !== count($item['orders'])-1) {
+                    $orderString .= ', ';
+                }
             }
+            $data[$key]['orders'] = $orderString;
         }
-        $data[$key]['orders'] = $orderString;
-    }
-    if (count($data) == 0) {
+        if (count($data) == 0) {
             return redirect()->back()->with('alert', 'No Data found!');
         }
         $fileName = $request->start_date.'-'.$request->end_date.'-FSTVLST-Data-Orders';
